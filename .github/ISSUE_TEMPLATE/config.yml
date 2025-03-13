@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+
+contact_links:
+  - name: System Status
+    url: https://status.cheqd.net
+    about: System status reporting tool for cheqd services
+
+  - name: Technical Documentation
+    url: https://docs.cheqd.io
+    about: Technical Documentation for cheqd projects
+
+  - name: Discord
+    url: http://cheqd.link/discord-github
+    about: Community Discord for Q&A and discussions
