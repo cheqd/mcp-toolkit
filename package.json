@@ -1,0 +1,24 @@
+{
+  "name": "@cheqd/mcp",
+  "version": "1.0.0",
+  "description": "Package with all the mcp toolkits for cheqd",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": "true",
+  "scripts": {
+    "format": "prettier --write '**/*.{js,ts,cjs,mjs,json}'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2",
+    "prettier": "^3.5.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
