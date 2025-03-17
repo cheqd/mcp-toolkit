@@ -13,7 +13,6 @@ import {
 import { AnonCredsModule } from '@credo-ts/anoncreds'
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs'
 import { anoncreds } from '@hyperledger/anoncreds-nodejs'
-import { DidCommModuleConfigOptions } from '@credo-ts/didcomm'
 
 export class CredoAgent {
     public port: number | string
@@ -38,7 +37,7 @@ export class CredoAgent {
         this.agent = new Agent({
             config,
             dependencies: agentDependencies,
-            modules: getAskarAnonCredsModules({ endpoints: [`http://localhost:${this.port}`] }, mnemonic)
+            modules: getAskarAnonCredsModules(mnemonic)
         })
     }
 
@@ -47,7 +46,7 @@ export class CredoAgent {
     }
 }
 
-function getAskarAnonCredsModules(_didcommConfig: DidCommModuleConfigOptions, mnemonic: string) {
+function getAskarAnonCredsModules(mnemonic: string) {
   
     return {
       connections: new ConnectionsModule({

@@ -5,12 +5,10 @@
     "main": "build/index.js",
     "types": "build/index.d.ts",
     "type": "module",
-    "bin": {
-      "credo-mcp-toolkit": "build/index.js"
-    },
     "files": [
       "build"
     ],
+    "private": true,
     "scripts": {
       "build": "tsc && chmod +x build/*.js",
       "start": "node build/index.js",

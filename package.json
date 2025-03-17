@@ -1,17 +1,29 @@
 {
-  "name": "@cheqd/mcp",
+  "name": "@cheqd/mcp-toolkit",
   "version": "1.0.0",
   "description": "Package with all the mcp toolkits for cheqd",
   "workspaces": [
     "packages/*"
   ],
-  "private": "true",
+  "bin": {
+    "cheqd-mcp-toolkit": "build/index.js"
+  },
+  "type": "module",
   "scripts": {
-    "format": "prettier --write '**/*.{js,ts,cjs,mjs,json}'"
+    "format": "prettier --write '**/*.{js,ts,cjs,mjs,json}'",
+    "build": "tsc && chmod +x build/*.js",
+    "start": "node build/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@cheqd/mcp-toolkit-credo": "file: packages/credo",
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "zod": "^3.24.2"
+  },
   "devDependencies": {
     "@types/node": "^22.13.10",
     "typescript": "^5.8.2",
