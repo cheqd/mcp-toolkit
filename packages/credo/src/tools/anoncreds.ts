@@ -1,5 +1,5 @@
 import { CredoAgent } from "../agent.js";
-import { RegisterSchemaParams, ResolveSchemaIdParams, ToolDefinition } from "../types.js";
+import { RegisterCredentialDefinitionParams, RegisterSchemaParams, ResolveCredentialDefinitionParams, ResolveSchemaIdParams, ToolDefinition } from "../types.js";
 
 export class AnonCredsToolHandler {
     credo: CredoAgent
@@ -14,7 +14,7 @@ export class AnonCredsToolHandler {
             description: "Resolve an anoncreds schema using the didUrl of cheqd",
             schema: ResolveSchemaIdParams,
             handler: async ({ schemaId }) => {
-                const result = await this.credo.agent.dids.resolveDidDocument(schemaId);
+                const result = await this.credo.agent.modules.anoncreds.getSchema(schemaId);
     
                 return {
                     content: [
@@ -36,6 +36,49 @@ export class AnonCredsToolHandler {
             handler: async ({schema, options}) => {
                 const result = await this.credo.agent.modules.anoncreds.registerSchema({
                     schema,
+                    options
+                });
+    
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: JSON.stringify(result)
+                        },
+                    ]
+                };
+            }
+        };
+    }
+
+    getCredentialDefinitionTool(): ToolDefinition<typeof ResolveCredentialDefinitionParams> {
+        return {
+            name: "get-credential-definition",
+            description: "Resolve an anoncreds credential definition using the didUrl of cheqd",
+            schema: ResolveCredentialDefinitionParams,
+            handler: async ({ credentialDefinitionId }) => {
+                const result = await this.credo.agent.modules.anoncreds.getCredentialDefinition(credentialDefinitionId);
+    
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: JSON.stringify(result)
+                        },
+                    ]
+                };
+            }
+        };
+    }
+
+    createCredentialDefinitionTool(): ToolDefinition<typeof RegisterCredentialDefinitionParams> {
+        return {
+            name: "create-credential-definition",
+            description: "Create and publish a credential definition for a specific schema id as a DID Linked Resource in Cheqd Network",
+            schema: RegisterCredentialDefinitionParams,
+            handler: async ({credentialDefinition, options}) => {
+                const result = await this.credo.agent.modules.anoncreds.registerCredentialDefinition({
+                    credentialDefinition,
                     options
                 });
     

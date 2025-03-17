@@ -1,4 +1,5 @@
 import { CredoAgent } from "./agent.js";
+import { ConnectionToolHandler } from "./tools/connection.js";
 import { DidToolHandler, AnonCredsToolHandler } from "./tools/index.js";
 
 // Create a BaseToolKit
@@ -14,7 +15,11 @@ export class CredoToolKit {
             new DidToolHandler(this.credo).resolveDidTool(),
             new DidToolHandler(this.credo).createDidTool(),
             new AnonCredsToolHandler(this.credo).createSchemaTool(),
-            new AnonCredsToolHandler(this.credo).getSchemaTool()
+            new AnonCredsToolHandler(this.credo).getSchemaTool(),
+            new AnonCredsToolHandler(this.credo).createCredentialDefinitionTool(),
+            new AnonCredsToolHandler(this.credo).getCredentialDefinitionTool(),
+            new ConnectionToolHandler(this.credo).createConnectionInvitationTool(),
+            new ConnectionToolHandler(this.credo).acceptConnectionInvitationTool()
         ]
     }
 }

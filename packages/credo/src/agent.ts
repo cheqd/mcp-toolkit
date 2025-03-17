@@ -1,6 +1,6 @@
 import type { InitConfig } from '@credo-ts/core'
 
-import { Agent, DidsModule } from '@credo-ts/core'
+import { Agent, ConnectionsModule, DidsModule } from '@credo-ts/core'
 import { AskarModule } from '@credo-ts/askar'
 import { agentDependencies } from '@credo-ts/node'
 import {
@@ -14,14 +14,6 @@ import { AnonCredsModule } from '@credo-ts/anoncreds'
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs'
 import { anoncreds } from '@hyperledger/anoncreds-nodejs'
 import { DidCommModuleConfigOptions } from '@credo-ts/didcomm'
-
-const config: InitConfig = {
-    label: 'docs-agent-nodejs',
-    walletConfig: {
-        id: 'wallet-id',
-        key: 'testkey0000000000000000000000000',
-    },
-}
 
 export class CredoAgent {
     public port: number | string
@@ -37,7 +29,7 @@ export class CredoAgent {
             label: name,
             walletConfig: {
                 id: name,
-                key: name,
+                key: name, // can be a separate param
             },
         } satisfies InitConfig
 
@@ -58,6 +50,9 @@ export class CredoAgent {
 function getAskarAnonCredsModules(_didcommConfig: DidCommModuleConfigOptions, mnemonic: string) {
   
     return {
+      connections: new ConnectionsModule({
+        autoAcceptConnections: true
+      }),
       anoncreds: new AnonCredsModule({
         registries: [new CheqdAnonCredsRegistry()],
         anoncreds,
