@@ -39,7 +39,7 @@ export class CredentialToolHandler {
                         },
                         {
                             type: "image",
-                            data: invitationUrl,
+                            data: btoa(invitationUrl),
                             mimeType: "image/png"
                         }
                     ]
