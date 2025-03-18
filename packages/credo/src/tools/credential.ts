@@ -11,7 +11,7 @@ export class CredentialToolHandler {
     connectionLessCredentialOfferTool(): ToolDefinition<typeof ConnectionlessCredentialOfferParams> {
         return {
             name: "create-connectionless-credential-offer",
-            description: "Create a connectionless credential offer which a holder can accept to initiate credential issuance",
+            description: "Create a connectionless credential offer which a holder can accept to initiate credential issuance.",
             schema: ConnectionlessCredentialOfferParams,
             handler: async ({ attributes, credentialDefinitionId }) => {
                 let { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
