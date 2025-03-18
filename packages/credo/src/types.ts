@@ -56,3 +56,11 @@ export const CreateInvitationParams = {}
 export const ReceiveInvitationParams = {
     invitationUrl: z.string().describe("Provide the invitation url to establish a secure didcomm connection")
 }
+
+// credential
+export const ConnectionlessCredentialOfferParams = {
+    attributes: z.object({}),
+    credentialDefinitionId: z.string().startsWith("did:cheqd:").includes("/resources/").describe("DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8")
+}
+
+export const ListCredentialParams = {}
