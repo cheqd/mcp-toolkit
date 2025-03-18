@@ -39,7 +39,9 @@ export class ConnectionToolHandler {
             description: "Accept a connection invitation provided by a credo agent to establish a secure connection via didcomm",
             schema: ReceiveInvitationParams,
             handler: async ({invitationUrl}) => {
-                const { connectionRecord } = await this.credo.agent.oob.receiveInvitationFromUrl(invitationUrl);
+                const { connectionRecord } = await this.credo.agent.oob.receiveInvitationFromUrl(invitationUrl, {
+                    autoAcceptConnection: true
+                });
     
                 return {
                     content: [
