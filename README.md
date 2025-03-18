@@ -53,7 +53,7 @@ The `@cheqd/mcp-toolkit-credo` package is one of the toolkits that integrate wit
 
 #### 🌍 Environment Variables
 
-```
+```bash
 TOOLS="credo"
 CREDO_PORT="3000"
 CREDO_NAME="faber"
