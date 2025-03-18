@@ -1,8 +1,8 @@
 import type { InitConfig } from '@credo-ts/core'
 
-import { Agent, ConnectionsModule, DidsModule } from '@credo-ts/core'
+import { Agent, ConnectionsModule, DidsModule, HttpOutboundTransport } from '@credo-ts/core'
 import { AskarModule } from '@credo-ts/askar'
-import { agentDependencies } from '@credo-ts/node'
+import { HttpInboundTransport, agentDependencies } from '@credo-ts/node'
 import {
   CheqdAnonCredsRegistry,
   CheqdDidRegistrar,
@@ -15,14 +15,14 @@ import { ariesAskar } from '@hyperledger/aries-askar-nodejs'
 import { anoncreds } from '@hyperledger/anoncreds-nodejs'
 
 export class CredoAgent {
-    public port: number | string
+    public port: number
     public name: string
     public config: InitConfig
     public agent: Agent<ReturnType<typeof getAskarAnonCredsModules>>
 
     public constructor({ port, name, mnemonic }: { port: number| string; name: string; mnemonic: string }) {
         this.name = name
-        this.port = port
+        this.port = typeof port === 'string' ? parseInt(port) : port
 
         const config = {
             label: name,
@@ -39,6 +39,9 @@ export class CredoAgent {
             dependencies: agentDependencies,
             modules: getAskarAnonCredsModules(mnemonic)
         })
+
+        this.agent.registerInboundTransport(new HttpInboundTransport({ port: this.port }))
+        this.agent.registerOutboundTransport(new HttpOutboundTransport())
     }
 
     public async initializeAgent() {
