@@ -22,7 +22,7 @@ export const ResolveSchemaIdParams = {
     schemaId: z.string().startsWith("did:cheqd:").includes("/resources/").describe("DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8")
 }
 
-export const RegisterSchemaParams ={
+export const RegisterSchemaParams = {
     schema: z.object({
         issuerId: z.string().startsWith("did:cheqd:").describe("Decentralized identifier for cheqd e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009"),
         name: z.string(),
@@ -33,6 +33,8 @@ export const RegisterSchemaParams ={
         network: z.enum(["testnet", "mainnet"])
     })
 };
+
+export const ListSchemaParams = {}
 
 export const ResolveCredentialDefinitionParams = {
     credentialDefinitionId: z.string().startsWith("did:cheqd:").includes("/resources/").describe("DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8")
@@ -49,6 +51,7 @@ export const RegisterCredentialDefinitionParams ={
     })
 };
 
+export const ListCredentialDefinitionParams = {}
 
 // connection
 export const CreateInvitationParams = {}
@@ -59,8 +62,8 @@ export const ReceiveInvitationParams = {
 
 // credential
 export const ConnectionlessCredentialOfferParams = {
-    attributes: z.object({}),
-    credentialDefinitionId: z.string().startsWith("did:cheqd:").includes("/resources/").describe("DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8")
+    attributes: z.object({}).describe("Provide the list of attributes published in the schema linked to the provided credentialDefinitionId"),
+    credentialDefinitionId: z.string().startsWith("did:cheqd:").includes("/resources/").describe("DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8. You have the option to list the credential definitionIds with the other tool")
 }
 
 export const ListCredentialParams = {}

@@ -1,11 +1,33 @@
 import { CredoAgent } from "../agent.js";
-import { RegisterCredentialDefinitionParams, RegisterSchemaParams, ResolveCredentialDefinitionParams, ResolveSchemaIdParams, ToolDefinition } from "../types.js";
+import { ListCredentialDefinitionParams, ListSchemaParams, RegisterCredentialDefinitionParams, RegisterSchemaParams, ResolveCredentialDefinitionParams, ResolveSchemaIdParams, ToolDefinition } from "../types.js";
 
 export class AnonCredsToolHandler {
     credo: CredoAgent
 
     constructor(credo: CredoAgent) {
         this.credo = credo;
+    }
+
+    listSchemaTool(): ToolDefinition<typeof ListSchemaParams> {
+        return {
+            name: "list-schema",
+            description: "Fetch the list of schemaId's from the walled",
+            schema: ListSchemaParams,
+            handler: async () => {
+                const result = await this.credo.agent.modules.anoncreds.getCreatedSchemas({
+                    methodName: "cheqd"
+                });
+    
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: JSON.stringify(result)
+                        },
+                    ]
+                };
+            }
+        };
     }
 
     getSchemaTool(): ToolDefinition<typeof ResolveSchemaIdParams> {
@@ -37,6 +59,28 @@ export class AnonCredsToolHandler {
                 const result = await this.credo.agent.modules.anoncreds.registerSchema({
                     schema,
                     options
+                });
+    
+                return {
+                    content: [
+                        {
+                            type: "text",
+                            text: JSON.stringify(result)
+                        },
+                    ]
+                };
+            }
+        };
+    }
+
+    listCredentialDefinitionTool(): ToolDefinition<typeof ListCredentialDefinitionParams> {
+        return {
+            name: "list-credential-definition",
+            description: "Fetch the list of credentialDefinitionId's from the walled",
+            schema: ListCredentialDefinitionParams,
+            handler: async () => {
+                const result = await this.credo.agent.modules.anoncreds.getCreatedCredentialDefinitions({
+                    methodName: "cheqd"
                 });
     
                 return {
