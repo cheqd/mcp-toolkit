@@ -1,15 +1,15 @@
 {
-    "aliveStatusCodes": [0, 200, 206, 403, 501, 999],
-    "replacementPatterns": [
-        {
-            "pattern": "\" %}",
-            "replacement": ""
-        },
-        {
-            "pattern": "&quot; %}",
-            "replacement": ""
-        }
-    ],
+	"aliveStatusCodes": [0, 200, 206, 403, 501, 999],
+	"replacementPatterns": [
+		{
+			"pattern": "\" %}",
+			"replacement": ""
+		},
+		{
+			"pattern": "&quot; %}",
+			"replacement": ""
+		}
+	],
 	"ignorePatterns": [
 		{
 			"pattern": "^https://resolver.cheqd.net/"
