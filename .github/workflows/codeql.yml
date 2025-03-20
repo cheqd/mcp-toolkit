@@ -30,6 +30,8 @@ jobs:
         with:
           languages: 'javascript'
           queries: security-and-quality
+      
+      - uses: pnpm/action-setup@v4
 
       - name: "Clean install dependencies"
         run: pnpm install --frozen-lockfile
