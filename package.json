@@ -1,5 +1,5 @@
 {
-  "name": "@cheqd/mcp",
+  "name": "@cheqd/mcp-toolkit",
   "version": "1.0.0",
   "description": "Package with all the mcp toolkits for cheqd",
   "private": "true",

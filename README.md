@@ -32,7 +32,7 @@ Add the following configuration to your claude_desktop_config.json or .cursor/mc
             "command": "npx",
             "args": [
                 "-y",
-                "@cheqd/mcp-toolkit"
+                "@cheqd/mcp-toolkit-server"
             ],
             "env": {
                 "TOOLS": "credo,<other available tools>",
