@@ -2,12 +2,13 @@ import { CredoAgent } from './agent.js';
 import { ConnectionToolHandler } from './tools/connection.js';
 import { CredentialToolHandler } from './tools/credential.js';
 import { DidToolHandler, AnonCredsToolHandler } from './tools/index.js';
+import { ICredoToolKitOptions } from './types.js';
 
 // Create a BaseToolKit
 export class CredoToolKit {
 	credo: CredoAgent;
 
-	constructor({ port, name, mnemonic }: { port: number | string; name: string; mnemonic: string }) {
+	constructor({ port, name, mnemonic }: ICredoToolKitOptions) {
 		this.credo = new CredoAgent({ port, name, mnemonic });
 	}
 

@@ -13,16 +13,19 @@ import {
 import { AnonCredsModule } from '@credo-ts/anoncreds';
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs';
 import { anoncreds } from '@hyperledger/anoncreds-nodejs';
+import { ICredoToolKitOptions } from './types.js';
 
 export class CredoAgent {
 	public port: number;
 	public name: string;
+	public domain: string;
 	public config: InitConfig;
 	public agent: Agent<ReturnType<typeof getAskarAnonCredsModules>>;
 
-	public constructor({ port, name, mnemonic }: { port: number | string; name: string; mnemonic: string }) {
+	public constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
 		this.name = name;
 		this.port = typeof port === 'string' ? parseInt(port) : port;
+		this.domain = endpoint || `http://localhost:${port}`;
 
 		const config = {
 			label: name,

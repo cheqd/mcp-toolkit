@@ -24,9 +24,7 @@ export class ConnectionToolHandler {
 						},
 						{
 							type: 'image',
-							data: btoa(
-								outOfBand.outOfBandInvitation.toUrl({ domain: `http://localhost:${this.credo.port}` })
-							),
+							data: btoa(outOfBand.outOfBandInvitation.toUrl({ domain: this.credo.domain })),
 							mimeType: 'image/png',
 						},
 					],

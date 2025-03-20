@@ -8,6 +8,13 @@ export interface ToolDefinition<Args extends ZodRawShape> {
 	handler: ToolCallback<Args>;
 }
 
+export interface ICredoToolKitOptions {
+	port: number | string;
+	name: string;
+	mnemonic: string;
+	endpoint?: string;
+}
+
 // did
 export const CreateDidDocumentParams = {
 	network: z.enum(['testnet', 'mainnet']).describe('Provide the cheqd network to publish the did document'),
