@@ -37,6 +37,10 @@
     "dotenv": "^16.4.7",
     "typescript": "^5.8.2"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "engines": {
     "node": ">=20.0.0"
   }

@@ -37,10 +37,6 @@
     "semantic-release": "^24.2.3",
     "typescript": "^5.8.2"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
   "engines": {
     "node": ">=20.0.0"
   }
