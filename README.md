@@ -32,7 +32,7 @@ Add the following configuration to your claude_desktop_config.json or .cursor/mc
             "command": "npx",
             "args": [
                 "-y",
-                "@cheqd/mcp-toolkit"
+                "@cheqd/mcp-toolkit-server"
             ],
             "env": {
                 "TOOLS": "credo,<other available tools>",
@@ -53,7 +53,7 @@ The `@cheqd/mcp-toolkit-credo` package is one of the toolkits that integrate wit
 
 #### 🌍 Environment Variables
 
-```
+```bash
 TOOLS="credo"
 CREDO_PORT="3000"
 CREDO_NAME="faber"

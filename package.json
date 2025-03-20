@@ -1,24 +1,43 @@
 {
-  "name": "@cheqd/mcp",
+  "name": "@cheqd/mcp-toolkit",
   "version": "1.0.0",
-  "description": "Package with all the mcp toolkits for cheqd",
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "Model Context Protocol (MCP) Toolkit for cheqd",
   "private": "true",
+  "packageManager": "pnpm@9.1.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheqd/mcp-toolkit.git"
+  },
+  "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
+  "license": "Apache-2.0",
   "scripts": {
-    "format": "prettier --write '**/*.{js,ts,cjs,mjs,json}'"
+    "verify": "lerna run verify --stream",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "clean": "lerna run clean",
+    "release": "multi-semantic-release",
+    "lint": "lerna run --parallel --no-bail lint",
+    "format": "find packages -maxdepth 1 -type d -exec sh -c 'cd {} && [ -f package.json ] && pnpm format' \\;",
+    "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.13.10",
-    "typescript": "^5.8.2",
-    "prettier": "^3.5.1"
+    "@qiwi/multi-semantic-release": "^7.1.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/node": "^20.17.24",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "husky": "^9.1.7",
+    "lerna": "^8.2.1",
+    "prettier": "^3.5.3",
+    "semantic-release": "^24.2.3",
+    "typescript": "^5.8.2"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

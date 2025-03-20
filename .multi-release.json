@@ -1,0 +1,8 @@
+{
+	"ignorePackages": ["!packages/config/**"],
+	"deps": {
+		"bump": "inherit",
+		"release": "patch"
+	},
+	"tagFormat": "{version}"
+}
