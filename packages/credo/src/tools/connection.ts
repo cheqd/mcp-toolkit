@@ -16,9 +16,7 @@ export class ConnectionToolHandler {
 			schema: CreateInvitationParams,
 			handler: async () => {
 				const outOfBand = await this.credo.agent.oob.createInvitation();
-				const invitationUrl = outOfBand.outOfBandInvitation.toUrl({
-					domain: `http://localhost:${this.credo.port}`,
-				});
+				const invitationUrl = outOfBand.outOfBandInvitation.toUrl({ domain: this.credo.domain });
 
 				// Generate QR code as a data URL (png format)
 				const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
