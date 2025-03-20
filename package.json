@@ -12,14 +12,14 @@
     "verify": "lerna run verify --stream",
     "build": "lerna run build",
     "test": "lerna run test",
+    "clean": "lerna run clean",
     "release": "multi-semantic-release",
     "lint": "lerna run --parallel --no-bail lint",
     "format": "find packages -maxdepth 1 -type d -exec sh -c 'cd {} && [ -f package.json ] && pnpm format' \\;",
     "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@qiwi/multi-semantic-release": "^7.1.2",
     "@semantic-release/changelog": "^6.0.3",
@@ -40,5 +40,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
