@@ -12,7 +12,7 @@ class AgentMcpServer {
 
 	constructor() {
 		this.server = new McpServer({
-			name: 'cheqd-vai-server',
+			name: 'cheqd-mcp-toolkit-server',
 			version: '1.0.0',
 		});
 	}
