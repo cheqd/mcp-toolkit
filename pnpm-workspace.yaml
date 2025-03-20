@@ -1,7 +1,6 @@
-workspaces:
-  - packages/*
-  # exclude packages that are inside test directories
-  - '!**/test/**'
-
+# pnpm workspace configuration
+# - packages/*: All packages in the packages directory
+# - !**/test/**: Excludes any packages inside test directories
 packages:
   - packages/*
+  - '!**/test/**'

@@ -17,11 +17,12 @@
     "build": "tsc && chmod +x build/*.js",
     "start": "node build/index.js",
     "watch": "tsc --watch",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "format": "prettier --write 'src/**/*.{js,ts,cjs,mjs,json}'"
   },
   "keywords": [],
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "@cheqd/mcp-toolkit-credo": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.6.1",
