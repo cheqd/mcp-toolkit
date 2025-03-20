@@ -33,7 +33,7 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5
       '@types/node':
-        specifier: ^20.14.8
+        specifier: ^20.17.24
         version: 20.17.24
       conventional-changelog-conventionalcommits:
         specifier: ^8.0.0
@@ -85,7 +85,7 @@ importers:
         version: 3.24.2
     devDependencies:
       '@types/node':
-        specifier: ^20.14.8
+        specifier: ^20.17.24
         version: 20.17.24
       typescript:
         specifier: ^5.8.2
@@ -104,7 +104,7 @@ importers:
         version: 3.24.2
     devDependencies:
       '@types/node':
-        specifier: ^20.14.8
+        specifier: ^20.17.24
         version: 20.17.24
       dotenv:
         specifier: ^16.4.7
@@ -861,8 +861,8 @@ packages:
     resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
     engines: {node: '>=6.9.0'}
 
-  '@bufbuild/protobuf@2.2.4':
-    resolution: {integrity: sha512-P9xQgtMh71TA7tHTnbDe68zcI+TPnkyyfBIhGaUr4iUEIXN7yI01DyjmmdEwXTk5OlISBJYkoxCVj2dwmHqIkA==}
+  '@bufbuild/protobuf@2.2.5':
+    resolution: {integrity: sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==}
 
   '@cheqd/sdk@2.6.0':
     resolution: {integrity: sha512-Lx3/0dT7QoKaWfQcc4PzhcaFud5Fkgm1//Q7KfPXakerSLuOkyaVy95VnFnnoLERuWZcE6r3nI1xoKq1GFckDg==}
@@ -1827,7 +1827,6 @@ packages:
 
   '@sphereon/kmp-mdl-mdoc@0.2.0-SNAPSHOT.22':
     resolution: {integrity: sha512-uAZZExVy+ug9JLircejWa5eLtAZ7bnBP6xb7DO2+86LRsHNLh2k2jMWJYxp+iWtGHTsh6RYsZl14ScQLvjiQ/A==}
-    bundledDependencies: []
 
   '@sphereon/pex-models@2.3.2':
     resolution: {integrity: sha512-foFxfLkRwcn/MOp/eht46Q7wsvpQGlO7aowowIIb5Tz9u97kYZ2kz6K2h2ODxWuv5CRA7Q0MY8XUBGE2lfOhOQ==}
@@ -2200,8 +2199,8 @@ packages:
   axios@0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
 
-  axios@1.8.3:
-    resolution: {integrity: sha512-iP4DebzoNlP/YN2dpwCgb8zoCmhtkajzS48JvwmkSkXvPI3DHc7m+XYL5tGnSlJtR6nImXZmdCuN5aP8dh1d8A==}
+  axios@1.8.4:
+    resolution: {integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==}
 
   b64-lite@1.4.0:
     resolution: {integrity: sha512-aHe97M7DXt+dkpa8fHlCcm1CnskAHrJqEfMI0KN7dwqlzml/aUe1AGt6lk51HzrSfVD67xOso84sOpr+0wIe2w==}
@@ -3027,8 +3026,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.120:
-    resolution: {integrity: sha512-oTUp3gfX1gZI+xfD2djr2rzQdHCwHzPQrrK0CD7WpTdF0nPdQ/INcRVjWgLdCT4a9W3jFObR9DAfsuyFQnI8CQ==}
+  electron-to-chromium@1.5.122:
+    resolution: {integrity: sha512-EML1wnwkY5MFh/xUnCvY8FrhUuKzdYhowuZExZOfwJo+Zu9OsNCI23Cgl5y7awy7HrUHSwB1Z8pZX5TI34lsUg==}
 
   elliptic@6.6.1:
     resolution: {integrity: sha512-RaddvvMatK2LJHqFJ+YA4WysVN5Ita9E35botqIYspQ4TkRAlCicdzKOjlyv/1Za5RyTNn7di//eEV0uTAfe3g==}
@@ -4179,8 +4178,8 @@ packages:
     peerDependencies:
       '@babel/preset-env': ^7.1.6
 
-  jscodeshift@17.1.2:
-    resolution: {integrity: sha512-uime4vFOiZ1o3ICT4Sm/AbItHEVw2oCxQ3a0egYVy3JMMOctxe07H3SKL1v175YqjMt27jn1N+3+Bj9SKDNgdQ==}
+  jscodeshift@17.2.0:
+    resolution: {integrity: sha512-ZQeKdRmrUhk3vmESbWCUch6BQIngO6Sx6mgLJsR8QD9kqY0xyN9J8Vzkee4tULjekBnV9SiKf9m8ybNURh9s+g==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
@@ -6569,8 +6568,8 @@ packages:
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
-  undici@5.28.5:
-    resolution: {integrity: sha512-zICwjrDrcrUE0pyyJc1I2QzBkLM8FINsgOrt6WjA+BgajVq9Nxu2PbFFXUrAggLfDXlZGZBVZYw7WNV5KiBiBA==}
+  undici@5.29.0:
+    resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
     engines: {node: '>=14.0'}
 
   undici@6.21.2:
@@ -7972,7 +7971,7 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@bufbuild/protobuf@2.2.4': {}
+  '@bufbuild/protobuf@2.2.5': {}
 
   '@cheqd/sdk@2.6.0':
     dependencies:
@@ -8007,7 +8006,7 @@ snapshots:
 
   '@cheqd/ts-proto@2.4.1':
     dependencies:
-      '@bufbuild/protobuf': 2.2.4
+      '@bufbuild/protobuf': 2.2.5
       long: 5.3.1
       protobufjs: 7.4.0
 
@@ -8260,7 +8259,7 @@ snapshots:
     dependencies:
       ky: 0.33.3
       ky-universal: 0.11.0(ky@0.33.3)(web-streams-polyfill@3.3.3)
-      undici: 5.28.5
+      undici: 5.29.0
     transitivePeerDependencies:
       - web-streams-polyfill
 
@@ -9654,7 +9653,7 @@ snapshots:
       glob: 7.2.3
       hermes-parser: 0.25.1
       invariant: 2.2.4
-      jscodeshift: 17.1.2(@babel/preset-env@7.26.9(@babel/core@7.26.10))
+      jscodeshift: 17.2.0(@babel/preset-env@7.26.9(@babel/core@7.26.10))
       nullthrows: 1.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -10445,7 +10444,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  axios@1.8.3:
+  axios@1.8.4:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.2
@@ -10716,7 +10715,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001706
-      electron-to-chromium: 1.5.120
+      electron-to-chromium: 1.5.122
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -11387,7 +11386,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.120: {}
+  electron-to-chromium@1.5.122: {}
 
   elliptic@6.6.1:
     dependencies:
@@ -12829,7 +12828,7 @@ snapshots:
       - supports-color
     optional: true
 
-  jscodeshift@17.1.2(@babel/preset-env@7.26.9(@babel/core@7.26.10)):
+  jscodeshift@17.2.0(@babel/preset-env@7.26.9(@babel/core@7.26.10)):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/parser': 7.26.10
@@ -13894,7 +13893,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.8.3
+      axios: 1.8.4
       chalk: 4.1.0
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -15540,7 +15539,7 @@ snapshots:
 
   undici-types@6.19.8: {}
 
-  undici@5.28.5:
+  undici@5.29.0:
     dependencies:
       '@fastify/busboy': 2.1.1
 
