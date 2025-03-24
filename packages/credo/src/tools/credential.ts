@@ -30,7 +30,7 @@ export class CredentialToolHandler {
 					await this.credo.agent.oob.createLegacyConnectionlessInvitation({
 						recordId: credentialRecord.id,
 						message,
-						domain: `http://localhost:${this.credo.port}`,
+						domain: `http://${this.credo.name}:${this.credo.port}`,
 					});
 
 				return {

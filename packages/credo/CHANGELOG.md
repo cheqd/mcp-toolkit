@@ -3,7 +3,7 @@
 # @cheqd/mcp-toolkit-credo 1.0.0-develop.1 (2025-03-20)
 
 
-### Bug Fixes
+## Bug Fixes
 
 * Add format script ([dd52a22](https://github.com/cheqd/mcp-toolkit/commit/dd52a22b491a50e8ebbfb37e0c80bffe08082d4e))
 * Add ICredoToolkit options ([6597491](https://github.com/cheqd/mcp-toolkit/commit/6597491350acb91dea1a94f8a537fc5f44cc98e2))
@@ -11,7 +11,7 @@
 * Register inbound and outbound ts ([cf7fe41](https://github.com/cheqd/mcp-toolkit/commit/cf7fe41f3572f3c519757a344686e22cac7ba3bc))
 
 
-### Features
+## Features
 
 * Add connections toolkit in credo ([ff79f01](https://github.com/cheqd/mcp-toolkit/commit/ff79f01e2d5aee2aadfe4c7d065fad3fb58e7d2e))
 * Add credential tool handlers ([98f9ffb](https://github.com/cheqd/mcp-toolkit/commit/98f9ffba6c1cbe51e1e4964038c51aed2ee99714))
