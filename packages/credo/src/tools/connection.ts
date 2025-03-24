@@ -41,7 +41,7 @@ export class ConnectionToolHandler {
 						{
 							type: 'text',
 							text: JSON.stringify(invitation),
-						}
+						},
 					],
 				};
 			},
