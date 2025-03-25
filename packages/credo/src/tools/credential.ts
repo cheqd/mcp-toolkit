@@ -1,6 +1,6 @@
 import { CredoAgent } from '../agent.js';
 import { ConnectionlessCredentialOfferParams, ListCredentialParams, ToolDefinition } from '../types.js';
-
+import QRCode from 'qrcode';
 export class CredentialToolHandler {
 	credo: CredoAgent;
 
@@ -23,7 +23,7 @@ export class CredentialToolHandler {
 							credentialDefinitionId,
 						},
 					},
-					protocolVersion: 'v1' as never,
+					protocolVersion: 'v2' as never,
 				});
 
 				const { invitationUrl, outOfBandRecord } =
@@ -32,17 +32,24 @@ export class CredentialToolHandler {
 						message,
 						domain: `http://${this.credo.name}:${this.credo.port}`,
 					});
+					// Generate QR code as a data URL (png format)
+					const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
+						type: 'png',
+						margin: 2,
+						errorCorrectionLevel: 'H',
+						scale: 8,
+					});
 
 				return {
 					content: [
 						{
-							type: 'text',
-							text: JSON.stringify(outOfBandRecord),
+							type: 'image',
+							data:qrCodeBuffer.toString('base64'),
+							mimeType: 'image/png',
 						},
 						{
-							type: 'image',
-							data: btoa(invitationUrl),
-							mimeType: 'image/png',
+							type: 'text',
+							text: JSON.stringify(outOfBandRecord),
 						},
 					],
 				};
