@@ -1,6 +1,6 @@
 import type { InitConfig } from '@credo-ts/core';
 
-import { Agent, ConnectionsModule, DidsModule, HttpOutboundTransport } from '@credo-ts/core';
+import { Agent, AutoAcceptCredential, AutoAcceptProof, ConnectionsModule, CredentialsModule, DidsModule, HttpOutboundTransport, ProofsModule, V2CredentialProtocol, V2ProofProtocol } from '@credo-ts/core';
 import { AskarModule } from '@credo-ts/askar';
 import { HttpInboundTransport, agentDependencies } from '@credo-ts/node';
 import {
@@ -10,7 +10,7 @@ import {
 	CheqdModule,
 	CheqdModuleConfig,
 } from '@credo-ts/cheqd';
-import { AnonCredsModule } from '@credo-ts/anoncreds';
+import { AnonCredsCredentialFormatService, AnonCredsModule, AnonCredsProofFormatService } from '@credo-ts/anoncreds';
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs';
 import { anoncreds } from '@hyperledger/anoncreds-nodejs';
 import { ICredoToolKitOptions } from './types.js';
@@ -76,6 +76,7 @@ export class CredoAgent {
 			throw err;
 		}
 	}
+
 	/**
 	 * Check if a port is available
 	 */
@@ -115,6 +116,22 @@ function getAskarAnonCredsModules(mnemonic: string) {
 				],
 			})
 		),
+        credentials: new CredentialsModule({
+            autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
+            credentialProtocols: [
+              new V2CredentialProtocol({
+                credentialFormats: [new AnonCredsCredentialFormatService()],
+              }),
+            ],
+        }),
+        proofs: new ProofsModule({
+            autoAcceptProofs: AutoAcceptProof.ContentApproved,
+            proofProtocols: [
+              new V2ProofProtocol({
+                proofFormats: [new AnonCredsProofFormatService()],
+              }),
+            ],
+        }),
 		dids: new DidsModule({
 			resolvers: [new CheqdDidResolver()],
 			registrars: [new CheqdDidRegistrar()],

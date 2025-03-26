@@ -89,6 +89,7 @@ class AgentMcpServer extends McpServer {
 						: process.env.CREDO_PORT,
 				name: normalizeEnvVar(process.env.CREDO_NAME),
 				mnemonic: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
+                endpoint: process.env.CREDO_ENDPOINT
 			});
 			await this.credoToolkit.credo.initializeAgent();
 			const credoTools = await this.credoToolkit.getTools();
@@ -108,8 +109,8 @@ class AgentMcpServer extends McpServer {
 			this.transport = new StdioServerTransport();
 			await this.connect(this.transport);
 			// Send logging notification to client
-			this.server.sendLoggingMessage({
-				level: 'info',
+			await this.server.sendLoggingMessage({
+				level: 'debug',
 				data: 'Cheqd MCP Toolkit Server started successfully',
 			});
 		} catch (err) {

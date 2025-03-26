@@ -5,6 +5,7 @@ declare global {
 			CREDO_CHEQD_MAINNET_MNEMONIC?: string;
 			CREDO_PORT?: string;
 			CREDO_NAME?: string;
+            CREDO_ENDPOINT?: string;
 		}
 	}
 }

@@ -8,8 +8,8 @@ import { ICredoToolKitOptions } from './types.js';
 export class CredoToolKit {
 	credo: CredoAgent;
 
-	constructor({ port, name, mnemonic }: ICredoToolKitOptions) {
-		this.credo = new CredoAgent({ port, name, mnemonic });
+	constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
+		this.credo = new CredoAgent({ port, name, mnemonic, endpoint });
 	}
 
 	async getTools() {
