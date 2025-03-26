@@ -1,5 +1,13 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.1...@cheqd/mcp-toolkit-credo@1.0.0-develop.2) (2025-03-26)
+
+
+### Bug Fixes
+
+* addressed review comments ([62e5609](https://github.com/cheqd/mcp-toolkit/commit/62e56096c211d3d52bfa2dd77183ed5793425279))
+* double start and QR code ([4fa489f](https://github.com/cheqd/mcp-toolkit/commit/4fa489f75103c6e45209b230533ec11d00f22307))
+
 # @cheqd/mcp-toolkit-credo 1.0.0-develop.1 (2025-03-20)
 
 
