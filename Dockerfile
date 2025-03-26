@@ -40,11 +40,22 @@ WORKDIR /home/node/app
 COPY --from=builder --chown=node:node /home/node/app/packages ./packages
 COPY --from=builder  --chown=node:node /home/node/app/node_modules ./node_modules
 
-# Switch to non-root user
+# Base arguments: build-time
+ARG NPM_CONFIG_LOGLEVEL=warn
+ARG PORT=3000
+
+# Environment variables: base configuration
+ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL}
+ENV PORT=${PORT}
+
+# Set ownership permissions
+RUN chown -R node:node /home/node/app
+
+# Specify default port
+EXPOSE ${PORT}
+
+# Set user and shell
 USER node
 
-# Expose port
-EXPOSE 3000
-
-# Start the server
+# Run the application
 CMD ["node", "packages/server/build/index.js"]
