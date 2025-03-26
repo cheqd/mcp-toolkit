@@ -1,3 +1,4 @@
+# ------------------ Build Stage ------------------
 FROM node:20-slim AS build
 
 # Enable pnpm

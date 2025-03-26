@@ -1,0 +1,38 @@
+# Description: Docker Compose file to run cheqd-mcp-server
+# SYNTAX: docker compose -f docker/docker-compose.yml up --detach
+
+services:
+  # ACA-Py Holder Agent
+  acapy-holder:
+    build:
+      context: .
+      dockerfile: Dockerfile.acapy
+    container_name: holder
+    ports:
+      - "4001:4001"
+      - "4002:4002"
+    restart: on-failure
+    command: >
+      start
+        --label Holder
+        --inbound-transport http 0.0.0.0 4002
+        --outbound-transport http
+        --endpoint http://holder:4002
+        --admin 0.0.0.0 4001
+        --admin-insecure-mode
+        --wallet-type askar-anoncreds
+        --wallet-name holder
+        --wallet-key insecure
+        --auto-provision
+        --auto-accept-invites
+        --auto-accept-requests
+        --auto-ping-connection
+        --log-level info
+        --no-ledger
+        --plugin cheqd
+        --plugin-config plugin-config.yml
+    networks:
+      - mcp-toolkit_mcp-network
+networks:
+  mcp-toolkit_mcp-network:
+    external: true

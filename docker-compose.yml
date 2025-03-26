@@ -3,22 +3,26 @@
 
 services:
   mcp-server:
-    # OPTIONAL: Rebuild cheqd cheqd-mcp-server Docker image, if you want build your own
+    # OPTIONAL: Rebuild cheqd mcp-toolkit Docker image, if you want build your own
     # Default is to pull in the pre-published image on GitHub Container Registry
     # SYNTAX: docker compose -f docker/docker-compose.yml build
     # build:
     #   context: ./
     #   dockerfile: Dockerfile
-    #   target: cheqd-mcp-server
-    # image: ghcr.io/cheqd/cheqd-mcp-server:latest
-    image: ghcr.io/cheqd/cheqd-mcp-server:latest
+    # Uncomment below after Image is published
+    # image: ghcr.io/cheqd/mcp-toolkit:latest
+    image: mcp-toolkit:latest
+    container_name: faber
     ports:
-      - target: 3000
-        published: 3000
-        mode: host
+      - "3000:3000"
     restart: on-failure
     environment:
       TOOLS: "credo"
-      CREDO_PORT: "3000"
+      CREDO_PORT: 3000
       CREDO_NAME: "faber"
-      CREDO_CHEQD_TESTNET_MNEMONIC: "your testnet mnemonic"
+      CREDO_CHEQD_TESTNET_MNEMONIC: ${CREDO_CHEQD_TESTNET_MNEMONIC}
+    networks:
+      - mcp-network
+networks:
+  mcp-network:
+    driver: bridge

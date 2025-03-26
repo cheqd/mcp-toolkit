@@ -66,7 +66,7 @@ Use the `env.example` file and update the appropriate variables.
         "--rm",
         "--env-file",
         "/path/to/.env",
-        "cheqd-mcp-server"
+        "ghcr.io/cheqd/mcp-toolkit:latest"
       ],
       "env": {}
     },
