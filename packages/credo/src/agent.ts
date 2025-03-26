@@ -1,6 +1,17 @@
 import type { InitConfig } from '@credo-ts/core';
 
-import { Agent, ConnectionsModule, DidsModule, HttpOutboundTransport } from '@credo-ts/core';
+import {
+	Agent,
+	AutoAcceptCredential,
+	AutoAcceptProof,
+	ConnectionsModule,
+	CredentialsModule,
+	DidsModule,
+	HttpOutboundTransport,
+	ProofsModule,
+	V2CredentialProtocol,
+	V2ProofProtocol,
+} from '@credo-ts/core';
 import { AskarModule } from '@credo-ts/askar';
 import { HttpInboundTransport, agentDependencies } from '@credo-ts/node';
 import {
@@ -10,10 +21,11 @@ import {
 	CheqdModule,
 	CheqdModuleConfig,
 } from '@credo-ts/cheqd';
-import { AnonCredsModule } from '@credo-ts/anoncreds';
+import { AnonCredsCredentialFormatService, AnonCredsModule, AnonCredsProofFormatService } from '@credo-ts/anoncreds';
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs';
 import { anoncreds } from '@hyperledger/anoncreds-nodejs';
 import { ICredoToolKitOptions } from './types.js';
+import * as net from 'net';
 
 export class CredoAgent {
 	public port: number;
@@ -25,7 +37,7 @@ export class CredoAgent {
 	public constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
 		this.name = name;
 		this.port = typeof port === 'string' ? parseInt(port) : port;
-		this.domain = endpoint || `http://localhost:${port}`;
+		this.domain = endpoint || `http://${name}:${port}`;
 
 		const config = {
 			label: name,
@@ -43,12 +55,56 @@ export class CredoAgent {
 			modules: getAskarAnonCredsModules(mnemonic),
 		});
 
-		this.agent.registerInboundTransport(new HttpInboundTransport({ port: this.port }));
 		this.agent.registerOutboundTransport(new HttpOutboundTransport());
 	}
 
+	/**
+	 * Initialize the agent with random wait and port availability check
+	 */
 	public async initializeAgent() {
-		await this.agent.initialize();
+		// TODO: Remove this block when remote execution is supported
+		// START: Remove block
+		// Random wait between 0-7 seconds to avoid port conflicts when multiple instances start simultaneously
+		// Current limitation with Claude Desktop: Always two instances start simultaneously
+		const waitTime = Math.floor(Math.random() * 7000);
+		console.error(`Waiting ${waitTime}ms before initializing agent...`);
+		await new Promise((resolve) => setTimeout(resolve, waitTime));
+		// Check if port is available
+		const isPortAvailable = await this.checkPortAvailability(this.port);
+		if (!isPortAvailable) {
+			console.error(`Port ${this.port} is already in use. This instance will exit gracefully.`);
+			return; // Don't exit immediately to allow proper cleanup in the server class
+		}
+		// END: Remove block
+
+		try {
+			const transport = new HttpInboundTransport({ port: this.port });
+			this.agent.registerInboundTransport(transport);
+			await this.agent.initialize();
+		} catch (err) {
+			const e = err as Error;
+			console.error(`Error initializing agent: ${e.message}`);
+			throw err;
+		}
+	}
+
+	/**
+	 * Check if a port is available
+	 */
+	private async checkPortAvailability(port: number): Promise<boolean> {
+		return new Promise((resolve) => {
+			const tester = net
+				.createServer()
+				.once('error', () => {
+					// Port is in use
+					resolve(false);
+				})
+				.once('listening', () => {
+					// Port is available
+					tester.once('close', () => resolve(true)).close();
+				})
+				.listen(port, '0.0.0.0');
+		});
 	}
 }
 
@@ -71,6 +127,22 @@ function getAskarAnonCredsModules(mnemonic: string) {
 				],
 			})
 		),
+		credentials: new CredentialsModule({
+			autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
+			credentialProtocols: [
+				new V2CredentialProtocol({
+					credentialFormats: [new AnonCredsCredentialFormatService()],
+				}),
+			],
+		}),
+		proofs: new ProofsModule({
+			autoAcceptProofs: AutoAcceptProof.ContentApproved,
+			proofProtocols: [
+				new V2ProofProtocol({
+					proofFormats: [new AnonCredsProofFormatService()],
+				}),
+			],
+		}),
 		dids: new DidsModule({
 			resolvers: [new CheqdDidResolver()],
 			registrars: [new CheqdDidRegistrar()],

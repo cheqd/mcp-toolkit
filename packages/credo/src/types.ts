@@ -1,5 +1,5 @@
 import { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { z, ZodRawShape } from 'zod';
+import { any, z, ZodRawShape } from 'zod';
 
 export interface ToolDefinition<Args extends ZodRawShape> {
 	readonly name: string;
@@ -94,10 +94,30 @@ export const ReceiveInvitationParams = {
 	invitationUrl: z.string().describe('Provide the invitation url to establish a secure didcomm connection'),
 };
 
+export const GetConnectionRecordParams = {
+	connectionId: z.string().uuid(),
+};
+
 // credential
 export const ConnectionlessCredentialOfferParams = {
 	attributes: z
-		.object({})
+		.record(z.string())
+		.describe(
+			'Provide the list of attributes published in the schema linked to the provided credentialDefinitionId'
+		),
+	credentialDefinitionId: z
+		.string()
+		.startsWith('did:cheqd:')
+		.includes('/resources/')
+		.describe(
+			'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8. You have the option to list the credential definitionIds with the other tool'
+		),
+};
+
+export const CredentialOfferParams = {
+	connectionId: z.string().uuid(),
+	attributes: z
+		.record(z.string())
 		.describe(
 			'Provide the list of attributes published in the schema linked to the provided credentialDefinitionId'
 		),
@@ -111,3 +131,7 @@ export const ConnectionlessCredentialOfferParams = {
 };
 
 export const ListCredentialParams = {};
+
+export const GetCredentialRecordParams = {
+	credentialId: z.string().uuid(),
+};

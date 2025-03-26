@@ -10,6 +10,12 @@
 
 The `@cheqd/mcp-toolkit` is a modular framework built around the Model Context Protocol (MCP). MCP standardizes AI agent interactions by providing a structured way to handle identity-related workflows. This toolkit enables AI agents to securely manage decentralized identities (DIDs), verifiable credentials, and trust registries, making it an essential component for AI-driven identity systems. This repository allows developers to configure and deploy an MCP server with the available toolkits.
 
+## Prerequisites
+
+- Node.js 20 or higher
+- pnpm 8 or higher
+- Basic knowledge of TypeScript and MCP
+
 ## 📦 Packages
 
 ### @cheqd/mcp-toolkit
@@ -23,12 +29,14 @@ Features:
 
 #### Usage with Claude Desktop or Cursor
 
-Add the following configuration to your claude_desktop_config.json or .cursor/mcp.json.
+Add the following configuration to your claude_desktop_config.json or .cursor/mcp.json:
+
+##### npx
 
 ```json
 {
     "mcpServers": {
-        "Cheqd": {
+        "cheqd": {
             "command": "npx",
             "args": [
                 "-y",
@@ -40,6 +48,40 @@ Add the following configuration to your claude_desktop_config.json or .cursor/mc
             }
         }
     }
+}
+```
+
+##### docker
+
+Use the `env.example` file and update the appropriate variables.
+
+```json
+{
+  "mcpServers": {
+    "cheqd": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--env-file",
+        "/path/to/.env",
+        "cheqd-mcp-server"
+      ],
+      "env": {}
+    },
+    "cheqd-docker-compose": {
+      "command": "docker-compose",
+      "args": [
+        "-f",
+        "/path/to/repo/mcp-toolkit/docker-compose.yml",
+        "run",
+        "--rm",
+        "-T",
+        "mcp-server"
+      ]
+    }
+  }
 }
 ```
 
@@ -58,6 +100,35 @@ TOOLS="credo"
 CREDO_PORT="3000"
 CREDO_NAME="faber"
 CREDO_CHEQD_TESTNET_MNEMONIC="your-mnemonic-phrase"
+```
+
+## Development Setup
+
+### 1. Install pnpm
+
+If you don't already have pnpm installed:
+
+```bash
+npm install -g pnpm
+```
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/cheqd/mcp-toolkit.git
+cd mcp-toolkit
+```
+
+### 3. Install dependencies
+
+```bash
+pnpm install
+```
+
+### 4. Build the packages
+
+```bash
+pnpm build
 ```
 
 ## 💬 Community

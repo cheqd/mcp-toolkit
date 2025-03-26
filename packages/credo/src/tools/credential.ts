@@ -1,5 +1,13 @@
+import { AutoAcceptCredential, V2CredentialPreview } from '@credo-ts/core';
+import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
-import { ConnectionlessCredentialOfferParams, ListCredentialParams, ToolDefinition } from '../types.js';
+import {
+	ConnectionlessCredentialOfferParams,
+	CredentialOfferParams,
+	GetCredentialRecordParams,
+	ListCredentialParams,
+	ToolDefinition,
+} from '../types.js';
 
 export class CredentialToolHandler {
 	credo: CredoAgent;
@@ -10,39 +18,81 @@ export class CredentialToolHandler {
 
 	connectionLessCredentialOfferTool(): ToolDefinition<typeof ConnectionlessCredentialOfferParams> {
 		return {
-			name: 'create-connectionless-credential-offer',
+			name: 'create-credential-offer-connectionless',
 			description:
 				'Create a connectionless credential offer which a holder can accept to initiate credential issuance.',
 			schema: ConnectionlessCredentialOfferParams,
 			handler: async ({ attributes, credentialDefinitionId }) => {
 				let { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
-					comment: 'V1 Out of Band offer',
+					comment: 'V2 Out of Band offer',
 					credentialFormats: {
 						anoncreds: {
-							attributes,
+							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
 							credentialDefinitionId,
 						},
 					},
-					protocolVersion: 'v1' as never,
+					protocolVersion: 'v2',
 				});
 
 				const { invitationUrl, outOfBandRecord } =
 					await this.credo.agent.oob.createLegacyConnectionlessInvitation({
 						recordId: credentialRecord.id,
 						message,
-						domain: `http://localhost:${this.credo.port}`,
+						domain: this.credo.domain || `http://${this.credo.name}:${this.credo.port}`,
 					});
+				// Generate QR code as a data URL (png format)
+				const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
+					type: 'png',
+					margin: 2,
+					errorCorrectionLevel: 'H',
+					scale: 8,
+				});
 
 				return {
 					content: [
+						{
+							type: 'image',
+							data: qrCodeBuffer.toString('base64'),
+							mimeType: 'image/png',
+						},
 						{
 							type: 'text',
 							text: JSON.stringify(outOfBandRecord),
 						},
 						{
-							type: 'image',
-							data: btoa(invitationUrl),
-							mimeType: 'image/png',
+							type: 'text',
+							text: `Invitation created successfully.\n\nConnection URL: ${invitationUrl}\n\nScan this QR code with another agent to establish a connection:`,
+						},
+					],
+				};
+			},
+		};
+	}
+
+	connectionCredentialOfferTool(): ToolDefinition<typeof CredentialOfferParams> {
+		return {
+			name: 'create-credential-offer-didcomm',
+			description: 'Offer a credential which a holder can accept to initiate credential issuance via didcomm.',
+			schema: CredentialOfferParams,
+			handler: async ({ attributes, credentialDefinitionId, connectionId }) => {
+				let credentialRecord = await this.credo.agent.credentials.offerCredential({
+					comment: 'V2 Out of Band offer',
+					credentialFormats: {
+						anoncreds: {
+							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
+							credentialDefinitionId,
+						},
+					},
+					protocolVersion: 'v2',
+					connectionId,
+					autoAcceptCredential: AutoAcceptCredential.Always,
+				});
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credentialRecord),
 						},
 					],
 				};
@@ -63,6 +113,26 @@ export class CredentialToolHandler {
 						{
 							type: 'text',
 							text: JSON.stringify(credentials),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	getCredentialRecordTool(): ToolDefinition<typeof GetCredentialRecordParams> {
+		return {
+			name: 'get-credential-record',
+			description: 'Retreive the credential record from wallet',
+			schema: GetCredentialRecordParams,
+			handler: async ({ credentialId }) => {
+				const credential = await this.credo.agent.credentials.getById(credentialId);
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credential),
 						},
 					],
 				};
