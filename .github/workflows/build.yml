@@ -51,7 +51,6 @@ jobs:
           images: |
             ${{ env.IMAGE_NAME }}
             ghcr.io/${{ env.IMAGE_NAME }}
-            registry.digitalocean.com/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=branch
             type=raw,value=staging-latest
@@ -65,12 +64,12 @@ jobs:
           platforms: linux/amd64
           load: true
           tags: ${{ steps.meta.outputs.tags }}
-          outputs: type=docker,dest=cheqd-mcp-server-staging.tar
+          outputs: type=docker,dest=mcp-toolkit-staging.tar
           cache-from: type=gha
           cache-to: type=gha,mode=min
       
       - name: Upload staging image as an artifact
         uses: actions/upload-artifact@v4
         with:
-          name: cheqd-mcp-server-staging
-          path: cheqd-mcp-server-staging.tar
+          name: mcp-toolkit-staging
+          path: mcp-toolkit-staging.tar

@@ -32,19 +32,19 @@ export class CredentialToolHandler {
 						message,
 						domain: `http://${this.credo.name}:${this.credo.port}`,
 					});
-					// Generate QR code as a data URL (png format)
-					const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
-						type: 'png',
-						margin: 2,
-						errorCorrectionLevel: 'H',
-						scale: 8,
-					});
+				// Generate QR code as a data URL (png format)
+				const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
+					type: 'png',
+					margin: 2,
+					errorCorrectionLevel: 'H',
+					scale: 8,
+				});
 
 				return {
 					content: [
 						{
 							type: 'image',
-							data:qrCodeBuffer.toString('base64'),
+							data: qrCodeBuffer.toString('base64'),
 							mimeType: 'image/png',
 						},
 						{

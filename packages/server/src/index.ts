@@ -2,6 +2,9 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
 import * as dotenv from 'dotenv';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
 
 dotenv.config();
@@ -21,7 +24,7 @@ class AgentMcpServer extends McpServer {
 		super(
 			{
 				name: 'cheqd-mcp-toolkit-server',
-				version: '1.0.0',
+				version: packageJson.version,
 			},
 			{
 				capabilities: {
@@ -54,7 +57,7 @@ class AgentMcpServer extends McpServer {
 	 */
 	async setupTools(): Promise<void> {
 		// Configure tools through env
-		const requestedTools = process.env.TOOLS ? process.env.TOOLS.split(',') : [];
+		const requestedTools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];
 		const tools: ToolDefinition<any>[] = [];
 
 		// Handle Credo Tools
@@ -84,8 +87,8 @@ class AgentMcpServer extends McpServer {
 					typeof process.env.CREDO_PORT === 'string'
 						? parseInt(process.env.CREDO_PORT)
 						: process.env.CREDO_PORT,
-				name: process.env.CREDO_NAME,
-				mnemonic: process.env.CREDO_CHEQD_TESTNET_MNEMONIC,
+				name: normalizeEnvVar(process.env.CREDO_NAME),
+				mnemonic: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
 			});
 			await this.credoToolkit.credo.initializeAgent();
 			const credoTools = await this.credoToolkit.getTools();
@@ -142,6 +145,15 @@ class AgentMcpServer extends McpServer {
 		}
 	}
 }
+
+function normalizeEnvVar(value) {
+	return value?.replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1');
+}
+
+// Get the module's package.json
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageJsonPath = path.join(__dirname, '../package.json');
+const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
 
 // Create and start the server
 const agentServer = new AgentMcpServer();
