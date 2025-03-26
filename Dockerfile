@@ -1,5 +1,8 @@
-# ------------------ Build Stage ------------------
-FROM node:20-slim AS build
+###############################################################
+###                 STAGE 1: Build app                      ###
+###############################################################
+
+FROM node:20-slim AS builder
 
 # Enable pnpm
 RUN corepack enable
@@ -19,7 +22,10 @@ RUN pnpm install --frozen-lockfile
 # Build all packages
 RUN pnpm build
 
-# ------------------ Final Runtime Stage ------------------
+###############################################################
+###                 STAGE 2: Build runner                   ###
+###############################################################
+
 FROM node:20-slim AS runtime
 
 RUN apt-get update && apt-get install -y curl ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -31,8 +37,8 @@ ENV NODE_ENV=production
 WORKDIR /home/node/app
 
 # Copy only necessary files from build stage
-COPY --from=build --chown=node:node /home/node/app/packages ./packages
-COPY --from=build  --chown=node:node /home/node/app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /home/node/app/packages ./packages
+COPY --from=builder  --chown=node:node /home/node/app/node_modules ./node_modules
 
 # Switch to non-root user
 USER node
