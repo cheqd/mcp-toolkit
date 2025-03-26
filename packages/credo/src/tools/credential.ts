@@ -1,7 +1,13 @@
 import { AutoAcceptCredential, V2CredentialPreview } from '@credo-ts/core';
 import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
-import { ConnectionlessCredentialOfferParams, CredentialOfferParams, GetCredentialRecordParams, ListCredentialParams, ToolDefinition } from '../types.js';
+import {
+	ConnectionlessCredentialOfferParams,
+	CredentialOfferParams,
+	GetCredentialRecordParams,
+	ListCredentialParams,
+	ToolDefinition,
+} from '../types.js';
 
 export class CredentialToolHandler {
 	credo: CredoAgent;
@@ -18,14 +24,14 @@ export class CredentialToolHandler {
 			schema: ConnectionlessCredentialOfferParams,
 			handler: async ({ attributes, credentialDefinitionId }) => {
 				let { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
-                    comment: 'V2 Out of Band offer',
+					comment: 'V2 Out of Band offer',
 					credentialFormats: {
 						anoncreds: {
 							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
 							credentialDefinitionId,
 						},
 					},
-                    protocolVersion: 'v2',
+					protocolVersion: 'v2',
 				});
 
 				const { invitationUrl, outOfBandRecord } =
@@ -63,24 +69,23 @@ export class CredentialToolHandler {
 		};
 	}
 
-    connectionCredentialOfferTool(): ToolDefinition<typeof CredentialOfferParams> {
+	connectionCredentialOfferTool(): ToolDefinition<typeof CredentialOfferParams> {
 		return {
 			name: 'create-credential-offer-didcomm',
-			description:
-				'Offer a credential which a holder can accept to initiate credential issuance via didcomm.',
+			description: 'Offer a credential which a holder can accept to initiate credential issuance via didcomm.',
 			schema: CredentialOfferParams,
 			handler: async ({ attributes, credentialDefinitionId, connectionId }) => {
 				let credentialRecord = await this.credo.agent.credentials.offerCredential({
-                    comment: 'V2 Out of Band offer',
+					comment: 'V2 Out of Band offer',
 					credentialFormats: {
 						anoncreds: {
 							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
 							credentialDefinitionId,
 						},
 					},
-                    protocolVersion: 'v2',
-                    connectionId,
-                    autoAcceptCredential: AutoAcceptCredential.Always
+					protocolVersion: 'v2',
+					connectionId,
+					autoAcceptCredential: AutoAcceptCredential.Always,
 				});
 
 				return {
@@ -88,7 +93,7 @@ export class CredentialToolHandler {
 						{
 							type: 'text',
 							text: JSON.stringify(credentialRecord),
-						}
+						},
 					],
 				};
 			},
@@ -115,7 +120,7 @@ export class CredentialToolHandler {
 		};
 	}
 
-    getCredentialRecordTool(): ToolDefinition<typeof GetCredentialRecordParams> {
+	getCredentialRecordTool(): ToolDefinition<typeof GetCredentialRecordParams> {
 		return {
 			name: 'get-credential-record',
 			description: 'Retreive the credential record from wallet',

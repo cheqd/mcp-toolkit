@@ -1,5 +1,10 @@
 import { CredoAgent } from '../agent.js';
-import { CreateInvitationParams, GetConnectionRecordParams, ReceiveInvitationParams, ToolDefinition } from '../types.js';
+import {
+	CreateInvitationParams,
+	GetConnectionRecordParams,
+	ReceiveInvitationParams,
+	ToolDefinition,
+} from '../types.js';
 import QRCode from 'qrcode';
 
 export class ConnectionToolHandler {
@@ -71,13 +76,12 @@ export class ConnectionToolHandler {
 		};
 	}
 
-    listConnections(): ToolDefinition<{}> {
+	listConnections(): ToolDefinition<{}> {
 		return {
 			name: 'list-connections-didcomm',
-			description:
-				'List all the conneciton records created via didcomm',
+			description: 'List all the conneciton records created via didcomm',
 			schema: {},
-			handler: async ({ }) => {
+			handler: async ({}) => {
 				const connectionRecords = await this.credo.agent.connections.getAll();
 
 				return {
@@ -92,11 +96,10 @@ export class ConnectionToolHandler {
 		};
 	}
 
-    getConnectionRecord(): ToolDefinition<typeof GetConnectionRecordParams> {
+	getConnectionRecord(): ToolDefinition<typeof GetConnectionRecordParams> {
 		return {
 			name: 'get-connections-record-didcomm',
-			description:
-				'Retreive a connection record created via didcomm',
+			description: 'Retreive a connection record created via didcomm',
 			schema: GetConnectionRecordParams,
 			handler: async ({ connectionId }) => {
 				const connectionRecord = await this.credo.agent.connections.getById(connectionId);

@@ -95,7 +95,7 @@ export const ReceiveInvitationParams = {
 };
 
 export const GetConnectionRecordParams = {
-    connectionId: z.string().uuid()
+	connectionId: z.string().uuid(),
 };
 
 // credential
@@ -115,7 +115,7 @@ export const ConnectionlessCredentialOfferParams = {
 };
 
 export const CredentialOfferParams = {
-    connectionId: z.string().uuid(),
+	connectionId: z.string().uuid(),
 	attributes: z
 		.record(z.string())
 		.describe(
@@ -133,5 +133,5 @@ export const CredentialOfferParams = {
 export const ListCredentialParams = {};
 
 export const GetCredentialRecordParams = {
-    credentialId: z.string().uuid()
-}
+	credentialId: z.string().uuid(),
+};

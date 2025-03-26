@@ -1,6 +1,17 @@
 import type { InitConfig } from '@credo-ts/core';
 
-import { Agent, AutoAcceptCredential, AutoAcceptProof, ConnectionsModule, CredentialsModule, DidsModule, HttpOutboundTransport, ProofsModule, V2CredentialProtocol, V2ProofProtocol } from '@credo-ts/core';
+import {
+	Agent,
+	AutoAcceptCredential,
+	AutoAcceptProof,
+	ConnectionsModule,
+	CredentialsModule,
+	DidsModule,
+	HttpOutboundTransport,
+	ProofsModule,
+	V2CredentialProtocol,
+	V2ProofProtocol,
+} from '@credo-ts/core';
 import { AskarModule } from '@credo-ts/askar';
 import { HttpInboundTransport, agentDependencies } from '@credo-ts/node';
 import {
@@ -116,22 +127,22 @@ function getAskarAnonCredsModules(mnemonic: string) {
 				],
 			})
 		),
-        credentials: new CredentialsModule({
-            autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
-            credentialProtocols: [
-              new V2CredentialProtocol({
-                credentialFormats: [new AnonCredsCredentialFormatService()],
-              }),
-            ],
-        }),
-        proofs: new ProofsModule({
-            autoAcceptProofs: AutoAcceptProof.ContentApproved,
-            proofProtocols: [
-              new V2ProofProtocol({
-                proofFormats: [new AnonCredsProofFormatService()],
-              }),
-            ],
-        }),
+		credentials: new CredentialsModule({
+			autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
+			credentialProtocols: [
+				new V2CredentialProtocol({
+					credentialFormats: [new AnonCredsCredentialFormatService()],
+				}),
+			],
+		}),
+		proofs: new ProofsModule({
+			autoAcceptProofs: AutoAcceptProof.ContentApproved,
+			proofProtocols: [
+				new V2ProofProtocol({
+					proofFormats: [new AnonCredsProofFormatService()],
+				}),
+			],
+		}),
 		dids: new DidsModule({
 			resolvers: [new CheqdDidResolver()],
 			registrars: [new CheqdDidRegistrar()],
