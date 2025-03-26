@@ -1,6 +1,6 @@
 # Changelog
 
-# @cheqd/mcp-toolkit-credo [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.1...@cheqd/mcp-toolkit-credo@1.0.0-develop.2) (2025-03-26)
+## @cheqd/mcp-toolkit-credo [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.1...@cheqd/mcp-toolkit-credo@1.0.0-develop.2) (2025-03-26)
 
 
 ### Bug Fixes
