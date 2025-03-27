@@ -110,7 +110,7 @@ export class DidToolHandler {
 		};
 	}
 
-    listDidTool(): ToolDefinition<{}> {
+	listDidTool(): ToolDefinition<{}> {
 		return {
 			name: 'list-did',
 			description: 'List the DIDs from the wallet',
