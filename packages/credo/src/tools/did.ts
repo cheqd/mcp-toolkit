@@ -94,7 +94,7 @@ export class DidToolHandler {
 		return {
 			name: 'deactivate-did',
 			description: 'Deactivate a DID Document',
-			schema: UpdateDidDocumentParams,
+			schema: DeactivateDidDocumentParams,
 			handler: async ({ did }) => {
 				const result = await this.credo.agent.dids.deactivate({ did });
 
