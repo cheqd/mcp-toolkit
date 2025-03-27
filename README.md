@@ -59,12 +59,15 @@ Use the `env.example` file and update the appropriate variables.
 {
   "mcpServers": {
     "cheqd-docker-compose": {
-      "command": "docker-compose",
+      "command": "docker",
       "args": [
+        "compose",
         "-f",
         "/path/to/repo/mcp-toolkit/docker/docker-compose.yml",
         "run",
         "--rm",
+        "-p", 
+        "3000:3000",
         "-T",
         "mcp-server"
       ]
