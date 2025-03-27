@@ -110,7 +110,27 @@ export class DidToolHandler {
 		};
 	}
 
-	resolveeDIDLinkedResourceTool(): ToolDefinition<typeof ResolveDidLinkedResourceParams> {
+    listDidTool(): ToolDefinition<{}> {
+		return {
+			name: 'list-did',
+			description: 'List the DIDs from the wallet',
+			schema: {},
+			handler: async () => {
+				const result = await this.credo.agent.dids.getCreatedDids();
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(result),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	resolveDIDLinkedResourceTool(): ToolDefinition<typeof ResolveDidLinkedResourceParams> {
 		return {
 			name: 'resolve-did-linked-resource',
 			description: 'Resolve a DID Linked Resource to cheqd network',
