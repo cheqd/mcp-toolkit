@@ -1,6 +1,13 @@
 # Changelog
 
-## @cheqd/mcp-toolkit-credo [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.1...@cheqd/mcp-toolkit-credo@1.0.0-develop.2) (2025-03-26)
+# @cheqd/mcp-toolkit-credo [1.0.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.2...@cheqd/mcp-toolkit-credo@1.0.0-develop.3) (2025-03-27)
+
+
+### Features
+
+* Update did toolkit && fix connection in credo ([d560e5a](https://github.com/cheqd/mcp-toolkit/commit/d560e5a6d5505ee44f92b0e07ab1f3adf42f0c28))
+
+# @cheqd/mcp-toolkit-credo [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.1...@cheqd/mcp-toolkit-credo@1.0.0-develop.2) (2025-03-26)
 
 
 ## Bug Fixes
