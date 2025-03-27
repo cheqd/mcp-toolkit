@@ -1,4 +1,3 @@
-import { DidDocument } from '@credo-ts/core';
 import { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z, ZodRawShape } from 'zod';
 
@@ -28,10 +27,45 @@ export const CreateDidDocumentParams = {
 	network: z.enum(['testnet', 'mainnet']).describe('Provide the cheqd network to publish the did document'),
 };
 
+const JwkJsonSchema = z
+	.object({
+		kty: z.string(),
+		use: z.optional(z.string()),
+	})
+	.catchall(z.unknown());
+
+// VerificationMethod schema
+const VerificationMethodSchema = z.object({
+	id: z.string(),
+	type: z.string(),
+	controller: z.string(),
+	publicKeyJwk: z.optional(JwkJsonSchema),
+	publicKeyMultibase: z.optional(z.string()),
+});
+
+const DidDocumentServiceSchema = z.object({
+	id: z.string(),
+	type: z.string(),
+	serviceEndpoint: z.union([z.string(), z.array(z.string())]),
+});
+
+const DidDocumentSchema = z.object({
+	id: z.string(),
+	alsoKnownAs: z.optional(z.array(z.string())),
+	controller: z.optional(z.union([z.string(), z.array(z.string())])),
+	verificationMethod: z.optional(z.array(VerificationMethodSchema)),
+	service: z.optional(z.array(DidDocumentServiceSchema)),
+	authentication: z.optional(z.array(z.union([z.string(), VerificationMethodSchema]))),
+	assertionMethod: z.optional(z.array(z.union([z.string(), VerificationMethodSchema]))),
+	keyAgreement: z.optional(z.array(z.union([z.string(), VerificationMethodSchema]))),
+	capabilityInvocation: z.optional(z.array(z.union([z.string(), VerificationMethodSchema]))),
+	capabilityDelegation: z.optional(z.array(z.union([z.string(), VerificationMethodSchema]))),
+});
+
 export const UpdateDidDocumentParams = {
 	did: DID,
 	options: z.record(z.any()).optional(),
-	didDocument: z.instanceof(DidDocument),
+	didDocument: DidDocumentSchema,
 };
 
 export const DeactivateDidDocumentParams = {

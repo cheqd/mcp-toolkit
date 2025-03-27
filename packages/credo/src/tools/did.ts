@@ -1,3 +1,4 @@
+import { DidDocument, DidDocumentService } from '@credo-ts/core';
 import { CredoAgent } from '../agent.js';
 import {
 	CreateDidDocumentParams,
@@ -75,7 +76,10 @@ export class DidToolHandler {
 			handler: async ({ did, didDocument }) => {
 				const result = await this.credo.agent.dids.update({
 					did,
-					didDocument,
+					didDocument: new DidDocument({
+						...didDocument,
+						service: didDocument.service?.map((s) => new DidDocumentService(s)),
+					}),
 				});
 
 				return {
