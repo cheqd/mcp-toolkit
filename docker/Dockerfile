@@ -28,6 +28,7 @@ RUN pnpm build
 
 FROM node:20-slim AS runtime
 
+# Install only essential runtime dependencies
 RUN apt-get update && apt-get install -y curl ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set Node to production mode
@@ -39,6 +40,7 @@ WORKDIR /home/node/app
 # Copy only necessary files from build stage
 COPY --from=builder --chown=node:node /home/node/app/packages ./packages
 COPY --from=builder  --chown=node:node /home/node/app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /home/node/app/package.json ./package.json
 
 # Base arguments: build-time
 ARG NPM_CONFIG_LOGLEVEL=warn
@@ -59,4 +61,4 @@ USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 # Run the application
-CMD ["node", "packages/server/build/index.js"]
+CMD ["npm", "start", "--silent"]

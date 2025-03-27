@@ -51,30 +51,18 @@ Add the following configuration to your claude_desktop_config.json or .cursor/mc
 }
 ```
 
-##### docker
+##### docker-compose
 
 Use the `env.example` file and update the appropriate variables.
 
 ```json
 {
   "mcpServers": {
-    "cheqd": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "--env-file",
-        "/path/to/.env",
-        "ghcr.io/cheqd/mcp-toolkit:latest"
-      ],
-      "env": {}
-    },
     "cheqd-docker-compose": {
       "command": "docker-compose",
       "args": [
         "-f",
-        "/path/to/repo/mcp-toolkit/docker-compose.yml",
+        "/path/to/repo/mcp-toolkit/docker/docker-compose.yml",
         "run",
         "--rm",
         "-T",

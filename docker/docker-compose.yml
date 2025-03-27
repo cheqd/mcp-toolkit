@@ -7,22 +7,18 @@ services:
     # Default is to pull in the pre-published image on GitHub Container Registry
     # SYNTAX: docker compose -f docker/docker-compose.yml build
     # build:
-    #   context: ./
+    #   context: ../
     #   dockerfile: Dockerfile
-    # Uncomment below after Image is published
-    # image: ghcr.io/cheqd/mcp-toolkit:latest
-    image: mcp-toolkit:latest
+    image: ghcr.io/cheqd/mcp-toolkit:latest
     container_name: faber
     ports:
       - "3000:3000"
     restart: on-failure
-    environment:
-      TOOLS: "credo"
-      CREDO_PORT: 3000
-      CREDO_NAME: "faber"
-      CREDO_CHEQD_TESTNET_MNEMONIC: ${CREDO_CHEQD_TESTNET_MNEMONIC}
+    env_file:
+      - ../env.example
     networks:
       - mcp-network
 networks:
   mcp-network:
+    name: mcp-network
     driver: bridge
