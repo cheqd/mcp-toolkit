@@ -16,9 +16,9 @@ export class CredoToolKit {
 		return [
 			new DidToolHandler(this.credo).resolveDidTool(),
 			new DidToolHandler(this.credo).createDidTool(),
-            new DidToolHandler(this.credo).updateDidTool(),
-            new DidToolHandler(this.credo).deactivateDidTool(),
-            new DidToolHandler(this.credo).createDIDLinkedResourceTool(),
+			new DidToolHandler(this.credo).updateDidTool(),
+			new DidToolHandler(this.credo).deactivateDidTool(),
+			new DidToolHandler(this.credo).createDIDLinkedResourceTool(),
 			new AnonCredsToolHandler(this.credo).createSchemaTool(),
 			new AnonCredsToolHandler(this.credo).listSchemaTool(),
 			new AnonCredsToolHandler(this.credo).getSchemaTool(),

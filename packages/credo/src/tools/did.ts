@@ -4,6 +4,7 @@ import {
 	CreateDidLinkedResourceParams,
 	DeactivateDidDocumentParams,
 	ResolveDidDocumentParams,
+	ResolveDidLinkedResourceParams,
 	ToolDefinition,
 	UpdateDidDocumentParams,
 } from '../types.js';
@@ -68,8 +69,8 @@ export class DidToolHandler {
 
 	updateDidTool(): ToolDefinition<typeof UpdateDidDocumentParams> {
 		return {
-			name: 'create-did',
-			description: 'Create and publish a DID Document to cheqd network',
+			name: 'update-did',
+			description: 'Update a DID Document',
 			schema: UpdateDidDocumentParams,
 			handler: async ({ did, didDocument }) => {
 				const result = await this.credo.agent.dids.update({
@@ -91,8 +92,8 @@ export class DidToolHandler {
 
 	deactivateDidTool(): ToolDefinition<typeof DeactivateDidDocumentParams> {
 		return {
-			name: 'create-did',
-			description: 'Create and publish a DID Document to cheqd network',
+			name: 'deactivate-did',
+			description: 'Deactivate a DID Document',
 			schema: UpdateDidDocumentParams,
 			handler: async ({ did }) => {
 				const result = await this.credo.agent.dids.deactivate({ did });
@@ -109,13 +110,13 @@ export class DidToolHandler {
 		};
 	}
 
-	resolveeDIDLinkedResourceTool(): ToolDefinition<typeof ResolveDidDocumentParams> {
+	resolveeDIDLinkedResourceTool(): ToolDefinition<typeof ResolveDidLinkedResourceParams> {
 		return {
 			name: 'resolve-did-linked-resource',
 			description: 'Resolve a DID Linked Resource to cheqd network',
-			schema: ResolveDidDocumentParams,
-			handler: async ({ did }) => {
-				const result = await this.credo.agent.modules.cheqd.resolveResource(did);
+			schema: ResolveDidLinkedResourceParams,
+			handler: async ({ didUrl }) => {
+				const result = await this.credo.agent.modules.cheqd.resolveResource(didUrl);
 
 				return {
 					content: [
