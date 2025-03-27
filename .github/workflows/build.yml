@@ -63,6 +63,7 @@ jobs:
           file: docker/Dockerfile
           platforms: linux/amd64
           load: true
+          target: runner
           tags: ${{ steps.meta.outputs.tags }}
           outputs: type=docker,dest=mcp-toolkit-staging.tar
           cache-from: type=gha

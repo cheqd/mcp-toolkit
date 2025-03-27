@@ -26,7 +26,7 @@ RUN pnpm build
 ###                 STAGE 2: Build runner                   ###
 ###############################################################
 
-FROM node:20-slim AS runtime
+FROM node:20-slim AS runner
 
 # Install only essential runtime dependencies
 RUN apt-get update && apt-get install -y curl ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
