@@ -22,6 +22,9 @@ RUN pnpm install --frozen-lockfile
 # Build all packages
 RUN pnpm build
 
+# Prune dev dependencies so only production modules remain
+RUN pnpm prune --prod
+
 ###############################################################
 ###                 STAGE 2: Build runner                   ###
 ###############################################################
@@ -29,7 +32,7 @@ RUN pnpm build
 FROM node:20-slim AS runner
 
 # Install only essential runtime dependencies
-RUN apt-get update && apt-get install -y curl ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set Node to production mode
 ENV NODE_ENV=production
@@ -37,10 +40,12 @@ ENV NODE_ENV=production
 # Set working directory
 WORKDIR /home/node/app
 
-# Copy only necessary files from build stage
-COPY --from=builder --chown=node:node /home/node/app/packages ./packages
-COPY --from=builder  --chown=node:node /home/node/app/node_modules ./node_modules
-COPY --from=builder --chown=node:node /home/node/app/package.json ./package.json
+# Copy only necessary runtime files for the server package from the builder stage
+COPY --from=builder --chown=node:node /home/node/app/packages/*/package.json ./packages/
+COPY --from=builder --chown=node:node /home/node/app/packages/*/build ./packages/
+
+# Copy production dependencies from builder stage
+COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules
 
 # Base arguments: build-time
 ARG NPM_CONFIG_LOGLEVEL=warn
