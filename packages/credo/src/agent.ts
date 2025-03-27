@@ -37,7 +37,7 @@ export class CredoAgent {
 	public constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
 		this.name = name;
 		this.port = typeof port === 'string' ? parseInt(port) : port;
-		this.domain = endpoint || `http://${name}:${port}`;
+		this.domain = endpoint || `http://localhost:${port}`;
 
 		const config = {
 			label: name,
@@ -45,6 +45,7 @@ export class CredoAgent {
 				id: name,
 				key: name, // can be a separate param
 			},
+			endpoints: [this.domain],
 		} satisfies InitConfig;
 
 		this.config = config;

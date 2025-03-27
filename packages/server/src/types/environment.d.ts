@@ -3,8 +3,8 @@ declare global {
 		interface ProcessEnv {
 			CREDO_CHEQD_TESTNET_MNEMONIC?: string;
 			CREDO_CHEQD_MAINNET_MNEMONIC?: string;
-			CREDO_PORT?: string;
-			CREDO_NAME?: string;
+			CREDO_PORT: string | '3000';
+			CREDO_NAME: string | 'credo-agent';
 			CREDO_ENDPOINT?: string;
 		}
 	}
