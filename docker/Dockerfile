@@ -40,7 +40,7 @@ ENV NODE_ENV=production
 # Set working directory
 WORKDIR /home/node/app
 
-# Copy only necessary runtime files for the server package from the builder stage
+# Copy only necessary runtime files from the builder stage
 COPY --from=builder --chown=node:node /home/node/app/packages/*/package.json ./packages/
 COPY --from=builder --chown=node:node /home/node/app/packages/*/build ./packages/
 
