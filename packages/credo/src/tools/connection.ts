@@ -1,3 +1,4 @@
+import { ConnectionRecord } from '@credo-ts/core';
 import { CredoAgent } from '../agent.js';
 import {
 	CreateInvitationParams,
@@ -21,7 +22,9 @@ export class ConnectionToolHandler {
 				'Create a connection invitation with a QR code that can be scanned by another agent to establish a secure connection. The QR code image will be displayed in the response.',
 			schema: CreateInvitationParams,
 			handler: async () => {
-				const outOfBand = await this.credo.agent.oob.createInvitation();
+				const outOfBand = await this.credo.agent.oob.createInvitation({
+					autoAcceptConnection: true,
+				});
 				const invitationUrl = outOfBand.outOfBandInvitation.toUrl({ domain: this.credo.domain });
 				const invitation = outOfBand.outOfBandInvitation.toJSON();
 
@@ -62,6 +65,7 @@ export class ConnectionToolHandler {
 			handler: async ({ invitationUrl }) => {
 				const { connectionRecord } = await this.credo.agent.oob.receiveInvitationFromUrl(invitationUrl, {
 					autoAcceptConnection: true,
+					autoAcceptInvitation: true,
 				});
 
 				return {
@@ -82,7 +86,7 @@ export class ConnectionToolHandler {
 			description: 'List all the conneciton records created via didcomm',
 			schema: {},
 			handler: async ({}) => {
-				const connectionRecords = await this.credo.agent.connections.getAll();
+				const connectionRecords = await this.credo.agent.oob.getAll();
 
 				return {
 					content: [
@@ -98,11 +102,16 @@ export class ConnectionToolHandler {
 
 	getConnectionRecord(): ToolDefinition<typeof GetConnectionRecordParams> {
 		return {
-			name: 'get-connections-record-didcomm',
+			name: 'get-connection-record-didcomm',
 			description: 'Retreive a connection record created via didcomm',
 			schema: GetConnectionRecordParams,
-			handler: async ({ connectionId }) => {
-				const connectionRecord = await this.credo.agent.connections.getById(connectionId);
+			handler: async ({ outOfBandId, connectionId }) => {
+				let connectionRecord: ConnectionRecord | null = null;
+				if (outOfBandId) {
+					[connectionRecord] = await this.credo.agent.connections.findAllByOutOfBandId(outOfBandId);
+				} else if (connectionId) {
+					connectionRecord = await this.credo.agent.connections.findById(connectionId);
+				}
 
 				return {
 					content: [
