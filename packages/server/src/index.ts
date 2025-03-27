@@ -76,9 +76,9 @@ class AgentMcpServer extends McpServer {
 	 */
 	private async setupCredoTools(tools: ToolDefinition<any>[]): Promise<void> {
 		// Validate required env variables
-		if (!(process.env.CREDO_NAME && process.env.CREDO_PORT && process.env.CREDO_CHEQD_TESTNET_MNEMONIC)) {
+		if (!process.env.CREDO_CHEQD_TESTNET_MNEMONIC) {
 			throw new Error(
-				'Missing required environment variables for Credo tools. Please set: CREDO_NAME, CREDO_PORT, CREDO_CHEQD_TESTNET_MNEMONIC'
+				'Missing required environment variables for Credo tools. Please set: CREDO_CHEQD_TESTNET_MNEMONIC'
 			);
 		}
 		try {
