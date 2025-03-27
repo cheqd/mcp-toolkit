@@ -16,6 +16,11 @@ export class CredoToolKit {
 		return [
 			new DidToolHandler(this.credo).resolveDidTool(),
 			new DidToolHandler(this.credo).createDidTool(),
+			new DidToolHandler(this.credo).updateDidTool(),
+			new DidToolHandler(this.credo).deactivateDidTool(),
+			new DidToolHandler(this.credo).listDidTool(),
+			new DidToolHandler(this.credo).createDIDLinkedResourceTool(),
+			new DidToolHandler(this.credo).resolveDIDLinkedResourceTool(),
 			new AnonCredsToolHandler(this.credo).createSchemaTool(),
 			new AnonCredsToolHandler(this.credo).listSchemaTool(),
 			new AnonCredsToolHandler(this.credo).getSchemaTool(),
@@ -24,8 +29,12 @@ export class CredoToolKit {
 			new AnonCredsToolHandler(this.credo).getCredentialDefinitionTool(),
 			new ConnectionToolHandler(this.credo).createConnectionInvitationTool(),
 			new ConnectionToolHandler(this.credo).acceptConnectionInvitationTool(),
+			new ConnectionToolHandler(this.credo).listConnections(),
+			new ConnectionToolHandler(this.credo).getConnectionRecord(),
 			new CredentialToolHandler(this.credo).connectionLessCredentialOfferTool(),
+			new CredentialToolHandler(this.credo).connectionCredentialOfferTool(),
 			new CredentialToolHandler(this.credo).listCredentialsTool(),
+			new CredentialToolHandler(this.credo).getCredentialRecordTool(),
 		];
 	}
 }
