@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.0.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.3...@cheqd/mcp-toolkit-credo@1.0.0-develop.4) (2025-03-28)
+
+
+### Features
+
+* Add credo proof tools [DEV-4814] ([#9](https://github.com/cheqd/mcp-toolkit/issues/9)) ([7c141c1](https://github.com/cheqd/mcp-toolkit/commit/7c141c1bda69e0551d7cf4e5fcecd208bef48633))
+
 # @cheqd/mcp-toolkit-credo [1.0.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.2...@cheqd/mcp-toolkit-credo@1.0.0-develop.3) (2025-03-27)
 
 
