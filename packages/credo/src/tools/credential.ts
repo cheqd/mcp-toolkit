@@ -2,6 +2,7 @@ import { AutoAcceptCredential, V2CredentialPreview } from '@credo-ts/core';
 import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
 import {
+	AcceptCredentialOfferParams,
 	ConnectionlessCredentialOfferParams,
 	CredentialOfferParams,
 	GetCredentialRecordParams,
@@ -38,7 +39,7 @@ export class CredentialToolHandler {
 					await this.credo.agent.oob.createLegacyConnectionlessInvitation({
 						recordId: credentialRecord.id,
 						message,
-						domain: this.credo.domain || `http://${this.credo.name}:${this.credo.port}`,
+						domain: this.credo.domain,
 					});
 				// Generate QR code as a data URL (png format)
 				const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
@@ -106,6 +107,26 @@ export class CredentialToolHandler {
 			description: 'List the credentials in wallet',
 			schema: ListCredentialParams,
 			handler: async () => {
+				const credentials = await this.credo.agent.w3cCredentials.getAllCredentialRecords();
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credentials),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	listCredentialExchangeRecordsTool(): ToolDefinition<typeof ListCredentialParams> {
+		return {
+			name: 'list-credential-exchange-records',
+			description: 'List the credential exchange records in wallet',
+			schema: ListCredentialParams,
+			handler: async () => {
 				const credentials = await this.credo.agent.credentials.getAll();
 
 				return {
@@ -127,6 +148,28 @@ export class CredentialToolHandler {
 			schema: GetCredentialRecordParams,
 			handler: async ({ credentialId }) => {
 				const credential = await this.credo.agent.credentials.getById(credentialId);
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credential),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	acceptCredentialOfferTool(): ToolDefinition<typeof AcceptCredentialOfferParams> {
+		return {
+			name: 'accept-credential-offer',
+			description: 'Accept the credential offer from issuer to initiate credential issuance',
+			schema: AcceptCredentialOfferParams,
+			handler: async ({ credentialRecordId }) => {
+				const credential = await this.credo.agent.credentials.acceptOffer({
+					credentialRecordId,
+				});
 
 				return {
 					content: [
