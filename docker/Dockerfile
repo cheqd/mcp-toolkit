@@ -41,8 +41,8 @@ ENV NODE_ENV=production
 WORKDIR /home/node/app
 
 # Copy only necessary runtime files from the builder stage
-COPY --from=builder --chown=node:node /home/node/app/packages/*/package.json ./packages/
-COPY --from=builder --chown=node:node /home/node/app/packages/*/build ./packages/
+COPY --from=builder --chown=node:node /home/node/app/*.json /home/node/app/*.md ./
+COPY --from=builder --chown=node:node /home/node/app/packages ./packages
 
 # Copy production dependencies from builder stage
 COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules
