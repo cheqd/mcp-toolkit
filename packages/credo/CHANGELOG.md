@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.0.0-develop.5](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.4...@cheqd/mcp-toolkit-credo@1.0.0-develop.5) (2025-03-28)
+
+
+### Bug Fixes
+
+* Update docker-compose and demo files [DEV-4851] ([#7](https://github.com/cheqd/mcp-toolkit/issues/7)) ([fc298d6](https://github.com/cheqd/mcp-toolkit/commit/fc298d61f66d1f731486900915c5e16530f5b2d9))
+
 # @cheqd/mcp-toolkit-credo [1.0.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0-develop.3...@cheqd/mcp-toolkit-credo@1.0.0-develop.4) (2025-03-28)
 
 
