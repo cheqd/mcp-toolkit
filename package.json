@@ -14,6 +14,7 @@
     "verify": "lerna run verify --stream",
     "build": "lerna run build",
     "test": "lerna run test",
+    "start": "node packages/server/build/index.js",
     "clean": "lerna run clean",
     "release": "multi-semantic-release",
     "lint": "lerna run --parallel --no-bail lint",

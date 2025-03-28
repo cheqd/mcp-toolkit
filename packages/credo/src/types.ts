@@ -195,19 +195,21 @@ export const ConnectionlessProofRequestParams = {
 		.array(
 			z.object({
 				attribute: z.string(),
-				restrictions: z.object({
-					credentialDefinitionId: z.optional(
-						DID_URL.describe(
-							'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
-						)
-					),
-					issuerId: z.optional(DID),
-					schemaId: z.optional(
-						DID_URL.describe(
-							'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-						)
-					),
-				}),
+				restrictions: z.array(
+					z.object({
+						cred_def_id: z.optional(
+							DID_URL.describe(
+								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+							)
+						),
+						issuerId: z.optional(DID),
+						schemaId: z.optional(
+							DID_URL.describe(
+								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+							)
+						),
+					})
+				),
 			})
 		)
 		.describe('Attributes which are meant to be revealed'),
@@ -218,19 +220,21 @@ export const ConnectionlessProofRequestParams = {
 				attribute: z.string(),
 				p_type: z.enum(['>', '<', '>=', '<=']),
 				p_value: z.number(),
-				restrictions: z.object({
-					credentialDefinitionId: z.optional(
-						DID_URL.describe(
-							'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
-						)
-					),
-					issuerId: z.optional(DID),
-					schemaId: z.optional(
-						DID_URL.describe(
-							'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-						)
-					),
-				}),
+				restrictions: z.array(
+					z.object({
+						cred_def_id: z.optional(
+							DID_URL.describe(
+								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+							)
+						),
+						issuerId: z.optional(DID),
+						schemaId: z.optional(
+							DID_URL.describe(
+								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+							)
+						),
+					})
+				),
 			})
 		)
 		.describe('Attributes which are compared with operators on given values without revealing the attribute'),
