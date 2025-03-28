@@ -129,7 +129,7 @@ function getAskarAnonCredsModules(mnemonic: string) {
 			})
 		),
 		credentials: new CredentialsModule({
-			autoAcceptCredentials: AutoAcceptCredential.ContentApproved,
+			autoAcceptCredentials: AutoAcceptCredential.Always,
 			credentialProtocols: [
 				new V2CredentialProtocol({
 					credentialFormats: [new AnonCredsCredentialFormatService()],
@@ -137,7 +137,7 @@ function getAskarAnonCredsModules(mnemonic: string) {
 			],
 		}),
 		proofs: new ProofsModule({
-			autoAcceptProofs: AutoAcceptProof.ContentApproved,
+			autoAcceptProofs: AutoAcceptProof.Always,
 			proofProtocols: [
 				new V2ProofProtocol({
 					proofFormats: [new AnonCredsProofFormatService()],

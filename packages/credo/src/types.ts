@@ -184,3 +184,73 @@ export const ListCredentialParams = {};
 export const GetCredentialRecordParams = {
 	credentialId: z.string().uuid(),
 };
+
+export const AcceptCredentialOfferParams = {
+	credentialRecordId: z.string().uuid(),
+};
+
+// proof
+export const ConnectionlessProofRequestParams = {
+	requestedAttributes: z
+		.array(
+			z.object({
+				attribute: z.string(),
+				restrictions: z.array(
+					z.object({
+						cred_def_id: z.optional(
+							DID_URL.describe(
+								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+							)
+						),
+						issuerId: z.optional(DID),
+						schemaId: z.optional(
+							DID_URL.describe(
+								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+							)
+						),
+					})
+				),
+			})
+		)
+		.describe('Attributes which are meant to be revealed'),
+
+	requestedPredicates: z
+		.array(
+			z.object({
+				attribute: z.string(),
+				p_type: z.enum(['>', '<', '>=', '<=']),
+				p_value: z.number(),
+				restrictions: z.array(
+					z.object({
+						cred_def_id: z.optional(
+							DID_URL.describe(
+								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+							)
+						),
+						issuerId: z.optional(DID),
+						schemaId: z.optional(
+							DID_URL.describe(
+								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+							)
+						),
+					})
+				),
+			})
+		)
+		.describe('Attributes which are compared with operators on given values without revealing the attribute'),
+};
+
+export const ConnectionProofRequestParams = {
+	...ConnectionlessProofRequestParams,
+	connectionId: z.string().uuid(),
+};
+
+export const GetProofExchangeRecordParams = {
+	proofRecordId: z.string().uuid(),
+};
+
+export const ProofRequestParams = {};
+
+export const ListProofParams = {};
+
+export const GetProofRecordParams = {};

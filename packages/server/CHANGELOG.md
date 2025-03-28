@@ -1,5 +1,15 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-server [1.0.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.0.0-develop.3...@cheqd/mcp-toolkit-server@1.0.0-develop.4) (2025-03-28)
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-credo:** upgraded to 1.0.0-develop.4
+
 # @cheqd/mcp-toolkit-server [1.0.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.0.0-develop.2...@cheqd/mcp-toolkit-server@1.0.0-develop.3) (2025-03-27)
 
 
