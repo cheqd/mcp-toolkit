@@ -86,7 +86,7 @@ export class ConnectionToolHandler {
 			description: 'List all the conneciton records created via didcomm',
 			schema: {},
 			handler: async ({}) => {
-				const connectionRecords = await this.credo.agent.oob.getAll();
+				const connectionRecords = await this.credo.agent.connections.getAll();
 
 				return {
 					content: [

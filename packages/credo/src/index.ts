@@ -2,6 +2,7 @@ import { CredoAgent } from './agent.js';
 import { ConnectionToolHandler } from './tools/connection.js';
 import { CredentialToolHandler } from './tools/credential.js';
 import { DidToolHandler, AnonCredsToolHandler } from './tools/index.js';
+import { ProofToolHandler } from './tools/proof.js';
 import { ICredoToolKitOptions } from './types.js';
 
 // Create a BaseToolKit
@@ -33,8 +34,15 @@ export class CredoToolKit {
 			new ConnectionToolHandler(this.credo).getConnectionRecord(),
 			new CredentialToolHandler(this.credo).connectionLessCredentialOfferTool(),
 			new CredentialToolHandler(this.credo).connectionCredentialOfferTool(),
+			new CredentialToolHandler(this.credo).acceptCredentialOfferTool(),
 			new CredentialToolHandler(this.credo).listCredentialsTool(),
 			new CredentialToolHandler(this.credo).getCredentialRecordTool(),
+			new CredentialToolHandler(this.credo).listCredentialExchangeRecordsTool(),
+			new ProofToolHandler(this.credo).connectionLessProofRequestTool(),
+			new ProofToolHandler(this.credo).connectionProofRequestTool(),
+			new ProofToolHandler(this.credo).getProofRecordTool(),
+			new ProofToolHandler(this.credo).listProofsTool(),
+			new ProofToolHandler(this.credo).acceptProofRequestTool(),
 		];
 	}
 }
