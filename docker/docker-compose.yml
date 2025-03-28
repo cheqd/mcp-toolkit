@@ -18,6 +18,8 @@ services:
     restart: on-failure
     env_file:
       - ../env.example
+    extra_hosts:
+      - "holder:host-gateway"
     networks:
       - mcp-network
   
@@ -58,6 +60,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    extra_hosts:
+      - "faber:host-gateway"
     networks:
       - mcp-network
 
