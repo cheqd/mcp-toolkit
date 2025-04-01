@@ -1,18 +1,41 @@
 import { CredoAgent } from './agent.js';
-import { ConnectionToolHandler } from './tools/connection.js';
-import { CredentialToolHandler } from './tools/credential.js';
-import { DidToolHandler, AnonCredsToolHandler } from './tools/index.js';
-import { ProofToolHandler } from './tools/proof.js';
+import {
+	DidToolHandler,
+	AnonCredsToolHandler,
+	ConnectionToolHandler,
+	CredentialToolHandler,
+	ProofToolHandler,
+} from './tools/index.js';
 import { ICredoToolKitOptions } from './types.js';
 
-// Create a BaseToolKit
+/**
+ * CredoToolKit provides a comprehensive set of tools for interacting with the Credo agent.
+ * It bundles together various handlers for managing DIDs, credentials, connections, and anonymous credentials.
+ */
 export class CredoToolKit {
 	credo: CredoAgent;
 
+	/**
+	 * Creates a new CredoToolKit instance with the specified configuration.
+	 * @param {ICredoToolKitOptions} options - Configuration options for the toolkit
+	 * @param {number} options.port - Port number for the agent
+	 * @param {string} options.name - Name of the agent
+	 * @param {string} options.mnemonic - Mnemonic phrase for wallet initialization
+	 * @param {string} options.endpoint - Endpoint URL for the agent
+	 */
 	constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
 		this.credo = new CredoAgent({ port, name, mnemonic, endpoint });
 	}
 
+	/**
+	 * Returns an array of all available tools grouped by functionality:
+	 * - DID Management Tools (resolve, create, update, deactivate DIDs and linked resources)
+	 * - Anonymous Credentials Tools (schema and credential definition management)
+	 * - Connection Management Tools (create invitations, accept connections, list and get records)
+	 * - Credential Management Tools (connectionless and connection-based credential offers, list and get records)
+	 *
+	 * @returns {Promise<ToolDefinition[]>} Array of tool definitions
+	 */
 	async getTools() {
 		return [
 			new DidToolHandler(this.credo).resolveDidTool(),
@@ -38,7 +61,7 @@ export class CredoToolKit {
 			new CredentialToolHandler(this.credo).listCredentialsTool(),
 			new CredentialToolHandler(this.credo).getCredentialRecordTool(),
 			new CredentialToolHandler(this.credo).listCredentialExchangeRecordsTool(),
-			new ProofToolHandler(this.credo).connectionLessProofRequestTool(),
+			new ProofToolHandler(this.credo).connectionlessProofRequestTool(),
 			new ProofToolHandler(this.credo).connectionProofRequestTool(),
 			new ProofToolHandler(this.credo).getProofRecordTool(),
 			new ProofToolHandler(this.credo).listProofsTool(),

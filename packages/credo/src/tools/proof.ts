@@ -5,10 +5,16 @@ import {
 	ConnectionProofRequestParams,
 	ConnectionlessProofRequestParams,
 	GetProofExchangeRecordParams,
-	ListCredentialParams,
+	GetProofRecordParams,
+	ListProofParams,
+	ProofRequestParams,
 	ToolDefinition,
 } from '../types.js';
 
+/**
+ * Handler class for managing Zero-Knowledge Proofs in the Credo agent.
+ * Provides tools for creating and managing proof requests and verifications.
+ */
 export class ProofToolHandler {
 	credo: CredoAgent;
 
@@ -16,10 +22,15 @@ export class ProofToolHandler {
 		this.credo = credo;
 	}
 
-	connectionLessProofRequestTool(): ToolDefinition<typeof ConnectionlessProofRequestParams> {
+	/**
+	 * Creates a connectionless proof request.
+	 * Generates a QR code for the request that can be scanned to initiate proof presentation.
+	 */
+	connectionlessProofRequestTool(): ToolDefinition<typeof ConnectionlessProofRequestParams> {
 		return {
 			name: 'create-proof-request-connectionless',
-			description: 'Create a connectionless proof request to request a zero knowledge proof from holder.',
+			description:
+				'Creates a connectionless proof request that can be accepted by any holder. Generates a QR code containing the request URL, which can be scanned to initiate proof presentation. The response includes the QR code image and request details.',
 			schema: ConnectionlessProofRequestParams,
 			handler: async ({ requestedAttributes, requestedPredicates }) => {
 				const proofAttribute = {};
@@ -88,10 +99,15 @@ export class ProofToolHandler {
 		};
 	}
 
+	/**
+	 * Creates a proof request for an existing DIDComm connection.
+	 * Allows requesting proofs from connected agents.
+	 */
 	connectionProofRequestTool(): ToolDefinition<typeof ConnectionProofRequestParams> {
 		return {
 			name: 'create-proof-request-didcomm',
-			description: 'Request a proof from an existing connection to request a zero knowledge proof via didcomm.',
+			description:
+				'Creates a proof request for an existing DIDComm connection. The request is automatically sent to the connected agent, who can respond with the requested proofs. Returns the proof exchange record with details about the request status.',
 			schema: ConnectionProofRequestParams,
 			handler: async ({ requestedAttributes, requestedPredicates, connectionId }) => {
 				const proofAttribute = {};
@@ -139,11 +155,16 @@ export class ProofToolHandler {
 		};
 	}
 
-	listProofsTool(): ToolDefinition<typeof ListCredentialParams> {
+	/**
+	 * Lists all proof records in the agent's wallet.
+	 * Provides a complete overview of all proof exchanges.
+	 */
+	listProofsTool(): ToolDefinition<typeof ListProofParams> {
 		return {
-			name: 'list-proof-records',
-			description: 'List the proof records in wallet',
-			schema: ListCredentialParams,
+			name: 'list-proofs',
+			description:
+				"Retrieves all proof records from the agent's wallet, providing a comprehensive list of all proof exchanges with their states and verification results.",
+			schema: ListProofParams,
 			handler: async () => {
 				const proofs = await this.credo.agent.proofs.getAll();
 
@@ -159,11 +180,41 @@ export class ProofToolHandler {
 		};
 	}
 
-	getProofRecordTool(): ToolDefinition<typeof GetProofExchangeRecordParams> {
+	/**
+	 * Retrieves a specific proof exchange record.
+	 * Returns detailed information about a proof request and its status.
+	 */
+	getProofExchangeRecordTool(): ToolDefinition<typeof GetProofExchangeRecordParams> {
+		return {
+			name: 'get-proof-exchange-record',
+			description:
+				'Retrieves a specific proof exchange record using its unique identifier. Returns detailed information about the proof request, including its state, requested attributes, and verification status.',
+			schema: GetProofExchangeRecordParams,
+			handler: async ({ proofRecordId }) => {
+				const proof = await this.credo.agent.proofs.getById(proofRecordId);
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(proof),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	/**
+	 * Retrieves a specific proof record from the wallet.
+	 * Returns detailed information about a single proof exchange.
+	 */
+	getProofRecordTool(): ToolDefinition<typeof GetProofRecordParams> {
 		return {
 			name: 'get-proof-record',
-			description: 'Retreive the proof exchange record from wallet',
-			schema: GetProofExchangeRecordParams,
+			description:
+				'Retrieves a specific proof record from the wallet using its unique identifier. Returns detailed information about the proof exchange, including verification results and presented attributes.',
+			schema: GetProofRecordParams,
 			handler: async ({ proofRecordId }) => {
 				const proof = await this.credo.agent.proofs.getById(proofRecordId);
 

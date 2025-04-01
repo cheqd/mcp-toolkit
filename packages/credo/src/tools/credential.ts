@@ -10,6 +10,10 @@ import {
 	ToolDefinition,
 } from '../types.js';
 
+/**
+ * Handler class for managing credentials in the Credo agent.
+ * Provides tools for creating credential offers, managing credentials, and handling credential records.
+ */
 export class CredentialToolHandler {
 	credo: CredoAgent;
 
@@ -17,11 +21,15 @@ export class CredentialToolHandler {
 		this.credo = credo;
 	}
 
+	/**
+	 * Creates a connectionless credential offer that can be accepted by any holder.
+	 * Generates a QR code for the offer that can be scanned to initiate credential issuance.
+	 */
 	connectionLessCredentialOfferTool(): ToolDefinition<typeof ConnectionlessCredentialOfferParams> {
 		return {
 			name: 'create-credential-offer-connectionless',
 			description:
-				'Create a connectionless credential offer which a holder can accept to initiate credential issuance.',
+				'Creates a connectionless credential offer that can be accepted by any holder. Generates a QR code containing the offer URL, which can be scanned to initiate credential issuance. The response includes the QR code image, outOfBand record, and invitation details.',
 			schema: ConnectionlessCredentialOfferParams,
 			handler: async ({ attributes, credentialDefinitionId }) => {
 				let { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
@@ -70,10 +78,15 @@ export class CredentialToolHandler {
 		};
 	}
 
+	/**
+	 * Creates a credential offer for an existing DIDComm connection.
+	 * Allows offering credentials to connected agents.
+	 */
 	connectionCredentialOfferTool(): ToolDefinition<typeof CredentialOfferParams> {
 		return {
 			name: 'create-credential-offer-didcomm',
-			description: 'Offer a credential which a holder can accept to initiate credential issuance via didcomm.',
+			description:
+				'Creates a credential offer for an existing DIDComm connection. The offer is automatically sent to the connected agent, who can accept it to receive the credential. Returns the credential record with details about the offer status.',
 			schema: CredentialOfferParams,
 			handler: async ({ attributes, credentialDefinitionId, connectionId }) => {
 				let credentialRecord = await this.credo.agent.credentials.offerCredential({
@@ -101,10 +114,15 @@ export class CredentialToolHandler {
 		};
 	}
 
+	/**
+	 * Lists all credentials stored in the agent's wallet.
+	 * Provides a complete overview of all credential records.
+	 */
 	listCredentialsTool(): ToolDefinition<typeof ListCredentialParams> {
 		return {
 			name: 'list-credentials',
-			description: 'List the credentials in wallet',
+			description:
+				"Retrieves all credential records from the agent's wallet, providing a comprehensive list of all credentials with their states, attributes, and associated metadata.",
 			schema: ListCredentialParams,
 			handler: async () => {
 				const credentials = await this.credo.agent.w3cCredentials.getAllCredentialRecords();
@@ -121,10 +139,15 @@ export class CredentialToolHandler {
 		};
 	}
 
+	/**
+	 * Lists all credential exchange records in the agent's wallet.
+	 * Provides a complete overview of all credential exchange records.
+	 */
 	listCredentialExchangeRecordsTool(): ToolDefinition<typeof ListCredentialParams> {
 		return {
 			name: 'list-credential-exchange-records',
-			description: 'List the credential exchange records in wallet',
+			description:
+				"Retrieves all credential exchange records from the agent's wallet, providing a comprehensive list of all credential exchanges with their states and associated metadata.",
 			schema: ListCredentialParams,
 			handler: async () => {
 				const credentials = await this.credo.agent.credentials.getAll();
@@ -141,10 +164,15 @@ export class CredentialToolHandler {
 		};
 	}
 
+	/**
+	 * Retrieves a specific credential record from the wallet.
+	 * Returns detailed information about a single credential.
+	 */
 	getCredentialRecordTool(): ToolDefinition<typeof GetCredentialRecordParams> {
 		return {
 			name: 'get-credential-record',
-			description: 'Retreive the credential record from wallet',
+			description:
+				'Retrieves a specific credential record from the wallet using its unique identifier. Returns detailed information about the credential, including its attributes, state, and associated metadata.',
 			schema: GetCredentialRecordParams,
 			handler: async ({ credentialId }) => {
 				const credential = await this.credo.agent.credentials.getById(credentialId);
@@ -161,10 +189,15 @@ export class CredentialToolHandler {
 		};
 	}
 
+	/**
+	 * Accepts a credential offer from an issuer to initiate credential issuance.
+	 * Completes the credential exchange process and returns the credential record.
+	 */
 	acceptCredentialOfferTool(): ToolDefinition<typeof AcceptCredentialOfferParams> {
 		return {
 			name: 'accept-credential-offer',
-			description: 'Accept the credential offer from issuer to initiate credential issuance',
+			description:
+				'Accepts a credential offer from an issuer using the provided credential record ID. Automatically completes the credential exchange process and returns the updated credential record with the received credential details.',
 			schema: AcceptCredentialOfferParams,
 			handler: async ({ credentialRecordId }) => {
 				const credential = await this.credo.agent.credentials.acceptOffer({

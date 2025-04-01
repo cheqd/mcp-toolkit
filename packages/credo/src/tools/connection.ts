@@ -8,6 +8,10 @@ import {
 } from '../types.js';
 import QRCode from 'qrcode';
 
+/**
+ * Handler class for managing DIDComm connections in the Credo agent.
+ * Provides tools for creating, accepting, and managing connection invitations.
+ */
 export class ConnectionToolHandler {
 	credo: CredoAgent;
 
@@ -15,11 +19,16 @@ export class ConnectionToolHandler {
 		this.credo = credo;
 	}
 
+	/**
+	 * Creates a DIDComm connection invitation with a QR code.
+	 * The QR code can be scanned by another agent to establish a secure connection.
+	 * Returns both the invitation URL and a QR code image for easy scanning.
+	 */
 	createConnectionInvitationTool(): ToolDefinition<typeof CreateInvitationParams> {
 		return {
 			name: 'create-connection-invitation-didcomm',
 			description:
-				'Create a connection invitation with a QR code that can be scanned by another agent to establish a secure connection. The QR code image will be displayed in the response.',
+				'Creates a DIDComm connection invitation with a QR code. The invitation can be shared with another agent to establish a secure connection. The response includes a QR code image for easy scanning, the invitation URL, and the full invitation object.',
 			schema: CreateInvitationParams,
 			handler: async () => {
 				const outOfBand = await this.credo.agent.oob.createInvitation({
@@ -56,11 +65,15 @@ export class ConnectionToolHandler {
 		};
 	}
 
+	/**
+	 * Accepts a DIDComm connection invitation from another agent.
+	 * Establishes a secure connection using the provided invitation URL.
+	 */
 	acceptConnectionInvitationTool(): ToolDefinition<typeof ReceiveInvitationParams> {
 		return {
 			name: 'accept-connection-invitation-didcomm',
 			description:
-				'Accept a connection invitation provided by a credo agent to establish a secure connection via didcomm',
+				'Accepts a DIDComm connection invitation from another agent using the provided invitation URL. Automatically establishes a secure connection and returns the connection record with details about the established connection.',
 			schema: ReceiveInvitationParams,
 			handler: async ({ invitationUrl }) => {
 				const { connectionRecord } = await this.credo.agent.oob.receiveInvitationFromUrl(invitationUrl, {
@@ -80,10 +93,15 @@ export class ConnectionToolHandler {
 		};
 	}
 
+	/**
+	 * Lists all DIDComm connection records in the agent's wallet.
+	 * Provides a complete overview of all established connections.
+	 */
 	listConnections(): ToolDefinition<{}> {
 		return {
 			name: 'list-connections-didcomm',
-			description: 'List all the conneciton records created via didcomm',
+			description:
+				"Retrieves all DIDComm connection records from the agent's wallet, providing a comprehensive list of all established connections with their current states and details.",
 			schema: {},
 			handler: async ({}) => {
 				const connectionRecords = await this.credo.agent.connections.getAll();
@@ -100,10 +118,15 @@ export class ConnectionToolHandler {
 		};
 	}
 
+	/**
+	 * Retrieves a specific connection record by its ID.
+	 * Can be looked up using either the outOfBandId or connectionId.
+	 */
 	getConnectionRecord(): ToolDefinition<typeof GetConnectionRecordParams> {
 		return {
 			name: 'get-connection-record-didcomm',
-			description: 'Retreive a connection record created via didcomm',
+			description:
+				'Retrieves a specific DIDComm connection record using either the outOfBandId or connectionId. Returns detailed information about the connection state, metadata, and associated identifiers.',
 			schema: GetConnectionRecordParams,
 			handler: async ({ outOfBandId, connectionId }) => {
 				let connectionRecord: ConnectionRecord | null = null;

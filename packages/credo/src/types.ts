@@ -1,6 +1,10 @@
 import { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z, ZodRawShape } from 'zod';
 
+/**
+ * Base interface for tool definitions in the Credo toolkit.
+ * Defines the structure for all tools with their name, description, schema, and handler.
+ */
 export interface ToolDefinition<Args extends ZodRawShape> {
 	readonly name: string;
 	readonly description: string;
@@ -8,6 +12,9 @@ export interface ToolDefinition<Args extends ZodRawShape> {
 	handler: ToolCallback<Args>;
 }
 
+/**
+ * Configuration options for initializing the Credo toolkit.
+ */
 export interface ICredoToolKitOptions {
 	port: number | string;
 	name: string;
@@ -15,18 +22,33 @@ export interface ICredoToolKitOptions {
 	endpoint?: string;
 }
 
+/**
+ * Schema for validating cheqd Decentralized Identifiers (DIDs).
+ * Must start with 'did:cheqd:' followed by network and unique identifier.
+ */
 const DID = z
 	.string()
 	.startsWith('did:cheqd:')
-	.describe('Decentralized identifier for cheqd e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009');
+	.describe(
+		'A cheqd Decentralized Identifier (DID) in the format: did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009'
+	);
 
+/**
+ * Schema for validating DID URLs that point to resources.
+ * Must be a valid cheqd DID followed by '/resources/'.
+ */
 export const DID_URL = z.string().startsWith('did:cheqd:').includes('/resources/');
 
-// did
+// DID Document Management Parameters
 export const CreateDidDocumentParams = {
-	network: z.enum(['testnet', 'mainnet']).describe('Provide the cheqd network to publish the did document'),
+	network: z
+		.enum(['testnet', 'mainnet'])
+		.describe('The cheqd network to publish the DID document (testnet or mainnet)'),
 };
 
+/**
+ * JSON Web Key schema for cryptographic keys
+ */
 const JwkJsonSchema = z
 	.object({
 		kty: z.string(),
@@ -34,7 +56,9 @@ const JwkJsonSchema = z
 	})
 	.catchall(z.unknown());
 
-// VerificationMethod schema
+/**
+ * Schema for DID verification methods
+ */
 const VerificationMethodSchema = z.object({
 	id: z.string(),
 	type: z.string(),
@@ -43,12 +67,18 @@ const VerificationMethodSchema = z.object({
 	publicKeyMultibase: z.optional(z.string()),
 });
 
+/**
+ * Schema for DID service endpoints
+ */
 const DidDocumentServiceSchema = z.object({
 	id: z.string(),
 	type: z.string(),
 	serviceEndpoint: z.union([z.string(), z.array(z.string())]),
 });
 
+/**
+ * Complete schema for a DID Document
+ */
 const DidDocumentSchema = z.object({
 	id: z.string(),
 	alsoKnownAs: z.optional(z.array(z.string())),
@@ -98,10 +128,10 @@ export const CreateDidLinkedResourceParams = {
 		.optional(),
 };
 
-// anoncreds
+// Anonymous Credentials Parameters
 export const ResolveSchemaIdParams = {
 	schemaId: DID_URL.describe(
-		'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+		'The DID URL of the schema to resolve, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 	),
 };
 
@@ -110,7 +140,7 @@ export const RegisterSchemaParams = {
 		issuerId: z
 			.string()
 			.startsWith('did:cheqd:')
-			.describe('Decentralized identifier for cheqd e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009'),
+			.describe('The DID of the schema issuer, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009'),
 		name: z.string(),
 		version: z.string(),
 		attrNames: z.array(z.string()),
@@ -124,7 +154,7 @@ export const ListSchemaParams = {};
 
 export const ResolveCredentialDefinitionParams = {
 	credentialDefinitionId: DID_URL.describe(
-		'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+		'The DID URL of the credential definition to resolve, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 	),
 };
 
@@ -132,7 +162,7 @@ export const RegisterCredentialDefinitionParams = {
 	credentialDefinition: z.object({
 		issuerId: DID,
 		schemaId: DID_URL.describe(
-			'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+			'The DID URL of the schema this credential definition is based on, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 		),
 		tag: z.string(),
 	}),
@@ -143,11 +173,11 @@ export const RegisterCredentialDefinitionParams = {
 
 export const ListCredentialDefinitionParams = {};
 
-// connection
+// Connection Management Parameters
 export const CreateInvitationParams = {};
 
 export const ReceiveInvitationParams = {
-	invitationUrl: z.string().describe('Provide the invitation url to establish a secure didcomm connection'),
+	invitationUrl: z.string().describe('The DIDComm invitation URL to establish a secure connection'),
 };
 
 export const GetConnectionRecordParams = {
@@ -155,15 +185,15 @@ export const GetConnectionRecordParams = {
 	connectionId: z.string().uuid().optional(),
 };
 
-// credential
+// Credential Management Parameters
 export const ConnectionlessCredentialOfferParams = {
 	attributes: z
 		.record(z.string())
 		.describe(
-			'Provide the list of attributes published in the schema linked to the provided credentialDefinitionId'
+			'Key-value pairs of attributes to be included in the credential, matching the schema defined by credentialDefinitionId'
 		),
 	credentialDefinitionId: DID_URL.describe(
-		'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8. You have the option to list the credential definitionIds with the other tool'
+		'The DID URL of the credential definition to use, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 	),
 };
 
@@ -172,10 +202,10 @@ export const CredentialOfferParams = {
 	attributes: z
 		.record(z.string())
 		.describe(
-			'Provide the list of attributes published in the schema linked to the provided credentialDefinitionId'
+			'Key-value pairs of attributes to be included in the credential, matching the schema defined by credentialDefinitionId'
 		),
 	credentialDefinitionId: DID_URL.describe(
-		'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+		'The DID URL of the credential definition to use, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 	),
 };
 
@@ -189,7 +219,7 @@ export const AcceptCredentialOfferParams = {
 	credentialRecordId: z.string().uuid(),
 };
 
-// proof
+// Proof Management Parameters
 export const ConnectionlessProofRequestParams = {
 	requestedAttributes: z
 		.array(
@@ -199,20 +229,20 @@ export const ConnectionlessProofRequestParams = {
 					z.object({
 						cred_def_id: z.optional(
 							DID_URL.describe(
-								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+								'The DID URL of the credential definition to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 							)
 						),
 						issuerId: z.optional(DID),
 						schemaId: z.optional(
 							DID_URL.describe(
-								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+								'The DID URL of the schema to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 							)
 						),
 					})
 				),
 			})
 		)
-		.describe('Attributes which are meant to be revealed'),
+		.describe('List of attributes to be revealed in the proof'),
 
 	requestedPredicates: z
 		.array(
@@ -224,20 +254,20 @@ export const ConnectionlessProofRequestParams = {
 					z.object({
 						cred_def_id: z.optional(
 							DID_URL.describe(
-								'DID Url of credentialDefinitionId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8.'
+								'The DID URL of the credential definition to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 							)
 						),
 						issuerId: z.optional(DID),
 						schemaId: z.optional(
 							DID_URL.describe(
-								'DID Url of schemaId e.g. did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
+								'The DID URL of the schema to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
 							)
 						),
 					})
 				),
 			})
 		)
-		.describe('Attributes which are compared with operators on given values without revealing the attribute'),
+		.describe('List of predicates to be proven without revealing the actual attribute values'),
 };
 
 export const ConnectionProofRequestParams = {
@@ -253,4 +283,6 @@ export const ProofRequestParams = {};
 
 export const ListProofParams = {};
 
-export const GetProofRecordParams = {};
+export const GetProofRecordParams = {
+	proofRecordId: z.string().uuid(),
+};
