@@ -22,9 +22,7 @@ export class ConnectionToolHandler {
 				'Create a connection invitation with a QR code that can be scanned by another agent to establish a secure connection. The QR code image will be displayed in the response.',
 			schema: CreateInvitationParams,
 			handler: async () => {
-				const outOfBand = await this.credo.agent.oob.createInvitation({
-					autoAcceptConnection: true,
-				});
+				const outOfBand = await this.credo.agent.oob.createInvitation();
 				const invitationUrl = outOfBand.outOfBandInvitation.toUrl({ domain: this.credo.domain });
 				const invitation = outOfBand.outOfBandInvitation.toJSON();
 

@@ -8,6 +8,7 @@ import {
 	CredentialsModule,
 	DidsModule,
 	HttpOutboundTransport,
+	WsOutboundTransport,
 	ProofsModule,
 	V2CredentialProtocol,
 	V2ProofProtocol,
@@ -57,6 +58,7 @@ export class CredoAgent {
 		});
 
 		this.agent.registerOutboundTransport(new HttpOutboundTransport());
+		this.agent.registerOutboundTransport(new WsOutboundTransport());
 	}
 
 	/**
