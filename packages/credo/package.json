@@ -31,7 +31,7 @@
     "@credo-ts/cheqd": "^0.5.13",
     "@credo-ts/core": "^0.5.13",
     "@credo-ts/node": "^0.5.13",
-    "@hyperledger/anoncreds-nodejs": "^0.2.4",
+    "@hyperledger/anoncreds-nodejs": "^0.3.1",
     "@hyperledger/aries-askar-nodejs": "^0.2.3",
     "@modelcontextprotocol/sdk": "^1.8.0",
     "qrcode": "^1.5.4",
