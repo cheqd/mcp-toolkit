@@ -48,14 +48,14 @@ export class AnonCredsToolHandler {
 	}
 
 	/**
-	 * Retrieves a specific schema from the wallet.
+	 * Resolves a schemaId from the Cheqd network.
 	 * Returns detailed information about a single schema.
 	 */
 	getSchemaTool(): ToolDefinition<typeof ResolveSchemaIdParams> {
 		return {
 			name: 'get-schema',
 			description:
-				'Retrieves a specific schema definition from the wallet using its DID URL. Returns detailed information about the schema, including its attributes and version.',
+				'Resolves a schema definition from the Cheqd network using its DID URL. Returns detailed information about the schema, including its attributes and version.',
 			schema: ResolveSchemaIdParams,
 			handler: async ({ schemaId }) => {
 				const result = await this.credo.agent.modules.anoncreds.getSchema(schemaId);
@@ -128,14 +128,14 @@ export class AnonCredsToolHandler {
 	}
 
 	/**
-	 * Retrieves a specific credential definition from the wallet.
+	 * Resolves a credential definition from the Cheqd Network.
 	 * Returns detailed information about a single credential definition.
 	 */
 	getCredentialDefinitionTool(): ToolDefinition<typeof ResolveCredentialDefinitionParams> {
 		return {
 			name: 'get-credential-definition',
 			description:
-				'Retrieves a specific credential definition from the wallet using its DID URL. Returns detailed information about the definition, including its schema reference and issuer details.',
+				'Resolves a credential definition from the Cheqd network using its DID URL. Returns detailed information about the definition, including its schema reference and issuer details.',
 			schema: ResolveCredentialDefinitionParams,
 			handler: async ({ credentialDefinitionId }) => {
 				const result = await this.credo.agent.modules.anoncreds.getCredentialDefinition(credentialDefinitionId);
@@ -160,7 +160,7 @@ export class AnonCredsToolHandler {
 		return {
 			name: 'create-credential-definition',
 			description:
-				'Creates and publishes a new credential definition to the cheqd network. Links a schema to a specific issuer and defines how credentials can be issued using this schema.',
+				'Creates and publishes a new credential definition for a specific schema id as a DID Linked Resource to the cheqd network',
 			schema: RegisterCredentialDefinitionParams,
 			handler: async ({ credentialDefinition, options }) => {
 				const result = await this.credo.agent.modules.anoncreds.registerCredentialDefinition({

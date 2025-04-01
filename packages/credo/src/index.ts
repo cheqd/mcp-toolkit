@@ -1,8 +1,11 @@
 import { CredoAgent } from './agent.js';
-import { ConnectionToolHandler } from './tools/connection.js';
-import { CredentialToolHandler } from './tools/credential.js';
-import { DidToolHandler, AnonCredsToolHandler } from './tools/index.js';
-import { ProofToolHandler } from './tools/proof.js';
+import {
+	DidToolHandler,
+	AnonCredsToolHandler,
+	ConnectionToolHandler,
+	CredentialToolHandler,
+	ProofToolHandler,
+} from './tools/index.js';
 import { ICredoToolKitOptions } from './types.js';
 
 /**
