@@ -71,6 +71,7 @@ const VerificationMethodSchema = z.object({
 	controller: z.string(),
 	publicKeyJwk: z.optional(JwkJsonSchema),
 	publicKeyMultibase: z.optional(z.string()),
+	publicKeyBase58: z.optional(z.string()),
 });
 
 /**
