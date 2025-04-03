@@ -39,49 +39,59 @@ export class CredentialToolHandler {
 			description:
 				'Creates a connectionless credential offer that can be accepted by any holder. Generates a QR code containing the offer URL, which can be scanned to initiate credential issuance. The response includes the QR code image, outOfBand record, and invitation details.',
 			schema: ConnectionlessCredentialOfferParams,
-			handler: async ({ attributes, credentialDefinitionId }) => {
-				let { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
-					comment: 'V2 Out of Band offer',
-					credentialFormats: {
-						anoncreds: {
-							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
-							credentialDefinitionId,
-						},
-					},
-					protocolVersion: 'v2',
-				});
+			handler: async ({ jsonld, anoncreds }) => {
+				try {
+					const credentialFormats = await this.constructCredentialFormats({ anoncreds, jsonld });
 
-				const { invitationUrl, outOfBandRecord } =
-					await this.credo.agent.oob.createLegacyConnectionlessInvitation({
-						recordId: credentialRecord.id,
-						message,
-						domain: this.credo.domain,
+					const { message, credentialRecord } = await this.credo.agent.credentials.createOffer({
+						comment: 'V2 Out of Band offer',
+						credentialFormats,
+						protocolVersion: 'v2',
+						autoAcceptCredential: AutoAcceptCredential.Always,
 					});
-				// Generate QR code as a data URL (png format)
-				const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
-					type: 'png',
-					margin: 2,
-					errorCorrectionLevel: 'H',
-					scale: 8,
-				});
 
-				return {
-					content: [
-						{
-							type: 'image',
-							data: qrCodeBuffer.toString('base64'),
-							mimeType: 'image/png',
-						},
-						{
-							type: 'text',
-							text: JSON.stringify(outOfBandRecord),
-						},
-						{
-							type: 'text',
-							text: `Invitation created successfully.\n\nConnection URL: ${invitationUrl}\n\nScan this QR code with another agent to establish a connection:`,
-						},
-					],
-				};
+					const { invitationUrl, outOfBandRecord } =
+						await this.credo.agent.oob.createLegacyConnectionlessInvitation({
+							recordId: credentialRecord.id,
+							message,
+							domain: this.credo.domain,
+						});
+
+					// Generate QR code as a data URL (png format)
+					const qrCodeBuffer = await QRCode.toBuffer(invitationUrl, {
+						type: 'png',
+						margin: 2,
+						errorCorrectionLevel: 'H',
+						scale: 8,
+					});
+
+					return {
+						content: [
+							{
+								type: 'image',
+								data: qrCodeBuffer.toString('base64'),
+								mimeType: 'image/png',
+							},
+							{
+								type: 'text',
+								text: JSON.stringify(outOfBandRecord),
+							},
+							{
+								type: 'text',
+								text: `Invitation created successfully.\n\nConnection URL: ${invitationUrl}\n\nScan this QR code with another agent to establish a connection:`,
+							},
+						],
+					};
+				} catch (error: any) {
+					return {
+						content: [
+							{
+								type: 'text',
+								text: error.message,
+							},
+						],
+					};
+				}
 			},
 		};
 	}
@@ -97,99 +107,35 @@ export class CredentialToolHandler {
 				'Creates a credential offer for an existing DIDComm connection. The offer is automatically sent to the connected agent, who can accept it to receive the credential. Returns the credential record with details about the offer status.',
 			schema: CredentialOfferParams,
 			handler: async ({ anoncreds, jsonld, connectionId }) => {
-				let credentialFormats: CredentialFormatPayload<any, 'createOffer'>;
-				if (anoncreds) {
-					credentialFormats = {
-						anoncreds: {
-							attributes: V2CredentialPreview.fromRecord(anoncreds.attributes).attributes,
-							credentialDefinitionId: anoncreds.credentialDefinitionId,
-						},
-					};
-				} else if (jsonld) {
-					const {
-						attributes,
-						credentialName,
-						credentialSummary,
-						credentialSchema,
-						issuerDid,
-						subjectDid,
-						type,
-						expirationDate,
-						credentialStatus,
-						context,
-						format,
-						connector,
-						credentialId,
-						...additionalData
-					} = jsonld;
+				try {
+					const credentialFormats = await this.constructCredentialFormats({ anoncreds, jsonld });
 
-					// validate issuer DID
-					const didDocument = await this.credo.agent.dids.resolveDidDocument(issuerDid);
-					if (!didDocument || !didDocument.assertionMethod) {
-						return {
-							content: [
-								{
-									type: 'text',
-									text: `Issuer DID ${issuerDid} does not exist with an assertionMethod`,
-								},
-							],
-						};
-					}
+					let credentialRecord = await this.credo.agent.credentials.offerCredential({
+						comment: 'V2 Out of Band offer',
+						credentialFormats,
+						protocolVersion: 'v2',
+						connectionId,
+						autoAcceptCredential: AutoAcceptCredential.Always,
+					});
 
-					credentialFormats = {
-						jsonld: {
-							credential: {
-								'@context': [...(context || []), ...VC_CONTEXT],
-								type: [...(type || []), VC_TYPE],
-								credentialSubject: {
-									id: subjectDid,
-									...attributes,
-								},
-								issuer: issuerDid,
-								issuanceDate: new Date().toDateString(),
-								expirationDate:
-									expirationDate instanceof Date ? expirationDate.toISOString() : expirationDate,
-								credentialStatus: credentialStatus
-									? {
-											id: credentialStatus.statusListName,
-											type: credentialStatus.statusPurpose,
-										}
-									: undefined,
-								...additionalData,
-							},
-							options: {
-								proofType: 'Ed25519Signature2018', // validate supported types
-								proofPurpose: 'assertionMethod',
-							},
-						} satisfies JsonLdCredentialDetailFormat,
-					};
-				} else {
 					return {
 						content: [
 							{
 								type: 'text',
-								text: 'Error credential format jsonld, anoncreds with arguments must be provided',
+								text: JSON.stringify(credentialRecord),
+							},
+						],
+					};
+				} catch (error: any) {
+					return {
+						content: [
+							{
+								type: 'text',
+								text: error.message,
 							},
 						],
 					};
 				}
-
-				let credentialRecord = await this.credo.agent.credentials.offerCredential({
-					comment: 'V2 Out of Band offer',
-					credentialFormats: credentialFormats,
-					protocolVersion: 'v2',
-					connectionId,
-					autoAcceptCredential: AutoAcceptCredential.Always,
-				});
-
-				return {
-					content: [
-						{
-							type: 'text',
-							text: JSON.stringify(credentialRecord),
-						},
-					],
-				};
 			},
 		};
 	}
@@ -320,5 +266,68 @@ export class CredentialToolHandler {
 				};
 			},
 		};
+	}
+
+	private async constructCredentialFormats({ anoncreds, jsonld }) {
+		if (anoncreds) {
+			return {
+				anoncreds: {
+					attributes: V2CredentialPreview.fromRecord(anoncreds.attributes).attributes,
+					credentialDefinitionId: anoncreds.credentialDefinitionId,
+				},
+			};
+		} else if (jsonld) {
+			const {
+				attributes,
+				credentialName,
+				credentialSummary,
+				credentialSchema,
+				issuerDid,
+				subjectDid,
+				type,
+				expirationDate,
+				credentialStatus,
+				context,
+				format,
+				connector,
+				credentialId,
+				...additionalData
+			} = jsonld;
+
+			// validate issuer DID
+			const didDocument = await this.credo.agent.dids.resolveDidDocument(issuerDid);
+			if (!didDocument || !didDocument.assertionMethod?.length) {
+				throw new Error(`Issuer DID ${issuerDid} does not exist with an assertionMethod`);
+			}
+
+			return {
+				jsonld: {
+					credential: {
+						'@context': [...(context || []), ...VC_CONTEXT],
+						type: [...(type || []), VC_TYPE],
+						credentialSubject: {
+							id: subjectDid,
+							...attributes,
+						},
+						issuer: issuerDid,
+						issuanceDate: new Date().toISOString(),
+						expirationDate: expirationDate instanceof Date ? expirationDate.toISOString() : expirationDate,
+						credentialStatus: credentialStatus
+							? {
+									id: credentialStatus.statusListName,
+									type: credentialStatus.statusPurpose,
+								}
+							: undefined,
+						...additionalData,
+					},
+					options: {
+						proofType: 'Ed25519Signature2018',
+						proofPurpose: 'assertionMethod',
+					},
+				} satisfies JsonLdCredentialDetailFormat,
+			};
+		}
+
+		throw new Error('Error credential format jsonld, anoncreds with arguments must be provided');
 	}
 }

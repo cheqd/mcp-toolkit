@@ -192,17 +192,6 @@ export const GetConnectionRecordParams = {
 };
 
 // Credential Management Parameters
-export const ConnectionlessCredentialOfferParams = {
-	attributes: z
-		.record(z.string())
-		.describe(
-			'Key-value pairs of attributes to be included in the credential, matching the schema defined by credentialDefinitionId'
-		),
-	credentialDefinitionId: CHEQD_DID_URL.describe(
-		'The DID URL of the credential definition to use, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-	),
-};
-
 export const AnoncredsCredentialOfferParams = z.object({
 	attributes: z
 		.record(z.string())
@@ -250,9 +239,13 @@ export const JsonLDCredentialOfferParams = z
 	})
 	.catchall(z.any());
 
-export const CredentialOfferParams = {
+export const ConnectionlessCredentialOfferParams = {
 	anoncreds: AnoncredsCredentialOfferParams.optional(),
 	jsonld: JsonLDCredentialOfferParams.optional(),
+};
+
+export const CredentialOfferParams = {
+	...ConnectionlessCredentialOfferParams,
 	connectionId: z.string().uuid(),
 };
 
