@@ -8,6 +8,7 @@ import {
 	CredentialsModule,
 	DidsModule,
 	HttpOutboundTransport,
+	JsonLdCredentialFormatService,
 	ProofsModule,
 	V2CredentialProtocol,
 	V2ProofProtocol,
@@ -132,7 +133,7 @@ function getAskarAnonCredsModules(mnemonic: string) {
 			autoAcceptCredentials: AutoAcceptCredential.Always,
 			credentialProtocols: [
 				new V2CredentialProtocol({
-					credentialFormats: [new AnonCredsCredentialFormatService()],
+					credentialFormats: [new AnonCredsCredentialFormatService(), new JsonLdCredentialFormatService()],
 				}),
 			],
 		}),

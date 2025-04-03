@@ -1,13 +1,21 @@
-import { AutoAcceptCredential, V2CredentialPreview } from '@credo-ts/core';
+import {
+	AutoAcceptCredential,
+	CredentialFormatPayload,
+	JsonLdCredentialDetailFormat,
+	V2CredentialPreview,
+	W3cJsonLdVerifiableCredentialOptions,
+} from '@credo-ts/core';
 import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
 import {
 	AcceptCredentialOfferParams,
 	ConnectionlessCredentialOfferParams,
-	CredentialOfferParams,
 	GetCredentialRecordParams,
 	ListCredentialParams,
 	ToolDefinition,
+	CredentialOfferParams,
+	VC_CONTEXT,
+	VC_TYPE,
 } from '../types.js';
 
 /**
@@ -88,15 +96,87 @@ export class CredentialToolHandler {
 			description:
 				'Creates a credential offer for an existing DIDComm connection. The offer is automatically sent to the connected agent, who can accept it to receive the credential. Returns the credential record with details about the offer status.',
 			schema: CredentialOfferParams,
-			handler: async ({ attributes, credentialDefinitionId, connectionId }) => {
+			handler: async ({ anoncreds, jsonld, connectionId }) => {
+				let credentialFormats: CredentialFormatPayload<any, 'createOffer'>;
+				if (anoncreds) {
+					credentialFormats = {
+						anoncreds: {
+							attributes: V2CredentialPreview.fromRecord(anoncreds.attributes).attributes,
+							credentialDefinitionId: anoncreds.credentialDefinitionId,
+						},
+					};
+				} else if (jsonld) {
+					const {
+						attributes,
+						credentialName,
+						credentialSummary,
+						credentialSchema,
+						issuerDid,
+						subjectDid,
+						type,
+						expirationDate,
+						credentialStatus,
+						context,
+						format,
+						connector,
+						credentialId,
+						...additionalData
+					} = jsonld;
+
+					// validate issuer DID
+					const didDocument = await this.credo.agent.dids.resolveDidDocument(issuerDid);
+					if (!didDocument || !didDocument.assertionMethod) {
+						return {
+							content: [
+								{
+									type: 'text',
+									text: `Issuer DID ${issuerDid} does not exist with an assertionMethod`,
+								},
+							],
+						};
+					}
+
+					credentialFormats = {
+						jsonld: {
+							credential: {
+								'@context': [...(context || []), ...VC_CONTEXT],
+								type: [...(type || []), VC_TYPE],
+								credentialSubject: {
+									id: subjectDid,
+									...attributes,
+								},
+								issuer: issuerDid,
+								issuanceDate: new Date().toDateString(),
+								expirationDate:
+									expirationDate instanceof Date ? expirationDate.toISOString() : expirationDate,
+								credentialStatus: credentialStatus
+									? {
+											id: credentialStatus.statusListName,
+											type: credentialStatus.statusPurpose,
+										}
+									: undefined,
+								...additionalData,
+							},
+							options: {
+								proofType: 'Ed25519Signature2018', // validate supported types
+								proofPurpose: 'assertionMethod',
+							},
+						} satisfies JsonLdCredentialDetailFormat,
+					};
+				} else {
+					return {
+						content: [
+							{
+								type: 'text',
+								text: 'Error credential format jsonld, anoncreds with arguments must be provided',
+							},
+						],
+					};
+				}
+
 				let credentialRecord = await this.credo.agent.credentials.offerCredential({
 					comment: 'V2 Out of Band offer',
-					credentialFormats: {
-						anoncreds: {
-							attributes: V2CredentialPreview.fromRecord(attributes).attributes,
-							credentialDefinitionId,
-						},
-					},
+					credentialFormats: credentialFormats,
 					protocolVersion: 'v2',
 					connectionId,
 					autoAcceptCredential: AutoAcceptCredential.Always,
@@ -201,6 +281,32 @@ export class CredentialToolHandler {
 			schema: AcceptCredentialOfferParams,
 			handler: async ({ credentialRecordId }) => {
 				const credential = await this.credo.agent.credentials.acceptOffer({
+					credentialRecordId,
+				});
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credential),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	/**
+	 * Accepts a credential request from an holder to continue credential issuance.
+	 * Completes the credential exchange process and returns the credential record.
+	 */
+	acceptCredentialRequestTool(): ToolDefinition<typeof AcceptCredentialOfferParams> {
+		return {
+			name: 'accept-credential-request',
+			description: 'Accepts a credential request from an holder using the provided credential record ID.',
+			schema: AcceptCredentialOfferParams,
+			handler: async ({ credentialRecordId }) => {
+				const credential = await this.credo.agent.credentials.acceptRequest({
 					credentialRecordId,
 				});
 
