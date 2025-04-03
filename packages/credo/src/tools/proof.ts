@@ -1,5 +1,6 @@
 import { AutoAcceptProof } from '@credo-ts/core';
 import QRCode from 'qrcode';
+import { v4 } from 'uuid';
 import { CredoAgent } from '../agent.js';
 import {
 	ConnectionProofRequestParams,
@@ -7,7 +8,6 @@ import {
 	GetProofExchangeRecordParams,
 	GetProofRecordParams,
 	ListProofParams,
-	ProofRequestParams,
 	ToolDefinition,
 } from '../types.js';
 
@@ -32,35 +32,12 @@ export class ProofToolHandler {
 			description:
 				'Creates a connectionless proof request that can be accepted by any holder. Generates a QR code containing the request URL, which can be scanned to initiate proof presentation. The response includes the QR code image and request details.',
 			schema: ConnectionlessProofRequestParams,
-			handler: async ({ requestedAttributes, requestedPredicates }) => {
-				const proofAttribute = {};
-				requestedAttributes.forEach(({ attribute, restrictions }, index) => {
-					proofAttribute[`attribute-${index}`] = {
-						name: attribute,
-						restrictions,
-					};
-				});
-
-				const proofPredicate = {};
-				requestedPredicates.forEach(({ attribute, restrictions, p_type, p_value }, index) => {
-					proofPredicate[`predicate-${index}`] = {
-						name: attribute,
-						p_type,
-						p_value,
-						restrictions,
-					};
-				});
+			handler: async ({ jsonld, anoncreds }) => {
+				const proofFormats = this.constructProofFormats({ jsonld, anoncreds });
 
 				let { message, proofRecord } = await this.credo.agent.proofs.createRequest({
 					comment: 'V2 Out of Band offer',
-					proofFormats: {
-						anoncreds: {
-							name: 'proof-request',
-							version: '1.0',
-							requested_attributes: proofAttribute,
-							requested_predicates: proofPredicate,
-						},
-					},
+					proofFormats,
 					protocolVersion: 'v2',
 				});
 
@@ -109,35 +86,12 @@ export class ProofToolHandler {
 			description:
 				'Creates a proof request for an existing DIDComm connection. The request is automatically sent to the connected agent, who can respond with the requested proofs. Returns the proof exchange record with details about the request status.',
 			schema: ConnectionProofRequestParams,
-			handler: async ({ requestedAttributes, requestedPredicates, connectionId }) => {
-				const proofAttribute = {};
-				requestedAttributes.forEach(({ attribute, restrictions }, index) => {
-					proofAttribute[`attribute-${index}`] = {
-						name: attribute,
-						restrictions,
-					};
-				});
-
-				const proofPredicate = {};
-				requestedPredicates.forEach(({ attribute, restrictions, p_type, p_value }, index) => {
-					proofPredicate[`predicate-${index}`] = {
-						name: attribute,
-						p_type,
-						p_value,
-						restrictions,
-					};
-				});
+			handler: async ({ jsonld, anoncreds, connectionId }) => {
+				const proofFormats = this.constructProofFormats({ jsonld, anoncreds });
 
 				let credentialRecord = await this.credo.agent.proofs.requestProof({
 					comment: 'V2 Out of Band offer',
-					proofFormats: {
-						anoncreds: {
-							name: 'proof-request',
-							version: '1.0',
-							requested_attributes: proofAttribute,
-							requested_predicates: proofPredicate,
-						},
-					},
+					proofFormats,
 					protocolVersion: 'v2',
 					connectionId,
 					autoAcceptProof: AutoAcceptProof.Always,
@@ -230,6 +184,11 @@ export class ProofToolHandler {
 		};
 	}
 
+	/**
+	 * Accepts a proof request and generates a Zero-Knowledge Proof from available credentials.
+	 * This tool allows the agent to respond to a proof request by selecting appropriate credentials
+	 * from the wallet and generating a proof that satisfies the request's requirements.
+	 */
 	acceptProofRequestTool(): ToolDefinition<typeof GetProofExchangeRecordParams> {
 		return {
 			name: 'accept-proof-request',
@@ -255,5 +214,57 @@ export class ProofToolHandler {
 				};
 			},
 		};
+	}
+
+	/**
+	 * Constructs proof formats for either AnonCreds or JSON-LD proof requests.
+	 * Formats the requested attributes and predicates according to the specified proof format type.
+	 *
+	 * @param {Object} params - The parameters for constructing proof formats
+	 * @param {Object} params.anoncreds - AnonCreds proof request parameters
+	 * @param {Object} params.jsonld - JSON-LD proof request parameters
+	 * @returns {Object} Formatted proof request structure
+	 * @throws {Error} If neither anoncreds nor jsonld parameters are provided
+	 */
+	private constructProofFormats({ anoncreds, jsonld }) {
+		if (anoncreds) {
+			const proofAttribute = {};
+			anoncreds.requestedAttributes.forEach(({ attribute, restrictions }, index) => {
+				proofAttribute[`attribute-${index}`] = {
+					name: attribute,
+					restrictions,
+				};
+			});
+
+			const proofPredicate = {};
+			anoncreds.requestedPredicates.forEach(({ attribute, restrictions, p_type, p_value }, index) => {
+				proofPredicate[`predicate-${index}`] = {
+					name: attribute,
+					p_type,
+					p_value,
+					restrictions,
+				};
+			});
+
+			return {
+				anoncreds: {
+					name: 'proof-request',
+					version: '1.0',
+					requested_attributes: proofAttribute,
+					requested_predicates: proofPredicate,
+				},
+			};
+		} else if (jsonld) {
+			return {
+				presentationExchange: {
+					presentationDefinition: {
+						id: v4(),
+						input_descriptors: jsonld || [],
+					},
+				},
+			};
+		}
+
+		throw new Error('Error proof format jsonld, anoncreds with arguments must be provided');
 	}
 }

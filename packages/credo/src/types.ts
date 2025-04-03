@@ -260,7 +260,41 @@ export const AcceptCredentialOfferParams = {
 };
 
 // Proof Management Parameters
-export const ConnectionlessProofRequestParams = {
+const Schema = z.object({
+	uri: z.string(),
+	required: z.boolean().optional(),
+});
+
+const Issuance = z
+	.object({
+		manifest: z.string().optional(),
+		// Allow additional properties
+	})
+	.catchall(z.any());
+
+const ConstraintsV1 = z.object({
+	fields: z
+		.array(
+			z.object({
+				path: z.array(z.string()),
+			})
+		)
+		.optional(),
+});
+
+const InputDescriptorV1 = z.object({
+	id: z.string(),
+	name: z.string().optional(),
+	purpose: z.string().optional(),
+	group: z.array(z.string()).optional(),
+	schema: z.array(Schema),
+	issuance: z.array(Issuance).optional(),
+	constraints: ConstraintsV1.optional(),
+});
+
+export const PresentationExchangeProofRequestParams = InputDescriptorV1;
+
+export const AnonCredsProofRequestParams = z.object({
 	requestedAttributes: z
 		.array(
 			z.object({
@@ -308,6 +342,11 @@ export const ConnectionlessProofRequestParams = {
 			})
 		)
 		.describe('List of predicates to be proven without revealing the actual attribute values'),
+});
+
+export const ConnectionlessProofRequestParams = {
+	anoncreds: AnonCredsProofRequestParams.optional(),
+	jsonld: PresentationExchangeProofRequestParams.optional(),
 };
 
 export const ConnectionProofRequestParams = {

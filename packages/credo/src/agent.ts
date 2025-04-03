@@ -7,11 +7,13 @@ import {
 	ConnectionsModule,
 	CredentialsModule,
 	DidsModule,
+	DifPresentationExchangeProofFormatService,
 	HttpOutboundTransport,
 	JsonLdCredentialFormatService,
 	ProofsModule,
 	V2CredentialProtocol,
 	V2ProofProtocol,
+	W3cCredentialsModule,
 } from '@credo-ts/core';
 import { AskarModule } from '@credo-ts/askar';
 import { HttpInboundTransport, agentDependencies } from '@credo-ts/node';
@@ -137,11 +139,12 @@ function getAskarAnonCredsModules(mnemonic: string) {
 				}),
 			],
 		}),
+		w3cCredentials: new W3cCredentialsModule(),
 		proofs: new ProofsModule({
 			autoAcceptProofs: AutoAcceptProof.Always,
 			proofProtocols: [
 				new V2ProofProtocol({
-					proofFormats: [new AnonCredsProofFormatService()],
+					proofFormats: [new AnonCredsProofFormatService(), new DifPresentationExchangeProofFormatService()],
 				}),
 			],
 		}),
