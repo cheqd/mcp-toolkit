@@ -68,6 +68,8 @@ Use the `env.example` file and update the appropriate variables.
         "--rm",
         "-p", 
         "3000:3000",
+        "--name",
+        "faber",
         "-T",
         "mcp-server"
       ]

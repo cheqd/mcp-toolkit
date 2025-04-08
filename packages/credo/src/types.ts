@@ -275,12 +275,6 @@ export const ConnectionProofRequestParams = {
 	connectionId: z.string().uuid(),
 };
 
-export const GetProofExchangeRecordParams = {
-	proofRecordId: z.string().uuid(),
-};
-
-export const ProofRequestParams = {};
-
 export const ListProofParams = {};
 
 export const GetProofRecordParams = {

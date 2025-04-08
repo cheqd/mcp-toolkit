@@ -9,20 +9,19 @@ services:
     # build:
     #   context: ../
     #   dockerfile: Dockerfile
-    image: ghcr.io/cheqd/mcp-toolkit:latest
+    image: ghcr.io/cheqd/mcp-toolkit:production-latest
     profiles:
       - server
-    container_name: faber
     ports:
-      - "3000:3000"
+      - '3000:3000'
     restart: on-failure
     env_file:
       - ../env.example
     extra_hosts:
-      - "holder:host-gateway"
+      - 'holder:host-gateway'
     networks:
       - mcp-network
-  
+
   # ACA-Py Holder Agent
   acapy-holder:
     build:
@@ -32,8 +31,8 @@ services:
     profiles:
       - demo
     ports:
-      - "4001:4001"
-      - "4002:4002"
+      - '4001:4001'
+      - '4002:4002'
     restart: on-failure
     command: >
       start
@@ -61,7 +60,47 @@ services:
       timeout: 5s
       retries: 5
     extra_hosts:
-      - "faber:host-gateway"
+      - 'faber:host-gateway'
+    networks:
+      - mcp-network
+  acapy-issuer:
+    build:
+      context: .
+      dockerfile: Dockerfile.acapy
+    container_name: issuer
+    profiles:
+      - demo
+    ports:
+      - '3001:3001'
+      - '3002:3002'
+    restart: on-failure
+    command: >
+      start
+        --label Issuer
+        --inbound-transport http 0.0.0.0 3002
+        --outbound-transport http
+        --endpoint http://issuer:3002
+        --admin 0.0.0.0 3001
+        --admin-insecure-mode
+        --wallet-type askar-anoncreds
+        --wallet-name issuer
+        --wallet-key insecure
+        --auto-provision
+        --auto-accept-invites
+        --auto-accept-requests
+        --auto-ping-connection
+        --log-level info
+        --no-ledger
+        --plugin cheqd
+        --plugin-config plugin-config.yml
+    healthcheck:
+      test: curl -s -o /dev/null -w '%{http_code}' "http://localhost:3001/status/live" | grep "200" > /dev/null
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    extra_hosts:
+      - 'faber:host-gateway'
     networks:
       - mcp-network
 

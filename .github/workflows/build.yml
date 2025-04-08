@@ -28,6 +28,11 @@ jobs:
       - name: "Run pnpm build"
         run: pnpm build
 
+      - name: "Run pnpm test"
+        env:
+          CREDO_CHEQD_TESTNET_MNEMONIC: ${{ secrets.TESTNET_MNEMONIC }}
+        run: pnpm test
+
   build-docker:
     name: "Build Docker image"
     runs-on: ubuntu-latest
