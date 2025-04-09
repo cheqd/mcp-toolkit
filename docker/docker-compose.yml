@@ -61,6 +61,7 @@ services:
       retries: 5
     extra_hosts:
       - 'faber:host-gateway'
+      - 'host.docker.internal:host-gateway'
     networks:
       - mcp-network
   acapy-issuer:

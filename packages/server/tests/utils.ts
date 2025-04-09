@@ -7,7 +7,7 @@ export async function startDockerServices(): Promise<ChildProcess> {
 	const process = spawn('docker', ['compose', '-f', dockerComposePath, '--profile', 'demo', 'up', '--detach']);
 	return new Promise((resolve, reject) => {
 		process.stdout?.on('data', (data) => console.log(`[Docker]: ${data.toString().trim()}`));
-		process.stderr?.on('data', (data) => console.error(`[Docker Error]: ${data.toString().trim()}`));
+		process.stderr?.on('data', (data) => console.error(`[Docker]: ${data.toString().trim()}`));
 		process.on('error', (error) => {
 			console.error('Failed to start Docker services:', error);
 			reject(error);
