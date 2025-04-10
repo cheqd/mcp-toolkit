@@ -3,7 +3,9 @@ import { test, expect } from './setup';
 import { state } from './state';
 
 test.describe('DID Operations', () => {
-	test('should create a DID on testnet', async ({ client, parseToolResponse }) => {
+	// Setup before all tests
+	test.beforeAll(async ({ client, parseToolResponse }) => {
+		// Create a DID for use in all tests
 		const result = await client.callTool({
 			name: 'create-did',
 			arguments: {
@@ -13,12 +15,22 @@ test.describe('DID Operations', () => {
 
 		const data = parseToolResponse(result);
 		expect(data).toHaveProperty('didState');
-		expect(data.didState.state).toBe('finished');
-		expect(data.didState.did).toMatch(/^did:cheqd:testnet:/);
+		expect(data.didState).toHaveProperty('state');
+		expect(data.didState).toHaveProperty('did');
+
 		state.testDid = data.didState.did;
 		state.testDidDoc = data.didState.didDocument;
+
+		expect(data.didState.state).toBe('finished');
+		expect(data.didState.did).toMatch(/^did:cheqd:testnet:/);
 		expect(data.didState.didDocument.id).toBe(state.testDid);
 		expect(Array.isArray(data.didState.didDocument.verificationMethod)).toBe(true);
+	});
+
+	// Teardown after all tests in this suite
+	test.afterAll(async ({ shutdown }) => {
+		await shutdown();
+		console.log('DID Operations test suite completed');
 	});
 
 	test('should list DIDs in wallet', async ({ client, parseToolResponse }) => {

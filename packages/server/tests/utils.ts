@@ -57,8 +57,9 @@ async function waitForServices(maxRetries = 30, retryInterval = 2000): Promise<v
 }
 
 // Helper function to stop Docker containers
-export function stopDockerServies() {
+export function stopDockerServices() {
 	try {
+		console.log('Stopping Docker services.');
 		const dockerComposePath = path.resolve(__dirname, '../../../docker/docker-compose.yml');
 		execSync(`docker compose -f ${dockerComposePath} --profile demo down`, { stdio: 'inherit' });
 		console.log('Docker services stopped successfully.');

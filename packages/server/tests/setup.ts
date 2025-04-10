@@ -315,13 +315,8 @@ export const test = base.extend<TestFixtures>({
 	},
 	shutdown: async ({}, use) => {
 		await use(async () => {
-			console.log('Individual test shutdown requested - deferring to global shutdown');
+			await shutdownClient();
 		});
 	},
-});
-test.afterAll(async () => {
-	console.log('Running global shutdown...');
-	// Explicitly shut down the server and client after all tests
-	await shutdownClient();
 });
 export const { expect } = test;

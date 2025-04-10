@@ -63,6 +63,38 @@ export class CredoAgent {
 	 * Initialize the agent with random wait and port availability check
 	 */
 	public async initializeAgent() {
+		let currentPort = this.port;
+		let portAvailable = false;
+		let retryCount = 0;
+		const maxPortRetries = 10;
+		// Try to find an available port, starting with the configured port
+		while (!portAvailable && retryCount < maxPortRetries) {
+			portAvailable = await this.checkPortAvailability(currentPort);
+
+			if (portAvailable) {
+				// Found an available port
+				if (currentPort !== this.port) {
+					console.error(`Port ${this.port} was not available. Using port ${currentPort} instead.`);
+					this.port = currentPort;
+					// Update the domain if it contains the port number
+					if (this.domain.includes(`:${this.port}`)) {
+						this.domain = this.domain.replace(/:(\d+)/, `:${currentPort}`);
+					}
+				}
+				break;
+			}
+
+			// Try the next port
+			currentPort++;
+			retryCount++;
+			console.error(`Port ${currentPort - 1} is already in use. Trying port ${currentPort}...`);
+		}
+		if (!portAvailable) {
+			throw new Error(
+				`Could not find an available port after ${maxPortRetries} attempts, starting from port ${this.port}`
+			);
+		}
+
 		try {
 			const transport = new HttpInboundTransport({ port: this.port });
 			this.agent.registerInboundTransport(transport);

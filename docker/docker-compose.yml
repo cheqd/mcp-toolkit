@@ -10,6 +10,7 @@ services:
     #   context: ../
     #   dockerfile: Dockerfile
     image: ghcr.io/cheqd/mcp-toolkit:production-latest
+    container_name: faber
     profiles:
       - server
     ports:
@@ -20,7 +21,9 @@ services:
     extra_hosts:
       - 'holder:host-gateway'
     networks:
-      - mcp-network
+      mcp-network:
+        aliases:
+          - faber
 
   # ACA-Py Holder Agent
   acapy-holder:
@@ -63,7 +66,9 @@ services:
       - 'faber:host-gateway'
       - 'host.docker.internal:host-gateway'
     networks:
-      - mcp-network
+      mcp-network:
+        aliases:
+          - holder
   acapy-issuer:
     build:
       context: .
@@ -103,7 +108,9 @@ services:
     extra_hosts:
       - 'faber:host-gateway'
     networks:
-      - mcp-network
+      mcp-network:
+        aliases:
+          - issuer
 
 networks:
   mcp-network:

@@ -3,6 +3,17 @@ import { state } from './state';
 import { waitForConnectionState } from './utils';
 
 test.describe('Connection Operations', () => {
+	// Setup for all Connection tests
+	test.beforeAll(async () => {
+		// No scripts as Connection tests are independent of did or schema
+		console.log('Setting up Connection Operations test suite...');
+	});
+
+	// Cleanup after all Connection tests
+	test.afterAll(async ({ shutdown }) => {
+		await shutdown();
+		console.log('Connection Operations test suite completed');
+	});
 	// Test for creating a DIDComm connection invitation
 	test('should create a DIDComm connection invitation', async ({ client, parseFlexibleToolResponse }) => {
 		const result = await client.callTool({

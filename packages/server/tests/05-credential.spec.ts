@@ -2,6 +2,20 @@ import { test, expect } from './setup';
 import { state } from './state';
 
 test.describe('Credential Operations', () => {
+	// Setup for all Credential tests
+	test.beforeAll(async () => {
+		// Skip all tests in this suite if prerequisites aren't met
+		test.skip(!state.connectionId, 'No active connection available for credential operations');
+		test.skip(!state.testCredentialDefinitionId, 'No credential definition available');
+		// No other setup needed
+	});
+
+	// Cleanup after all Credential tests
+	test.afterAll(async ({ shutdown }) => {
+		await shutdown();
+		console.log('Credential Operations test suite completed');
+	});
+
 	// TODO: Update the testcase after fxing the issue with large QR Code
 	// Negative Test: creating a connectionless credential offer fails
 	test('should not create a connectionless credential offer', async ({ client, parseFlexibleToolResponse }) => {

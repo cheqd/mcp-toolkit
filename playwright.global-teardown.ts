@@ -1,7 +1,7 @@
-import { stopDockerServies } from './packages/server/tests/utils';
+import { stopDockerServices } from './packages/server/tests/utils';
 
 async function globalTeardown() {
-	await stopDockerServies();
+	await stopDockerServices();
 }
 
 export default globalTeardown;

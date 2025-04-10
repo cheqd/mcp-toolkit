@@ -30,10 +30,9 @@ jobs:
 
       - name: Setup hosts file
         run: |
-          sudo bash -c "echo '127.0.0.1 holder' >> /etc/hosts"
-          sudo bash -c "echo '127.0.0.1 issuer' >> /etc/hosts"
-          sudo bash -c "echo '127.0.0.1 faber' >> /etc/hosts"
-          # Add any other container hostnames you need
+          for service in $(grep -E 'container_name:' docker/docker-compose.yml | awk '{print $2}'); do
+            sudo bash -c "echo '127.0.0.1 $service' >> /etc/hosts"
+          done
           cat /etc/hosts # Verify the entries were added
 
       - name: "Run pnpm test"

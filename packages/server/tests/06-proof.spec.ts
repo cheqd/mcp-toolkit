@@ -3,6 +3,20 @@ import { state } from './state';
 import { waitForPresentationState } from './utils';
 
 test.describe('Present Proof Operations', () => {
+	// Setup for all Proof tests
+	test.beforeAll(async () => {
+		// Skip all tests in this suite if prerequisites aren't met
+		test.skip(!state.connectionId, 'No active connection available for proof operations');
+		test.skip(!state.testCredentialDefinitionId, 'No credential definition available');
+		// No other setup needed
+	});
+
+	// Cleanup after all Proof tests
+	test.afterAll(async ({ shutdown }) => {
+		await shutdown();
+		console.log('Present Proof Operations test suite completed');
+	});
+
 	// TODO: Update the testcase after fxing the issue with large QR Code
 	// Negative Test: creating a connectionless proof request fails
 	test('should not create a connectionless proof request', async ({ client, parseFlexibleToolResponse }) => {

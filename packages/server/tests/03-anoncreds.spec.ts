@@ -2,7 +2,10 @@ import { test, expect } from './setup';
 import { state } from './state';
 
 test.describe('AnonCreds Operations', () => {
-	test('should create AnonCreds Schema', async ({ client, parseToolResponse }) => {
+	// Setup for all AnonCreds tests
+	test.beforeAll('Setting up AnonCreds test suite', async ({ client, parseToolResponse }) => {
+		// Skip all tests if no DID is available
+		test.skip(!state.testDid, 'No DID available for AnonCreds operations');
 		const result = await client.callTool({
 			name: 'create-schema',
 			arguments: {
@@ -26,6 +29,12 @@ test.describe('AnonCreds Operations', () => {
 		expect(data.schemaState.schema.issuerId).toBe(state.testDid);
 		expect(data.schemaState.schema.name).toBe('Test Schema');
 		expect(data.schemaState.schema.version).toBe('1.0');
+	});
+
+	// Cleanup after all AnonCreds tests
+	test.afterAll(async ({ shutdown }) => {
+		await shutdown();
+		console.log('AnonCreds Operations test suite completed');
 	});
 
 	test('should list schemas in wallet', async ({ client, parseToolResponse }) => {
