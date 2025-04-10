@@ -1,4 +1,4 @@
-import { AutoAcceptCredential, V2CredentialPreview } from '@credo-ts/core';
+import { AutoAcceptCredential, Jwt, V2CredentialPreview, W3cJwtVerifiableCredential } from '@credo-ts/core';
 import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
 import {
@@ -7,6 +7,7 @@ import {
 	CredentialOfferParams,
 	GetCredentialRecordParams,
 	ListCredentialParams,
+	StoreCredentialParams,
 	ToolDefinition,
 } from '../types.js';
 
@@ -202,6 +203,33 @@ export class CredentialToolHandler {
 			handler: async ({ credentialRecordId }) => {
 				const credential = await this.credo.agent.credentials.acceptOffer({
 					credentialRecordId,
+				});
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credential),
+						},
+					],
+				};
+			},
+		};
+	}
+
+	/**
+	 * Imports a credential provided by the user.
+	 */
+	importCredentialTool(): ToolDefinition<typeof StoreCredentialParams> {
+		return {
+			name: 'import-credential',
+			description: 'Import a jwt credential provided by the user.',
+			schema: StoreCredentialParams,
+			handler: async ({ jwt }) => {
+				const credential = await this.credo.agent.w3cCredentials.storeCredential({
+					credential: new W3cJwtVerifiableCredential({
+						jwt: Jwt.fromSerializedJwt(jwt),
+					}),
 				});
 
 				return {
