@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup hosts file
         run: |
-          for service in $(grep -E 'container_name:' docker/docker-compose.yml | awk '{print $2}'); do
+          grep -E 'container_name:' docker/docker-compose.yml | awk '{print $2}' | while read -r service; do
             sudo bash -c "echo '127.0.0.1 $service' >> /etc/hosts"
           done
           cat /etc/hosts # Verify the entries were added
