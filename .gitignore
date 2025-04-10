@@ -336,6 +336,13 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# Playwright reports
+/test-results/
+/playwright-report/
+/playwright/.auth/
+/playwright/.cache/
+/.state.json
+
 # Translations
 *.mo
 *.pot

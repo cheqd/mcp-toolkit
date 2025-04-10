@@ -20,7 +20,9 @@
     "start": "node build/index.js",
     "watch": "tsc --watch",
     "clean": "rm -rf ./build",
-    "format": "prettier --config ../../.prettierrc.json --write 'src/**/*.{js,ts,cjs,mjs,json}'"
+    "format": "prettier --config ../../.prettierrc.json --write '{src,tests}/**/*.{js,ts,cjs,mjs,json}'",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "cheqd",
@@ -28,13 +30,12 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-credo": "1.1.0-develop.1",
+    "@cheqd/mcp-toolkit-credo": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.8.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^20.17.29",
-    "dotenv": "^16.4.7",
     "typescript": "^5.8.2"
   },
   "publishConfig": {
