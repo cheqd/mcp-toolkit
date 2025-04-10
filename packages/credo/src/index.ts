@@ -61,7 +61,7 @@ export class CredoToolKit {
 			new CredentialToolHandler(this.credo).listCredentialsTool(),
 			new CredentialToolHandler(this.credo).getCredentialRecordTool(),
 			new CredentialToolHandler(this.credo).listCredentialExchangeRecordsTool(),
-            new CredentialToolHandler(this.credo).importCredentialTool(),
+			new CredentialToolHandler(this.credo).importCredentialTool(),
 			new ProofToolHandler(this.credo).connectionlessProofRequestTool(),
 			new ProofToolHandler(this.credo).connectionProofRequestTool(),
 			new ProofToolHandler(this.credo).getProofRecordTool(),

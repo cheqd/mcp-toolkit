@@ -220,8 +220,8 @@ export const AcceptCredentialOfferParams = {
 };
 
 export const StoreCredentialParams = {
-    jwt: z.string()
-}
+	jwt: z.string(),
+};
 
 // Proof Management Parameters
 export const ConnectionlessProofRequestParams = {

@@ -217,20 +217,19 @@ export class CredentialToolHandler {
 		};
 	}
 
-    /**
+	/**
 	 * Imports a credential provided by the user.
 	 */
 	importCredentialTool(): ToolDefinition<typeof StoreCredentialParams> {
 		return {
 			name: 'import-credential',
-			description:
-				'Import a credential provided by the user.',
+			description: 'Import a jwt credential provided by the user.',
 			schema: StoreCredentialParams,
 			handler: async ({ jwt }) => {
 				const credential = await this.credo.agent.w3cCredentials.storeCredential({
 					credential: new W3cJwtVerifiableCredential({
-                        jwt: Jwt.fromSerializedJwt(jwt) 
-                    }),
+						jwt: Jwt.fromSerializedJwt(jwt),
+					}),
 				});
 
 				return {
