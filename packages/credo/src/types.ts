@@ -219,6 +219,10 @@ export const AcceptCredentialOfferParams = {
 	credentialRecordId: z.string().uuid(),
 };
 
+export const StoreCredentialParams = {
+    jwt: z.string()
+}
+
 // Proof Management Parameters
 export const ConnectionlessProofRequestParams = {
 	requestedAttributes: z
