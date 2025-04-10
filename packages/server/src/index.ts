@@ -90,6 +90,7 @@ class AgentMcpServer extends McpServer {
 				name: normalizeEnvVar(process.env.CREDO_NAME),
 				mnemonic: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
 				endpoint: process.env.CREDO_ENDPOINT,
+                trainEndpoint: process.env.TRAIN_ENDPOINT,
 			});
 			await this.credoToolkit.credo.initializeAgent();
 			const credoTools = await this.credoToolkit.getTools();
