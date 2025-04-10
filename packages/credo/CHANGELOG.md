@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.1.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0...@cheqd/mcp-toolkit-credo@1.1.0-develop.1) (2025-04-10)
+
+
+### Features
+
+* Add Import credential tool ([#16](https://github.com/cheqd/mcp-toolkit/issues/16)) ([58c0d3b](https://github.com/cheqd/mcp-toolkit/commit/58c0d3b2d03e6eaeb1641416e7d72975239c9c78))
+
 # @cheqd/mcp-toolkit-credo 1.0.0 (2025-03-28)
 
 
