@@ -5,20 +5,19 @@ import cookieParser from 'cookie-parser';
 import { StatusCodes } from 'http-status-codes';
 import { config } from 'dotenv';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { AgentMcpServer } from '@cheqd/mcp-toolkit-server';
 
 config();
 
 class App {
 	public express: express.Application;
-	private server: McpServer;
+	private server: AgentMcpServer;
 
 	constructor() {
 		this.express = express();
 		this.middleware();
 		this.routes();
-		const tools = process.env.TOOLS ? process.env.TOOLS.split(',') : [];
+		const tools = ['credo'];
 		this.server = new AgentMcpServer({
 			tools,
 			version: '1.0.0',
@@ -32,15 +31,6 @@ class App {
 	}
 
 	private middleware() {
-		this.express.use(
-			express.json({
-				limit: '50mb',
-				verify: (req: Request & { rawBody: Buffer }, _res, buf) => {
-					req.rawBody = buf;
-				},
-			})
-		);
-		this.express.use(express.urlencoded({ extended: true }));
 		this.express.use(Helmet());
 		this.express.use(
 			cors({
@@ -54,9 +44,6 @@ class App {
 		const app = this.express;
 		const transports: { [sessionId: string]: SSEServerTransport } = {};
 
-		// Top-level routes
-		app.get('/', (_req: Request, res: Response) => res.send('Hello World'));
-
 		app.get('/sse', async (_req: Request, res: Response) => {
 			const transport = new SSEServerTransport('/messages', res);
 			transports[transport.sessionId] = transport;
@@ -68,7 +55,10 @@ class App {
 				delete transports[transport.sessionId];
 			});
 
-			await this.server.connect(transport);
+            console.log('Connecting to server...');
+			await this.server.start(transport).catch((err) => {
+                console.error('Unhandled error in server startup:', err);
+            });
 		});
 
 		app.post('/messages', async (req, res) => {

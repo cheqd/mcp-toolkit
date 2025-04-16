@@ -2,7 +2,7 @@
   "name": "@cheqd/mcp-toolkit-remote-server",
   "version": "1.0.0",
   "packageManager": "pnpm@9.1.3",
-  "description": "MCP Toolkit Server for cheqd",
+  "description": "MCP Toolkit Remote Server for cheqd",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
   "license": "Apache-2.0",
   "main": "./src/index.ts",

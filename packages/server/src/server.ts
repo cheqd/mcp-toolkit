@@ -1,9 +1,9 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
 import * as dotenv from 'dotenv';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
-import { normalizeEnvVar } from './utils.js';
 import { IAgentMCPServerOptions } from './types/index.js';
 
 dotenv.config();
@@ -13,7 +13,7 @@ dotenv.config();
  * for the cheqd agent, including tool setup, signal handling, and proper cleanup.
  */
 export class AgentMcpServer extends McpServer {
-	private transport: StdioServerTransport | null = null;
+	private transport: StdioServerTransport | SSEServerTransport | null = null;
 	private credoToolkit: CredoToolKit | null = null;
 	private options: IAgentMCPServerOptions;
 
@@ -100,10 +100,10 @@ export class AgentMcpServer extends McpServer {
 	/*
 	 * Start the server and connect to the specified transport
 	 */
-	async start(): Promise<void> {
+	async start(transport?: StdioServerTransport | SSEServerTransport): Promise<void> {
 		try {
 			await this.setupTools();
-			this.transport = new StdioServerTransport();
+			this.transport = transport || new StdioServerTransport();
 			await this.connect(this.transport);
 			// Send logging notification to client
 			await this.server.sendLoggingMessage({
