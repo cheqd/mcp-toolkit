@@ -3,7 +3,6 @@ import Helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { StatusCodes } from 'http-status-codes';
-import { CORS_ERROR_MSG } from './types/constants.js';
 import { config } from 'dotenv';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
