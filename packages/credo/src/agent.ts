@@ -12,7 +12,7 @@ import {
 	V2CredentialProtocol,
 	V2ProofProtocol,
 } from '@credo-ts/core';
-import { AskarModule, AskarMultiWalletDatabaseScheme } from '@credo-ts/askar';
+import { AskarModule } from '@credo-ts/askar';
 import { HttpInboundTransport, agentDependencies } from '@credo-ts/node';
 import {
 	CheqdAnonCredsRegistry,
@@ -150,7 +150,6 @@ function getAskarAnonCredsModules(mnemonic: string) {
 		}),
 		askar: new AskarModule({
 			ariesAskar,
-            multiWalletDatabaseScheme: AskarMultiWalletDatabaseScheme.DatabasePerWallet,
 		}),
 	} as const;
 }

@@ -15,7 +15,7 @@ dotenv.config();
 export class AgentMcpServer extends McpServer {
 	private transport: StdioServerTransport | null = null;
 	private credoToolkit: CredoToolKit | null = null;
-    private options: IAgentMCPServerOptions;
+	private options: IAgentMCPServerOptions;
 
 	/**
 	 * Initialize the server with a name and version, and set up capabilities
@@ -35,7 +35,7 @@ export class AgentMcpServer extends McpServer {
 		);
 		// setup signal handling
 		this.setupSignalHandlers();
-        this.options = options;
+		this.options = options;
 	}
 
 	/**

@@ -14,15 +14,15 @@ const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
 
 const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];
 // Create and start the server
-const agentServer = new AgentMcpServer({ 
-    tools,
-    version: packageJson.version,
-    credo: {
-        port: parseInt(process.env.CREDO_PORT || '5000', 10),
-        domain: normalizeEnvVar(process.env.CREDO_DOMAIN),
-        name: normalizeEnvVar(process.env.CREDO_NAME),
-        cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
-    }
+const agentServer = new AgentMcpServer({
+	tools,
+	version: packageJson.version,
+	credo: {
+		port: parseInt(process.env.CREDO_PORT || '5000', 10),
+		domain: normalizeEnvVar(process.env.CREDO_DOMAIN),
+		name: normalizeEnvVar(process.env.CREDO_NAME),
+		cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
+	},
 });
 agentServer.start().catch((err) => {
 	console.error('Unhandled error in server startup:', err);
