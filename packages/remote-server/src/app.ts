@@ -17,7 +17,7 @@ class App {
 		this.express = express();
 		this.middleware();
 		this.routes();
-		const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];;
+		const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];
 		this.server = new AgentMcpServer({
 			tools,
 			version: '1.0.0',
@@ -52,14 +52,14 @@ class App {
 
 			res.on('close', () => {
 				console.log(' SSE session closed:', transport.sessionId);
-                this.server.cleanup();
+				this.server.cleanup();
 				delete transports[transport.sessionId];
 			});
 
-            console.log('Connecting to server...');
+			console.log('Connecting to server...');
 			await this.server.start(transport).catch((err) => {
-                console.error('Unhandled error in server startup:', err);
-            });
+				console.error('Unhandled error in server startup:', err);
+			});
 		});
 
 		app.post('/messages', async (req, res) => {
