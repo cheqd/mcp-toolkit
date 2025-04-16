@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import { StatusCodes } from 'http-status-codes';
 import { config } from 'dotenv';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
-import { AgentMcpServer } from '@cheqd/mcp-toolkit-server';
+import { AgentMcpServer, normalizeEnvVar } from '@cheqd/mcp-toolkit-server';
 
 config();
 
@@ -17,13 +17,13 @@ class App {
 		this.express = express();
 		this.middleware();
 		this.routes();
-		const tools = ['credo'];
+		const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];;
 		this.server = new AgentMcpServer({
 			tools,
 			version: '1.0.0',
 			credo: {
 				port: parseInt(process.env.CREDO_PORT || '3000', 10),
-				domain: process.env.CREDO_DOMAIN,
+				domain: process.env.CREDO_ENDPOINT,
 				name: process.env.CREDO_NAME,
 				cosmosPayerSeed: process.env.CREDO_CHEQD_TESTNET_MNEMONIC,
 			},
@@ -52,6 +52,7 @@ class App {
 
 			res.on('close', () => {
 				console.log(' SSE session closed:', transport.sessionId);
+                this.server.cleanup();
 				delete transports[transport.sessionId];
 			});
 

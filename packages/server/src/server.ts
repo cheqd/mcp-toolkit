@@ -121,25 +121,41 @@ export class AgentMcpServer extends McpServer {
 	 */
 	async cleanup(): Promise<void> {
 		console.error('Shutdown signal received, cleaning up server...');
-		try {
-			if (this.credoToolkit?.credo?.agent) {
-				await this.credoToolkit.credo.agent.shutdown();
-				this.credoToolkit = null;
-			}
-			if (this.transport) {
-				await this.transport.close();
-				this.transport = null;
-			}
-			// Set a timeout to force exit if cleanup hangs
-			const forceExitTimeout = setTimeout(() => {
-				console.error('Forced exit after timeout');
-				process.exit(1);
-			}, 3000);
-			forceExitTimeout.unref();
-			process.exit(0);
-		} catch (err) {
-			console.error('Error during cleanup:', err);
-			process.exit(1);
-		}
+        try {
+            const { credoToolkit, transport } = this;
+    
+            // Shutdown the agent if available
+            if (credoToolkit?.credo?.agent) {
+                await credoToolkit.credo.agent.shutdown();
+            }
+    
+            // Close transport if it's a StdioServerTransport
+            if (transport instanceof StdioServerTransport) {
+                await transport.close();
+                this.transport = null;
+                // Clear references after shutdown
+                this.credoToolkit = null;
+            }
+    
+            // Force exit after 3 seconds if cleanup hangs
+            const forceExitTimeout = setTimeout(() => {
+                console.error('Forced exit after timeout');
+                process.exit(1);
+            }, 3000);
+            forceExitTimeout.unref();
+    
+            // Exit cleanly if transport was of the expected type
+            if (transport instanceof StdioServerTransport) {
+                process.exit(0);
+            }
+        } catch (err) {
+            console.error('Error during cleanup:', err);
+            process.exit(1);
+        }
+    
 	}
 }
+
+// Export other modules
+export * from './utils.js';
+export * from './types/index.js';

@@ -19,7 +19,7 @@ const agentServer = new AgentMcpServer({
 	version: packageJson.version,
 	credo: {
 		port: parseInt(process.env.CREDO_PORT || '3000', 10),
-		domain: normalizeEnvVar(process.env.CREDO_DOMAIN),
+		domain: normalizeEnvVar(process.env.CREDO_ENDPOINT),
 		name: normalizeEnvVar(process.env.CREDO_NAME),
 		cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
 	},
