@@ -49,7 +49,7 @@ COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules
 
 # Base arguments: build-time
 ARG NPM_CONFIG_LOGLEVEL=warn
-ARG PORT=3000
+ARG PORT=5000
 
 # Environment variables: base configuration
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL}
@@ -61,9 +61,10 @@ RUN chown -R node:node /home/node/app
 # Specify default port
 EXPOSE ${PORT}
 
-# Set user and shell
+# Set user, shell and working directory
 USER node
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+WORKDIR /home/node/app/packages/remote-server
 
 # Run the application
 CMD ["npm", "start", "--silent"]
