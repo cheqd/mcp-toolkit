@@ -50,16 +50,18 @@ COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules
 # Base arguments: build-time
 ARG NPM_CONFIG_LOGLEVEL=warn
 ARG PORT=5000
+ARG CREDO_PORT=3000
 
 # Environment variables: base configuration
 ENV NPM_CONFIG_LOGLEVEL=${NPM_CONFIG_LOGLEVEL}
 ENV PORT=${PORT}
+ENV CREDO_PORT=${CREDO_PORT}
 
 # Set ownership permissions
 RUN chown -R node:node /home/node/app
 
 # Specify default port
-EXPOSE ${PORT}
+EXPOSE ${PORT} ${CREDO_PORT}
 
 # Set user, shell and working directory
 USER node
