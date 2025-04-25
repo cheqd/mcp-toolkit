@@ -1,4 +1,4 @@
-name: "Build"
+name: "Build & Test"
 on:
   workflow_call:
 defaults:
@@ -9,7 +9,7 @@ env:
 
 jobs:
   run-build:
-    name: "Build packages"
+    name: "Build packages and run tests"
     runs-on: ubuntu-latest
 
     steps:
