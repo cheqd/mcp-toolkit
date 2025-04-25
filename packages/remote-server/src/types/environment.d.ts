@@ -7,6 +7,7 @@ declare global {
 			CREDO_NAME: string | 'credo-agent';
 			CREDO_ENDPOINT?: string;
 			CORS_ALLOWED_ORIGINS: string;
+			PORT: string | '5000';
 		}
 	}
 }
