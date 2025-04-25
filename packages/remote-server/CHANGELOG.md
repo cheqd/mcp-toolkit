@@ -1,5 +1,20 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-remote-server [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.1...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.2) (2025-04-25)
+
+
+### Bug Fixes
+
+* Fix session management ([#25](https://github.com/cheqd/mcp-toolkit/issues/25)) ([70936ae](https://github.com/cheqd/mcp-toolkit/commit/70936ae77b350c53cbcfad61e4f45230b71fdd59))
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.1.0-develop.3
+
 # @cheqd/mcp-toolkit-remote-server 1.0.0-develop.1 (2025-04-25)
 
 
