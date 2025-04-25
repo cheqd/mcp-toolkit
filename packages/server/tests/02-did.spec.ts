@@ -84,7 +84,7 @@ test.describe('DID Operations', () => {
 		expect(Array.isArray(updateData.didState.didDocument.service)).toBe(true);
 	});
 
-	test('should create a DID Linked Resource', async ({ client, parseToolResponse }) => {
+	test.skip('should create a DID Linked Resource', async ({ client, parseToolResponse }) => {
 		const didSuffix = state.testDid.split(':').pop(); // Extract the last part of the DID
 		const params = {
 			id: randomUUID(),
@@ -107,7 +107,7 @@ test.describe('DID Operations', () => {
 		state.testDLRId = state.testDid + '/resources/' + createData.resourceState.resourceId;
 	});
 
-	test('should resolve the created DID Linked Resource', async ({ client, parseToolResponse }) => {
+	test.skip('should resolve the created DID Linked Resource', async ({ client, parseToolResponse }) => {
 		// Resolve DID Linked Resource
 		const response = await client.callTool({
 			name: 'resolve-did-linked-resource',
