@@ -28,6 +28,11 @@ class App {
 				cosmosPayerSeed: process.env.CREDO_CHEQD_TESTNET_MNEMONIC,
 			},
 		});
+		// Initializing the server with tools
+		this.server.setupTools().catch((err) => {
+			console.error('Error setting up tools:', err);
+			process.exit(1);
+		});
 	}
 
 	private middleware() {
@@ -51,8 +56,7 @@ class App {
 			console.log('SSE session started:', transport.sessionId);
 
 			res.on('close', () => {
-				console.log(' SSE session closed:', transport.sessionId);
-				this.server.cleanup();
+				console.log('SSE session closed:', transport.sessionId);
 				delete transports[transport.sessionId];
 			});
 

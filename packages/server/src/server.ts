@@ -2,11 +2,8 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
-import * as dotenv from 'dotenv';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
 import { IAgentMCPServerOptions } from './types/index.js';
-
-dotenv.config();
 
 /**
  * AgentMcpServer extends McpServer to provide specialized functionality
@@ -102,7 +99,6 @@ export class AgentMcpServer extends McpServer {
 	 */
 	async start(transport?: StdioServerTransport | SSEServerTransport): Promise<void> {
 		try {
-			await this.setupTools();
 			this.transport = transport || new StdioServerTransport();
 			await this.connect(this.transport);
 			// Send logging notification to client
