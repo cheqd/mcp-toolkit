@@ -124,6 +124,21 @@ pnpm install
 pnpm build
 ```
 
+## 📚 Documentation
+
+For comprehensive details on the Cheqd MCP Toolkit, usage examples, and AI agent integrations, please refer to our official documentation:
+
+👉 [MCP Documentation on cheqd.io](https://docs.cheqd.io/product/advanced/ai-agents/mcp)
+
+
+The documentation covers advanced topics including:
+
+- Architecture and design of MCP
+- Integrating MCP with AI agents
+- Real-world use cases and patterns
+- Security and trust model
+- Deployment recommendations
+
 ## 💬 Community
 
 Our [**Discord server**](http://cheqd.link/discord-github) is the primary chat channel for our open-source community, software developers, and node operators.

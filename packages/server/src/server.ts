@@ -2,11 +2,8 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
-import * as dotenv from 'dotenv';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
 import { IAgentMCPServerOptions } from './types/index.js';
-
-dotenv.config();
 
 /**
  * AgentMcpServer extends McpServer to provide specialized functionality
@@ -30,6 +27,8 @@ export class AgentMcpServer extends McpServer {
 				capabilities: {
 					logging: {},
 					tools: {},
+					resources: {},
+					prompts: {},
 				},
 			}
 		);
@@ -54,7 +53,7 @@ export class AgentMcpServer extends McpServer {
 	}
 
 	/*
-	 * Configure and initialize tools for the server based on env variables
+	 * Configure and initialize tools, resources and prompts for the server based on env variables
 	 */
 	async setupTools(): Promise<void> {
 		// Configure tools through env
@@ -63,6 +62,10 @@ export class AgentMcpServer extends McpServer {
 		// Handle Credo Tools
 		if (this.options.tools.includes('credo')) {
 			await this.setupCredoTools(tools);
+			if (this.credoToolkit) {
+				this.credoToolkit.registerResources(this);
+				this.credoToolkit.registerPrompts(this);
+			}
 		}
 
 		// Register all tools with the server
@@ -88,7 +91,7 @@ export class AgentMcpServer extends McpServer {
 				mnemonic: this.options.credo.cosmosPayerSeed,
 				endpoint: this.options.credo.domain,
 			});
-			await this.credoToolkit.credo.initializeAgent();
+			await this.credoToolkit.init();
 			const credoTools = await this.credoToolkit.getTools();
 
 			tools.push(...(credoTools as ToolDefinition<any>[]));
@@ -102,7 +105,6 @@ export class AgentMcpServer extends McpServer {
 	 */
 	async start(transport?: StdioServerTransport | SSEServerTransport): Promise<void> {
 		try {
-			await this.setupTools();
 			this.transport = transport || new StdioServerTransport();
 			await this.connect(this.transport);
 			// Send logging notification to client
@@ -125,8 +127,8 @@ export class AgentMcpServer extends McpServer {
 			const { credoToolkit, transport } = this;
 
 			// Shutdown the agent if available
-			if (credoToolkit?.credo?.agent) {
-				await credoToolkit.credo.agent.shutdown();
+			if (credoToolkit) {
+				await credoToolkit.shutdown();
 			}
 
 			// Close transport if it's a StdioServerTransport

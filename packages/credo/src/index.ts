@@ -7,6 +7,8 @@ import {
 	ProofToolHandler,
 } from './tools/index.js';
 import { ICredoToolKitOptions } from './types.js';
+import { ResourceHandler } from './resource.js';
+import { PromptHandler } from './prompt.js';
 
 /**
  * CredoToolKit provides a comprehensive set of tools for interacting with the Credo agent.
@@ -14,6 +16,8 @@ import { ICredoToolKitOptions } from './types.js';
  */
 export class CredoToolKit {
 	credo: CredoAgent;
+	resourceHandler: ResourceHandler;
+	promptHandler: PromptHandler;
 
 	/**
 	 * Creates a new CredoToolKit instance with the specified configuration.
@@ -25,6 +29,24 @@ export class CredoToolKit {
 	 */
 	constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
 		this.credo = new CredoAgent({ port, name, mnemonic, endpoint });
+		this.resourceHandler = new ResourceHandler(this.credo);
+		this.promptHandler = new PromptHandler(this.credo);
+	}
+
+	/// Initializes the Credo agent and prepares it for use.
+	/// This method must be called before using any tools or resources.
+	/// It sets up the agent's internal state and ensures that all necessary components are ready.
+	async init() {
+		await this.credo.initializeAgent();
+	}
+
+	/// Shuts down the Credo agent and cleans up any resources.
+	/// This method should be called when the agent is no longer needed.
+	async shutdown() {
+		if (this.credo.agent) {
+			await this.credo.agent.wallet.close();
+			await this.credo.agent.shutdown();
+		}
 	}
 
 	/**
@@ -68,5 +90,19 @@ export class CredoToolKit {
 			new ProofToolHandler(this.credo).listProofsTool(),
 			new ProofToolHandler(this.credo).acceptProofRequestTool(),
 		];
+	}
+	/**
+	 * Registers all resources with the MCP server
+	 * @param server The MCP server instance
+	 */
+	registerResources(server: any) {
+		this.resourceHandler.registerResources(server);
+	}
+	/**
+	 * Registers all prompts with the MCP server
+	 * @param server The MCP server instance
+	 */
+	registerPrompts(server: any) {
+		this.promptHandler.registerPrompts(server);
 	}
 }
