@@ -30,11 +30,11 @@ async function initializeServer() {
 	try {
 		// Wait for tools setup to complete
 		await agentServer.setupTools();
-		console.log('Tools setup completed.');
+		console.error('Tools setup completed.');
 
 		// Now start the server after setup is complete
 		await agentServer.start();
-		console.log('Server started successfully.');
+		console.error('Server started successfully.');
 	} catch (err) {
 		// Handle errors during setup or startup
 		console.error('Error during initialization or startup:', err);

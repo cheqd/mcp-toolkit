@@ -61,9 +61,11 @@ class App {
 			});
 
 			console.log('Connecting to server...');
-			await this.server.start(transport).catch((err) => {
-				console.error('Unhandled error in server startup:', err);
-			});
+			if (this.server) {
+				await this.server.start(transport).catch((err) => {
+					console.error('Unhandled error in server startup:', err);
+				});
+			}
 		});
 
 		app.post('/messages', async (req, res) => {
