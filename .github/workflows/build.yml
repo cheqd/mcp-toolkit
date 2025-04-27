@@ -1,4 +1,4 @@
-name: "Build"
+name: "Build & Test"
 on:
   workflow_call:
 defaults:
@@ -9,7 +9,7 @@ env:
 
 jobs:
   run-build:
-    name: "Build packages"
+    name: "Build packages and run tests"
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,29 @@ jobs:
 
       - name: "Run pnpm build"
         run: pnpm build
+
+      - name: Setup hosts file
+        run: |
+          grep -E 'container_name:' docker/docker-compose.yml | awk '{print $2}' | while read -r service; do
+            sudo bash -c "echo '127.0.0.1 $service' >> /etc/hosts"
+          done
+          cat /etc/hosts # Verify the entries were added
+
+      - name: "Run pnpm test"
+        env:
+          CREDO_CHEQD_TESTNET_MNEMONIC: ${{ secrets.TESTNET_MNEMONIC }}
+        run: pnpm test
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: | 
+            playwright-report/
+            test-results/
+          retention-days: 7
+          if-no-files-found: ignore
 
   build-docker:
     name: "Build Docker image"
@@ -49,7 +72,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.IMAGE_NAME }}
+            registry.digitalocean.com/${{ env.IMAGE_NAME }}
             ghcr.io/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=branch

@@ -2,9 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./build",
-    "rootDir": "./src",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "rootDir": "./src"
   },
   "include": ["src/**/*.ts"]
 }

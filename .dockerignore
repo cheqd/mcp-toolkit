@@ -4,7 +4,10 @@
 **/node_modules
 **/build
 !packages/*/build
-**/docker
+/test-results/
+/playwright-report/
+/coverage
+/build
 
 # Skip unnecessary files
 .multi-release.json

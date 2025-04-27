@@ -68,6 +68,8 @@ Use the `env.example` file and update the appropriate variables.
         "--rm",
         "-p", 
         "3000:3000",
+        "--name",
+        "faber",
         "-T",
         "mcp-server"
       ]
@@ -121,6 +123,21 @@ pnpm install
 ```bash
 pnpm build
 ```
+
+## 📚 Documentation
+
+For comprehensive details on the Cheqd MCP Toolkit, usage examples, and AI agent integrations, please refer to our official documentation:
+
+👉 [MCP Documentation on cheqd.io](https://docs.cheqd.io/product/advanced/ai-agents/mcp)
+
+
+The documentation covers advanced topics including:
+
+- Architecture and design of MCP
+- Integrating MCP with AI agents
+- Real-world use cases and patterns
+- Security and trust model
+- Deployment recommendations
 
 ## 💬 Community
 

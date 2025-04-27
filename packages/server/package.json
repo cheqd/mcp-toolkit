@@ -1,13 +1,13 @@
 {
   "name": "@cheqd/mcp-toolkit-server",
-  "version": "1.0.0",
+  "version": "1.1.0-develop.4",
   "packageManager": "pnpm@9.1.3",
   "description": "MCP Toolkit Server for cheqd",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
   "license": "Apache-2.0",
-  "main": "./build/index.js",
-  "module": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/server.js",
+  "module": "./build/server.js",
+  "types": "./build/server.d.ts",
   "type": "module",
   "bin": {
     "cheqd-mcp-toolkit-server": "build/index.js"
@@ -20,7 +20,9 @@
     "start": "node build/index.js",
     "watch": "tsc --watch",
     "clean": "rm -rf ./build",
-    "format": "prettier --config ../../.prettierrc.json --write 'src/**/*.{js,ts,cjs,mjs,json}'"
+    "format": "prettier --config ../../.prettierrc.json --write '{src,tests}/**/*.{js,ts,cjs,mjs,json}'",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "cheqd",
@@ -29,12 +31,11 @@
   ],
   "dependencies": {
     "@cheqd/mcp-toolkit-credo": "workspace:*",
-    "@modelcontextprotocol/sdk": "^1.8.0",
+    "@modelcontextprotocol/sdk": "^1.9.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^20.17.29",
-    "dotenv": "^16.4.7",
     "typescript": "^5.8.2"
   },
   "publishConfig": {

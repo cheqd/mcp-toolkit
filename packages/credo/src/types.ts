@@ -20,7 +20,7 @@ export interface ICredoToolKitOptions {
 	name: string;
 	mnemonic: string;
 	endpoint?: string;
-    trainEndpoint?: string;
+	trainEndpoint?: string;
 }
 
 /**
@@ -279,12 +279,6 @@ export const ConnectionProofRequestParams = {
 	...ConnectionlessProofRequestParams,
 	connectionId: z.string().uuid(),
 };
-
-export const GetProofExchangeRecordParams = {
-	proofRecordId: z.string().uuid(),
-};
-
-export const ProofRequestParams = {};
 
 export const ListProofParams = {};
 

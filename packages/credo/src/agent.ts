@@ -63,20 +63,37 @@ export class CredoAgent {
 	 * Initialize the agent with random wait and port availability check
 	 */
 	public async initializeAgent() {
-		// TODO: Remove this block when remote execution is supported
-		// START: Remove block
-		// Random wait between 0-7 seconds to avoid port conflicts when multiple instances start simultaneously
-		// Current limitation with Claude Desktop: Always two instances start simultaneously
-		const waitTime = Math.floor(Math.random() * 7000);
-		console.error(`Waiting ${waitTime}ms before initializing agent...`);
-		await new Promise((resolve) => setTimeout(resolve, waitTime));
-		// Check if port is available
-		const isPortAvailable = await this.checkPortAvailability(this.port);
-		if (!isPortAvailable) {
-			console.error(`Port ${this.port} is already in use. This instance will exit gracefully.`);
-			return; // Don't exit immediately to allow proper cleanup in the server class
+		let currentPort = this.port;
+		let portAvailable = false;
+		let retryCount = 0;
+		const maxPortRetries = 10;
+		// Try to find an available port, starting with the configured port
+		while (!portAvailable && retryCount < maxPortRetries) {
+			portAvailable = await this.checkPortAvailability(currentPort);
+
+			if (portAvailable) {
+				// Found an available port
+				if (currentPort !== this.port) {
+					console.error(`Port ${this.port} was not available. Using port ${currentPort} instead.`);
+					this.port = currentPort;
+					// Update the domain if it contains the port number
+					if (this.domain.includes(`:${this.port}`)) {
+						this.domain = this.domain.replace(/:(\d+)/, `:${currentPort}`);
+					}
+				}
+				break;
+			}
+
+			// Try the next port
+			currentPort++;
+			retryCount++;
+			console.error(`Port ${currentPort - 1} is already in use. Trying port ${currentPort}...`);
 		}
-		// END: Remove block
+		if (!portAvailable) {
+			throw new Error(
+				`Could not find an available port after ${maxPortRetries} attempts, starting from port ${this.port}`
+			);
+		}
 
 		try {
 			const transport = new HttpInboundTransport({ port: this.port });
