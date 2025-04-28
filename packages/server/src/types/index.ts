@@ -6,6 +6,6 @@ export interface IAgentMCPServerOptions {
 		name: string;
 		domain?: string;
 		cosmosPayerSeed?: string;
-        trainEndpoint?: string;
+		trainEndpoint?: string;
 	};
 }

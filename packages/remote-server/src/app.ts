@@ -81,7 +81,9 @@ class App {
 		});
 
 		// 404 for all other requests
-		app.all('*', (_req: Request, res: Response) => res.status(StatusCodes.BAD_REQUEST).send('Bad request'));
+		app.all('*', (_req: express.Request, res: express.Response) => {
+			res.status(StatusCodes.BAD_REQUEST).send('Bad request');
+		});
 	}
 }
 
