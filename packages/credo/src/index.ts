@@ -5,7 +5,7 @@ import {
 	ConnectionToolHandler,
 	CredentialToolHandler,
 	ProofToolHandler,
-	TrainAgent,
+	TrustRegistryAgent,
 } from './tools/index.js';
 import { ICredoToolKitOptions } from './types.js';
 import { ResourceHandler } from './resource.js';
@@ -92,7 +92,7 @@ export class CredoToolKit {
 			new ProofToolHandler(this.credo).getProofRecordTool(),
 			new ProofToolHandler(this.credo).listProofsTool(),
 			new ProofToolHandler(this.credo).acceptProofRequestTool(),
-			...[this.trainUrl && new TrainAgent({ trainUrl: this.trainUrl }).resolveAccreditation()],
+			...[this.trainUrl && new TrustRegistryAgent({ trainUrl: this.trainUrl }).verifyTrustRegistry()],
 		];
 	}
 	/**

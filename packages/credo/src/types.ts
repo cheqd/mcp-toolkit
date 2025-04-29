@@ -294,9 +294,7 @@ export const ResolveAccreditationParams = {
 		.describe(
 			'Array of credential types that define the nature and purpose of the accreditation (e.g., ["VerifiableCredential", "AccreditationCredential"])'
 		),
-	termsofuse: z
-		.string()
-		.describe('URI or reference to the legal terms and conditions governing the use of this accreditation'),
+	termsofuse: z.string().describe('Reference to the terms of use type governing the use of this accreditation'),
 	parentAccreditation: z
 		.string()
 		.describe('Reference to a higher-level accreditation that this credential inherits from or is authorized by'),
