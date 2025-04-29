@@ -20,7 +20,6 @@ class App {
 		const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];
 		this.server = new AgentMcpServer({
 			tools,
-			version: '1.0.0',
 			credo: {
 				port: parseInt(process.env.CREDO_PORT || '3000', 10),
 				domain: process.env.CREDO_ENDPOINT,
@@ -66,6 +65,7 @@ class App {
 				await this.server.start(transport).catch((err) => {
 					console.error('Unhandled error in server startup:', err);
 				});
+				console.log('Connected.');
 			}
 		});
 
@@ -80,9 +80,35 @@ class App {
 			}
 		});
 
-		// 404 for all other requests
-		app.all('*', (_req: express.Request, res: express.Response) => {
-			res.status(StatusCodes.BAD_REQUEST).send('Bad request');
+		app.get('/status', async (_req: Request, res: Response) => {
+			// Basic server information
+			const status = {
+				uptime: process.uptime(),
+				timestamp: new Date().toISOString(),
+				activeSessions: Object.keys(transports).length,
+				healthy: true,
+			};
+			if (this.server) {
+				// If the server has a getStatus method, use it
+				if (typeof this.server.getStatus === 'function') {
+					const serverStatus = this.server.getStatus();
+					status['mcpServer'] = serverStatus;
+				} else {
+					const agentStatus = {
+						tools: normalizeEnvVar(process.env.TOOLS).split(','),
+						agent: {
+							isConnected: Boolean(this.server),
+						},
+					};
+					status['mcpServer'] = agentStatus;
+				}
+			}
+
+			res.status(StatusCodes.OK).json(status);
+		});
+		// Handle 'Route not found' for all other requests
+		app.use((_req, res) => {
+			res.status(StatusCodes.NOT_FOUND).send('Route not found.');
 		});
 	}
 }

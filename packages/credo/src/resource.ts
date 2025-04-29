@@ -351,40 +351,6 @@ export class ResourceHandler {
 				}
 			}
 		);
-		// Register a resource to report the status of Credo Agent
-		server.resource('credo-agent-status', 'status://agent/credo', async (uri) => {
-			try {
-				const status = {
-					isInitialized: this.credo.agent.isInitialized,
-					walletId: this.credo.config.walletConfig?.id,
-					domain: this.credo.domain,
-					didCount: (await this.credo.agent.dids.getCreatedDids()).length,
-					credentialCount: (await this.credo.agent.credentials.getAll()).length,
-					connectionCount: (await this.credo.agent.connections.getAll()).length,
-					uptime: process.uptime(),
-				};
-
-				return {
-					contents: [
-						{
-							uri: uri.href,
-							text: JSON.stringify(status, null, 2),
-							mimeType: 'application/json',
-						},
-					],
-				};
-			} catch (error) {
-				return {
-					contents: [
-						{
-							uri: uri.href,
-							text: `Error fetching agent status: ${error instanceof Error ? error.message : String(error)}`,
-							mimeType: 'text/plain',
-						},
-					],
-				};
-			}
-		});
 		// Register a resource to get statistics of the connections
 		server.resource('connection-stats', 'connections://stats', async (uri) => {
 			try {

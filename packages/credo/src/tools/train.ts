@@ -31,21 +31,38 @@ export class TrainAgent {
 			description: 'Resolve an accreditation of a DID, This will determine if the DID is trustable or not',
 			schema: ResolveAccreditationParams,
 			handler: async (args) => {
-				const result = await fetch(`${this.trainUrl}/resolve-cheqd`, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(args),
-				});
-				return {
-					content: [
-						{
-							type: 'text',
-							text: JSON.stringify(result),
+				try {
+					const response = await fetch(`${this.trainUrl}/resolve-cheqd`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
 						},
-					],
-				};
+						body: JSON.stringify(args),
+					});
+					if (!response.ok) {
+						throw new Error(`API request failed with status: ${response.status}`);
+					}
+					const data = await response.json();
+					return {
+						content: [
+							{
+								type: 'text',
+								text: JSON.stringify(data, null, 2),
+							},
+						],
+					};
+				} catch (error) {
+					console.error('Error resolving accreditation:', error);
+					return {
+						content: [
+							{
+								type: 'text',
+								text: `Error resolving accreditation: ${error instanceof Error ? error.message : String(error)}`,
+							},
+						],
+						isError: true,
+					};
+				}
 			},
 		};
 	}
