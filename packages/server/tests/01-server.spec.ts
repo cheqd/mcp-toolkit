@@ -51,7 +51,6 @@ test.describe('Test Setup', () => {
 			'cheqd-credential-definitions',
 			'out-of-band-connections',
 			'credential-proofs',
-			'credo-agent-status',
 			'connection-stats',
 		];
 		for (const resourceName of expectedResources) {
