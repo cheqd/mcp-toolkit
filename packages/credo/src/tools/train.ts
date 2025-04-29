@@ -100,7 +100,7 @@ export class TrustRegistryAgent {
 }
 // Helper function to process trust status
 function processTrustStatus(data) {
-	// This is a placeholder - implement actual trust status logic based on your data structure
+	// This is a placeholder - update actual trust status logic based on TRAIN data structure as we progress
 	if (!data) return 'Invalid trust data';
 
 	if (data.VerificationStatus === true) {
