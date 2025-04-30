@@ -1,5 +1,15 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-remote-server [1.0.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.3...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.4) (2025-04-30)
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.2.0-develop.1
+
 # @cheqd/mcp-toolkit-remote-server [1.0.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.2...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.3) (2025-04-26)
 
 
