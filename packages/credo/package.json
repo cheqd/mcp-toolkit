@@ -1,6 +1,6 @@
 {
   "name": "@cheqd/mcp-toolkit-credo",
-  "version": "1.2.0-develop.1",
+  "version": "1.2.0",
   "packageManager": "pnpm@9.1.3",
   "description": "MCP Toolkit for credo-ts",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",

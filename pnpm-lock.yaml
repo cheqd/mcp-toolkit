@@ -107,8 +107,8 @@ importers:
   packages/remote-server:
     dependencies:
       '@cheqd/mcp-toolkit-server':
-        specifier: 1.2.0-develop.1
-        version: 1.2.0-develop.1(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: 1.2.0
+        version: 1.2.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
       '@modelcontextprotocol/sdk':
         specifier: ^1.9.0
         version: 1.10.2
@@ -156,8 +156,8 @@ importers:
   packages/server:
     dependencies:
       '@cheqd/mcp-toolkit-credo':
-        specifier: 1.2.0-develop.1
-        version: 1.2.0-develop.1(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: 1.2.0
+        version: 1.2.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
       '@modelcontextprotocol/sdk':
         specifier: ^1.9.0
         version: 1.10.2
@@ -923,12 +923,12 @@ packages:
   '@bufbuild/protobuf@2.2.5':
     resolution: {integrity: sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==}
 
-  '@cheqd/mcp-toolkit-credo@1.2.0-develop.1':
-    resolution: {integrity: sha512-7bQmfNfV+ErdheuhnZjSFNqP2GYexOUvvyvBwotCWvZSISh/0z7EDi8+g1BXh6UY9mp8/5fCXQI1NGGHQJg7pQ==}
+  '@cheqd/mcp-toolkit-credo@1.2.0':
+    resolution: {integrity: sha512-ke5gdRYBMFK4Y3O929z2E6v2IWdDus3L5D5to4E84uLVrjA+ftF+MFL4uapKnVJxMiOAkykykq2YI13jSg7NFw==}
     engines: {node: '>=20.0.0'}
 
-  '@cheqd/mcp-toolkit-server@1.2.0-develop.1':
-    resolution: {integrity: sha512-2z9KtLl5NnXG7buod0Y2FTNYcbaWJusrjyDy3x+LZ/8J1oxLHKc2N2tB6dZvTSPyhseAx9+V3t7iSldrDb8gAA==}
+  '@cheqd/mcp-toolkit-server@1.2.0':
+    resolution: {integrity: sha512-mVkdJVDc04l1XaI3L5XVB9BnhCPihpqvNyblVPbAcT7don6+t/aTF6Mlw7iMvZMaxCIyIAU/48RfYZjvf9IOyA==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -8092,7 +8092,7 @@ snapshots:
 
   '@bufbuild/protobuf@2.2.5': {}
 
-  '@cheqd/mcp-toolkit-credo@1.2.0-develop.1(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@cheqd/mcp-toolkit-credo@1.2.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
     dependencies:
       '@credo-ts/anoncreds': 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
       '@credo-ts/askar': 0.5.13(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
@@ -8119,9 +8119,9 @@ snapshots:
       - utf-8-validate
       - web-streams-polyfill
 
-  '@cheqd/mcp-toolkit-server@1.2.0-develop.1(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@cheqd/mcp-toolkit-server@1.2.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
     dependencies:
-      '@cheqd/mcp-toolkit-credo': 1.2.0-develop.1(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+      '@cheqd/mcp-toolkit-credo': 1.2.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
       '@modelcontextprotocol/sdk': 1.10.2
       zod: 3.24.3
     transitivePeerDependencies:
