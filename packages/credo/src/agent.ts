@@ -133,7 +133,6 @@ function getAskarAnonCredsModules(mnemonic: string) {
 		}),
 		anoncreds: new AnonCredsModule({
 			registries: [new CheqdAnonCredsRegistry()],
-			// @ts-expect-error minor type implementation detail
 			anoncreds,
 		}),
 		cheqd: new CheqdModule(
