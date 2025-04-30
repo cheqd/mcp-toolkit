@@ -42,8 +42,14 @@ jobs:
     name: "Release Staging Docker image"
     runs-on: ubuntu-latest
     if: ${{ github.ref_name == 'develop' }}
+    environment: 
+      name: staging
+      url: https://remote-mcp-staging.cheqd.io
     env: 
       IMAGE_NAME: ${{ github.repository }}
+      FIREWALL_ID: ${{ secrets.FIREWALL_ID }}
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     
     steps:
       - name: Login to GitHub Container Registry
@@ -63,3 +69,24 @@ jobs:
 
       - name: Push image to GitHub Container Registry
         run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
+      
+      - name: Open firewall for deployment execution
+        run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
+
+      - name: SSH into server and pull new image
+        run: |
+          ssh -i ~/.ssh/id_rsa root@${{ env.SERVER_IP }} <<EOF
+          cd mcp-toolkit/
+          docker-compose pull
+          docker-compose restart
+          EOF
+
+      - name: Close firewall after deployment execution
+        run: doctl compute firewall remove-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
