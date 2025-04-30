@@ -17,7 +17,7 @@ import { PromptHandler } from './prompt.js';
  */
 export class CredoToolKit {
 	credo: CredoAgent;
-	trainUrl?: string;
+	trainEndpoint?: string;
 	resourceHandler: ResourceHandler;
 	promptHandler: PromptHandler;
 
@@ -31,7 +31,7 @@ export class CredoToolKit {
 	 */
 	constructor({ port, name, mnemonic, endpoint, trainEndpoint }: ICredoToolKitOptions) {
 		this.credo = new CredoAgent({ port, name, mnemonic, endpoint });
-		this.trainUrl = trainEndpoint || 'https://dev-train.trust-scheme.de/tcr/v1';
+		this.trainEndpoint = trainEndpoint || 'https://dev-train.trust-scheme.de/tcr/v1';
 		this.resourceHandler = new ResourceHandler(this.credo);
 		this.promptHandler = new PromptHandler(this.credo);
 	}
@@ -92,7 +92,10 @@ export class CredoToolKit {
 			new ProofToolHandler(this.credo).getProofRecordTool(),
 			new ProofToolHandler(this.credo).listProofsTool(),
 			new ProofToolHandler(this.credo).acceptProofRequestTool(),
-			...[this.trainUrl && new TrustRegistryAgent({ trainUrl: this.trainUrl }).verifyTrustRegistry()],
+			...[
+				this.trainEndpoint &&
+					new TrustRegistryAgent({ trainEndpoint: this.trainEndpoint }).verifyTrustRegistry(),
+			],
 		];
 	}
 	/**

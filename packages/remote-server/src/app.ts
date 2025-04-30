@@ -22,10 +22,10 @@ class App {
 			tools,
 			credo: {
 				port: parseInt(process.env.CREDO_PORT || '3000', 10),
-				domain: process.env.CREDO_ENDPOINT,
-				name: process.env.CREDO_NAME,
-				cosmosPayerSeed: process.env.CREDO_CHEQD_TESTNET_MNEMONIC,
-				trainEndpoint: process.env.TRAIN_ENDPOINT,
+				domain: normalizeEnvVar(process.env.CREDO_ENDPOINT),
+				name: normalizeEnvVar(process.env.CREDO_NAME),
+				cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
+				trainEndpoint: normalizeEnvVar(process.env.TRAIN_ENDPOINT),
 			},
 		});
 		// Initializing the server with tools

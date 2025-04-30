@@ -15,7 +15,7 @@ async function initializeServer() {
 			domain: normalizeEnvVar(process.env.CREDO_ENDPOINT),
 			name: normalizeEnvVar(process.env.CREDO_NAME),
 			cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
-			trainEndpoint: process.env.TRAIN_ENDPOINT,
+			trainEndpoint: normalizeEnvVar(process.env.TRAIN_ENDPOINT),
 		},
 	});
 

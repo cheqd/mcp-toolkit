@@ -6,16 +6,16 @@ import { ResolveAccreditationParams, ToolDefinition } from '../types.js';
  * of decentralized identifiers (DIDs) in the network.
  */
 export class TrustRegistryAgent {
-	trainUrl: string;
+	trainEndpoint: string;
 
 	/**
 	 * Creates a new instance of the TrustRegistryAgent.
 	 *
 	 * @param {Object} config - Configuration object for the TrustRegistryAgent
-	 * @param {string} config.trainUrl - The URL of the training/verification service endpoint
+	 * @param {string} config.trainEndpoint - The URL of the training/verification service endpoint
 	 */
-	constructor({ trainUrl }) {
-		this.trainUrl = trainUrl;
+	constructor({ trainEndpoint }) {
+		this.trainEndpoint = trainEndpoint;
 	}
 
 	/**
@@ -36,7 +36,7 @@ export class TrustRegistryAgent {
 					// Set a timeout for the fetch request
 					const controller = new AbortController();
 					const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-					const response = await fetch(`${this.trainUrl}/resolve-cheqd`, {
+					const response = await fetch(`${this.trainEndpoint}/resolve-cheqd`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export class TrustRegistryAgent {
 					if (error instanceof Error && error.name === 'AbortError') {
 						errorMessage = 'Trust registry validation request timed out';
 					} else if (error instanceof TypeError && error.message.includes('fetch')) {
-						errorMessage = `Cannot connect to trust registry service at ${this.trainUrl}`;
+						errorMessage = `Cannot connect to trust registry service at ${this.trainEndpoint}`;
 					} else if (error instanceof Error) {
 						errorMessage = error.message;
 					}

@@ -86,13 +86,16 @@ The `@cheqd/mcp-toolkit-credo` package is one of the toolkits that integrate wit
 - Schema and credential definition management
 - DID-based authentication
 
-#### 🌍 Environment Variables
+### 🌍 Environment Variables
 
 ```bash
-TOOLS="credo"
-CREDO_PORT="3000"
-CREDO_NAME="faber"
-CREDO_CHEQD_TESTNET_MNEMONIC="your-mnemonic-phrase"
+TOOLS="credo"       # Comma separated list of Tools, as of now only 'credo'
+CREDO_PORT="3000"   # Port on which the Credo agent will run
+CREDO_NAME="faber"  # Name of the Credo Agent
+CREDO_ENDPOINT="http://faber:3000"    # Endpoint which Credo Agent is accessible externally
+CREDO_CHEQD_TESTNET_MNEMONIC="your-mnemonic-phrase"   # Your Testnet mnemonic phrase
+TRAIN_ENDPOINT="https://dev-train.trust-scheme.de/tcr/v1/"    # The TRAIN endpoint for verification of trust registry 
+PORT="5000"   # The Port where the Remote MCP Server will run
 ```
 
 ## Development Setup
