@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.2.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.1.0...@cheqd/mcp-toolkit-credo@1.2.0-develop.1) (2025-04-30)
+
+
+### Features
+
+* add resources and prompts [DEV-4862] ([#20](https://github.com/cheqd/mcp-toolkit/issues/20)) ([40e3d0e](https://github.com/cheqd/mcp-toolkit/commit/40e3d0e95b838470aa0b3376ee194daa53f80946))
+
 # @cheqd/mcp-toolkit-credo [1.1.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.1.0-develop.2...@cheqd/mcp-toolkit-credo@1.1.0-develop.3) (2025-04-26)
 
 # @cheqd/mcp-toolkit-credo [1.1.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.0.0...@cheqd/mcp-toolkit-credo@1.1.0) (2025-04-30)
