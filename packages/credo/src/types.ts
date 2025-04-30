@@ -20,6 +20,7 @@ export interface ICredoToolKitOptions {
 	name: string;
 	mnemonic: string;
 	endpoint?: string;
+	trainEndpoint?: string;
 }
 
 /**
@@ -283,4 +284,28 @@ export const ListProofParams = {};
 
 export const GetProofRecordParams = {
 	proofRecordId: z.string().uuid(),
+};
+
+// trust registry
+export const ResolveAccreditationParams = {
+	issuer: z.string().describe('The DID or identifier of the entity that issued the accreditation credential'),
+	type: z
+		.array(z.string())
+		.describe(
+			'Array of credential types that define the nature and purpose of the accreditation (e.g., ["VerifiableCredential", "AccreditationCredential"])'
+		),
+	termsofuse: z.string().describe('Reference to the terms of use type governing the use of this accreditation'),
+	parentAccreditation: z
+		.string()
+		.describe('Reference to a higher-level accreditation that this credential inherits from or is authorized by'),
+	credentialSchema: z
+		.string()
+		.describe(
+			'URI pointing to the JSON Schema that defines the structure and validation rules for this accreditation credential'
+		),
+	DNSTrustFrameworkPointers: z
+		.array(z.string())
+		.describe(
+			'Array of DNS-based trust framework identifiers that establish the trust context and verification rules for this accreditation'
+		),
 };

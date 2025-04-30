@@ -6,6 +6,7 @@ declare global {
 			CREDO_PORT: string | '3000';
 			CREDO_NAME: string | 'credo-agent';
 			CREDO_ENDPOINT?: string;
+			TRAIN_ENDPOINT?: string | 'https://dev-train.trust-scheme.de/tcr/v1/';
 		}
 	}
 }

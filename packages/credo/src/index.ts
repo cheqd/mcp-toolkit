@@ -5,6 +5,7 @@ import {
 	ConnectionToolHandler,
 	CredentialToolHandler,
 	ProofToolHandler,
+	TrustRegistryAgent,
 } from './tools/index.js';
 import { ICredoToolKitOptions } from './types.js';
 import { ResourceHandler } from './resource.js';
@@ -16,6 +17,7 @@ import { PromptHandler } from './prompt.js';
  */
 export class CredoToolKit {
 	credo: CredoAgent;
+	trainEndpoint?: string;
 	resourceHandler: ResourceHandler;
 	promptHandler: PromptHandler;
 
@@ -27,8 +29,9 @@ export class CredoToolKit {
 	 * @param {string} options.mnemonic - Mnemonic phrase for wallet initialization
 	 * @param {string} options.endpoint - Endpoint URL for the agent
 	 */
-	constructor({ port, name, mnemonic, endpoint }: ICredoToolKitOptions) {
+	constructor({ port, name, mnemonic, endpoint, trainEndpoint }: ICredoToolKitOptions) {
 		this.credo = new CredoAgent({ port, name, mnemonic, endpoint });
+		this.trainEndpoint = trainEndpoint || 'https://dev-train.trust-scheme.de/tcr/v1';
 		this.resourceHandler = new ResourceHandler(this.credo);
 		this.promptHandler = new PromptHandler(this.credo);
 	}
@@ -89,6 +92,10 @@ export class CredoToolKit {
 			new ProofToolHandler(this.credo).getProofRecordTool(),
 			new ProofToolHandler(this.credo).listProofsTool(),
 			new ProofToolHandler(this.credo).acceptProofRequestTool(),
+			...[
+				this.trainEndpoint &&
+					new TrustRegistryAgent({ trainEndpoint: this.trainEndpoint }).verifyTrustRegistry(),
+			],
 		];
 	}
 	/**

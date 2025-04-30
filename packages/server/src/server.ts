@@ -4,7 +4,14 @@ import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
 import { IAgentMCPServerOptions } from './types/index.js';
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+// Get the module's package.json
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageJsonPath = path.join(__dirname, '../package.json');
+const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
 /**
  * AgentMcpServer extends McpServer to provide specialized functionality
  * for the cheqd agent, including tool setup, signal handling, and proper cleanup.
@@ -21,7 +28,7 @@ export class AgentMcpServer extends McpServer {
 		super(
 			{
 				name: 'cheqd-mcp-toolkit-server',
-				version: options.version,
+				version: packageJson.version,
 			},
 			{
 				capabilities: {
@@ -50,6 +57,57 @@ export class AgentMcpServer extends McpServer {
 		process.stdin.on('close', this.cleanup.bind(this));
 		process.stdout.on('close', this.cleanup.bind(this));
 		process.stdin.on('error', () => this.cleanup());
+	}
+
+	/**
+	 * Get the current status of the MCP server and its tools
+	 * @returns A status object with information about the server and agent
+	 */
+	public getStatus(): Record<string, any> {
+		try {
+			// Basic Agent server information
+			const status: Record<string, any> = {
+				name: 'cheqd-mcp-toolkit-server',
+				version: packageJson.version,
+				uptime: process.uptime(),
+				timestamp: new Date().toISOString(),
+				tools: this.options.tools,
+				healthy: true,
+			};
+
+			// Add Credo agent status
+			if (this.credoToolkit?.credo) {
+				const credo = this.credoToolkit.credo;
+				status.credoAgent = {
+					name: credo.name,
+					isInitialized: credo.agent?.isInitialized || false,
+					domain: credo.domain,
+					port: credo.port,
+				};
+
+				// Add connection information if the agent is initialized
+				try {
+					if (credo.agent?.isInitialized) {
+						status.credoAgent.walletId = credo.config.walletConfig?.id;
+
+						// Add credo agent stats
+						status.credoAgent.stats = {
+							uptime: process.uptime(),
+							services: this.transport ? 'connected' : 'disconnected',
+						};
+					}
+				} catch (error) {
+					status.credoAgent.error = `Error getting detailed agent stats: ${error instanceof Error ? error.message : String(error)}`;
+				}
+			}
+
+			return status;
+		} catch (error) {
+			return {
+				healthy: false,
+				error: `Failed to retrieve server status: ${error instanceof Error ? error.message : String(error)}`,
+			};
+		}
 	}
 
 	/*
