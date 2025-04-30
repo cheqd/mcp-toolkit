@@ -27,7 +27,7 @@
     "@modelcontextprotocol/sdk": "^1.10.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "helmet": "^8.1.0",
     "http-status-codes": "^2.3.0",
     "zod": "^3.24.3"
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
+    "@types/express": "^5.0.1",
     "@types/helmet": "^4.0.0",
     "@types/node": "^20.17.32",
     "dotenv": "^16.5.0",
