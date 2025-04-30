@@ -75,13 +75,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         id: buildx
@@ -130,6 +123,13 @@ jobs:
       
       - name: Push image to GitHub Container Registry
         run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
