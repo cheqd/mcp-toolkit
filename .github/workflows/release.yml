@@ -126,10 +126,11 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
+          # Test each command separately
+          mkdir -p ~/.ssh || echo "mkdir failed"
+          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa || echo "echo failed"
+          chmod 600 ~/.ssh/id_rsa || echo "chmod failed"
+          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "ssh-keyscan failed"
 
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
@@ -139,7 +140,8 @@ jobs:
           ssh -i ~/.ssh/id_rsa root@${{ env.SERVER_IP }} <<EOF
           cd mcp-toolkit/
           docker-compose pull
-          docker-compose restart
+          docker-compose down
+          docker-compose up -d
           EOF
 
       - name: Close firewall after deployment execution
