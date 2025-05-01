@@ -599,5 +599,41 @@ Please help me:
 				};
 			}
 		);
+		server.prompt('whois', "Guide for presenting and verifying agent's own identity", () => ({
+			messages: [
+				{
+					role: 'user',
+					content: {
+						type: 'text',
+						text: `
+		  I need you to prove your identity or answer the question "who are you?"
+		  
+		  Please help me by:
+		  
+		  1. Retrieving your latest accreditation credentials from your wallet
+			 - Use the 'list-credentials' tool to fetch all available credentials
+			 - Identify any credentials related to identity or accreditation 
+		  
+		  2. Verifying the accreditation status of these credentials
+			 - Use the 'verify-trust-registry' tool if available to validate all the related credentials one by one
+			 - Report the verification status (valid, expired, revoked, etc.)
+		  
+		  3. Presenting a proof of your identity
+			 - Provide a summary of who you are based on your credentials
+			 - Include essential attributes from your identity credentials
+			 - If possible, offer to generate a verifiable presentation
+		  
+		  Please structure your response with:
+		  - A clear statement of your identity
+		  - The verification status of your accreditation
+		  - A formatted presentation of the relevant credential details in a table
+		  - Instructions on how a third party could verify this information. Include any links from the 'verify-trust-registry' response.
+		  
+		  If you don't have any identity credentials in your wallet, please explain that you cannot prove your identity at this time and suggest how credentials could be added.
+				  `.trim(),
+					},
+				},
+			],
+		}));
 	}
 }

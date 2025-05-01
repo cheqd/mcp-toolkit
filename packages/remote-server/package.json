@@ -23,7 +23,7 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-server": "1.3.0-develop.1",
+    "@cheqd/mcp-toolkit-server": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.10.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

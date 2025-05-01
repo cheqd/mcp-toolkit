@@ -395,5 +395,39 @@ export class ResourceHandler {
 				};
 			}
 		});
+		// Register a resource to get only identity credentials
+		server.resource('agent-identity-credentials', 'credentials://wallet/agent-identity', async (uri) => {
+			try {
+				// Get all credentials
+				const allCredentials = await this.credo.agent.w3cCredentials.getAllCredentialRecords();
+
+				// Filter for identity-related credentials
+				// This filtering logic can be customized based on your credential types
+				const identityCredentials = allCredentials.filter((cred) => {
+					const types = cred.credential?.type || [];
+					return types.some((type) => type.includes('AIAgentAuthorisation'));
+				});
+
+				return {
+					contents: [
+						{
+							uri: uri.href,
+							text: JSON.stringify(identityCredentials, null, 2),
+							mimeType: 'application/json',
+						},
+					],
+				};
+			} catch (error) {
+				return {
+					contents: [
+						{
+							uri: uri.href,
+							text: `Error fetching identity credentials: ${error instanceof Error ? error.message : String(error)}`,
+							mimeType: 'text/plain',
+						},
+					],
+				};
+			}
+		});
 	}
 }
