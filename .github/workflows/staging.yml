@@ -33,9 +33,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Push image to GitHub Container Registry
-        run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
 
       - name: Download Docker image
         uses: actions/download-artifact@v4
@@ -44,6 +41,9 @@ jobs:
 
       - name: Load Docker image
         run: docker image load --input mcp-toolkit-staging.tar
+      
+      - name: Push image to GitHub Container Registry
+        run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
 
       - name: Push staging image to DOCR
         run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}
