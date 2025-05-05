@@ -46,6 +46,9 @@ async function waitForServices(maxRetries = 30, retryInterval = 2000): Promise<v
 			}
 		} catch (e) {
 			console.log('Services not ready yet, retrying...');
+			const holderLogs = execSync('docker logs holder');
+			console.log('Holder logs:');
+			console.log(holderLogs.toString());
 			retries++;
 			await new Promise((r) => setTimeout(r, retryInterval));
 		}
