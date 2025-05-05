@@ -80,7 +80,7 @@ jobs:
 
       - name: SSH into server and pull new image
         run: |
-          ssh -i $GITHUB_WORKSPACE/.ssh/id_rsa root@${{ env.SERVER_IP }} <<EOF
+          ssh -o StrictHostKeyChecking=no -i "$GITHUB_WORKSPACE/.ssh/id_rsa" root@${{ env.SERVER_IP }} <<EOF
           cd mcp-toolkit/
           docker-compose pull
           docker-compose down
