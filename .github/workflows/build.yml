@@ -11,7 +11,8 @@ jobs:
   run-build:
     name: "Build packages and run tests"
     runs-on: ubuntu-latest
-
+    env:
+      TRAIN_ENDPOINT: https://ttv.cheqd.net/tcr/v1
     steps:
       - uses: actions/checkout@v4
 
@@ -38,6 +39,7 @@ jobs:
       - name: "Run pnpm test"
         env:
           CREDO_CHEQD_TESTNET_MNEMONIC: ${{ secrets.TESTNET_MNEMONIC }}
+          TRAIN_ENDPOINT: ${{ env.TRAIN_ENDPOINT }}
         run: pnpm test
 
       - name: Upload Playwright report
