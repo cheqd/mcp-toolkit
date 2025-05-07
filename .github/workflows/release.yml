@@ -70,6 +70,7 @@ jobs:
       SERVER_IP: ${{ secrets.SERVER_IP }}
       FIREWALL_ID: ${{ secrets.FIREWALL_ID }}
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -139,7 +140,7 @@ jobs:
           chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa"
 
       - name: Open firewall for deployment execution
-          ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts"
+        run: ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts"
 
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
