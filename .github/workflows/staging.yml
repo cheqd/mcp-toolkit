@@ -10,7 +10,7 @@ jobs:
   release-staging:
     name: "Release Staging Docker image"
     runs-on: ubuntu-latest
-    # if: ${{ github.ref_name == 'develop' }}
+    if: ${{ github.ref_name == 'develop' }}
 
     env: 
       IMAGE_NAME: ${{ github.repository }}
@@ -52,7 +52,7 @@ jobs:
     name: "Staging deployment"
     runs-on: ubuntu-latest
     needs: release-staging
-    # if: ${{ github.ref_name == 'develop' }}
+    if: ${{ github.ref_name == 'develop' }}
     environment: 
       name: staging
       url: https://remote-mcp-staging.cheqd.io

@@ -82,6 +82,14 @@ jobs:
           install: true
           version: latest
 
+      - name: Install DigitalOcean CLI
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Login to DigitalOcean Container Registry
+        run: doctl registry login --expiry-seconds 600
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -126,18 +134,17 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          # Test each command separately
-          mkdir -p ~/.ssh || echo "mkdir failed"
-          echo "${{ env.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa || echo "echo failed"
-          chmod 600 ~/.ssh/id_rsa || echo "chmod failed"
-          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "ssh-keyscan failed"
-
+          mkdir -p "$GITHUB_WORKSPACE/.ssh"
+          echo "${{ env.SSH_PRIVATE_KEY }}" > "$GITHUB_WORKSPACE/.ssh/id_rsa"
+          chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa"
+          ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts"
+      
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
 
       - name: SSH into server and pull new image
         run: |
-          ssh -i ~/.ssh/id_rsa root@${{ env.SERVER_IP }} <<EOF
+          ssh -o StrictHostKeyChecking=no -i "$GITHUB_WORKSPACE/.ssh/id_rsa" root@${{ env.SERVER_IP }} <<EOF
           cd mcp-toolkit/
           docker-compose pull
           docker-compose down
