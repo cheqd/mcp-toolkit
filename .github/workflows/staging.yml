@@ -73,10 +73,10 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          mkdir -p "$GITHUB_WORKSPACE/.ssh"
-          echo "${{ env.SSH_PRIVATE_KEY }}" > "$GITHUB_WORKSPACE/.ssh/id_rsa"
-          chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa"
-          ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts"
+          mkdir -p "$GITHUB_WORKSPACE/.ssh" || echo "mkdir failed: $?"
+          echo "${{ env.SSH_PRIVATE_KEY }}" > "$GITHUB_WORKSPACE/.ssh/id_rsa" || echo "key write failed: $?"
+          chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa" || echo "chmod failed: $?"
+          ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts" || echo "ssh-keyscan failed: $?"
       
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
