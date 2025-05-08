@@ -142,6 +142,10 @@ function getAskarAnonCredsModules(mnemonic: string) {
 						network: 'testnet',
 						cosmosPayerSeed: mnemonic,
 					},
+                    {
+                        network: 'mainnet',
+                        cosmosPayerSeed: mnemonic
+                    }
 				],
 			})
 		),
