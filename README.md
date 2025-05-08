@@ -32,6 +32,7 @@ For the quickest way to get started, you can connect to our hosted MCP server. S
     }
 }
 ```
+
 The remote option requires no local setup and provides immediate access to cheqd identity tools.
 
 ## Prerequisites
