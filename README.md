@@ -128,7 +128,7 @@ pnpm build
 
 For comprehensive details on the Cheqd MCP Toolkit, usage examples, and AI agent integrations, please refer to our official documentation:
 
-👉 [MCP Documentation on cheqd.io](https://docs.cheqd.io/product/advanced/ai-agents/mcp)
+👉 [MCP Documentation on cheqd.io](https://docs.cheqd.io/product/getting-started/ai-agents/trust-registry/setup-mcp)
 
 
 The documentation covers advanced topics including:
