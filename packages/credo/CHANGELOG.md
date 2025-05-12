@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.3.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.2.0...@cheqd/mcp-toolkit-credo@1.3.0) (2025-05-12)
+
+
+### Features
+
+* Add trust registry toolkit [DEV-4896] ([#15](https://github.com/cheqd/mcp-toolkit/issues/15)) ([ba98518](https://github.com/cheqd/mcp-toolkit/commit/ba98518bf0fb14d8df94413c211398ddf4169683))
+
 # @cheqd/mcp-toolkit-credo [1.3.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.2.0...@cheqd/mcp-toolkit-credo@1.3.0-develop.1) (2025-04-30)
 
 
