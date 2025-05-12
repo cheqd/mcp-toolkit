@@ -132,15 +132,15 @@ jobs:
 
       - name: Push image to GitHub Container Registry
         run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
+      
+      - name: Push image to DOCR
+        run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }
 
       - name: Set up SSH key
         run: |
           mkdir -p "$GITHUB_WORKSPACE/.ssh"
           echo "${{ env.SSH_PRIVATE_KEY }}" > "$GITHUB_WORKSPACE/.ssh/id_rsa"
           chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa"
-
-      - name: Open firewall for deployment execution
-        run: ssh-keyscan -H "${{ env.SERVER_IP }}" >> "$GITHUB_WORKSPACE/.ssh/known_hosts"
 
       - name: Open firewall for deployment execution
         run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
