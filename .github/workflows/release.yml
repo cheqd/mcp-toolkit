@@ -104,6 +104,7 @@ jobs:
         with:
           images: |
             ghcr.io/${{ env.IMAGE_NAME }}
+            registry.digitalocean.com/${{ env.IMAGE_NAME }}
           flavor: |
             latest=auto
           tags: |
@@ -123,7 +124,7 @@ jobs:
           context: .
           file: docker/Dockerfile
           platforms: linux/amd64
-          push: false
+          load: true
           target: runner
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
