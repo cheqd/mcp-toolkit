@@ -64,19 +64,19 @@ importers:
   packages/credo:
     dependencies:
       '@credo-ts/anoncreds':
-        specifier: ^0.5.13
+        specifier: ^0.5.15
         version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/askar':
-        specifier: ^0.5.13
+        specifier: ^0.5.15
         version: 0.5.15(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/cheqd':
-        specifier: ^0.5.13
+        specifier: ^0.5.15
         version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/core':
-        specifier: ^0.5.13
+        specifier: ^0.5.15
         version: 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/node':
-        specifier: ^0.5.13
+        specifier: ^0.5.15
         version: 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@hyperledger/anoncreds-nodejs':
         specifier: ^0.3.1
@@ -1927,7 +1927,6 @@ packages:
 
   '@sphereon/kmp-mdl-mdoc@0.2.0-SNAPSHOT.22':
     resolution: {integrity: sha512-uAZZExVy+ug9JLircejWa5eLtAZ7bnBP6xb7DO2+86LRsHNLh2k2jMWJYxp+iWtGHTsh6RYsZl14ScQLvjiQ/A==}
-    bundledDependencies: []
 
   '@sphereon/pex-models@2.3.2':
     resolution: {integrity: sha512-foFxfLkRwcn/MOp/eht46Q7wsvpQGlO7aowowIIb5Tz9u97kYZ2kz6K2h2ODxWuv5CRA7Q0MY8XUBGE2lfOhOQ==}
