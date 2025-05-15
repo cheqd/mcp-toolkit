@@ -28,11 +28,11 @@
     "credo"
   ],
   "dependencies": {
-    "@credo-ts/anoncreds": "^0.5.13",
-    "@credo-ts/askar": "^0.5.13",
-    "@credo-ts/cheqd": "^0.5.13",
-    "@credo-ts/core": "^0.5.13",
-    "@credo-ts/node": "^0.5.13",
+    "@credo-ts/anoncreds": "^0.5.15",
+    "@credo-ts/askar": "^0.5.15",
+    "@credo-ts/cheqd": "^0.5.15",
+    "@credo-ts/core": "^0.5.15",
+    "@credo-ts/node": "^0.5.15",
     "@hyperledger/anoncreds-nodejs": "^0.3.1",
     "@hyperledger/aries-askar-nodejs": "^0.2.3",
     "@modelcontextprotocol/sdk": "^1.10.2",

@@ -64,20 +64,20 @@ importers:
   packages/credo:
     dependencies:
       '@credo-ts/anoncreds':
-        specifier: ^0.5.13
-        version: 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: ^0.5.15
+        version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/askar':
-        specifier: ^0.5.13
-        version: 0.5.13(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: ^0.5.15
+        version: 0.5.15(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/cheqd':
-        specifier: ^0.5.13
-        version: 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: ^0.5.15
+        version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/core':
-        specifier: ^0.5.13
-        version: 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: ^0.5.15
+        version: 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/node':
-        specifier: ^0.5.13
-        version: 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: ^0.5.15
+        version: 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@hyperledger/anoncreds-nodejs':
         specifier: ^0.3.1
         version: 0.3.1
@@ -107,8 +107,8 @@ importers:
   packages/remote-server:
     dependencies:
       '@cheqd/mcp-toolkit-server':
-        specifier: 1.3.0
-        version: 1.3.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: workspace:*
+        version: link:../server
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.2
         version: 1.10.2
@@ -156,8 +156,8 @@ importers:
   packages/server:
     dependencies:
       '@cheqd/mcp-toolkit-credo':
-        specifier: 1.3.0
-        version: 1.3.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+        specifier: workspace:*
+        version: link:../credo
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.2
         version: 1.10.2
@@ -193,6 +193,13 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@animo-id/mdoc@0.2.38':
+    resolution: {integrity: sha512-98KQ0jvwTYsFOffTGvvHXBDo23b5xmhYjPiMIX6e807I6iS4fZZ9ypfBySdA5IiGUvXELKqEv27AUaayQa/9bg==}
+
+  '@animo-id/pex@4.1.1-alpha.0':
+    resolution: {integrity: sha512-6ieHhH9UE9DLFOJegMCabG3qUFlQk4TLhBefxInpyjx2Ly6kuloVMScJYcnQTs/E6nuHGMd7ebUaKy4+0+ZbOA==}
+    engines: {node: '>=18'}
 
   '@astronautlabs/jsonpath@1.1.2':
     resolution: {integrity: sha512-FqL/muoreH7iltYC1EB5Tvox5E8NSOOPGkgns4G+qxRKl6k5dxEVljUjB5NcKESzkqwnUqWjSZkL61XGYOuV+A==}
@@ -923,26 +930,17 @@ packages:
   '@bufbuild/protobuf@2.2.5':
     resolution: {integrity: sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==}
 
-  '@cheqd/mcp-toolkit-credo@1.3.0':
-    resolution: {integrity: sha512-TJSNwsXLdcTRN3n6GeN910SBkTs8wISd4SFPaHCUBBgTLv1gMgTl86+d8/SVX0EuJjY79kRy4/Ce6Mq1GWVKNw==}
+  '@cheqd/sdk@5.2.2':
+    resolution: {integrity: sha512-nVqV/Sx7IJTsT3lUXGo4Jg/ei3OjmNDAOTcrfSpe6YYXuJDQ2gMKEi2SiHxX/GByKGssOLXXvZSKa91K9HlXbQ==}
     engines: {node: '>=20.0.0'}
-
-  '@cheqd/mcp-toolkit-server@1.3.0':
-    resolution: {integrity: sha512-kjYOB1/UrlrPcCadFEkEWUJeBYTv29F2JlBy0ffOU2JQ+7nNy+HWV1pvMaFzk0b7lb5PQ57UmrfAxZgY93WiqQ==}
-    engines: {node: '>=20.0.0'}
-    hasBin: true
-
-  '@cheqd/sdk@2.6.0':
-    resolution: {integrity: sha512-Lx3/0dT7QoKaWfQcc4PzhcaFud5Fkgm1//Q7KfPXakerSLuOkyaVy95VnFnnoLERuWZcE6r3nI1xoKq1GFckDg==}
-    engines: {node: '>=18'}
-
-  '@cheqd/ts-proto@2.3.2':
-    resolution: {integrity: sha512-WqwthQGyF16tx3LyqwJlLq/4DfTigNsCWtGY3ct9RSfTNTPI/JZ1qLE7eSkcE9Glk4Yk95d+SYbqOeoSNP442Q==}
-    engines: {node: '>=18'}
 
   '@cheqd/ts-proto@2.4.1':
     resolution: {integrity: sha512-tT9MvXjk+GmJXWjFKIMwhXWuStjdhECSBSrx8uyt1cJKVBtFpRBrFLEomA7XIclmfwL6z74YmhM7lEtf5Bn8vg==}
     engines: {node: '>=20'}
+
+  '@cheqd/ts-proto@4.0.2':
+    resolution: {integrity: sha512-8wFc+PDRwd5XO/ep3JyYBoav6BuOFba2a5ifFmbmBQO35sFaptsGEH7y9mh46V6+NFtI+F914avRrtWCFGf1Jw==}
+    engines: {node: '>=20.0.0'}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -955,43 +953,76 @@ packages:
   '@cosmjs/amino@0.30.1':
     resolution: {integrity: sha512-yNHnzmvAlkETDYIpeCTdVqgvrdt1qgkOXwuRVi8s27UKI5hfqyE9fJ/fuunXE6ZZPnKkjIecDznmuUOMrMvw4w==}
 
+  '@cosmjs/amino@0.33.1':
+    resolution: {integrity: sha512-WfWiBf2EbIWpwKG9AOcsIIkR717SY+JdlXM/SL/bI66BdrhniAF+/ZNis9Vo9HF6lP2UU5XrSmFA4snAvEgdrg==}
+
   '@cosmjs/crypto@0.30.1':
     resolution: {integrity: sha512-rAljUlake3MSXs9xAm87mu34GfBLN0h/1uPPV6jEwClWjNkAMotzjC0ab9MARy5FFAvYHL3lWb57bhkbt2GtzQ==}
+
+  '@cosmjs/crypto@0.33.1':
+    resolution: {integrity: sha512-U4kGIj/SNBzlb2FGgA0sMR0MapVgJUg8N+oIAiN5+vl4GZ3aefmoL1RDyTrFS/7HrB+M+MtHsxC0tvEu4ic/zA==}
 
   '@cosmjs/encoding@0.30.1':
     resolution: {integrity: sha512-rXmrTbgqwihORwJ3xYhIgQFfMSrwLu1s43RIK9I8EBudPx3KmnmyAKzMOVsRDo9edLFNuZ9GIvysUCwQfq3WlQ==}
 
+  '@cosmjs/encoding@0.33.1':
+    resolution: {integrity: sha512-nuNxf29fUcQE14+1p//VVQDwd1iau5lhaW/7uMz7V2AH3GJbFJoJVaKvVyZvdFk+Cnu+s3wCqgq4gJkhRCJfKw==}
+
   '@cosmjs/json-rpc@0.30.1':
     resolution: {integrity: sha512-pitfC/2YN9t+kXZCbNuyrZ6M8abnCC2n62m+JtU9vQUfaEtVsgy+1Fk4TRQ175+pIWSdBMFi2wT8FWVEE4RhxQ==}
+
+  '@cosmjs/json-rpc@0.33.1':
+    resolution: {integrity: sha512-T6VtWzecpmuTuMRGZWuBYHsMF/aznWCYUt/cGMWNSz7DBPipVd0w774PKpxXzpEbyt5sr61NiuLXc+Az15S/Cw==}
 
   '@cosmjs/math@0.30.1':
     resolution: {integrity: sha512-yaoeI23pin9ZiPHIisa6qqLngfnBR/25tSaWpkTm8Cy10MX70UF5oN4+/t1heLaM6SSmRrhk3psRkV4+7mH51Q==}
 
+  '@cosmjs/math@0.33.1':
+    resolution: {integrity: sha512-ytGkWdKFCPiiBU5eqjHNd59djPpIsOjbr2CkNjlnI1Zmdj+HDkSoD9MUGpz9/RJvRir5IvsXqdE05x8EtoQkJA==}
+
   '@cosmjs/proto-signing@0.30.1':
     resolution: {integrity: sha512-tXh8pPYXV4aiJVhTKHGyeZekjj+K9s2KKojMB93Gcob2DxUjfKapFYBMJSgfKPuWUPEmyr8Q9km2hplI38ILgQ==}
+
+  '@cosmjs/proto-signing@0.33.1':
+    resolution: {integrity: sha512-Sv4W+MxX+0LVnd+2rU4Fw1HRsmMwSVSYULj7pRkij3wnPwUlTVoJjmKFgKz13ooIlfzPrz/dnNjGp/xnmXChFQ==}
 
   '@cosmjs/socket@0.30.1':
     resolution: {integrity: sha512-r6MpDL+9N+qOS/D5VaxnPaMJ3flwQ36G+vPvYJsXArj93BjgyFB7BwWwXCQDzZ+23cfChPUfhbINOenr8N2Kow==}
 
+  '@cosmjs/socket@0.33.1':
+    resolution: {integrity: sha512-KzAeorten6Vn20sMiM6NNWfgc7jbyVo4Zmxev1FXa5EaoLCZy48cmT3hJxUJQvJP/lAy8wPGEjZ/u4rmF11x9A==}
+
   '@cosmjs/stargate@0.30.1':
     resolution: {integrity: sha512-RdbYKZCGOH8gWebO7r6WvNnQMxHrNXInY/gPHPzMjbQF6UatA6fNM2G2tdgS5j5u7FTqlCI10stNXrknaNdzog==}
+
+  '@cosmjs/stargate@0.33.1':
+    resolution: {integrity: sha512-CnJ1zpSiaZgkvhk+9aTp5IPmgWn2uo+cNEBN8VuD9sD6BA0V4DMjqe251cNFLiMhkGtiE5I/WXFERbLPww3k8g==}
 
   '@cosmjs/stream@0.30.1':
     resolution: {integrity: sha512-Fg0pWz1zXQdoxQZpdHRMGvUH5RqS6tPv+j9Eh7Q953UjMlrwZVo0YFLC8OTf/HKVf10E4i0u6aM8D69Q6cNkgQ==}
 
+  '@cosmjs/stream@0.33.1':
+    resolution: {integrity: sha512-bMUvEENjeQPSTx+YRzVsWT1uFIdHRcf4brsc14SOoRQ/j5rOJM/aHfsf/BmdSAnYbdOQ3CMKj/8nGAQ7xUdn7w==}
+
   '@cosmjs/tendermint-rpc@0.30.1':
     resolution: {integrity: sha512-Z3nCwhXSbPZJ++v85zHObeUggrEHVfm1u18ZRwXxFE9ZMl5mXTybnwYhczuYOl7KRskgwlB+rID0WYACxj4wdQ==}
+
+  '@cosmjs/tendermint-rpc@0.33.1':
+    resolution: {integrity: sha512-22klDFq2MWnf//C8+rZ5/dYatr6jeGT+BmVbutXYfAK9fmODbtFcumyvB6uWaEORWfNukl8YK1OLuaWezoQvxA==}
 
   '@cosmjs/utils@0.30.1':
     resolution: {integrity: sha512-KvvX58MGMWh7xA+N+deCfunkA/ZNDvFLw4YbOmX3f/XBIkqrVY7qlotfy2aNb1kgp6h4B6Yc8YawJPDTfvWX7g==}
 
-  '@credo-ts/anoncreds@0.5.13':
-    resolution: {integrity: sha512-laWAdG+X+MVHSsqh8eo1J/EDJEdxRBYqN/qzaktOgLnG7gbboJCIXQrU6LX/+Vp/wcU755Ke7awnCTVreKaNtQ==}
+  '@cosmjs/utils@0.33.1':
+    resolution: {integrity: sha512-UnLHDY6KMmC+UXf3Ufyh+onE19xzEXjT4VZ504Acmk4PXxqyvG4cCPprlKUFnGUX7f0z8Or9MAOHXBx41uHBcg==}
+
+  '@credo-ts/anoncreds@0.5.15':
+    resolution: {integrity: sha512-b9LkFl/icptDV69QO/DJKfyP7oVuRUlj57xxnMYuJyPnFtfXwkGJr7Fdb62Izi8eZXAOIOtnsXt6P4KEV2cnYA==}
     peerDependencies:
       '@hyperledger/anoncreds-shared': ^0.2.2
 
-  '@credo-ts/askar@0.5.13':
-    resolution: {integrity: sha512-w8I7gB+Em8ME+4OHK9Ulz8wXvXzFw0P00dHcWuo1jKmHX6pz3u3Nbdag7PzDplE4Nzu19hgZPY91ndRql+4euw==}
+  '@credo-ts/askar@0.5.15':
+    resolution: {integrity: sha512-eSoiQQEEntTZHsw87BIlafGKash5HAP+34VnVl4T9xKs59KNN7BvpdG6/6lqhS0G8DxeN998KuW4D1CEWh7AhA==}
     peerDependencies:
       '@animo-id/expo-secure-environment': ^0.0.1-alpha.0
       '@hyperledger/aries-askar-shared': ^0.2.3
@@ -999,14 +1030,14 @@ packages:
       '@animo-id/expo-secure-environment':
         optional: true
 
-  '@credo-ts/cheqd@0.5.13':
-    resolution: {integrity: sha512-OZtQ+aiKanIH1CaW6Y/y8c86T5+w1IFgBe4YxN/PTuKeTYQrOAyAs+IkdXRdT8TjmYtDaLnk6zX+R0BqWjzFhQ==}
+  '@credo-ts/cheqd@0.5.15':
+    resolution: {integrity: sha512-L/h+UkM4oDB5GZ9PIRIOcsnSQ9grwQo4RLTY/dH1LsyL+ZVPtKXIDXRhuY1LLZqkYVcrRGXdAVT8bgh6pvLXnA==}
 
-  '@credo-ts/core@0.5.13':
-    resolution: {integrity: sha512-TBmcbL7ftEF+7ccxJDFYeCObK8ap8McefJe+zwXqXFerfCH2RHxK45Vyfw5ltPoVxkud05fohjzoWWTZgYQkEQ==}
+  '@credo-ts/core@0.5.15':
+    resolution: {integrity: sha512-3BYjncNY1Y6JDtxnbza1WVID8OoPgIZEno3z2F8a11xvsemsZCyy9vpyVgQi/Dz3P6/6JLZ/mnJAUwGKFZPnqA==}
 
-  '@credo-ts/node@0.5.13':
-    resolution: {integrity: sha512-CeE84CfSyCFB++OYepenye1HpgVpPftkCtKb/u1N7AvEAshsnT2E7cOprt1ToPGuOF/neFi/ImGF0IDNPhgHaQ==}
+  '@credo-ts/node@0.5.15':
+    resolution: {integrity: sha512-oLGwWGX3TKzZakfps9Dgb7UGJWsFaW7WpQ1n4gIYg54L3Ew0K6e/A1McJ/atOS8RhU3YS2/DVhs8uBY5xqbfuQ==}
 
   '@digitalbazaar/bitstring@3.1.0':
     resolution: {integrity: sha512-Cii+Sl++qaexOvv3vchhgZFfSmtHPNIPzGegaq4ffPnflVXFu+V2qrJ17aL2+gfLxrlC/zazZFuAltyKTPq7eg==}
@@ -1656,12 +1687,6 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@protokoll/core@0.2.36':
-    resolution: {integrity: sha512-4VHOLNX9XiExUXGCGuT1SnbhhJT4RZCRQnQFqFZ1b6bEnxLQvmy8W06ZdZYuXOcW4IdCfWq0qI/wWs+cKOV1Pw==}
-
-  '@protokoll/mdoc-client@0.2.36':
-    resolution: {integrity: sha512-8RXjZFLGERBS3qBcnB33Ldjv/HryT2F+gCrvVvzpFi6CvMH29NvuuLxd52GN8JBCNT7r03i/0GPfQX03jidDCg==}
-
   '@qiwi/multi-semantic-release@7.1.2':
     resolution: {integrity: sha512-2caeNdiHSYGVPsgaO50elTv24TMwQsS03hbJXyT3o3lGhlEOaN5Rtbv+iqbCcNtuzfm9P3yxNUB2k++tG+zmAQ==}
     engines: {node: '>=14', yarn: '>=1.0.0'}
@@ -1902,14 +1927,9 @@ packages:
 
   '@sphereon/kmp-mdl-mdoc@0.2.0-SNAPSHOT.22':
     resolution: {integrity: sha512-uAZZExVy+ug9JLircejWa5eLtAZ7bnBP6xb7DO2+86LRsHNLh2k2jMWJYxp+iWtGHTsh6RYsZl14ScQLvjiQ/A==}
-    bundledDependencies: []
 
   '@sphereon/pex-models@2.3.2':
     resolution: {integrity: sha512-foFxfLkRwcn/MOp/eht46Q7wsvpQGlO7aowowIIb5Tz9u97kYZ2kz6K2h2ODxWuv5CRA7Q0MY8XUBGE2lfOhOQ==}
-
-  '@sphereon/pex@5.0.0-unstable.25':
-    resolution: {integrity: sha512-EUWfGa6t20PPkYf+zbfWXhc1sSWiFNywbRah8R6grJPU738pfwWpZPunSEY3x0CoxAVaSVXn91wZ/sxmgPCFkA==}
-    engines: {node: '>=18'}
 
   '@sphereon/ssi-types@0.30.2-next.135':
     resolution: {integrity: sha512-YLQfFMPUlOJUxHbOS9v01nG3cgLwTk3d95/rTnOmEQx9kXgXjoXdvt7D0uGcMRL3RHeQ9biT/jWY//mDvCirVQ==}
@@ -1917,23 +1937,48 @@ packages:
   '@stablelib/binary@1.0.1':
     resolution: {integrity: sha512-ClJWvmL6UBM/wjkvv/7m5VP3GMr9t0osr4yVgLZsLCOz4hGN9gIAFEqnJ0TsSMAN+n840nf2cHZnA5/KFqHC7Q==}
 
+  '@stablelib/binary@2.0.1':
+    resolution: {integrity: sha512-U9iAO8lXgEDONsA0zPPSgcf3HUBNAqHiJmSHgZz62OvC3Hi2Bhc5kTnQ3S1/L+sthDTHtCMhcEiklmIly6uQ3w==}
+
   '@stablelib/ed25519@1.0.3':
     resolution: {integrity: sha512-puIMWaX9QlRsbhxfDc5i+mNPMY+0TmQEskunY1rZEBPi1acBCVQAhnsk/1Hk50DGPtVsZtAWQg4NHGlVaO9Hqg==}
+
+  '@stablelib/ed25519@2.0.2':
+    resolution: {integrity: sha512-d/lJ5sgzhtmpMIbKFWfev+i6WebBdIzzBpMzXtZdvUijoksjXosYFNqytoMj7cRshNj+/XTLYnnVMdZfd+penw==}
 
   '@stablelib/hash@1.0.1':
     resolution: {integrity: sha512-eTPJc/stDkdtOcrNMZ6mcMK1e6yBbqRBaNW55XA1jU8w/7QdnCF0CmMmOD1m7VSkBR44PWrMHU2l6r8YEQHMgg==}
 
+  '@stablelib/hash@2.0.0':
+    resolution: {integrity: sha512-u3WPSqGido8lwJuMcrBgM5K54LrPGhkWAdtsyccf7dGsLixAZUds77zOAbu7bvKPwQlmoByH0txBi5rTmEKuHg==}
+
   '@stablelib/int@1.0.1':
     resolution: {integrity: sha512-byr69X/sDtDiIjIV6m4roLVWnNNlRGzsvxw+agj8CIEazqWGOQp2dTYgQhtyVXV9wpO6WyXRQUzLV/JRNumT2w==}
+
+  '@stablelib/int@2.0.1':
+    resolution: {integrity: sha512-Ht63fQp3wz/F8U4AlXEPb7hfJOIILs8Lq55jgtD7KueWtyjhVuzcsGLSTAWtZs3XJDZYdF1WcSKn+kBtbzupww==}
 
   '@stablelib/random@1.0.2':
     resolution: {integrity: sha512-rIsE83Xpb7clHPVRlBj8qNe5L8ISQOzjghYQm/dZ7VaM2KHYwMW5adjQjrzTZCchFnNCNhkwtnOBa9HTMJCI8w==}
 
+  '@stablelib/random@2.0.1':
+    resolution: {integrity: sha512-W6GAtXEEs7r+dSbuBsvoFmlyL3gLxle41tQkjKu17dDWtDdjhVUbtRfRCQcCUeczwkgjQxMPopgwYEvxXtHXGw==}
+
   '@stablelib/sha512@1.0.1':
     resolution: {integrity: sha512-13gl/iawHV9zvDKciLo1fQ8Bgn2Pvf7OV6amaRVKiq3pjQ3UmEpXxWiAfV8tYjUpeZroBxtyrwtdooQT/i3hzw==}
 
+  '@stablelib/sha512@2.0.1':
+    resolution: {integrity: sha512-DUNe5cbnoH3sSIN+MG04RvTCLXtkbyy/SnQxiNO+GgF/KSXkkUSlF6mUVvCUdZBZ2X3NgogR+tAvaRSn8wxnLw==}
+
   '@stablelib/wipe@1.0.1':
     resolution: {integrity: sha512-WfqfX/eXGiAd3RJe4VU2snh/ZPwtSjLG4ynQ/vYzvghTh7dHFcI1wl+nrkWG6lGhukOxOsUHfv8dUXr58D0ayg==}
+
+  '@stablelib/wipe@2.0.1':
+    resolution: {integrity: sha512-1eU2K9EgOcV4qc9jcP6G72xxZxEm5PfeI5H55l08W95b4oRJaqhmlWRc4xZAm6IVSKhVNxMi66V67hCzzuMTAg==}
+
+  '@tokenizer/inflate@0.2.7':
+    resolution: {integrity: sha512-MADQgmZT1eKjp06jpI2yozxaU9uVs4GzzgSL+uEq7bVcJ9V1ZXQkeGNql1fsSI0gMy1vhvNTNbUqrx+pZfJVmg==}
+    engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -2892,6 +2937,9 @@ packages:
   cosmjs-types@0.7.2:
     resolution: {integrity: sha512-vf2uLyktjr/XVAgEq0DjMxeAWh1yYREe7AMHDKd7EiHVqxBPCaBS+qEEQUkXbR9ndnckqr1sUG8BQhazh4X5lA==}
 
+  cosmjs-types@0.9.0:
+    resolution: {integrity: sha512-MN/yUe6mkJwHnCFfsNPeCfXVhyxHYW6c/xDUzrSbBycYzw++XvWDMJArXp2pLdgD6FQ8DW79vkPjeNKVrXaHeQ==}
+
   credentials-context@2.0.0:
     resolution: {integrity: sha512-/mFKax6FK26KjgV2KW2D4YqKgoJ5DVJpNt87X2Jc9IxT2HBMy7nEIlc+n7pEi+YFFe721XqrvZPd+jbyyBjsvQ==}
 
@@ -3252,11 +3300,6 @@ packages:
     resolution: {integrity: sha512-kTUIGKQ/mDPFoJ0oVfcmyJn4iBDRptjNVIzwIFR7tqWXdVI9xfA2RMwY/gbSpJG3lkdWNEjLap/NqVHZiJsdfg==}
     engines: {node: '>=0.10'}
 
-  esprima@1.2.2:
-    resolution: {integrity: sha512-+JpPZam9w5DuJ3Q67SqsMGtiHKENSMRVoxvArfJZK01/BfLEObtZ6orJa/MtoGNR/rfMgp5837T41PAmTwAv/A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-
   esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
@@ -3465,6 +3508,9 @@ packages:
   fetch-retry@4.1.1:
     resolution: {integrity: sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==}
 
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
   figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==}
     engines: {node: '>=4'}
@@ -3484,6 +3530,10 @@ packages:
   file-type@16.5.4:
     resolution: {integrity: sha512-/yFHK0aGjFEgDJjEKP0pWCplsPFPhwyfwevf/pVxiN0tmE4L9LmwWxWukdJSHdoCli4VgQLehjJtwQBnqmsKcw==}
     engines: {node: '>=10'}
+
+  file-type@20.5.0:
+    resolution: {integrity: sha512-BfHZtG/l9iMm4Ecianu7P8HRD2tBHLtjXinm4X62XBOYzi7CYA7jyqfJzOvXHqzVrVPYqBo2/GvbARMaaJkKVg==}
+    engines: {node: '>=18'}
 
   filelist@1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
@@ -4344,9 +4394,6 @@ packages:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
     engines: {'0': node >= 0.2.0}
 
-  jsonpath@1.1.1:
-    resolution: {integrity: sha512-l6Cg7jRpixfbgoWgkrl77dgEj8RPvND0wMH6TwQmi9Qs4TFfS9u5cUFnbeKTwj5ga5Y3BTGGNI28k117LJ009w==}
-
   just-diff-apply@5.5.0:
     resolution: {integrity: sha512-OYTthRfSh55WOItVqwpefPtNt2VdKsq5AnAK6apdtR6yCH8pr0CmSr710J0Mf+WdQy7K/OzMy7K2MgAfdQURDw==}
 
@@ -4415,6 +4462,12 @@ packages:
 
   libphonenumber-js@1.12.7:
     resolution: {integrity: sha512-0nYZSNj/QEikyhcM5RZFXGlCB/mr4PVamnT1C2sKBnDDTYndrvbybYjvg+PMqAndQHlLbwQ3socolnL3WWTUFA==}
+
+  libsodium-sumo@0.7.15:
+    resolution: {integrity: sha512-5tPmqPmq8T8Nikpm1Nqj0hBHvsLFCXvdhBFV7SGOitQPZAA6jso8XoL0r4L7vmfKXr486fiQInvErHtEvizFMw==}
+
+  libsodium-wrappers-sumo@0.7.15:
+    resolution: {integrity: sha512-aSWY8wKDZh5TC7rMvEdTHoyppVq/1dTSAeAR7H6pzd6QRT3vQWcT5pGwCotLcpPEOLXX6VvqihSPkpEhYAjANA==}
 
   libsodium-wrappers@0.7.15:
     resolution: {integrity: sha512-E4anqJQwcfiC6+Yrl01C1m8p99wEhLmJSs0VQqST66SbQXXBoaJY0pF4BNjRYa/sOQAxx6lXAaAFIlx+15tXJQ==}
@@ -4915,6 +4968,9 @@ packages:
     resolution: {integrity: sha512-x23pDe5+svdLz/k5JPGCVdfn7Q5mZVMBETiC+ORfO+sor9Sgs0smJzAjfTbM5tckeCqnaUuMYoz+k3RXMmJClQ==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     deprecated: This module has been superseded by the multiformats module
+
+  multiformats@13.3.3:
+    resolution: {integrity: sha512-TlaFCzs3NHNzMpwiGwRYehnnhHlZcWfptygFekshlb9xCyO09GfN+9881+VBENCdRnKOeqmMxDCbupNecV8xRQ==}
 
   multiformats@9.9.0:
     resolution: {integrity: sha512-HoMUjhH9T8DDBNT+6xzkrd9ga/XiBI4xLr58LJACwK6G3HTOPeMz4nB4KJs33L2BelrIJa7P0VuNaVF3hMYfjg==}
@@ -5567,6 +5623,10 @@ packages:
   peek-readable@4.1.0:
     resolution: {integrity: sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg==}
     engines: {node: '>=8'}
+
+  peek-readable@7.0.0:
+    resolution: {integrity: sha512-nri2TO5JE3/mRryik9LlHFT53cgHfRK0Lt0BAZQXku/AW3E6XLt2GaY8siWi7dvW/m1z0ecn+J+bpDa9ZN3IsQ==}
+    engines: {node: '>=18'}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -6395,6 +6455,10 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
+  strtok3@10.2.2:
+    resolution: {integrity: sha512-Xt18+h4s7Z8xyZ0tmBoRmzxcop97R4BAh+dXouUDCYn+Em+1P3qpkUfI5ueWLT8ynC5hZ+q4iPEmGG1urvQGBg==}
+    engines: {node: '>=18'}
+
   strtok3@6.3.0:
     resolution: {integrity: sha512-fZtbhtvI9I48xDSywd/somNqgUHl2L2cstmXCCif0itOf96jeW18MBSyrLuNicYQVkvpOxkZtkzujiTJ9LW5Jw==}
     engines: {node: '>=10'}
@@ -6543,6 +6607,10 @@ packages:
     resolution: {integrity: sha512-6udB24Q737UD/SDsKAHI9FCRP7Bqc9D/MQUV02ORQg5iskjtLJlZJNdN4kKtcdtwCeWIwIHDGaUsTsCCAa8sFQ==}
     engines: {node: '>=10'}
 
+  token-types@6.0.0:
+    resolution: {integrity: sha512-lbDrTLVsHhOMljPscd0yitpozq7Ga2M5Cvez5AjGg8GASBjtt6iERCAJ93yommPmz62fb45oFIXHEZ3u9bfJEA==}
+    engines: {node: '>=14.16'}
+
   toposource@1.2.0:
     resolution: {integrity: sha512-sb8zWvXUWJ+jqnHM/+ud7muOT3wi0lVL/DFHH+CxTViSngzhRrIm8nensUOcxuLUNAMdsfE9DxZjLX3GhCTJKg==}
 
@@ -6666,11 +6734,15 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
+  uint8array-extras@1.4.0:
+    resolution: {integrity: sha512-ZPtzy0hu4cZjv3z5NW9gfKnNLjoz4y6uv4HlelAjDK7sY/xOkKZv9xK/WQpcsBB3jEybChz9DPC2U/+cusjJVQ==}
+    engines: {node: '>=18'}
+
   uint8arrays@3.1.1:
     resolution: {integrity: sha512-+QJa8QRnbdXVpHYjLoTpJIdCTiw9Ir62nocClWuXIq2JIh4Uta0cQsTSpFL678p2CN8B+XSApwcU+pQEqVpKWg==}
 
-  underscore@1.12.1:
-    resolution: {integrity: sha512-hEQt0+ZLDVUMhebKxL4x1BTtDY7bavVofhZ9KZ4aI26X9SRaE+Y3m83XUL1UP2jn8ynjndwCCpEHdUG+9pP1Tw==}
+  uint8arrays@5.1.0:
+    resolution: {integrity: sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww==}
 
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
@@ -6774,6 +6846,10 @@ packages:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
   uuid@7.0.3:
     resolution: {integrity: sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==}
     hasBin: true
@@ -6785,14 +6861,6 @@ packages:
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
-
-  valibot@0.37.0:
-    resolution: {integrity: sha512-FQz52I8RXgFgOHym3XHYSREbNtkgSjF9prvMFH1nBsRyfL6SfCzoT1GuSDTlbsuPubM7/6Kbw0ZMQb8A+V+VsQ==}
-    peerDependencies:
-      typescript: '>=5'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
@@ -7075,6 +7143,26 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@animo-id/mdoc@0.2.38':
+    dependencies:
+      compare-versions: 6.1.1
+
+  '@animo-id/pex@4.1.1-alpha.0':
+    dependencies:
+      '@astronautlabs/jsonpath': 1.1.2
+      '@sd-jwt/decode': 0.7.2
+      '@sd-jwt/present': 0.7.2
+      '@sd-jwt/types': 0.7.2
+      '@sphereon/pex-models': 2.3.2
+      '@sphereon/ssi-types': 0.30.2-next.135
+      ajv: 8.17.1
+      ajv-formats: 2.1.1(ajv@8.17.1)
+      jwt-decode: 3.1.2
+      nanoid: 3.3.11
+      uint8arrays: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@astronautlabs/jsonpath@1.1.2':
     dependencies:
@@ -8098,85 +8186,62 @@ snapshots:
 
   '@bufbuild/protobuf@2.2.5': {}
 
-  '@cheqd/mcp-toolkit-credo@1.3.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@cheqd/sdk@5.2.2':
     dependencies:
-      '@credo-ts/anoncreds': 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@credo-ts/askar': 0.5.13(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@credo-ts/cheqd': 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@credo-ts/core': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@credo-ts/node': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@hyperledger/anoncreds-nodejs': 0.3.1
-      '@hyperledger/aries-askar-nodejs': 0.2.3(encoding@0.1.13)
-      '@modelcontextprotocol/sdk': 1.10.2
-      qrcode: 1.5.4
-      zod: 3.24.3
-    transitivePeerDependencies:
-      - '@animo-id/expo-secure-environment'
-      - '@hyperledger/anoncreds-shared'
-      - '@hyperledger/aries-askar-shared'
-      - bufferutil
-      - debug
-      - domexception
-      - encoding
-      - expo
-      - react-native
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - web-streams-polyfill
-
-  '@cheqd/mcp-toolkit-server@1.3.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
-    dependencies:
-      '@cheqd/mcp-toolkit-credo': 1.3.0(@hyperledger/anoncreds-shared@0.3.1)(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@modelcontextprotocol/sdk': 1.10.2
-      zod: 3.24.3
-    transitivePeerDependencies:
-      - '@animo-id/expo-secure-environment'
-      - '@hyperledger/anoncreds-shared'
-      - '@hyperledger/aries-askar-shared'
-      - bufferutil
-      - debug
-      - domexception
-      - encoding
-      - expo
-      - react-native
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - web-streams-polyfill
-
-  '@cheqd/sdk@2.6.0':
-    dependencies:
-      '@cheqd/ts-proto': 2.4.1
-      '@cosmjs/amino': 0.30.1
-      '@cosmjs/crypto': 0.30.1
-      '@cosmjs/encoding': 0.30.1
-      '@cosmjs/math': 0.30.1
-      '@cosmjs/proto-signing': 0.30.1
-      '@cosmjs/stargate': 0.30.1
-      '@cosmjs/tendermint-rpc': 0.30.1
-      '@cosmjs/utils': 0.30.1
-      '@stablelib/ed25519': 1.0.3
+      '@cheqd/ts-proto': 4.0.2
+      '@cheqd/ts-proto-cjs': '@cheqd/ts-proto@2.4.1'
+      '@cosmjs/amino': 0.33.1
+      '@cosmjs/amino-cjs': '@cosmjs/amino@0.30.1'
+      '@cosmjs/crypto': 0.33.1
+      '@cosmjs/crypto-cjs': '@cosmjs/crypto@0.30.1'
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/encoding-cjs': '@cosmjs/encoding@0.30.1'
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/math-cjs': '@cosmjs/math@0.30.1'
+      '@cosmjs/proto-signing': 0.33.1
+      '@cosmjs/proto-signing-cjs': '@cosmjs/proto-signing@0.30.1'
+      '@cosmjs/stargate': 0.33.1
+      '@cosmjs/stargate-cjs': '@cosmjs/stargate@0.30.1'
+      '@cosmjs/tendermint-rpc': 0.33.1
+      '@cosmjs/tendermint-rpc-cjs': '@cosmjs/tendermint-rpc@0.30.1'
+      '@cosmjs/utils': 0.33.1
+      '@cosmjs/utils-cjs': '@cosmjs/utils@0.30.1'
+      '@stablelib/ed25519': 2.0.2
+      '@stablelib/ed25519-cjs': '@stablelib/ed25519@1.0.3'
       '@types/secp256k1': 4.0.6
-      cosmjs-types: 0.7.2
+      '@types/secp256k1-cjs': '@types/secp256k1@4.0.6'
+      cosmjs-types: 0.9.0
+      cosmjs-types-cjs: cosmjs-types@0.7.2
       did-jwt: 8.0.14
+      did-jwt-cjs: did-jwt@8.0.14
       did-resolver: 4.1.0
-      file-type: 16.5.4
-      long: 4.0.0
-      multiformats: 9.9.0
+      did-resolver-cjs: did-resolver@4.1.0
+      exponential-backoff: 3.1.2
+      exponential-backoff-cjs: exponential-backoff@3.1.2
+      file-type: 20.5.0
+      file-type-cjs: file-type@16.5.4
+      long-cjs: long@4.0.0
+      multiformats: 13.3.3
+      multiformats-cjs: multiformats@9.9.0
       secp256k1: 5.0.1
-      uuid: 10.0.0
+      secp256k1-cjs: secp256k1@5.0.1
+      uint8arrays: 5.1.0
+      uint8arrays-cjs: uint8arrays@3.1.1
+      uuid: 11.1.0
+      uuid-cjs: uuid@10.0.0
     transitivePeerDependencies:
       - bufferutil
       - debug
+      - supports-color
       - utf-8-validate
 
-  '@cheqd/ts-proto@2.3.2':
+  '@cheqd/ts-proto@2.4.1':
     dependencies:
+      '@bufbuild/protobuf': 2.2.5
       long: 5.3.2
       protobufjs: 7.5.0
 
-  '@cheqd/ts-proto@2.4.1':
+  '@cheqd/ts-proto@4.0.2':
     dependencies:
       '@bufbuild/protobuf': 2.2.5
       long: 5.3.2
@@ -8197,6 +8262,13 @@ snapshots:
       '@cosmjs/math': 0.30.1
       '@cosmjs/utils': 0.30.1
 
+  '@cosmjs/amino@0.33.1':
+    dependencies:
+      '@cosmjs/crypto': 0.33.1
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/utils': 0.33.1
+
   '@cosmjs/crypto@0.30.1':
     dependencies:
       '@cosmjs/encoding': 0.30.1
@@ -8207,7 +8279,23 @@ snapshots:
       elliptic: 6.6.1
       libsodium-wrappers: 0.7.15
 
+  '@cosmjs/crypto@0.33.1':
+    dependencies:
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/utils': 0.33.1
+      '@noble/hashes': 1.8.0
+      bn.js: 5.2.2
+      elliptic: 6.6.1
+      libsodium-wrappers-sumo: 0.7.15
+
   '@cosmjs/encoding@0.30.1':
+    dependencies:
+      base64-js: 1.5.1
+      bech32: 1.1.4
+      readonly-date: 1.0.0
+
+  '@cosmjs/encoding@0.33.1':
     dependencies:
       base64-js: 1.5.1
       bech32: 1.1.4
@@ -8218,7 +8306,16 @@ snapshots:
       '@cosmjs/stream': 0.30.1
       xstream: 11.14.0
 
+  '@cosmjs/json-rpc@0.33.1':
+    dependencies:
+      '@cosmjs/stream': 0.33.1
+      xstream: 11.14.0
+
   '@cosmjs/math@0.30.1':
+    dependencies:
+      bn.js: 5.2.2
+
+  '@cosmjs/math@0.33.1':
     dependencies:
       bn.js: 5.2.2
 
@@ -8232,9 +8329,28 @@ snapshots:
       cosmjs-types: 0.7.2
       long: 4.0.0
 
+  '@cosmjs/proto-signing@0.33.1':
+    dependencies:
+      '@cosmjs/amino': 0.33.1
+      '@cosmjs/crypto': 0.33.1
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/utils': 0.33.1
+      cosmjs-types: 0.9.0
+
   '@cosmjs/socket@0.30.1':
     dependencies:
       '@cosmjs/stream': 0.30.1
+      isomorphic-ws: 4.0.1(ws@7.5.10)
+      ws: 7.5.10
+      xstream: 11.14.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@cosmjs/socket@0.33.1':
+    dependencies:
+      '@cosmjs/stream': 0.33.1
       isomorphic-ws: 4.0.1(ws@7.5.10)
       ws: 7.5.10
       xstream: 11.14.0
@@ -8261,7 +8377,26 @@ snapshots:
       - debug
       - utf-8-validate
 
+  '@cosmjs/stargate@0.33.1':
+    dependencies:
+      '@cosmjs/amino': 0.33.1
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/proto-signing': 0.33.1
+      '@cosmjs/stream': 0.33.1
+      '@cosmjs/tendermint-rpc': 0.33.1
+      '@cosmjs/utils': 0.33.1
+      cosmjs-types: 0.9.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - utf-8-validate
+
   '@cosmjs/stream@0.30.1':
+    dependencies:
+      xstream: 11.14.0
+
+  '@cosmjs/stream@0.33.1':
     dependencies:
       xstream: 11.14.0
 
@@ -8282,12 +8417,31 @@ snapshots:
       - debug
       - utf-8-validate
 
+  '@cosmjs/tendermint-rpc@0.33.1':
+    dependencies:
+      '@cosmjs/crypto': 0.33.1
+      '@cosmjs/encoding': 0.33.1
+      '@cosmjs/json-rpc': 0.33.1
+      '@cosmjs/math': 0.33.1
+      '@cosmjs/socket': 0.33.1
+      '@cosmjs/stream': 0.33.1
+      '@cosmjs/utils': 0.33.1
+      axios: 1.9.0
+      readonly-date: 1.0.0
+      xstream: 11.14.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - utf-8-validate
+
   '@cosmjs/utils@0.30.1': {}
 
-  '@credo-ts/anoncreds@0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@cosmjs/utils@0.33.1': {}
+
+  '@credo-ts/anoncreds@0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
       '@astronautlabs/jsonpath': 1.1.2
-      '@credo-ts/core': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+      '@credo-ts/core': 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@hyperledger/anoncreds-shared': 0.3.1
       '@sphereon/pex-models': 2.3.2
       big-integer: 1.6.52
@@ -8301,12 +8455,11 @@ snapshots:
       - expo
       - react-native
       - supports-color
-      - typescript
       - web-streams-polyfill
 
-  '@credo-ts/askar@0.5.13(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@credo-ts/askar@0.5.15(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
-      '@credo-ts/core': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+      '@credo-ts/core': 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@hyperledger/aries-askar-shared': 0.2.3
       bn.js: 5.2.2
       class-transformer: 0.5.1
@@ -8319,18 +8472,17 @@ snapshots:
       - expo
       - react-native
       - supports-color
-      - typescript
       - web-streams-polyfill
 
-  '@credo-ts/cheqd@0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@credo-ts/cheqd@0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
-      '@cheqd/sdk': 2.6.0
-      '@cheqd/ts-proto': 2.3.2
+      '@cheqd/sdk': 5.2.2
+      '@cheqd/ts-proto': 2.4.1
       '@cosmjs/crypto': 0.30.1
       '@cosmjs/proto-signing': 0.30.1
       '@cosmjs/stargate': 0.30.1
-      '@credo-ts/anoncreds': 0.5.13(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
-      '@credo-ts/core': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+      '@credo-ts/anoncreds': 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
+      '@credo-ts/core': 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@stablelib/ed25519': 1.0.3
       class-transformer: 0.5.1
       class-validator: 0.14.1
@@ -8345,12 +8497,14 @@ snapshots:
       - expo
       - react-native
       - supports-color
-      - typescript
       - utf-8-validate
       - web-streams-polyfill
 
-  '@credo-ts/core@0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@credo-ts/core@0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
+      '@animo-id/mdoc': 0.2.38
+      '@animo-id/pex': 4.1.1-alpha.0
+      '@astronautlabs/jsonpath': 1.1.2
       '@digitalcredentials/jsonld': 6.0.0(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@digitalcredentials/jsonld-signatures': 9.4.0(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@digitalcredentials/vc': 6.0.1(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
@@ -8361,14 +8515,12 @@ snapshots:
       '@peculiar/asn1-schema': 2.3.15
       '@peculiar/asn1-x509': 2.3.15
       '@peculiar/x509': 1.12.3
-      '@protokoll/mdoc-client': 0.2.36(typescript@5.8.3)
       '@sd-jwt/core': 0.7.2
       '@sd-jwt/decode': 0.7.2
       '@sd-jwt/jwt-status-list': 0.7.2
       '@sd-jwt/sd-jwt-vc': 0.7.2
       '@sd-jwt/types': 0.7.2
       '@sd-jwt/utils': 0.7.2
-      '@sphereon/pex': 5.0.0-unstable.25
       '@sphereon/pex-models': 2.3.2
       '@sphereon/ssi-types': 0.30.2-next.135
       '@stablelib/ed25519': 1.0.3
@@ -8380,7 +8532,6 @@ snapshots:
       class-transformer: 0.5.1
       class-validator: 0.14.1
       did-resolver: 4.1.0
-      jsonpath: 1.1.1
       lru_map: 0.4.1
       luxon: 3.6.1
       make-error: 1.3.6
@@ -8399,14 +8550,13 @@ snapshots:
       - expo
       - react-native
       - supports-color
-      - typescript
       - web-streams-polyfill
 
-  '@credo-ts/node@0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)':
+  '@credo-ts/node@0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
       '@2060.io/ffi-napi': 4.0.9
       '@2060.io/ref-napi': 3.0.6
-      '@credo-ts/core': 0.5.13(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(typescript@5.8.3)(web-streams-polyfill@3.3.3)
+      '@credo-ts/core': 0.5.15(encoding@0.1.13)(expo@52.0.46(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(encoding@0.1.13)(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(react@19.1.0))(react-native@0.79.1(@babel/core@7.26.10)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@types/express': 4.17.21
       express: 4.21.2
       rxjs: 7.8.2
@@ -8418,7 +8568,6 @@ snapshots:
       - expo
       - react-native
       - supports-color
-      - typescript
       - utf-8-validate
       - web-streams-polyfill
 
@@ -9654,19 +9803,6 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@protokoll/core@0.2.36(typescript@5.8.3)':
-    dependencies:
-      valibot: 0.37.0(typescript@5.8.3)
-    transitivePeerDependencies:
-      - typescript
-
-  '@protokoll/mdoc-client@0.2.36(typescript@5.8.3)':
-    dependencies:
-      '@protokoll/core': 0.2.36(typescript@5.8.3)
-      compare-versions: 6.1.1
-    transitivePeerDependencies:
-      - typescript
-
   '@qiwi/multi-semantic-release@7.1.2(typescript@5.8.3)':
     dependencies:
       '@semrel-extra/topo': 1.14.1
@@ -10135,22 +10271,6 @@ snapshots:
 
   '@sphereon/pex-models@2.3.2': {}
 
-  '@sphereon/pex@5.0.0-unstable.25':
-    dependencies:
-      '@astronautlabs/jsonpath': 1.1.2
-      '@sd-jwt/decode': 0.7.2
-      '@sd-jwt/present': 0.7.2
-      '@sd-jwt/types': 0.7.2
-      '@sphereon/pex-models': 2.3.2
-      '@sphereon/ssi-types': 0.30.2-next.135
-      ajv: 8.17.1
-      ajv-formats: 2.1.1(ajv@8.17.1)
-      jwt-decode: 3.1.2
-      nanoid: 3.3.11
-      uint8arrays: 3.1.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@sphereon/ssi-types@0.30.2-next.135':
     dependencies:
       '@sd-jwt/decode': 0.7.2
@@ -10165,20 +10285,39 @@ snapshots:
     dependencies:
       '@stablelib/int': 1.0.1
 
+  '@stablelib/binary@2.0.1':
+    dependencies:
+      '@stablelib/int': 2.0.1
+
   '@stablelib/ed25519@1.0.3':
     dependencies:
       '@stablelib/random': 1.0.2
       '@stablelib/sha512': 1.0.1
       '@stablelib/wipe': 1.0.1
 
+  '@stablelib/ed25519@2.0.2':
+    dependencies:
+      '@stablelib/random': 2.0.1
+      '@stablelib/sha512': 2.0.1
+      '@stablelib/wipe': 2.0.1
+
   '@stablelib/hash@1.0.1': {}
 
+  '@stablelib/hash@2.0.0': {}
+
   '@stablelib/int@1.0.1': {}
+
+  '@stablelib/int@2.0.1': {}
 
   '@stablelib/random@1.0.2':
     dependencies:
       '@stablelib/binary': 1.0.1
       '@stablelib/wipe': 1.0.1
+
+  '@stablelib/random@2.0.1':
+    dependencies:
+      '@stablelib/binary': 2.0.1
+      '@stablelib/wipe': 2.0.1
 
   '@stablelib/sha512@1.0.1':
     dependencies:
@@ -10186,7 +10325,23 @@ snapshots:
       '@stablelib/hash': 1.0.1
       '@stablelib/wipe': 1.0.1
 
+  '@stablelib/sha512@2.0.1':
+    dependencies:
+      '@stablelib/binary': 2.0.1
+      '@stablelib/hash': 2.0.0
+      '@stablelib/wipe': 2.0.1
+
   '@stablelib/wipe@1.0.1': {}
+
+  '@stablelib/wipe@2.0.1': {}
+
+  '@tokenizer/inflate@0.2.7':
+    dependencies:
+      debug: 4.4.0
+      fflate: 0.8.2
+      token-types: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@tokenizer/token@0.3.0': {}
 
@@ -11319,6 +11474,8 @@ snapshots:
       long: 4.0.0
       protobufjs: 6.11.4
 
+  cosmjs-types@0.9.0: {}
+
   credentials-context@2.0.0: {}
 
   cross-fetch@3.2.0(encoding@0.1.13):
@@ -11648,8 +11805,6 @@ snapshots:
       es5-ext: 0.10.64
       event-emitter: 0.3.5
       type: 2.7.3
-
-  esprima@1.2.2: {}
 
   esprima@4.0.1: {}
 
@@ -12009,6 +12164,8 @@ snapshots:
   fetch-retry@4.1.1:
     optional: true
 
+  fflate@0.8.2: {}
+
   figures@2.0.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -12031,6 +12188,15 @@ snapshots:
       readable-web-to-node-stream: 3.0.4
       strtok3: 6.3.0
       token-types: 4.2.1
+
+  file-type@20.5.0:
+    dependencies:
+      '@tokenizer/inflate': 0.2.7
+      strtok3: 10.2.2
+      token-types: 6.0.0
+      uint8array-extras: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
 
   filelist@1.0.4:
     dependencies:
@@ -13019,12 +13185,6 @@ snapshots:
 
   jsonparse@1.3.1: {}
 
-  jsonpath@1.1.1:
-    dependencies:
-      esprima: 1.2.2
-      static-eval: 2.0.2
-      underscore: 1.12.1
-
   just-diff-apply@5.5.0: {}
 
   just-diff@6.0.2: {}
@@ -13178,6 +13338,12 @@ snapshots:
       - supports-color
 
   libphonenumber-js@1.12.7: {}
+
+  libsodium-sumo@0.7.15: {}
+
+  libsodium-wrappers-sumo@0.7.15:
+    dependencies:
+      libsodium-sumo: 0.7.15
 
   libsodium-wrappers@0.7.15:
     dependencies:
@@ -13775,6 +13941,8 @@ snapshots:
     dependencies:
       '@multiformats/base-x': 4.0.1
 
+  multiformats@13.3.3: {}
+
   multiformats@9.9.0: {}
 
   multimatch@5.0.0:
@@ -14352,6 +14520,8 @@ snapshots:
   path-type@6.0.0: {}
 
   peek-readable@4.1.0: {}
+
+  peek-readable@7.0.0: {}
 
   picocolors@1.1.1: {}
 
@@ -15376,6 +15546,11 @@ snapshots:
       minimist: 1.2.8
       through: 2.3.8
 
+  strtok3@10.2.2:
+    dependencies:
+      '@tokenizer/token': 0.3.0
+      peek-readable: 7.0.0
+
   strtok3@6.3.0:
     dependencies:
       '@tokenizer/token': 0.3.0
@@ -15551,6 +15726,11 @@ snapshots:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
 
+  token-types@6.0.0:
+    dependencies:
+      '@tokenizer/token': 0.3.0
+      ieee754: 1.2.1
+
   toposource@1.2.0: {}
 
   tr46@0.0.3: {}
@@ -15642,11 +15822,15 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
+  uint8array-extras@1.4.0: {}
+
   uint8arrays@3.1.1:
     dependencies:
       multiformats: 9.9.0
 
-  underscore@1.12.1: {}
+  uint8arrays@5.1.0:
+    dependencies:
+      multiformats: 13.3.3
 
   undici-types@6.19.8: {}
 
@@ -15725,6 +15909,8 @@ snapshots:
 
   uuid@10.0.0: {}
 
+  uuid@11.1.0: {}
+
   uuid@7.0.3:
     optional: true
 
@@ -15732,10 +15918,6 @@ snapshots:
     optional: true
 
   uuid@9.0.1: {}
-
-  valibot@0.37.0(typescript@5.8.3):
-    optionalDependencies:
-      typescript: 5.8.3
 
   validate-npm-package-license@3.0.4:
     dependencies:
