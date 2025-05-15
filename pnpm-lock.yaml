@@ -65,13 +65,13 @@ importers:
     dependencies:
       '@credo-ts/anoncreds':
         specifier: ^0.5.13
-        version: 0.5.15(@hyperledger/anoncreds-shared@0.2.4)(expo@53.0.9)(react-native@0.79.2)
+        version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(expo@53.0.9)(react-native@0.79.2)
       '@credo-ts/askar':
         specifier: ^0.5.13
         version: 0.5.15(@hyperledger/aries-askar-shared@0.2.3)(expo@53.0.9)(react-native@0.79.2)
       '@credo-ts/cheqd':
         specifier: ^0.5.13
-        version: 0.5.15(@hyperledger/anoncreds-shared@0.2.4)(expo@53.0.9)(react-native@0.79.2)
+        version: 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(expo@53.0.9)(react-native@0.79.2)
       '@credo-ts/core':
         specifier: ^0.5.13
         version: 0.5.15(expo@53.0.9)(react-native@0.79.2)
@@ -81,12 +81,15 @@ importers:
       '@hyperledger/anoncreds-nodejs':
         specifier: ^0.3.1
         version: 0.3.1
+      '@hyperledger/anoncreds-shared':
+        specifier: ^0.3.1
+        version: 0.3.1
       '@hyperledger/aries-askar-nodejs':
         specifier: ^0.2.3
         version: 0.2.3
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.2
-        version: 1.11.2
+        version: 1.11.3
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
@@ -111,7 +114,7 @@ importers:
         version: link:../server
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.2
-        version: 1.11.2
+        version: 1.11.3
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -160,7 +163,7 @@ importers:
         version: link:../credo
       '@modelcontextprotocol/sdk':
         specifier: ^1.10.2
-        version: 1.11.2
+        version: 1.11.3
       zod:
         specifier: ^3.24.3
         version: 3.24.4
@@ -1646,14 +1649,14 @@ packages:
     resolution: {integrity: sha512-UnLHDY6KMmC+UXf3Ufyh+onE19xzEXjT4VZ504Acmk4PXxqyvG4cCPprlKUFnGUX7f0z8Or9MAOHXBx41uHBcg==}
     dev: false
 
-  /@credo-ts/anoncreds@0.5.15(@hyperledger/anoncreds-shared@0.2.4)(expo@53.0.9)(react-native@0.79.2):
+  /@credo-ts/anoncreds@0.5.15(@hyperledger/anoncreds-shared@0.3.1)(expo@53.0.9)(react-native@0.79.2):
     resolution: {integrity: sha512-b9LkFl/icptDV69QO/DJKfyP7oVuRUlj57xxnMYuJyPnFtfXwkGJr7Fdb62Izi8eZXAOIOtnsXt6P4KEV2cnYA==}
     peerDependencies:
       '@hyperledger/anoncreds-shared': ^0.2.2
     dependencies:
       '@astronautlabs/jsonpath': 1.1.2
       '@credo-ts/core': 0.5.15(expo@53.0.9)(react-native@0.79.2)
-      '@hyperledger/anoncreds-shared': 0.2.4
+      '@hyperledger/anoncreds-shared': 0.3.1
       '@sphereon/pex-models': 2.3.2
       big-integer: 1.6.52
       bn.js: 5.2.2
@@ -1694,7 +1697,7 @@ packages:
       - web-streams-polyfill
     dev: false
 
-  /@credo-ts/cheqd@0.5.15(@hyperledger/anoncreds-shared@0.2.4)(expo@53.0.9)(react-native@0.79.2):
+  /@credo-ts/cheqd@0.5.15(@hyperledger/anoncreds-shared@0.3.1)(expo@53.0.9)(react-native@0.79.2):
     resolution: {integrity: sha512-L/h+UkM4oDB5GZ9PIRIOcsnSQ9grwQo4RLTY/dH1LsyL+ZVPtKXIDXRhuY1LLZqkYVcrRGXdAVT8bgh6pvLXnA==}
     dependencies:
       '@cheqd/sdk': 5.2.2
@@ -1702,7 +1705,7 @@ packages:
       '@cosmjs/crypto': 0.30.1
       '@cosmjs/proto-signing': 0.30.1
       '@cosmjs/stargate': 0.30.1
-      '@credo-ts/anoncreds': 0.5.15(@hyperledger/anoncreds-shared@0.2.4)(expo@53.0.9)(react-native@0.79.2)
+      '@credo-ts/anoncreds': 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(expo@53.0.9)(react-native@0.79.2)
       '@credo-ts/core': 0.5.15(expo@53.0.9)(react-native@0.79.2)
       '@stablelib/ed25519': 1.0.3
       class-transformer: 0.5.1
@@ -2374,10 +2377,6 @@ packages:
       - supports-color
     dev: false
 
-  /@hyperledger/anoncreds-shared@0.2.4:
-    resolution: {integrity: sha512-OKw8/KXU5bAVA2fhm8pI3BLyJOIzOrEWz6sqX8QQSILNgx2hrEcN1OCSYTudcLAfID3fGRvr1X3vLzlRo19IVg==}
-    dev: false
-
   /@hyperledger/anoncreds-shared@0.3.1:
     resolution: {integrity: sha512-pJNIMvineGpNsyEqsMR+tkRNy5+PQAnMkNgnefJlscCjVsTMqJnOtoNl18pk0LzjVKdGtwJtpg5N+lRx81hfAQ==}
     dependencies:
@@ -2680,8 +2679,8 @@ packages:
       - supports-color
     dev: false
 
-  /@modelcontextprotocol/sdk@1.11.2:
-    resolution: {integrity: sha512-H9vwztj5OAqHg9GockCQC06k1natgcxWQSRpQcPJf6i5+MWBzfKkRtxGbjQf0X2ihii0ffLZCRGbYV2f2bjNCQ==}
+  /@modelcontextprotocol/sdk@1.11.3:
+    resolution: {integrity: sha512-rmOWVRUbUJD7iSvJugjUbFZshTAuJ48MXoZ80Osx1GM0K/H1w7rSEvmw8m6vdWxNASgtaHIhAgre4H/E9GJiYQ==}
     engines: {node: '>=18'}
     dependencies:
       content-type: 1.0.5
@@ -4069,6 +4068,7 @@ packages:
       '@js-joda/timezone': 2.3.0(@js-joda/core@5.6.3)
       format-util: 1.0.5
     dev: false
+    bundledDependencies: []
 
   /@sphereon/pex-models@2.3.2:
     resolution: {integrity: sha512-foFxfLkRwcn/MOp/eht46Q7wsvpQGlO7aowowIIb5Tz9u97kYZ2kz6K2h2ODxWuv5CRA7Q0MY8XUBGE2lfOhOQ==}
@@ -9145,7 +9145,7 @@ packages:
     engines: {node: '>=18.18'}
     dependencies:
       flow-enums-runtime: 0.0.6
-      terser: 5.39.1
+      terser: 5.39.2
     dev: false
     optional: true
 
@@ -12263,8 +12263,8 @@ packages:
     dev: false
     optional: true
 
-  /terser@5.39.1:
-    resolution: {integrity: sha512-Mm6+uad0ZuDtcV8/4uOZQDQ8RuiC5Pu+iZRedJtF7yA/27sPL7d++In/AJKpWZlU3SYMPPkVfwetn6sgZ66pUA==}
+  /terser@5.39.2:
+    resolution: {integrity: sha512-yEPUmWve+VA78bI71BW70Dh0TuV4HHd+I5SHOAfS1+QBOmvmCiiffgjR8ryyEd3KIfvPGFqoADt8LdQ6XpXIvg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
