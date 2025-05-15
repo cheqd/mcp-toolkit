@@ -1,5 +1,12 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-credo [1.4.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.3.0...@cheqd/mcp-toolkit-credo@1.4.0-develop.1) (2025-05-15)
+
+
+### Features
+
+* Add whois prompt [DEV-4935] ([#31](https://github.com/cheqd/mcp-toolkit/issues/31)) ([e051ad8](https://github.com/cheqd/mcp-toolkit/commit/e051ad807122acaaa51f2a38e147cd8e10642460))
+
 # @cheqd/mcp-toolkit-credo [1.3.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.2.0...@cheqd/mcp-toolkit-credo@1.3.0) (2025-05-12)
 
 
