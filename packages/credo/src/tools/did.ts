@@ -56,13 +56,13 @@ export class DidToolHandler {
 			description:
 				'Creates and publishes a new DID document to the specified cheqd network (testnet or mainnet). Generates a new DID with default verification methods and returns the complete DID document.',
 			schema: CreateDidDocumentParams,
-			handler: async ({ network }) => {
+			handler: async ({ network, verificationMethodType, verificationMethodId }) => {
 				const result = await this.credo.agent.dids.create({
 					method: 'cheqd',
 					secret: {
 						verificationMethod: {
-							id: 'key-1', // can be a param
-							type: 'Ed25519VerificationKey2020', // can be a param
+							id: verificationMethodId || 'key-1',
+							type: verificationMethodType || 'Ed25519VerificationKey2020',
 						},
 					},
 					options: {
