@@ -1,9 +1,9 @@
 import {
 	AutoAcceptCredential,
-	CredentialFormatPayload,
 	JsonLdCredentialDetailFormat,
+	Jwt,
 	V2CredentialPreview,
-	W3cJsonLdVerifiableCredentialOptions,
+    W3cJwtVerifiableCredential,
 } from '@credo-ts/core';
 import QRCode from 'qrcode';
 import { CredoAgent } from '../agent.js';
@@ -12,6 +12,7 @@ import {
 	ConnectionlessCredentialOfferParams,
 	GetCredentialRecordParams,
 	ListCredentialParams,
+	StoreCredentialParams,
 	ToolDefinition,
 	CredentialOfferParams,
 	VC_CONTEXT,
@@ -201,16 +202,52 @@ export class CredentialToolHandler {
 				'Retrieves a specific credential record from the wallet using its unique identifier. Returns detailed information about the credential, including its attributes, state, and associated metadata.',
 			schema: GetCredentialRecordParams,
 			handler: async ({ credentialId }) => {
-				const credential = await this.credo.agent.credentials.getById(credentialId);
-
-				return {
-					content: [
-						{
-							type: 'text',
-							text: JSON.stringify(credential),
-						},
-					],
-				};
+				try {
+					let credential;
+					try {
+						credential = await this.credo.agent.credentials.getById(credentialId);
+					} catch (error) {
+						// Credential not found in credentials store, will try W3C store next
+						console.error('Credential not found in credentials store');
+					}
+					if (!credential) {
+						credential = await this.credo.agent.w3cCredentials.getCredentialRecordById(credentialId);
+					}
+					// If we still don't have a credential after both attempts, throw an error
+					if (!credential) {
+						throw new Error(`Credential with ID ${credentialId} not found in any credential store`);
+					}
+					return {
+						content: [
+							{
+								type: 'text',
+								text: JSON.stringify(credential),
+							},
+						],
+					};
+				} catch (error) {
+					// Return an error response
+					return {
+						content: [
+							{
+								type: 'text',
+								text: JSON.stringify(
+									{
+										error:
+											error instanceof Error
+												? error.message
+												: 'Failed to retrieve credential record',
+										status: 'failed',
+										credentialId,
+									},
+									null,
+									2
+								),
+							},
+						],
+						isError: true,
+					};
+				}
 			},
 		};
 	}
@@ -254,6 +291,33 @@ export class CredentialToolHandler {
 			handler: async ({ credentialRecordId }) => {
 				const credential = await this.credo.agent.credentials.acceptRequest({
 					credentialRecordId,
+                    				});
+
+				return {
+					content: [
+						{
+							type: 'text',
+							text: JSON.stringify(credential),
+						},
+					],
+				};
+			},
+		};
+	}
+
+    /**
+	 * Imports a credential provided by the user.
+	 */
+	importCredentialTool(): ToolDefinition<typeof StoreCredentialParams> {
+		return {
+			name: 'import-credential',
+			description: 'Import a jwt credential provided by the user.',
+			schema: StoreCredentialParams,
+			handler: async ({ jwt }) => {
+				const credential = await this.credo.agent.w3cCredentials.storeCredential({
+					credential: new W3cJwtVerifiableCredential({
+						jwt: Jwt.fromSerializedJwt(jwt),
+					}),
 				});
 
 				return {

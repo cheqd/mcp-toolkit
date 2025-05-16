@@ -1,6 +1,11 @@
 # Changelog
 
-## @cheqd/mcp-toolkit-server [1.3.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.3.0...@cheqd/mcp-toolkit-server@1.3.1) (2025-05-15)
+# @cheqd/mcp-toolkit-remote-server [1.2.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.1.0...@cheqd/mcp-toolkit-remote-server@1.2.0) (2025-05-15)
+
+
+### Features
+
+* Add whois prompt [DEV-4935] ([#31](https://github.com/cheqd/mcp-toolkit/issues/31)) ([e051ad8](https://github.com/cheqd/mcp-toolkit/commit/e051ad807122acaaa51f2a38e147cd8e10642460))
 
 
 
@@ -8,9 +13,14 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.4.0
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.3.1
 
-## @cheqd/mcp-toolkit-server [1.3.1-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.3.0...@cheqd/mcp-toolkit-server@1.3.1-develop.1) (2025-05-15)
+# @cheqd/mcp-toolkit-remote-server [1.2.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.1.0...@cheqd/mcp-toolkit-remote-server@1.2.0-develop.1) (2025-05-15)
+
+
+### Features
+
+* Add whois prompt [DEV-4935] ([#31](https://github.com/cheqd/mcp-toolkit/issues/31)) ([e051ad8](https://github.com/cheqd/mcp-toolkit/commit/e051ad807122acaaa51f2a38e147cd8e10642460))
 
 
 
@@ -18,9 +28,9 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.4.0-develop.1
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.3.1-develop.1
 
-# @cheqd/mcp-toolkit-server [1.3.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.2.0...@cheqd/mcp-toolkit-server@1.3.0) (2025-05-12)
+# @cheqd/mcp-toolkit-remote-server [1.1.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0...@cheqd/mcp-toolkit-remote-server@1.1.0) (2025-05-12)
 
 
 ### Features
@@ -33,9 +43,9 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.3.0
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.3.0
 
-# @cheqd/mcp-toolkit-server [1.3.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.2.0...@cheqd/mcp-toolkit-server@1.3.0-develop.1) (2025-04-30)
+# @cheqd/mcp-toolkit-remote-server [1.1.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0...@cheqd/mcp-toolkit-remote-server@1.1.0-develop.1) (2025-04-30)
 
 
 ### Features
@@ -48,30 +58,9 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.3.0-develop.1
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.3.0-develop.1
 
-# @cheqd/mcp-toolkit-server [1.2.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.1.0...@cheqd/mcp-toolkit-server@1.2.0) (2025-04-30)
-
-
-### Bug Fixes
-
-* Fix session management ([#25](https://github.com/cheqd/mcp-toolkit/issues/25)) ([70936ae](https://github.com/cheqd/mcp-toolkit/commit/70936ae77b350c53cbcfad61e4f45230b71fdd59))
-
-
-### Features
-
-* add resources and prompts [DEV-4862] ([#20](https://github.com/cheqd/mcp-toolkit/issues/20)) ([40e3d0e](https://github.com/cheqd/mcp-toolkit/commit/40e3d0e95b838470aa0b3376ee194daa53f80946))
-* Implement remote-mcp support ([#19](https://github.com/cheqd/mcp-toolkit/issues/19)) ([3b23479](https://github.com/cheqd/mcp-toolkit/commit/3b2347945a45186e5b5f1bfdff025047016a27d0))
-
-
-
-
-
-### Dependencies
-
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.2.0
-
-# @cheqd/mcp-toolkit-server [1.2.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.1.0...@cheqd/mcp-toolkit-server@1.2.0-develop.1) (2025-04-30)
+# @cheqd/mcp-toolkit-remote-server 1.0.0 (2025-04-30)
 
 
 ### Bug Fixes
@@ -90,42 +79,54 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.2.0-develop.1
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.2.0
 
-# @cheqd/mcp-toolkit-server [1.1.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.1.0-develop.3...@cheqd/mcp-toolkit-server@1.1.0-develop.4) (2025-04-26)
+# @cheqd/mcp-toolkit-remote-server [1.0.0-develop.4](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.3...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.4) (2025-04-30)
 
-# @cheqd/mcp-toolkit-server [1.1.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.0.0...@cheqd/mcp-toolkit-server@1.1.0) (2025-04-30)
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.2.0-develop.1
+
+# @cheqd/mcp-toolkit-remote-server [1.0.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.2...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.3) (2025-04-26)
+
 
 ### Features
 
 * add resources and prompts [DEV-4862] ([#20](https://github.com/cheqd/mcp-toolkit/issues/20)) ([40e3d0e](https://github.com/cheqd/mcp-toolkit/commit/40e3d0e95b838470aa0b3376ee194daa53f80946))
-* Add Playwright e2e tests [DEV-4863] ([#14](https://github.com/cheqd/mcp-toolkit/issues/14)) ([7b683ba](https://github.com/cheqd/mcp-toolkit/commit/7b683ba9b97bda47ace0e77ca1c96b927aa37ac3))
+
+
+
+
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.1.0-develop.3
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.1.0-develop.4
 
-# @cheqd/mcp-toolkit-server [1.1.0-develop.3](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.1.0-develop.2...@cheqd/mcp-toolkit-server@1.1.0-develop.3) (2025-04-25)
+# @cheqd/mcp-toolkit-remote-server [1.0.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.0.0-develop.1...@cheqd/mcp-toolkit-remote-server@1.0.0-develop.2) (2025-04-25)
 
 
 ### Bug Fixes
 
 * Fix session management ([#25](https://github.com/cheqd/mcp-toolkit/issues/25)) ([70936ae](https://github.com/cheqd/mcp-toolkit/commit/70936ae77b350c53cbcfad61e4f45230b71fdd59))
 
-# @cheqd/mcp-toolkit-server [1.1.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.1.0-develop.1...@cheqd/mcp-toolkit-server@1.1.0-develop.2) (2025-04-25)
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.1.0-develop.3
+
+# @cheqd/mcp-toolkit-remote-server 1.0.0-develop.1 (2025-04-25)
 
 
 ### Features
 
 * Implement remote-mcp support ([#19](https://github.com/cheqd/mcp-toolkit/issues/19)) ([3b23479](https://github.com/cheqd/mcp-toolkit/commit/3b2347945a45186e5b5f1bfdff025047016a27d0))
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.1.0
-
-# @cheqd/mcp-toolkit-server [1.1.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.0.1-develop.1...@cheqd/mcp-toolkit-server@1.1.0-develop.1) (2025-04-10)
-
-
-### Features
-
-* Add Playwright e2e tests [DEV-4863] ([#14](https://github.com/cheqd/mcp-toolkit/issues/14)) ([7b683ba](https://github.com/cheqd/mcp-toolkit/commit/7b683ba9b97bda47ace0e77ca1c96b927aa37ac3))
 
 
 
@@ -133,7 +134,7 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-credo:** upgraded to 1.1.0-develop.2
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.1.0-develop.2
 
 ## @cheqd/mcp-toolkit-server [1.0.1-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.0.0...@cheqd/mcp-toolkit-server@1.0.1-develop.1) (2025-04-10)
 

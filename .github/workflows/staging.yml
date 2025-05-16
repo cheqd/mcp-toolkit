@@ -1,0 +1,93 @@
+name: "Deploy"
+on:
+  workflow_call:
+defaults:
+  run:
+    shell: bash
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  
+  release-staging:
+    name: "Release Staging Docker image"
+    runs-on: ubuntu-latest
+    if: ${{ github.ref_name == 'develop' }}
+
+    env: 
+      IMAGE_NAME: ${{ github.repository }}
+    environment: 
+      name: staging
+      url: https://remote-mcp-staging.cheqd.io
+    
+    steps:
+      - name: Install DigitalOcean CLI
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Login to DOCR
+        run: doctl registry login --expiry-seconds 600
+      
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Docker image
+        uses: actions/download-artifact@v4
+        with:
+          name: mcp-toolkit-staging
+
+      - name: Load Docker image
+        run: docker image load --input mcp-toolkit-staging.tar
+      
+      - name: Push image to GitHub Container Registry
+        run: docker image push --all-tags ghcr.io/${{ env.IMAGE_NAME }}
+
+      - name: Push staging image to DOCR
+        run: docker image push --all-tags registry.digitalocean.com/${{ env.IMAGE_NAME }}
+
+  deploy-staging:
+    name: "Staging deployment"
+    runs-on: ubuntu-latest
+    needs: release-staging
+    if: ${{ github.ref_name == 'develop' }}
+    environment: 
+      name: staging
+      url: https://remote-mcp-staging.cheqd.io
+    env: 
+      IMAGE_NAME: ${{ github.repository }}
+      FIREWALL_ID: ${{ secrets.FIREWALL_ID }}
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    steps:
+      - name: Install DigitalOcean CLI
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/.ssh"
+          echo "${{ env.SSH_PRIVATE_KEY }}" > "$GITHUB_WORKSPACE/.ssh/id_rsa"
+          chmod 600 "$GITHUB_WORKSPACE/.ssh/id_rsa"
+      
+      - name: Open firewall for deployment execution
+        run: doctl compute firewall add-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"
+
+      - name: SSH into server and pull new image
+        run: |
+          ssh -o StrictHostKeyChecking=no -i "$GITHUB_WORKSPACE/.ssh/id_rsa" root@${{ env.SERVER_IP }} <<EOF
+          cd mcp-toolkit/
+          docker-compose pull
+          docker-compose down
+          docker-compose up -d
+          EOF
+
+      - name: Close firewall after deployment execution
+        run: doctl compute firewall remove-rules ${{ env.FIREWALL_ID }} --inbound-rules "protocol:tcp,ports:22,address:0.0.0.0/0"

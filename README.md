@@ -8,7 +8,32 @@
 
 ## ℹ️ Overview
 
-The `@cheqd/mcp-toolkit` is a modular framework built around the Model Context Protocol (MCP). MCP standardizes AI agent interactions by providing a structured way to handle identity-related workflows. This toolkit enables AI agents to securely manage decentralized identities (DIDs), verifiable credentials, and trust registries, making it an essential component for AI-driven identity systems. This repository allows developers to configure and deploy an MCP server with the available toolkits.
+The `@cheqd/mcp-toolkit` is a modular framework built around the Model Context Protocol (MCP) which allows AI agents to interact with the Cheqd network. MCP standardizes AI agent interactions by providing a structured way to handle identity-related workflows. This toolkit enables AI agents to securely manage decentralized identities (DIDs), verifiable credentials, and trust registries, making it an essential component for AI-driven identity systems. This repository allows developers to configure and deploy an MCP server with the available toolkits.
+
+## 🌐 Remote MCP Server
+
+For the quickest way to get started, you can connect to our hosted MCP server. Simply add the following configuration to your Claude Desktop or Cursor settings file:
+
+- For Claude Desktop: `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json (Windows)`
+
+- For Cursor: `.cursor/mcp.json`
+
+```json
+{
+    "mcpServers": {
+        "cheqd-mcp": {
+            "command": "npx",
+            "args": [
+                "mcp-remote",
+                "https://remote-mcp.cheqd.io/sse",
+                "--transport", "sse-only"
+            ],
+        }
+    }
+}
+```
+
+The remote option requires no local setup and provides immediate access to cheqd identity tools.
 
 ## Prerequisites
 
@@ -20,18 +45,37 @@ The `@cheqd/mcp-toolkit` is a modular framework built around the Model Context P
 
 ### @cheqd/mcp-toolkit
 
-The `@cheqd/mcp-toolkit` package allows you to configure and host an MCP (multi-party computation) server within an environment. It integrates with tools from this repository to provide a customizable infrastructure for managing identity-related operations.
+The `@cheqd/mcp-toolkit` package allows you to configure and host an MCP (Model Context Protocol) server within an environment. It integrates with tools from this repository to provide a customizable infrastructure for managing identity-related operations.
 
 Features:
 
 - Configurable MCP server setup
 - Integration with various tools from this repository
 
-#### Usage with Claude Desktop or Cursor
+### Usage Options
 
-Add the following configuration to your claude_desktop_config.json or .cursor/mcp.json:
+#### 1. Remote Server (Easiest)
 
-##### npx
+Connect to our hosted MCP server - no local setup required:
+
+```json
+{
+    "mcpServers": {
+        "cheqd-mcp": {
+            "command": "npx",
+            "args": [
+                "mcp-remote",
+                "https://remote-mcp.cheqd.io/sse",
+                "--transport", "sse-only"
+            ],
+        }
+    }
+}
+```
+
+#### 2. Local server via NPX
+
+Use this to run the Cheqd MCP Server locally and pass your own environment variables.
 
 ```json
 {
@@ -51,7 +95,7 @@ Add the following configuration to your claude_desktop_config.json or .cursor/mc
 }
 ```
 
-##### docker-compose
+#### 3. Local Server via docker-compose
 
 Use the `env.example` file and update the appropriate variables.
 
@@ -68,6 +112,8 @@ Use the `env.example` file and update the appropriate variables.
         "--rm",
         "-p", 
         "3000:3000",
+        "--name",
+        "faber",
         "-T",
         "mcp-server"
       ]
@@ -83,19 +129,25 @@ The `@cheqd/mcp-toolkit-credo` package is one of the toolkits that integrate wit
 - Issuing and revoking credentials
 - Schema and credential definition management
 - DID-based authentication
+- TRAIN for trust registry verification
 
-#### 🌍 Environment Variables
+### 🌍 Environment Variables
 
 ```bash
-TOOLS="credo"
-CREDO_PORT="3000"
-CREDO_NAME="faber"
-CREDO_CHEQD_TESTNET_MNEMONIC="your-mnemonic-phrase"
+TOOLS="credo"       # Comma separated list of Tools, as of now only 'credo'
+CREDO_PORT="3000"   # Port on which the Credo agent will run
+CREDO_NAME="faber"  # Name of the Credo Agent
+CREDO_ENDPOINT="http://faber:3000"    # Endpoint which Credo Agent is accessible externally
+CREDO_CHEQD_TESTNET_MNEMONIC="your-mnemonic-phrase"   # Your Testnet mnemonic phrase
+TRAIN_ENDPOINT="https://dev-train.trust-scheme.de/tcr/v1/"    # The TRAIN endpoint for verification of trust registry 
+PORT="5000"   # The Port where the Remote MCP Server will run
 ```
 
-## Development Setup
+## Developer Options
 
-### 1. Install pnpm
+### Development Setup
+
+#### 1. Install pnpm
 
 If you don't already have pnpm installed:
 
@@ -103,24 +155,39 @@ If you don't already have pnpm installed:
 npm install -g pnpm
 ```
 
-### 2. Clone the repository
+#### 2. Clone the repository
 
 ```bash
 git clone https://github.com/cheqd/mcp-toolkit.git
 cd mcp-toolkit
 ```
 
-### 3. Install dependencies
+#### 3. Install dependencies
 
 ```bash
 pnpm install
 ```
 
-### 4. Build the packages
+#### 4. Build the packages
 
 ```bash
 pnpm build
 ```
+
+## 📚 Documentation
+
+For comprehensive details on the Cheqd MCP Toolkit, usage examples, and AI agent integrations, please refer to our official documentation:
+
+👉 [MCP Documentation on cheqd.io](https://docs.cheqd.io/product/advanced/ai-agents/mcp)
+
+
+The documentation covers advanced topics including:
+
+- Architecture and design of MCP
+- Integrating MCP with AI agents
+- Real-world use cases and patterns
+- Security and trust model
+- Deployment recommendations
 
 ## 💬 Community
 

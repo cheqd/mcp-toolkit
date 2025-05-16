@@ -5,7 +5,6 @@ import { CredoAgent } from '../agent.js';
 import {
 	ConnectionProofRequestParams,
 	ConnectionlessProofRequestParams,
-	GetProofExchangeRecordParams,
 	GetProofRecordParams,
 	ListProofParams,
 	ToolDefinition,
@@ -135,31 +134,6 @@ export class ProofToolHandler {
 	}
 
 	/**
-	 * Retrieves a specific proof exchange record.
-	 * Returns detailed information about a proof request and its status.
-	 */
-	getProofExchangeRecordTool(): ToolDefinition<typeof GetProofExchangeRecordParams> {
-		return {
-			name: 'get-proof-exchange-record',
-			description:
-				'Retrieves a specific proof exchange record using its unique identifier. Returns detailed information about the proof request, including its state, requested attributes, and verification status.',
-			schema: GetProofExchangeRecordParams,
-			handler: async ({ proofRecordId }) => {
-				const proof = await this.credo.agent.proofs.getById(proofRecordId);
-
-				return {
-					content: [
-						{
-							type: 'text',
-							text: JSON.stringify(proof),
-						},
-					],
-				};
-			},
-		};
-	}
-
-	/**
 	 * Retrieves a specific proof record from the wallet.
 	 * Returns detailed information about a single proof exchange.
 	 */
@@ -184,16 +158,11 @@ export class ProofToolHandler {
 		};
 	}
 
-	/**
-	 * Accepts a proof request and generates a Zero-Knowledge Proof from available credentials.
-	 * This tool allows the agent to respond to a proof request by selecting appropriate credentials
-	 * from the wallet and generating a proof that satisfies the request's requirements.
-	 */
-	acceptProofRequestTool(): ToolDefinition<typeof GetProofExchangeRecordParams> {
+	acceptProofRequestTool(): ToolDefinition<typeof GetProofRecordParams> {
 		return {
 			name: 'accept-proof-request',
 			description: 'Accept the proof request to generate a ZKP from credentials in the wallet',
-			schema: GetProofExchangeRecordParams,
+			schema: GetProofRecordParams,
 			handler: async ({ proofRecordId }) => {
 				const requestedCredentials = await this.credo.agent.proofs.selectCredentialsForRequest({
 					proofRecordId,

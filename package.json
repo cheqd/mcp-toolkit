@@ -13,32 +13,39 @@
   "scripts": {
     "verify": "lerna run verify --stream",
     "build": "lerna run build",
-    "test": "lerna run test",
-    "start": "node packages/server/build/index.js",
+    "test": "npm run test:e2e",
+    "test:e2e": "npx playwright test",
+    "test:coverage": "lerna run test:coverage",
     "clean": "lerna run clean",
     "release": "multi-semantic-release",
     "lint": "lerna run --parallel --no-bail lint",
     "format": "find packages -maxdepth 1 -type d -exec sh -c 'cd {} && [ -f package.json ] && pnpm format' \\;",
-    "prepare": "husky"
+    "prepare": "husky",
+    "server": "node packages/remote-server/build/index.js",
+    "start": "node packages/server/build/index.js"
   },
   "devDependencies": {
+    "@playwright/test": "^1.52.0",
     "@qiwi/multi-semantic-release": "^7.1.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/github": "^11.0.2",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.3",
     "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^20.17.29",
+    "@types/node": "^20.17.32",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "husky": "^9.1.7",
-    "lerna": "^8.2.1",
+    "lerna": "^8.2.2",
     "prettier": "^3.5.3",
     "semantic-release": "^24.2.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
   }
 }

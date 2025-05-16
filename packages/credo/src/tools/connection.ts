@@ -1,4 +1,4 @@
-import { ConnectionRecord } from '@credo-ts/core';
+import { ConnectionRecord, HandshakeProtocol } from '@credo-ts/core';
 import { CredoAgent } from '../agent.js';
 import {
 	CreateInvitationParams,
@@ -33,6 +33,7 @@ export class ConnectionToolHandler {
 			handler: async () => {
 				const outOfBand = await this.credo.agent.oob.createInvitation({
 					autoAcceptConnection: true,
+					handshakeProtocols: [HandshakeProtocol.DidExchange],
 				});
 				const invitationUrl = outOfBand.outOfBandInvitation.toUrl({ domain: this.credo.domain });
 				const invitation = outOfBand.outOfBandInvitation.toJSON();

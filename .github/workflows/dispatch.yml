@@ -15,6 +15,12 @@ jobs:
     name: "Build & Test"
     uses: ./.github/workflows/build.yml
     secrets: inherit
+  
+  call-staging:
+    name: "Staging"
+    needs: call-build
+    uses: ./.github/workflows/staging.yml
+    secrets: inherit
 
   call-release:
     name: "Release"
