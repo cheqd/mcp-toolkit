@@ -30,12 +30,12 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-credo": "1.4.0-develop.1",
-    "@modelcontextprotocol/sdk": "^1.10.2",
-    "zod": "^3.24.3"
+    "@cheqd/mcp-toolkit-credo": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.25.56"
   },
   "devDependencies": {
-    "@types/node": "^20.17.32",
+    "@types/node": "^20.19.0",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

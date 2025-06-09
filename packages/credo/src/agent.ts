@@ -5,9 +5,11 @@ import {
 	AutoAcceptCredential,
 	AutoAcceptProof,
 	ConnectionsModule,
+	ConsoleLogger,
 	CredentialsModule,
 	DidsModule,
 	HttpOutboundTransport,
+	LogLevel,
 	ProofsModule,
 	V2CredentialProtocol,
 	V2ProofProtocol,
@@ -46,6 +48,7 @@ export class CredoAgent {
 				key: name, // can be a separate param
 			},
 			endpoints: [this.domain],
+			logger: new ConsoleLogger(LogLevel.error),
 		} satisfies InitConfig;
 
 		this.config = config;
@@ -142,10 +145,10 @@ function getAskarAnonCredsModules(mnemonic: string) {
 						network: 'testnet',
 						cosmosPayerSeed: mnemonic,
 					},
-                    {
-                        network: 'mainnet',
-                        cosmosPayerSeed: mnemonic
-                    }
+					{
+						network: 'mainnet',
+						cosmosPayerSeed: mnemonic,
+					},
 				],
 			})
 		),
