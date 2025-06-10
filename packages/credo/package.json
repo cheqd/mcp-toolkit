@@ -28,20 +28,19 @@
     "credo"
   ],
   "dependencies": {
-    "@credo-ts/anoncreds": "^0.5.13",
-    "@credo-ts/askar": "^0.5.13",
-    "@credo-ts/cheqd": "^0.5.13",
-    "@credo-ts/core": "^0.5.13",
-    "@credo-ts/node": "^0.5.13",
+    "@credo-ts/anoncreds": "^0.5.15",
+    "@credo-ts/askar": "^0.5.15",
+    "@credo-ts/cheqd": "^0.5.15",
+    "@credo-ts/core": "^0.5.15",
+    "@credo-ts/node": "^0.5.15",
     "@hyperledger/anoncreds-nodejs": "^0.3.1",
     "@hyperledger/anoncreds-shared": "^0.3.1",
     "@hyperledger/aries-askar-nodejs": "^0.2.3",
-    "@modelcontextprotocol/sdk": "^1.10.2",
     "qrcode": "^1.5.4",
-    "zod": "^3.24.3"
-  },
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.25.56"  },
   "devDependencies": {
-    "@types/node": "^20.17.32",
+    "@types/node": "^20.19.0",
     "@types/qrcode": "^1.5.5",
     "typescript": "^5.8.3"
   },
