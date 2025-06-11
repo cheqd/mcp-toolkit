@@ -1,5 +1,20 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-server [1.4.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.3.1...@cheqd/mcp-toolkit-server@1.4.0-develop.1) (2025-06-11)
+
+
+### Features
+
+* Streaming http support [DEV-5079] ([#43](https://github.com/cheqd/mcp-toolkit/issues/43)) ([820245b](https://github.com/cheqd/mcp-toolkit/commit/820245b459ef246efa7a73c1670644aa43eefd38)), closes [#41](https://github.com/cheqd/mcp-toolkit/issues/41)
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-credo:** upgraded to 1.5.0-develop.1
+
 ## @cheqd/mcp-toolkit-server [1.3.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.3.0...@cheqd/mcp-toolkit-server@1.3.1) (2025-05-15)
 
 
