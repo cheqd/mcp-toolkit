@@ -1,6 +1,6 @@
 {
   "name": "@cheqd/mcp-toolkit-remote-server",
-  "version": "1.3.0-develop.1",
+  "version": "1.3.0",
   "packageManager": "pnpm@9.1.3",
   "description": "MCP Toolkit Remote Server for cheqd",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
@@ -23,7 +23,7 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-server": "1.4.0-develop.1",
+    "@cheqd/mcp-toolkit-server": "1.4.0",
     "@modelcontextprotocol/sdk": "^1.12.1",
     "zod": "^3.25.56",
     "cookie-parser": "^1.4.7",

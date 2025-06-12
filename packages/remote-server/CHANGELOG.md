@@ -1,5 +1,20 @@
 # Changelog
 
+# @cheqd/mcp-toolkit-remote-server [1.3.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.2.0...@cheqd/mcp-toolkit-remote-server@1.3.0) (2025-06-12)
+
+
+### Features
+
+* Streaming http support [DEV-5079] ([#43](https://github.com/cheqd/mcp-toolkit/issues/43)) ([820245b](https://github.com/cheqd/mcp-toolkit/commit/820245b459ef246efa7a73c1670644aa43eefd38)), closes [#41](https://github.com/cheqd/mcp-toolkit/issues/41)
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.4.0
+
 # @cheqd/mcp-toolkit-remote-server [1.3.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.2.0...@cheqd/mcp-toolkit-remote-server@1.3.0-develop.1) (2025-06-11)
 
 
