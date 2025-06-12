@@ -25,8 +25,7 @@ For the quickest way to get started, you can connect to our hosted MCP server. S
             "command": "npx",
             "args": [
                 "mcp-remote",
-                "https://remote-mcp.cheqd.io/sse",
-                "--transport", "sse-only"
+                "https://remote-mcp.cheqd.io/mcp"
             ],
         }
     }
@@ -65,8 +64,7 @@ Connect to our hosted MCP server - no local setup required:
             "command": "npx",
             "args": [
                 "mcp-remote",
-                "https://remote-mcp.cheqd.io/sse",
-                "--transport", "sse-only"
+                "https://remote-mcp.cheqd.io/mcp"
             ],
         }
     }
