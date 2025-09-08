@@ -26,7 +26,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           # Semantic release needs at lease Node 18
           node-version: 20
