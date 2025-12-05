@@ -30,7 +30,7 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-credo": "1.5.0-develop.2",
+    "@cheqd/mcp-toolkit-credo": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.13.0",
     "zod": "^3.25.56"
   },
