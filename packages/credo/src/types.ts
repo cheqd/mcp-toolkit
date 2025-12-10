@@ -69,12 +69,31 @@ const VerificationMethodSchema = z.object({
 });
 
 /**
+ * Schema for DIDComm v2 service endpoint object
+ */
+const DidCommV2ServiceEndpointSchema = z.object({
+	uri: z.string(),
+	accept: z.array(z.string()).optional(),
+	routingKeys: z.array(z.string()).optional(),
+});
+
+/**
  * Schema for DID service endpoints
+ * Supports both simple string endpoints and DIDComm v2 structured endpoints
  */
 const DidDocumentServiceSchema = z.object({
 	id: z.string(),
 	type: z.string(),
-	serviceEndpoint: z.union([z.string(), z.array(z.string())]),
+	serviceEndpoint: z.union([
+		z.string(),
+		z.array(z.string()),
+		DidCommV2ServiceEndpointSchema,
+		z.array(DidCommV2ServiceEndpointSchema),
+	]),
+	accept: z.array(z.string()).optional(),
+	priority: z.number().optional(),
+	recipientKeys: z.array(z.string()).optional(),
+	routingKeys: z.array(z.string()).optional(),
 });
 
 /**

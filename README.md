@@ -96,6 +96,7 @@ Use this to run the Cheqd MCP Server locally and pass your own environment varia
 #### 3. Local Server via docker-compose
 
 Use the `env.example` file and update the appropriate variables.
+Also, build the local docker first with: `docker compose -f docker/docker-compose.yml build mcp-stdio-server`
 
 ```json
 {
@@ -108,12 +109,12 @@ Use the `env.example` file and update the appropriate variables.
         "/path/to/repo/mcp-toolkit/docker/docker-compose.yml",
         "run",
         "--rm",
-        "-p", 
+        "-p",
         "3000:3000",
         "--name",
         "faber",
         "-T",
-        "mcp-server"
+        "mcp-stdio-server"
       ]
     }
   }
