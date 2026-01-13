@@ -7,6 +7,13 @@
 
 * logging error ([#50](https://github.com/cheqd/mcp-toolkit/issues/50)) ([f355723](https://github.com/cheqd/mcp-toolkit/commit/f355723b334d9844fb0e084744c0541b2f843937))
 
+# @cheqd/mcp-toolkit-server [1.4.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.3.1...@cheqd/mcp-toolkit-server@1.4.0) (2025-06-12)
+
+
+### Features
+
+* Streaming http support [DEV-5079] ([#43](https://github.com/cheqd/mcp-toolkit/issues/43)) ([820245b](https://github.com/cheqd/mcp-toolkit/commit/820245b459ef246efa7a73c1670644aa43eefd38)), closes [#41](https://github.com/cheqd/mcp-toolkit/issues/41)
+
 
 
 
