@@ -1,5 +1,12 @@
 # Changelog
 
+## @cheqd/mcp-toolkit-credo [1.5.1-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.5.0...@cheqd/mcp-toolkit-credo@1.5.1-develop.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* logging error ([#50](https://github.com/cheqd/mcp-toolkit/issues/50)) ([f355723](https://github.com/cheqd/mcp-toolkit/commit/f355723b334d9844fb0e084744c0541b2f843937))
+
 # @cheqd/mcp-toolkit-credo [1.5.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-credo@1.5.0-develop.1...@cheqd/mcp-toolkit-credo@1.5.0-develop.2) (2025-06-26)
 
 
