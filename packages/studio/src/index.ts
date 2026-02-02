@@ -15,8 +15,8 @@ export class StudioToolKit {
 	 * @param {IStudioToolKitOptions} options - Configuration options for the toolkit
 	 * @param {string} options.name - Name of the agent
 	 */
-	constructor({ name }: IStudioToolKitOptions) {
-		this.studio = new StudioAgent({ name })
+	constructor({ name, apiKey }: IStudioToolKitOptions) {
+		this.studio = new StudioAgent({ name, apiKey })
 	}
 
 	/// Initializes the Studio agent and prepares it for use.

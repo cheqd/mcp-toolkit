@@ -17,6 +17,7 @@ export interface ToolDefinition<Args extends ZodRawShape> {
  */
 export interface IStudioToolKitOptions {
 	name: string;
+	apiKey: string;
 }
 
 /**
