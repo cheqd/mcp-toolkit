@@ -161,6 +161,9 @@ importers:
       '@cheqd/mcp-toolkit-credo':
         specifier: 1.5.1-develop.1
         version: 1.5.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
+      '@cheqd/mcp-toolkit-studio':
+        specifier: file:../studio
+        version: file:packages/studio(hono@4.11.7)
       '@modelcontextprotocol/sdk':
         specifier: ^1.20.2
         version: 1.25.3(hono@4.11.7)(zod@3.25.56)
@@ -957,6 +960,10 @@ packages:
     resolution: {integrity: sha512-MHwr4igSM7Z2lhxDNn6ZJ7lkjMQ0kAiLmaL6loyVqJM4zhDzVtjrJ4qRQYE+2+q8MItqLEQ5/WcM+1dJxKyMrg==}
     engines: {node: '>=20.0.0'}
     hasBin: true
+
+  '@cheqd/mcp-toolkit-studio@file:packages/studio':
+    resolution: {directory: packages/studio, type: directory}
+    engines: {node: '>=20.0.0'}
 
   '@cheqd/sdk@5.2.2':
     resolution: {integrity: sha512-nVqV/Sx7IJTsT3lUXGo4Jg/ei3OjmNDAOTcrfSpe6YYXuJDQ2gMKEi2SiHxX/GByKGssOLXXvZSKa91K9HlXbQ==}
@@ -8342,6 +8349,15 @@ snapshots:
       - supports-color
       - utf-8-validate
       - web-streams-polyfill
+
+  '@cheqd/mcp-toolkit-studio@file:packages/studio(hono@4.11.7)':
+    dependencies:
+      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.56)
+      zod: 3.25.56
+    transitivePeerDependencies:
+      - '@cfworker/json-schema'
+      - hono
+      - supports-color
 
   '@cheqd/sdk@5.2.2':
     dependencies:
