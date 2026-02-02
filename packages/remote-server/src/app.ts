@@ -32,7 +32,8 @@ class App {
 			} : undefined,
 			studio: toolkit === 'studio' ? {
 				name: normalizeEnvVar(process.env.CHEQD_STUDIO_NAME),
-				apiKey: normalizeEnvVar(process.env.CHEQD_STUDIO_API_KEY)
+				apiKey: normalizeEnvVar(process.env.CHEQD_STUDIO_API_KEY),
+				apiEndpoint: normalizeEnvVar(process.env.CHEQD_STUDIO_API_ENDPOINT)
 			} : undefined
 		});
 		// Initializing the server with tools

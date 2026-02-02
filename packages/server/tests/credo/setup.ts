@@ -7,7 +7,7 @@ import { waitForCredentialExchangeState } from './utils';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const getServerPath = () => {
-	return path.resolve(__dirname, '../build/index.js');
+	return path.resolve(__dirname, '../../build/index.js');
 };
 
 // Holder ACA-Py Agent API

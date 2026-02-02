@@ -174,15 +174,16 @@ export class AgentMcpServer extends McpServer {
 	 */
 	private async setupStudioTools(tools: ToolDefinition<any>[]): Promise<void> {
 		// Validate required env variables
-		if (!this.options.studio?.apiKey) {
+		if (!this.options.studio?.apiKey || !this.options.studio.apiEndpoint) {
 			throw new Error(
-				'Missing required environment variables for Credo tools. Please set: CREDO_CHEQD_TESTNET_MNEMONIC'
+				'Missing required environment variables for Studio tools. Please set: CHEQD_STUDIO_API_KEY'
 			);
 		}
 		try {
 			this.studioToolkit = new StudioToolKit({
-				name: this.options.studio.name,
+				name: this.options.studio.name || 'default',
 				apiKey: this.options.studio.apiKey,
+				apiEndpoint: this.options.studio.apiEndpoint
 			});
 			await this.studioToolkit.init();
 			const studioTools = await this.studioToolkit.getTools();

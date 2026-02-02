@@ -8,7 +8,8 @@ export interface IAgentMCPServerOptions {
 		trainEndpoint?: string;
 	};
 	studio?: {
-		name: string;
+		name?: string;
 		apiKey: string;
+		apiEndpoint: string;
 	}
 }

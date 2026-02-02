@@ -16,8 +16,9 @@ export interface ToolDefinition<Args extends ZodRawShape> {
  * Configuration options for initializing the Studio toolkit.
  */
 export interface IStudioToolKitOptions {
-	name: string;
+	name?: string;
 	apiKey: string;
+	apiEndpoint: string;
 }
 
 /**
