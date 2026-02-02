@@ -1,4 +1,3 @@
-import { DidDocument, DidDocumentService } from '@credo-ts/core';
 import { StudioAgent } from '../agent.js';
 import {
 	CreateDidDocumentParams,
