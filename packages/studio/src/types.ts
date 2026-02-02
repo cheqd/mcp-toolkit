@@ -168,38 +168,14 @@ export type CreateDidLinkedResourceRequestType = z.infer<typeof CreateDidLinkedR
 
 export type CreateDidLinkedResourceResponseType = any;
 
-// Anonymous Credentials Parameters
-export const ResolveSchemaIdParams = {
-	schemaId: DID_URL.describe(
-		'The DID URL of the schema to resolve, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-	),
-};
-
-export const RegisterSchemaParams = {
-	schema: z.object({
-		issuerId: z
-			.string()
-			.startsWith('did:cheqd:')
-			.describe('The DID of the schema issuer, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009'),
-		name: z.string(),
-		version: z.string(),
-		attrNames: z.array(z.string()),
-	}),
-	options: z.object({
-		network: z.enum(['testnet', 'mainnet']),
-	}),
-};
-
-export const ListSchemaParams = {};
-
-export const CredentialOfferParams = {
-	issuerDid: z.string().startsWith('did:cheqd:').describe('DID of the Verifiable Credential issuer. This needs to be a `did:cheqd` DID.'),
+export const IssueCredentialParams = {
+	issuerDid: z.string().describe('DID of the Verifiable Credential issuer. This needs to be a `did:cheqd` DID.'),
 	subjectDid: z.string().describe('DID of the Verifiable Credential holder/subject. This needs to be a `did:key` DID.'),
 	attributes: z.record(z.unknown()).describe('JSON object containing the attributes to be included in the credential.'),
 	'@context': z.array(z.string()).optional().describe('Optional properties to be included in the `@context` property of the credential.'),
 	type: z.array(z.string()).optional().describe('Optional properties to be included in the `type` property of the credential.'),
-	expirationDate: z.string().datetime().optional().describe('Optional expiration date for the credential.'),
-	format: z.enum(['jwt', 'jsonld']).optional().default('jwt').describe('Format of the Verifiable Credential.'),
+	expirationDate: z.string().datetime().optional().describe('Optional expiration date according to the VC Data Model specification.'),
+	format: z.enum(['jwt', 'jsonld']).optional().default('jwt').describe('Format of the Verifiable Credential. Defaults to VC-JWT.'),
 	credentialStatus: z.object({
 		statusPurpose: z.enum(['revocation', 'suspension']),
 		statusListName: z.string(),
@@ -210,86 +186,51 @@ export const CredentialOfferParams = {
 		statusListRangeEnd: z.number().optional(),
 		indexNotIn: z.number().optional(),
 	}).optional().describe('Optional `credentialStatus` properties for VC revocation or suspension.'),
-	termsOfUse: z.array(z.object({}).passthrough()).optional().describe('Terms of use for the verifiable credential.'),
-	refreshService: z.array(z.object({}).passthrough()).optional().describe('Refresh services for updating the credential.'),
-	evidence: z.array(z.object({}).passthrough()).optional().describe('Evidence supporting the credential issuance.'),
-};
+	termsOfUse: z.array(z.record(z.unknown())).optional().describe('Terms of use can be utilized by an issuer or a holder to communicate the terms under which a verifiable credential was issued.'),
+	refreshService: z.array(z.record(z.unknown())).optional().describe('RefreshService property MUST be one or more refresh services that provides enough information to the recipient\'s software.'),
+	evidence: z.array(z.record(z.unknown())).optional().describe('Evidence property MUST be one or more evidence schemes providing enough information for a verifier.'),
+	connector: z.enum(['verida', 'resource']).optional(),
+}
+const IssueCredentialShape = z.object(IssueCredentialParams)
+export type IssueCredentialRequest = z.infer<typeof IssueCredentialShape>
 
-export const ListCredentialParams = {};
+export const VerifiableCredential = z.object({
+	'@context': z.union([z.string(), z.array(z.string())]).describe('JSON-LD context'),
+	id: z.string().optional().describe('Credential identifier'),
+	type: z.array(z.string()).describe('Credential types'),
+	issuer: z.union([z.string(), z.object({ id: z.string() })]).describe('Credential issuer'),
+	issuanceDate: z.string().datetime().describe('Issuance date'),
+	expirationDate: z.string().datetime().optional().describe('Expiration date'),
+	credentialSubject: z.record(z.unknown()).describe('Credential subject claims'),
+	proof: z.record(z.unknown()).optional().describe('Cryptographic proof'),
+	credentialStatus: z.record(z.unknown()).optional().describe('Credential status information'),
+})
 
-export const GetCredentialRecordParams = {
-	credentialId: z.string().uuid(),
-};
+export const IssueCredentialResponse = z.object({
+	issuedCredentialId: z.string().describe('Unique identifier for the issued credential'),
+	providerId: z.string().describe('Provider identifier'),
+	providerCredentialId: z.string().optional().describe('Provider-specific credential ID'),
+	issuerId: z.string().describe('DID or identifier of the credential issuer'),
+	subjectId: z.string().describe('DID or identifier of the credential subject'),
+	format: z.string().describe('Credential format (e.g., jwt_vc, jsonld)'),
+	category: z.enum(['credential', 'accreditation']).optional().describe('Credential category'),
+	type: z.array(z.string()).describe('Array of credential types'),
+	status: z.enum(['active', 'revoked', 'suspended', 'expired']).describe('Current status of the credential'),
+	statusUpdatedAt: z.string().datetime().optional().describe('Timestamp when status was last updated'),
+	issuedAt: z.string().datetime().describe('Timestamp when credential was issued'),
+	expiresAt: z.string().datetime().optional().describe('Timestamp when credential expires'),
+	credentialStatus: z.record(z.unknown()).optional().describe('Credential status configuration'),
+	statusRegistryId: z.string().optional().describe('UUID of the Status Registry'),
+	statusIndex: z.number().optional().describe('Allocated Index of the Status Registry'),
+	retryCount: z.number().optional().describe('Retry Count in case of failures'),
+	lastError: z.string().optional().describe('Last error message in case of failure'),
+	providerMetadata: z.record(z.unknown()).optional().describe('Provider-specific metadata'),
+	credential: VerifiableCredential.describe('The issued Verifiable Credential'),
+	createdAt: z.string().datetime().describe('Timestamp when record was created'),
+	updatedAt: z.string().datetime().describe('Timestamp when record was last updated'),
+})
 
-export const AcceptCredentialOfferParams = {
-	credentialRecordId: z.string().uuid(),
-};
-
-export const StoreCredentialParams = {
-	jwt: z.string(),
-};
-
-// Proof Management Parameters
-export const ConnectionlessProofRequestParams = {
-	requestedAttributes: z
-		.array(
-			z.object({
-				attribute: z.string(),
-				restrictions: z.array(
-					z.object({
-						cred_def_id: z.optional(
-							DID_URL.describe(
-								'The DID URL of the credential definition to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-							)
-						),
-						issuerId: z.optional(DID),
-						schemaId: z.optional(
-							DID_URL.describe(
-								'The DID URL of the schema to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-							)
-						),
-					})
-				),
-			})
-		)
-		.describe('List of attributes to be revealed in the proof'),
-
-	requestedPredicates: z
-		.array(
-			z.object({
-				attribute: z.string(),
-				p_type: z.enum(['>', '<', '>=', '<=']),
-				p_value: z.number(),
-				restrictions: z.array(
-					z.object({
-						cred_def_id: z.optional(
-							DID_URL.describe(
-								'The DID URL of the credential definition to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-							)
-						),
-						issuerId: z.optional(DID),
-						schemaId: z.optional(
-							DID_URL.describe(
-								'The DID URL of the schema to restrict the proof to, e.g., did:cheqd:testnet:4769f00d-0af4-472b-aab7-019abbbb8009/resources/5acb3d53-ba06-441a-b48b-07d8c2f129f8'
-							)
-						),
-					})
-				),
-			})
-		)
-		.describe('List of predicates to be proven without revealing the actual attribute values'),
-};
-
-export const ConnectionProofRequestParams = {
-	...ConnectionlessProofRequestParams,
-	connectionId: z.string().uuid(),
-};
-
-export const ListProofParams = {};
-
-export const GetProofRecordParams = {
-	proofRecordId: z.string().uuid(),
-};
+export type IssueCredentialResponseType = z.infer<typeof IssueCredentialResponse>
 
 // trust registry
 export const ResolveAccreditationParams = {

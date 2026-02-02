@@ -20,15 +20,20 @@ class App {
 		this.middleware();
 		this.routes();
 		const tools = process.env.TOOLS ? normalizeEnvVar(process.env.TOOLS).split(',') : [];
+		const toolkit = process.env.CHEQD_STUDIO_API_KEY ? 'studio' : 'credo'
 		this.server = new AgentMcpServer({
 			tools,
-			credo: {
+			credo: toolkit === 'credo' ? {
 				port: parseInt(process.env.CREDO_PORT || '3000', 10),
 				domain: normalizeEnvVar(process.env.CREDO_ENDPOINT),
 				name: normalizeEnvVar(process.env.CREDO_NAME),
 				cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
 				trainEndpoint: normalizeEnvVar(process.env.TRAIN_ENDPOINT),
-			},
+			} : undefined,
+			studio: toolkit === 'studio' ? {
+				name: normalizeEnvVar(process.env.CHEQD_STUDIO_NAME),
+				apiKey: normalizeEnvVar(process.env.CHEQD_STUDIO_API_KEY)
+			} : undefined
 		});
 		// Initializing the server with tools
 		this.server.setupTools().catch((err) => {

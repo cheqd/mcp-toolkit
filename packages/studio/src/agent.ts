@@ -1,4 +1,4 @@
-import { IStudioToolKitOptions, CreateDidDocumentResponse, UpdateDidDocumentParams, UpdateDidDocumentResponse, DeactivateDidDocumentParams, CreateDidDocumentRequestType, UpdateDidDocumentRequestType, DeactivateDidDocumentRequestType, CreateDidDocumentResponseType, UpdateDidDocumentResponseType, DeactivateDidDocumentResponseType, CreateDidLinkedResourceRequestType, CreateDidLinkedResourceResponseType } from './types.js';
+import { IStudioToolKitOptions, CreateDidDocumentRequestType, UpdateDidDocumentRequestType, DeactivateDidDocumentRequestType, CreateDidDocumentResponseType, UpdateDidDocumentResponseType, DeactivateDidDocumentResponseType, CreateDidLinkedResourceRequestType, CreateDidLinkedResourceResponseType, IssueCredentialRequest, IssueCredentialResponseType } from './types.js';
 import { z } from 'zod'
 
 export class StudioAgent {
@@ -48,7 +48,7 @@ export class StudioAgent {
 				body: JSON.stringify(body)
 			});
 			if (!response.ok) {
-				throw new Error(`Failed to create DID: ${response.statusText}`);
+				throw new Error(`Failed to update DID: ${response.statusText}`);
 			}
 			return await response.json();
 		},
@@ -60,7 +60,7 @@ export class StudioAgent {
 				body: JSON.stringify(body)
 			});
 			if (!response.ok) {
-				throw new Error(`Failed to create DID: ${response.statusText}`);
+				throw new Error(`Failed to deactivate DID: ${response.statusText}`);
 			}
 			return await response.json();
 		},
@@ -68,7 +68,7 @@ export class StudioAgent {
 		getCreatedDids: async(): Promise<string[]> => {
 			const response = await fetch(`${this.endpoint}/did/list`);
 			if (!response.ok) {
-				throw new Error(`Failed to resolve DID: ${response.statusText}`);
+				throw new Error(`Failed to list DID: ${response.statusText}`);
 			}
 			return await response.json();	
 		}
@@ -82,7 +82,7 @@ export class StudioAgent {
 				body: JSON.stringify(body)
 			});
 			if (!response.ok) {
-				throw new Error(`Failed to create DID: ${response.statusText}`);
+				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
 			}
 			return await response.json();
 		},
@@ -110,13 +110,41 @@ export class StudioAgent {
 
 	public credentials = {
 
-		issue: async() => {
+		issue: async(body: IssueCredentialRequest): Promise<IssueCredentialResponseType> => {
+			const response = await fetch(`${this.endpoint}/credential/issue`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			}
+			return await response.json();
+		},
+
+		verify: async(body) => {
+			const response = await fetch(`${this.endpoint}/credential/verify`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			}
+			return await response.json();
+		},
+
+		getCredentials: async() => {
 
 		},
 
-		verify: async() => {
+		getCredential: async() => {
 
-		}	
+		},
+
+		getAllCredentialRecords: async() => {
+
+		},
 	}
 
 	public presentations = {
