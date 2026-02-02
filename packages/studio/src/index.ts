@@ -1,7 +1,9 @@
 import { StudioAgent } from './agent.js';
 import {
+	CredentialToolHandler,
 	DidToolHandler,
 } from './tools/index.js';
+import { CredentialStatusListToolHandler } from './tools/status-list.js';
 import { IStudioToolKitOptions } from './types.js';
 
 /**
@@ -49,6 +51,14 @@ export class StudioToolKit {
 			new DidToolHandler(this.studio).listDidTool(),
 			new DidToolHandler(this.studio).createDIDLinkedResourceTool(),
 			new DidToolHandler(this.studio).resolveDIDLinkedResourceTool(),
+			new CredentialToolHandler(this.studio).IssueCredentialTool(),
+			new CredentialToolHandler(this.studio).verifyCredentialTool(),
+			new CredentialToolHandler(this.studio).listCredentialExchangeRecordsTool(),
+			new CredentialToolHandler(this.studio).revokeCredentialTool(),
+			new CredentialToolHandler(this.studio).suspendCredentialTool(),
+			new CredentialToolHandler(this.studio).reinstateCredentialTool(),
+			new CredentialStatusListToolHandler(this.studio).StatusListCreateTool(),
+			new CredentialStatusListToolHandler(this.studio).StatusListUpdateTool(),
 		];
 	}
 	/**

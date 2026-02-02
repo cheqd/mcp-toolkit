@@ -256,3 +256,78 @@ export const ResolveAccreditationParams = {
 			'Array of DNS-based trust framework identifiers that establish the trust context and verification rules for this accreditation'
 		),
 };
+
+export const ListCredentialExchangeRecordsParams = {
+	page: z.number().optional().default(1).describe('Page number for pagination'),
+	limit: z.number().optional().default(10).describe('Number of items per page'),
+	providerId: z.string().optional().describe('Filter credentials by provider ID (e.g., "studio", "dock")'),
+	issuerId: z.string().optional().describe('Filter credentials by issuer DID or ID'),
+	subjectId: z.string().optional().describe('Filter credentials by subject DID or ID'),
+	status: z.enum(['issued', 'suspended', 'revoked', 'offered', 'rejected', 'unknown', 'valid']).optional().describe('Filter credentials by status'),
+	format: z.enum(['jwt', 'jsonld', 'sd-jwt-vc', 'anoncreds']).optional().describe('Filter credentials by format'),
+	category: z.enum(['credential', 'accreditation']).optional().describe('Filter credentials by category'),
+	createdAt: z.string().datetime().optional().describe('Filter credentials created before or on this date'),
+	credentialType: z.string().optional().describe('Filter credentials by type (e.g., "VerifiableCredential", "UniversityDegreeCredential")'),
+	statusRegistryId: z.string().optional().describe('Filter issued credentials using status registry ID'),
+}
+const ListCredentialExchangeRecordsShape = z.object(ListCredentialExchangeRecordsParams)
+export type ListCredentialExchangeRecordsRequest = z.infer<typeof ListCredentialExchangeRecordsShape>
+
+export const ListCredentialResult = z.object({
+	total: z.number().describe('Total number of credentials'),
+	credentials: z.array(IssueCredentialResponse).describe('Array of issued credentials'),
+});
+
+export type ListCredentialResultType = z.infer<typeof ListCredentialResult>;
+
+export const VerifyCredentialParams = {
+	credential: z.union([z.string(), VerifiableCredential]).describe('Verifiable Credential to be verified as a VC-JWT string or a JSON object.'),
+		policies: z.object({
+			issuanceDate: z.boolean().optional().default(true).describe('Policy to skip the `issuanceDate` (`nbf`) timestamp check when set to `false`.'),
+			expirationDate: z.boolean().optional().default(true).describe('Policy to skip the `expirationDate` (`exp`) timestamp check when set to `false`.'),
+			audience: z.boolean().optional().default(false).describe('Policy to skip the audience check when set to `false`.'),
+			checkExternalProvider: z.boolean().optional().default(false).describe('Policy to also check other providers when set to `true`.'),
+		}).optional().describe('Custom verification policies to execute when verifying credential.'),
+}
+
+const VerifyCredentialShape = z.object(VerifyCredentialParams)
+export type VerifyCredentialRequestType = z.infer<typeof VerifyCredentialShape>
+
+export const VerifiableCredentialParams = {
+	credential: z.union([z.string(), VerifiableCredential]).describe('Verifiable Credential to be verified as a VC-JWT string or a JSON object.'),
+}
+
+const VerifiableCredentialShape = z.object(VerifiableCredentialParams)
+export type VerifiableCredentialRequest = z.infer<typeof VerifiableCredentialShape>
+
+export const CredentialStatusListCreateParams = {
+	did: DID,
+	statusListName: z.string().describe('The name of the StatusList2021 or BitstringStatusList DID-Linked Resource to be created'),
+	length: z.number().int().positive().default(131072).describe('The length of the status list to be created. Default and minimum is 131072 (16kb)'),
+	encoding: z.enum(['base64url', 'hex']).default('base64url').describe('The encoding format of the StatusList DID-Linked Resource'),
+	statusListVersion: z.string().optional().describe('Optional human-readable version in the StatusList DID-Linked Resource'),
+	statusSize: z.number().int().positive().optional().describe('Only for BitstringStatusList: bits per credential for multiple statuses'),
+	credentialCategory: z.enum(['credential', 'accreditation']).optional().describe('Category of credentials this status list is for'),
+	statusMessages: z.array(z.object({
+		status: z.string(),
+		message: z.string(),
+	})).optional().describe('Only for BitstringStatusList: Message explaining each bit'),
+	ttl: z.number().int().min(1000).optional().describe('Only for BitstringStatusList: Time to Live in Milliseconds'),
+	alsoKnownAs: z.array(z.object({
+		uri: z.string(),
+		description: z.string(),
+	})).optional().describe('Optional alternative URIs for the status list'),
+}
+
+const CredentialStatusListCreateShape = z.object(CredentialStatusListCreateParams)
+export type CredentialStatusListCreateRequest = z.infer<typeof CredentialStatusListCreateShape>
+
+export const CredentialStatusListUpdateParams = {
+	did: DID,
+	statusListName: z.string().describe('The name of the StatusList2021 DID-Linked Resource to be updated'),
+	indices: z.array(z.number().int().nonnegative()).describe('List of credential status indices to be updated. The indices must be in the range of the status list.'),
+	statusListVersion: z.string().optional().describe('Optional field to assign a human-readable version in the StatusList2021 DID-Linked Resource'),
+}
+
+const CredentialStatusListUpdateShape = z.object(CredentialStatusListUpdateParams)
+export type CredentialStatusListUpdateRequest = z.infer<typeof CredentialStatusListUpdateShape>

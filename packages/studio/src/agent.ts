@@ -1,4 +1,4 @@
-import { IStudioToolKitOptions, CreateDidDocumentRequestType, UpdateDidDocumentRequestType, DeactivateDidDocumentRequestType, CreateDidDocumentResponseType, UpdateDidDocumentResponseType, DeactivateDidDocumentResponseType, CreateDidLinkedResourceRequestType, CreateDidLinkedResourceResponseType, IssueCredentialRequest, IssueCredentialResponseType } from './types.js';
+import { IStudioToolKitOptions, CreateDidDocumentRequestType, UpdateDidDocumentRequestType, DeactivateDidDocumentRequestType, CreateDidDocumentResponseType, UpdateDidDocumentResponseType, DeactivateDidDocumentResponseType, CreateDidLinkedResourceRequestType, CreateDidLinkedResourceResponseType, IssueCredentialRequest, IssueCredentialResponseType, VerifyCredentialRequestType, CredentialStatusListCreateRequest, CredentialStatusListUpdateRequest } from './types.js';
 import { z } from 'zod'
 
 export class StudioAgent {
@@ -65,8 +65,8 @@ export class StudioAgent {
 			return await response.json();
 		},
 
-		getCreatedDids: async(): Promise<string[]> => {
-			const response = await fetch(`${this.endpoint}/did/list`);
+		getCreatedDids: async(params?: string): Promise<string[]> => {
+			const response = await fetch(`${this.endpoint}/did/list${params}`);
 			if (!response.ok) {
 				throw new Error(`Failed to list DID: ${response.statusText}`);
 			}
@@ -98,13 +98,29 @@ export class StudioAgent {
 
 
 	public statusList = {
-		create: async() => {
-
+		create: async(body: CredentialStatusListCreateRequest) => {
+			const response = await fetch(`${this.endpoint}/credential-status/create/unencrypted`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
+			}
+			return await response.json();	
 		},
 
-		update: async() => {
-
-		}
+		update: async(body: CredentialStatusListUpdateRequest) => {
+			const response = await fetch(`${this.endpoint}/credential-status/update/unencrypted`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
+			}
+			return await response.json();	
+		},
 	}
 
 
@@ -122,7 +138,7 @@ export class StudioAgent {
 			return await response.json();
 		},
 
-		verify: async(body) => {
+		verify: async(body: VerifyCredentialRequestType) => {
 			const response = await fetch(`${this.endpoint}/credential/verify`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -134,16 +150,49 @@ export class StudioAgent {
 			return await response.json();
 		},
 
-		getCredentials: async() => {
-
+		getCredentialExchangeRecords: async(params?: string) => {
+			const response = await fetch(`${this.endpoint}/did/list?${params}`);
+			if (!response.ok) {
+				throw new Error(`Failed to list DID: ${response.statusText}`);
+			}
+			return await response.json();
 		},
 
-		getCredential: async() => {
 
+		revoke: async(body) => {
+			const response = await fetch(`${this.endpoint}/credential/revoke`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			}
+			return await response.json();
 		},
 
-		getAllCredentialRecords: async() => {
+		reinstate: async(body) => {
+			const response = await fetch(`${this.endpoint}/credential/reinstate`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			}
+			return await response.json();
+		},
 
+		suspend: async(body) => {
+			const response = await fetch(`${this.endpoint}/credential/suspend`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!response.ok) {
+				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			}
+			return await response.json();
 		},
 	}
 
