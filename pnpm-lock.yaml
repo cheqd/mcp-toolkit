@@ -9,57 +9,57 @@ importers:
   .:
     dependencies:
       dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^16.6.1
+        version: 16.6.1
     devDependencies:
       '@playwright/test':
-        specifier: ^1.52.0
-        version: 1.52.0
+        specifier: ^1.57.0
+        version: 1.58.1
       '@qiwi/multi-semantic-release':
         specifier: ^7.1.2
-        version: 7.1.2(typescript@5.8.3)
+        version: 7.1.2(typescript@5.9.3)
       '@semantic-release/changelog':
         specifier: ^6.0.3
-        version: 6.0.3(semantic-release@24.2.5(typescript@5.8.3))
+        version: 6.0.3(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/commit-analyzer':
         specifier: ^13.0.1
-        version: 13.0.1(semantic-release@24.2.5(typescript@5.8.3))
+        version: 13.0.1(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/git':
         specifier: ^10.0.1
-        version: 10.0.1(semantic-release@24.2.5(typescript@5.8.3))
+        version: 10.0.1(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/github':
-        specifier: ^11.0.3
-        version: 11.0.3(semantic-release@24.2.5(typescript@5.8.3))
+        specifier: ^11.0.6
+        version: 11.0.6(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/npm':
-        specifier: ^12.0.1
-        version: 12.0.1(semantic-release@24.2.5(typescript@5.8.3))
+        specifier: ^12.0.2
+        version: 12.0.2(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/release-notes-generator':
-        specifier: ^14.0.3
-        version: 14.0.3(semantic-release@24.2.5(typescript@5.8.3))
+        specifier: ^14.1.0
+        version: 14.1.0(semantic-release@24.2.9(typescript@5.9.3))
       '@tsconfig/strictest':
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^2.0.8
+        version: 2.0.8
       '@types/node':
-        specifier: ^24.0.0
-        version: 24.0.0
+        specifier: ^24.10.1
+        version: 24.10.9
       conventional-changelog-conventionalcommits:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: ^9.1.0
+        version: 9.1.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
       lerna:
-        specifier: ^8.2.2
-        version: 8.2.2(encoding@0.1.13)
+        specifier: ^8.2.4
+        version: 8.2.4(encoding@0.1.13)
       prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
+        specifier: ^3.7.4
+        version: 3.8.1
       semantic-release:
-        specifier: ^24.2.5
-        version: 24.2.5(typescript@5.8.3)
+        specifier: ^24.2.9
+        version: 24.2.9(typescript@5.9.3)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/credo:
     dependencies:
@@ -88,8 +88,8 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3(encoding@0.1.13)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.20.2
+        version: 1.25.3(hono@4.11.7)(zod@3.25.56)
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
@@ -110,11 +110,11 @@ importers:
   packages/remote-server:
     dependencies:
       '@cheqd/mcp-toolkit-server':
-        specifier: 1.4.0
-        version: 1.4.0(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
+        specifier: 1.4.1-develop.1
+        version: 1.4.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.20.2
+        version: 1.25.3(hono@4.11.7)(zod@3.25.56)
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -159,11 +159,11 @@ importers:
   packages/server:
     dependencies:
       '@cheqd/mcp-toolkit-credo':
-        specifier: 1.5.0
-        version: 1.5.0(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
+        specifier: 1.5.1-develop.1
+        version: 1.5.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.20.2
+        version: 1.25.3(hono@4.11.7)(zod@3.25.56)
       zod:
         specifier: ^3.25.56
         version: 3.25.56
@@ -949,12 +949,12 @@ packages:
   '@bufbuild/protobuf@2.2.5':
     resolution: {integrity: sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==}
 
-  '@cheqd/mcp-toolkit-credo@1.5.0':
-    resolution: {integrity: sha512-7Buml7TrkQOL1S1h6XefMbSx/dahAtuOSsdyxq0dwdMam5Jdc1uUYhSxhaN57RW2+OluloerpbwpQH8K/as+lw==}
+  '@cheqd/mcp-toolkit-credo@1.5.1-develop.1':
+    resolution: {integrity: sha512-dgu6mk7KhLZoL6L4zpZTfdzddaH1970nb4bZAII45Az5Hj75MxFLopNOpuTIFSC1WxBluykwHfhtTAfU9in7/g==}
     engines: {node: '>=20.0.0'}
 
-  '@cheqd/mcp-toolkit-server@1.4.0':
-    resolution: {integrity: sha512-PaKHYnvKYV0kjXXhi+wdYBns1zSCSY2FRIs7tZ4oi3QSAOSwX4sU5Jmck7MBi28mhFSVCT0ZZ5Nkfev9Up7Dig==}
+  '@cheqd/mcp-toolkit-server@1.4.1-develop.1':
+    resolution: {integrity: sha512-MHwr4igSM7Z2lhxDNn6ZJ7lkjMQ0kAiLmaL6loyVqJM4zhDzVtjrJ4qRQYE+2+q8MItqLEQ5/WcM+1dJxKyMrg==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -1240,6 +1240,12 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
+  '@hono/node-server@1.19.9':
+    resolution: {integrity: sha512-vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
+
   '@hutson/parse-repository-url@3.0.2':
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
@@ -1334,8 +1340,8 @@ packages:
     peerDependencies:
       '@js-joda/core': '>=1.11.0'
 
-  '@lerna/create@8.2.2':
-    resolution: {integrity: sha512-1yn1MvWn2Yz0SFgTTQnef2m1YedF7KwqLLVIOrGkgQrkVHzsveAIk1A1RcRa2yyUh+siKI1YcJ7lUZIEt+qQ3Q==}
+  '@lerna/create@8.2.4':
+    resolution: {integrity: sha512-A8AlzetnS2WIuhijdAzKUyFpR5YbLLfV3luQ4lzBgIBgRfuoBDZeF+RSZPhra+7A6/zTUlrbhKZIOi/MNhqgvQ==}
     engines: {node: '>=18.0.0'}
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -1345,6 +1351,16 @@ packages:
   '@modelcontextprotocol/sdk@1.12.1':
     resolution: {integrity: sha512-KG1CZhZfWg+u8pxeM/mByJDScJSrjjxLc8fwQqbsS8xCjBmQfMNEBTotYdNanKekepnfRI85GtgQlctLFpcYPw==}
     engines: {node: '>=18'}
+
+  '@modelcontextprotocol/sdk@1.25.3':
+    resolution: {integrity: sha512-vsAMBMERybvYgKbg/l4L1rhS7VXV1c0CtyJg72vwxONVX0l4ZfKVAnZEWTQixJGTzKnELjQ59e4NbdFDALRiAQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@cfworker/json-schema': ^4.1.1
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      '@cfworker/json-schema':
+        optional: true
 
   '@multiformats/base-x@4.0.1':
     resolution: {integrity: sha512-eMk0b9ReBbV23xXU693TAIrLyeO5iTgBZGSJfpqriG8UkYvr/hC9u9pyMlAakDNHWmbhMZCDs6KQO0jzKD8OTw==}
@@ -1671,8 +1687,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.52.0':
-    resolution: {integrity: sha512-uh6W7sb55hl7D6vsAeA+V2p5JnlAqzhqFyF0VcJkKZXkgnFcVG9PziERRHQfPLfNGx1C292a4JqbWzhR8L4R1g==}
+  '@playwright/test@1.58.1':
+    resolution: {integrity: sha512-6LdVIUERWxQMmUSSQi0I53GgCBYgM2RpGngCPY7hSeju+VrKjq3lvs7HpJoPbDiY5QM5EYRtRX5fvrinnMAz3w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1868,8 +1884,8 @@ packages:
     peerDependencies:
       semantic-release: '>=18.0.0'
 
-  '@semantic-release/github@11.0.3':
-    resolution: {integrity: sha512-T2fKUyFkHHkUNa5XNmcsEcDPuG23hwBKptfUVcFXDVG2cSjXXZYDOfVYwfouqbWo/8UefotLaoGfQeK+k3ep6A==}
+  '@semantic-release/github@11.0.6':
+    resolution: {integrity: sha512-ctDzdSMrT3H+pwKBPdyCPty6Y47X8dSrjd3aPZ5KKIKKWTwZBE9De8GtsH3TyAlw3Uyo2stegMx6rJMXKpJwJA==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
       semantic-release: '>=24.1.0'
@@ -1886,8 +1902,8 @@ packages:
     peerDependencies:
       semantic-release: '>=20.1.0'
 
-  '@semantic-release/npm@12.0.1':
-    resolution: {integrity: sha512-/6nntGSUGK2aTOI0rHPwY3ZjgY9FkXmEHbW9Kr+62NVOsyqpKKeP0lrCH+tphv+EsNdJNmqqwijTEnVWUMQ2Nw==}
+  '@semantic-release/npm@12.0.2':
+    resolution: {integrity: sha512-+M9/Lb35IgnlUO6OSJ40Ie+hUsZLuph2fqXC/qrKn0fMvUU/jiCjpoL6zEm69vzcmaZJ8yNKtMBEKHWN49WBbQ==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -1898,8 +1914,8 @@ packages:
     peerDependencies:
       semantic-release: '>=20.1.0'
 
-  '@semantic-release/release-notes-generator@14.0.3':
-    resolution: {integrity: sha512-XxAZRPWGwO5JwJtS83bRdoIhCiYIx8Vhr+u231pQAsdFIAbm19rSVJLdnBN+Avvk7CKvNQE/nJ4y7uqKH6WTiw==}
+  '@semantic-release/release-notes-generator@14.1.0':
+    resolution: {integrity: sha512-CcyDRk7xq+ON/20YNR+1I/jP7BYKICr1uKd1HHpROSnnTdGqOTburi4jcRiTYz0cpfhxSloQO3cGhnoot7IEkA==}
     engines: {node: '>=20.8.1'}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -2015,8 +2031,8 @@ packages:
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
 
-  '@tsconfig/strictest@2.0.5':
-    resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
+  '@tsconfig/strictest@2.0.8':
+    resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
 
   '@tufjs/canonical-json@2.0.0':
     resolution: {integrity: sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA==}
@@ -2103,6 +2119,9 @@ packages:
 
   '@types/node@24.0.0':
     resolution: {integrity: sha512-yZQa2zm87aRVcqDyH5+4Hv9KYgSdgwX1rFnGvpbzMaC7YAljmhBET93TPiTd3ObwTL+gSpIzPKg5BqVxdCvxKg==}
+
+  '@types/node@24.10.9':
+    resolution: {integrity: sha512-ne4A0IpG3+2ETuREInjPNhUGis1SFjv1d5asp8MzEAGtOZeTeHVDOYqOgqfhvseqg/iXty2hjBf1zAOb7RNiNw==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2225,6 +2244,14 @@ packages:
 
   ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+
+  ajv-formats@3.0.1:
+    resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
     peerDependencies:
       ajv: ^8.0.0
     peerDependenciesMeta:
@@ -2857,8 +2884,8 @@ packages:
     resolution: {integrity: sha512-CLf+zr6St0wIxos4bmaKHRXWAcsCXrJU6F4VdNDrGRK3B8LDLKoX3zuMV5GhtbGkVR/LohZ6MT6im43vZLSjmA==}
     engines: {node: '>=18'}
 
-  conventional-changelog-conventionalcommits@9.0.0:
-    resolution: {integrity: sha512-5e48V0+DsWvQBEnnbBFhYQwYDzFPXVrakGPP1uSxekDkr5d7YWrmaWsgJpKFR0SkXmxK6qQr9O42uuLb9wpKxA==}
+  conventional-changelog-conventionalcommits@9.1.0:
+    resolution: {integrity: sha512-MnbEysR8wWa8dAEvbj5xcBgJKQlX/m0lhS8DsyAAWDHdfs2faDJxTgzRYlRYpXSe7UiKrIIlB4TrBKU9q9DgkA==}
     engines: {node: '>=18'}
 
   conventional-changelog-core@5.0.1:
@@ -3182,15 +3209,16 @@ packages:
     resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
     engines: {node: '>=12'}
 
+  dotenv@16.6.1:
+    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
+
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
   duplexer2@0.1.4:
     resolution: {integrity: sha512-asLFVfWWtJ90ZyOUHMqk7/S2w2guQKxUI2itj3d92ADHhxUSbCMGi1f1cBcJ7xM1To+pE/Khbwo1yuNbMEPKeA==}
-
-  duplexer@0.1.2:
-    resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -3526,6 +3554,15 @@ packages:
 
   fbjs@3.0.5:
     resolution: {integrity: sha512-ztsSx77JBtkuMrEypfhgc3cI0+0h+svqeie7xHbh1k/IKdcydnvadp/mUaGgjAOXQmQSxsqgaRhS3q9fy+1kxg==}
+
+  fdir@6.5.0:
+    resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
 
   fetch-blob@2.1.2:
     resolution: {integrity: sha512-YKqtUDwqLyfyMnmbw8XD6Q8j9i/HggKtPEI+pZ1+8bvheBu78biSmNaXWusx1TauGqtUUGx/cBb1mKdq2rLYow==}
@@ -3949,9 +3986,17 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
+  hono@4.11.7:
+    resolution: {integrity: sha512-l7qMiNee7t82bH3SeyUCt9UF15EVmaBvsppY2zQtrbIhl/yzBTny+YUxsVjSjQ6gaqaeVtZmGocom8TzBlA4Yw==}
+    engines: {node: '>=16.9.0'}
+
   hook-std@3.0.0:
     resolution: {integrity: sha512-jHRQzjSDzMtFy34AGj1DN+vq54WVuhSvKgrHf0OMiFQTwDD4L/qqofVEWjLOBMTn5+lCD3fPg32W9yOfnEJTTw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  hook-std@4.0.0:
+    resolution: {integrity: sha512-IHI4bEVOt3vRUDJ+bFA9VUJlo7SzvFARPNLw75pqSmAOP2HmTWfFJtPvLBrDrlgjEYXY9zs7SFdHPQaJShkSCQ==}
+    engines: {node: '>=20'}
 
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -4344,6 +4389,9 @@ packages:
   join-component@1.1.0:
     resolution: {integrity: sha512-bF7vcQxbODoGK1imE2P9GS9aw4zD0Sd+Hni68IMZLj7zRnquH7dXUmMw9hDI5S/Jzt7q+IyTXN0rSg2GI0IKhQ==}
 
+  jose@6.1.3:
+    resolution: {integrity: sha512-0TpaTfihd4QMNwrz/ob2Bp7X04yuxJkjRGi4aKmOqwhov54i6u79oCv7T+C7lo70MKH6BesI3vscD1yb/yzKXQ==}
+
   js-base64@3.7.7:
     resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
 
@@ -4395,6 +4443,9 @@ packages:
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
+  json-schema-typed@8.0.2:
+    resolution: {integrity: sha512-fQhoXdcvc3V28x7C7BMs4P5+kNlgUURe2jmUT1T//oBRMDrqy1QPelJimwZGo7Hg9VPV3EQV5Bnq4hbFy2vetA==}
 
   json-stringify-nice@1.1.4:
     resolution: {integrity: sha512-5Z5RFW63yxReJ7vANgW6eZFGWaQvnPE3WNmZoOJrSkGju2etKA2L5rrOa1sm877TVTFt57A80BH1bArcmlLfPw==}
@@ -4477,8 +4528,8 @@ packages:
     resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
     engines: {node: '>=14.16'}
 
-  lerna@8.2.2:
-    resolution: {integrity: sha512-GkqBELTG4k7rfzAwRok2pKBvhNo046Hfwcj7TuhDah3q58/BBBAqvIFLfqEI5fglnNOs6maMSn6/MWjccQE55A==}
+  lerna@8.2.4:
+    resolution: {integrity: sha512-0gaVWDIVT7fLfprfwpYcQajb7dBJv3EGavjG7zvJ+TmGx3/wovl5GklnSwM2/WeE0Z2wrIz7ndWhBcDUHVjOcQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -5206,8 +5257,8 @@ packages:
     resolution: {integrity: sha512-9qny7Z9DsQU8Ou39ERsPU4OZQlSTP47ShQzuKZ6PRXpYLtIFgl/DEBYEXKlvcEa+9tHVcK8CF81Y2V72qaZhWA==}
     engines: {node: '>=18'}
 
-  npm@10.9.2:
-    resolution: {integrity: sha512-iriPEPIkoMYUy3F6f3wwSZAU93E0Eg6cHwIR6jzzOXWSy+SD/rOODEs74cVONHKSx2obXtuUoyidVEhISrisgQ==}
+  npm@10.9.4:
+    resolution: {integrity: sha512-OnUG836FwboQIbqtefDNlyR0gTHzIfwRfE3DuiNewBvnMnWEpB0VEXwBlFVgqpNzIgYo/MHh3d2Hel/pszapAA==}
     engines: {node: ^18.17.0 || >=20.5.0}
     hasBin: true
     bundledDependencies:
@@ -5677,6 +5728,10 @@ packages:
     resolution: {integrity: sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag==}
     engines: {node: '>=10'}
 
+  picomatch@4.0.3:
+    resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
+    engines: {node: '>=12'}
+
   pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
@@ -5713,13 +5768,13 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  playwright-core@1.52.0:
-    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
+  playwright-core@1.58.1:
+    resolution: {integrity: sha512-bcWzOaTxcW+VOOGBCQgnaKToLJ65d6AqfLVKEWvexyS3AS6rbXl+xdpYRMGSRBClPvyj44njOWoxjNdL/H9UNg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.52.0:
-    resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
+  playwright@1.58.1:
+    resolution: {integrity: sha512-+2uTZHxSCcxjvGc5C891LrS1/NlxglGxzrC4seZiVjcYVQfUa87wBL6rTDqzGjuoWNjnBzRqKmF6zRYGMvQUaQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -5747,8 +5802,8 @@ packages:
     resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.5.3:
-    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
+  prettier@3.8.1:
+    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -6171,14 +6226,19 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  semantic-release@24.2.5:
-    resolution: {integrity: sha512-9xV49HNY8C0/WmPWxTlaNleiXhWb//qfMzG2c5X8/k7tuWcu8RssbuS+sujb/h7PiWSXv53mrQvV9hrO9b7vuQ==}
+  semantic-release@24.2.9:
+    resolution: {integrity: sha512-phCkJ6pjDi9ANdhuF5ElS10GGdAKY6R1Pvt9lT3SFhOwM4T7QZE7MLpBDbNruUx/Q3gFD92/UOFringGipRqZA==}
     engines: {node: '>=20.8.1'}
     hasBin: true
 
   semver-diff@4.0.0:
     resolution: {integrity: sha512-0Ju4+6A8iOnpL/Thra7dZsSlOHYAHIeMxfhWQRI1/VLcT3WDBZKKtQt/QkBOsiIN9ZpuvHE6cGZ0x4glCMmfiA==}
     engines: {node: '>=12'}
+
+  semver-diff@5.0.0:
+    resolution: {integrity: sha512-0HbGtOm+S7T6NGQ/pxJSJipJvc4DK3FcRVMRkhsIwJDJ4Jcz5DQC1cPPzB5GhzyHjwttW878HaWQq46CkL3cqg==}
+    engines: {node: '>=12'}
+    deprecated: Deprecated as the semver package now supports this built-in.
 
   semver-regex@4.0.5:
     resolution: {integrity: sha512-hunMQrEy1T6Jr2uEVjrAIqjwWcQTgOAcIM52C8MY1EZSD3DDNft04XzvYKPqjED65bNVVko0YI38nYeEHCX3yw==}
@@ -6486,11 +6546,6 @@ packages:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
 
-  strong-log-transformer@2.1.0:
-    resolution: {integrity: sha512-B3Hgul+z0L9a236FAUC9iZsL+nVHgoCJnqCbN588DjYxvGXaXaaFbfmQ/JhvKjZwsOukuR72XbHv71Qkug0HxA==}
-    engines: {node: '>=4'}
-    hasBin: true
-
   strtok3@10.2.2:
     resolution: {integrity: sha512-Xt18+h4s7Z8xyZ0tmBoRmzxcop97R4BAh+dXouUDCYn+Em+1P3qpkUfI5ueWLT8ynC5hZ+q4iPEmGG1urvQGBg==}
     engines: {node: '>=18'}
@@ -6615,6 +6670,14 @@ packages:
   time-span@5.1.0:
     resolution: {integrity: sha512-75voc/9G4rDIJleOo4jPvN4/YC4GRZrY8yy1uU4lwrB3XEQbWve8zXoO5No4eFrGcTAMYyoY67p8jRQdtA1HbA==}
     engines: {node: '>=12'}
+
+  tinyglobby@0.2.12:
+    resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
+    engines: {node: '>=12.0.0'}
+
+  tinyglobby@0.2.15:
+    resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
+    engines: {node: '>=12.0.0'}
 
   tmp@0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
@@ -6757,6 +6820,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   ua-parser-js@1.0.40:
     resolution: {integrity: sha512-z6PJ8Lml+v3ichVojCiB8toQJBuwR42ySM4ezjXIqXK3M0HczmKQ3LF4rhU55PfD99KEEXQG6yb7iOMyvYuHew==}
     hasBin: true
@@ -6775,6 +6843,9 @@ packages:
 
   uint8arrays@5.1.0:
     resolution: {integrity: sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww==}
+
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
   undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
@@ -7145,6 +7216,11 @@ packages:
     resolution: {integrity: sha512-/AuWwMP+YqiPbsJx5D6TfgRTc4kTLjsh5SOcd4bLsfUg2RcEXrFMJl1DGgdHy2aCfsIA/cr/1JM0xcB2GZji8g==}
     peerDependencies:
       zod: ^3.24.1
+
+  zod-to-json-schema@3.25.1:
+    resolution: {integrity: sha512-pM/SU9d3YAggzi6MtR4h7ruuQlqKtad8e9S0fmxcMi+ueAK5Korys/aWcV9LIIHTVbj01NdzxcnXSN+O74ZIVA==}
+    peerDependencies:
+      zod: ^3.25 || ^4
 
   zod@3.25.56:
     resolution: {integrity: sha512-rd6eEF3BTNvQnR2e2wwolfTmUTnp70aUTqr0oaGbHifzC3BKJsoV+Gat8vxUMR1hwOKBs6El+qWehrHbCpW6SQ==}
@@ -8219,7 +8295,7 @@ snapshots:
 
   '@bufbuild/protobuf@2.2.5': {}
 
-  '@cheqd/mcp-toolkit-credo@1.5.0(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)':
+  '@cheqd/mcp-toolkit-credo@1.5.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
       '@credo-ts/anoncreds': 0.5.15(@hyperledger/anoncreds-shared@0.3.1)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
       '@credo-ts/askar': 0.5.15(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
@@ -8229,35 +8305,39 @@ snapshots:
       '@hyperledger/anoncreds-nodejs': 0.3.1
       '@hyperledger/anoncreds-shared': 0.3.1
       '@hyperledger/aries-askar-nodejs': 0.2.3(encoding@0.1.13)
-      '@modelcontextprotocol/sdk': 1.12.1
+      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.56)
       qrcode: 1.5.4
       zod: 3.25.56
     transitivePeerDependencies:
       - '@animo-id/expo-secure-environment'
+      - '@cfworker/json-schema'
       - '@hyperledger/aries-askar-shared'
       - bufferutil
       - debug
       - domexception
       - encoding
       - expo
+      - hono
       - react-native
       - supports-color
       - utf-8-validate
       - web-streams-polyfill
 
-  '@cheqd/mcp-toolkit-server@1.4.0(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)':
+  '@cheqd/mcp-toolkit-server@1.4.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)':
     dependencies:
-      '@cheqd/mcp-toolkit-credo': 1.5.0(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
-      '@modelcontextprotocol/sdk': 1.12.1
+      '@cheqd/mcp-toolkit-credo': 1.5.1-develop.1(@hyperledger/aries-askar-shared@0.2.3)(encoding@0.1.13)(expo@52.0.46(@babel/core@7.27.4)(@babel/preset-env@7.27.2(@babel/core@7.27.4))(encoding@0.1.13)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(react@19.1.0))(hono@4.11.7)(react-native@0.79.3(@babel/core@7.27.4)(react@19.1.0))(web-streams-polyfill@3.3.3)
+      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.56)
       zod: 3.25.56
     transitivePeerDependencies:
       - '@animo-id/expo-secure-environment'
+      - '@cfworker/json-schema'
       - '@hyperledger/aries-askar-shared'
       - bufferutil
       - debug
       - domexception
       - encoding
       - expo
+      - hono
       - react-native
       - supports-color
       - utf-8-validate
@@ -9127,6 +9207,10 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
+  '@hono/node-server@1.19.9(hono@4.11.7)':
+    dependencies:
+      hono: 4.11.7
+
   '@hutson/parse-repository-url@3.0.2': {}
 
   '@hyperledger/anoncreds-nodejs@0.3.1':
@@ -9198,7 +9282,7 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       jest-mock: 29.7.0
     optional: true
 
@@ -9206,7 +9290,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -9242,7 +9326,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       '@types/yargs': 17.0.33
       chalk: 4.1.2
     optional: true
@@ -9276,7 +9360,7 @@ snapshots:
     dependencies:
       '@js-joda/core': 5.6.3
 
-  '@lerna/create@8.2.2(encoding@0.1.13)(typescript@5.8.3)':
+  '@lerna/create@8.2.4(encoding@0.1.13)(typescript@5.9.3)':
     dependencies:
       '@npmcli/arborist': 7.5.4
       '@npmcli/package-json': 5.2.0
@@ -9294,14 +9378,13 @@ snapshots:
       console-control-strings: 1.1.0
       conventional-changelog-core: 5.0.1
       conventional-recommended-bump: 7.0.1
-      cosmiconfig: 9.0.0(typescript@5.8.3)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       dedent: 1.5.3
       execa: 5.0.0
       fs-extra: 11.3.0
       get-stream: 6.0.0
       git-url-parse: 14.0.0
       glob-parent: 6.0.2
-      globby: 11.1.0
       graceful-fs: 4.2.11
       has-unicode: 2.0.1
       ini: 1.3.8
@@ -9312,7 +9395,6 @@ snapshots:
       js-yaml: 4.1.0
       libnpmpublish: 9.0.9
       load-json-file: 6.2.0
-      lodash: 4.17.21
       make-dir: 4.0.0
       minimatch: 3.0.5
       multimatch: 5.0.0
@@ -9336,9 +9418,10 @@ snapshots:
       slash: 3.0.0
       ssri: 10.0.6
       string-width: 4.2.3
-      strong-log-transformer: 2.1.0
       tar: 6.2.1
       temp-dir: 1.0.0
+      through: 2.3.8
+      tinyglobby: 0.2.12
       upath: 2.0.1
       uuid: 10.0.0
       validate-npm-package-license: 3.0.4
@@ -9387,6 +9470,28 @@ snapshots:
       zod: 3.25.56
       zod-to-json-schema: 3.24.5(zod@3.25.56)
     transitivePeerDependencies:
+      - supports-color
+
+  '@modelcontextprotocol/sdk@1.25.3(hono@4.11.7)(zod@3.25.56)':
+    dependencies:
+      '@hono/node-server': 1.19.9(hono@4.11.7)
+      ajv: 8.17.1
+      ajv-formats: 3.0.1(ajv@8.17.1)
+      content-type: 1.0.5
+      cors: 2.8.5
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      eventsource-parser: 3.0.2
+      express: 5.1.0
+      express-rate-limit: 7.5.0(express@5.1.0)
+      jose: 6.1.3
+      json-schema-typed: 8.0.2
+      pkce-challenge: 5.0.0
+      raw-body: 3.0.0
+      zod: 3.25.56
+      zod-to-json-schema: 3.25.1(zod@3.25.56)
+    transitivePeerDependencies:
+      - hono
       - supports-color
 
   '@multiformats/base-x@4.0.1': {}
@@ -9450,7 +9555,7 @@ snapshots:
       minimatch: 9.0.5
       nopt: 7.2.1
       npm-install-checks: 6.3.0
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       npm-pick-manifest: 9.1.0
       npm-registry-fetch: 17.1.0
       pacote: 18.0.6
@@ -9842,9 +9947,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.52.0':
+  '@playwright/test@1.58.1':
     dependencies:
-      playwright: 1.52.0
+      playwright: 1.58.1
 
   '@pnpm/config.env-replace@1.1.0': {}
 
@@ -9881,11 +9986,11 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@qiwi/multi-semantic-release@7.1.2(typescript@5.8.3)':
+  '@qiwi/multi-semantic-release@7.1.2(typescript@5.9.3)':
     dependencies:
       '@semrel-extra/topo': 1.14.1
       blork: 9.3.0
-      cosmiconfig: 8.3.6(typescript@5.8.3)
+      cosmiconfig: 8.3.6(typescript@5.9.3)
       debug: 4.4.1
       detect-indent: 7.0.1
       detect-newline: 4.0.1
@@ -9896,7 +10001,7 @@ snapshots:
       meow: 12.1.1
       promise-events: 0.2.4
       resolve-from: 5.0.0
-      semantic-release: 21.1.2(typescript@5.8.3)
+      semantic-release: 21.1.2(typescript@5.9.3)
       semver: 7.7.2
       signale: 1.4.0
       stream-buffers: 3.0.3
@@ -10120,15 +10225,15 @@ snapshots:
       join-component: 1.1.0
     optional: true
 
-  '@semantic-release/changelog@6.0.3(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/changelog@6.0.3(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
       fs-extra: 11.3.0
       lodash: 4.17.21
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
 
-  '@semantic-release/commit-analyzer@10.0.4(semantic-release@21.1.2(typescript@5.8.3))':
+  '@semantic-release/commit-analyzer@10.0.4(semantic-release@21.1.2(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 6.0.0
       conventional-commits-filter: 3.0.0
@@ -10137,11 +10242,11 @@ snapshots:
       import-from: 4.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 21.1.2(typescript@5.8.3)
+      semantic-release: 21.1.2(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/commit-analyzer@13.0.1(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/commit-analyzer@13.0.1(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -10151,7 +10256,7 @@ snapshots:
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -10159,7 +10264,7 @@ snapshots:
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/git@10.0.1(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/git@10.0.1(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
@@ -10169,11 +10274,11 @@ snapshots:
       lodash: 4.17.21
       micromatch: 4.0.8
       p-reduce: 2.1.0
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@11.0.3(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/github@11.0.6(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 7.0.2
       '@octokit/plugin-paginate-rest': 13.0.1(@octokit/core@7.0.2)
@@ -10183,19 +10288,19 @@ snapshots:
       aggregate-error: 5.0.0
       debug: 4.4.1
       dir-glob: 3.0.1
-      globby: 14.1.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       issue-parser: 7.0.1
       lodash-es: 4.17.21
       mime: 4.0.7
       p-filter: 4.1.0
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
+      tinyglobby: 0.2.15
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@9.2.6(semantic-release@21.1.2(typescript@5.8.3))':
+  '@semantic-release/github@9.2.6(semantic-release@21.1.2(typescript@5.9.3))':
     dependencies:
       '@octokit/core': 5.2.1
       '@octokit/plugin-paginate-rest': 9.2.2(@octokit/core@5.2.1)
@@ -10212,12 +10317,12 @@ snapshots:
       lodash-es: 4.17.21
       mime: 4.0.7
       p-filter: 4.1.0
-      semantic-release: 21.1.2(typescript@5.8.3)
+      semantic-release: 21.1.2(typescript@5.9.3)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@10.0.6(semantic-release@21.1.2(typescript@5.8.3))':
+  '@semantic-release/npm@10.0.6(semantic-release@21.1.2(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -10230,11 +10335,11 @@ snapshots:
       rc: 1.2.8
       read-pkg: 8.1.0
       registry-auth-token: 5.1.0
-      semantic-release: 21.1.2(typescript@5.8.3)
+      semantic-release: 21.1.2(typescript@5.9.3)
       semver: 7.7.2
       tempy: 3.1.0
 
-  '@semantic-release/npm@12.0.1(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/npm@12.0.2(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
@@ -10243,15 +10348,15 @@ snapshots:
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
       normalize-url: 8.0.1
-      npm: 10.9.2
+      npm: 10.9.4
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.1.0
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
       semver: 7.7.2
       tempy: 3.1.0
 
-  '@semantic-release/release-notes-generator@11.0.7(semantic-release@21.1.2(typescript@5.8.3))':
+  '@semantic-release/release-notes-generator@11.0.7(semantic-release@21.1.2(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 6.0.0
       conventional-changelog-writer: 6.0.1
@@ -10263,11 +10368,11 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 10.1.0
-      semantic-release: 21.1.2(typescript@5.8.3)
+      semantic-release: 21.1.2(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.5(typescript@5.8.3))':
+  '@semantic-release/release-notes-generator@14.1.0(semantic-release@24.2.9(typescript@5.9.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.1.0
@@ -10279,7 +10384,7 @@ snapshots:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 24.2.5(typescript@5.8.3)
+      semantic-release: 24.2.9(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -10423,7 +10528,7 @@ snapshots:
 
   '@tokenizer/token@0.3.0': {}
 
-  '@tsconfig/strictest@2.0.5': {}
+  '@tsconfig/strictest@2.0.8': {}
 
   '@tufjs/canonical-json@2.0.0': {}
 
@@ -10464,11 +10569,11 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
 
   '@types/cookie-parser@1.4.9(@types/express@5.0.3)':
     dependencies:
@@ -10480,14 +10585,14 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
@@ -10507,7 +10612,7 @@ snapshots:
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
     optional: true
 
   '@types/helmet@4.0.0':
@@ -10539,12 +10644,16 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
     optional: true
 
   '@types/node@24.0.0':
     dependencies:
       undici-types: 7.8.0
+
+  '@types/node@24.10.9':
+    dependencies:
+      undici-types: 7.16.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -10558,17 +10667,17 @@ snapshots:
 
   '@types/secp256k1@4.0.6':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
 
   '@types/send@0.17.5':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
 
   '@types/serve-static@1.15.8':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       '@types/send': 0.17.5
 
   '@types/stack-utils@2.0.3':
@@ -10578,7 +10687,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
 
   '@types/yargs-parser@21.0.3':
     optional: true
@@ -10677,6 +10786,10 @@ snapshots:
       indent-string: 5.0.0
 
   ajv-formats@2.1.1(ajv@8.17.1):
+    optionalDependencies:
+      ajv: 8.17.1
+
+  ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
       ajv: 8.17.1
 
@@ -11208,7 +11321,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -11218,7 +11331,7 @@ snapshots:
 
   chromium-edge-launcher@0.2.0:
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -11425,7 +11538,7 @@ snapshots:
     dependencies:
       compare-func: 2.0.0
 
-  conventional-changelog-conventionalcommits@9.0.0:
+  conventional-changelog-conventionalcommits@9.1.0:
     dependencies:
       compare-func: 2.0.0
 
@@ -11536,23 +11649,23 @@ snapshots:
       parse-json: 4.0.0
     optional: true
 
-  cosmiconfig@8.3.6(typescript@5.8.3):
+  cosmiconfig@8.3.6(typescript@5.9.3):
     dependencies:
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
-      typescript: 5.8.3
+      typescript: 5.9.3
 
-  cosmiconfig@9.0.0(typescript@5.8.3):
+  cosmiconfig@9.0.0(typescript@5.9.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.8.3
+      typescript: 5.9.3
 
   cosmjs-types@0.7.2:
     dependencies:
@@ -11733,11 +11846,13 @@ snapshots:
 
   dotenv-expand@11.0.7:
     dependencies:
-      dotenv: 16.5.0
+      dotenv: 16.6.1
 
   dotenv@16.4.7: {}
 
   dotenv@16.5.0: {}
+
+  dotenv@16.6.1: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -11748,8 +11863,6 @@ snapshots:
   duplexer2@0.1.4:
     dependencies:
       readable-stream: 2.3.8
-
-  duplexer@0.1.2: {}
 
   eastasianwidth@0.2.0: {}
 
@@ -11933,9 +12046,9 @@ snapshots:
   execa@5.0.0:
     dependencies:
       cross-spawn: 7.0.6
-      get-stream: 6.0.0
+      get-stream: 6.0.1
       human-signals: 2.1.0
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       merge-stream: 2.0.0
       npm-run-path: 4.0.1
       onetime: 5.1.2
@@ -12237,6 +12350,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
     optional: true
+
+  fdir@6.5.0(picomatch@4.0.3):
+    optionalDependencies:
+      picomatch: 4.0.3
 
   fetch-blob@2.1.2: {}
 
@@ -12647,6 +12764,7 @@ snapshots:
       ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
+    optional: true
 
   globby@14.1.0:
     dependencies:
@@ -12733,7 +12851,11 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
+  hono@4.11.7: {}
+
   hook-std@3.0.0: {}
+
+  hook-std@4.0.0: {}
 
   hosted-git-info@2.8.9: {}
 
@@ -12864,7 +12986,7 @@ snapshots:
   init-package-json@6.0.3:
     dependencies:
       '@npmcli/package-json': 5.2.0
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       promzard: 1.0.2
       read: 3.0.1
       semver: 7.7.2
@@ -13071,7 +13193,7 @@ snapshots:
   jake@10.9.2:
     dependencies:
       async: 3.2.6
-      chalk: 4.1.0
+      chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
 
@@ -13079,7 +13201,7 @@ snapshots:
 
   jest-diff@29.7.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       diff-sequences: 29.6.3
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
@@ -13089,7 +13211,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       jest-mock: 29.7.0
       jest-util: 29.7.0
     optional: true
@@ -13100,7 +13222,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -13129,7 +13251,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       jest-util: 29.7.0
     optional: true
 
@@ -13139,7 +13261,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -13158,7 +13280,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -13169,6 +13291,8 @@ snapshots:
 
   join-component@1.1.0:
     optional: true
+
+  jose@6.1.3: {}
 
   js-base64@3.7.7: {}
 
@@ -13228,6 +13352,8 @@ snapshots:
   json-schema-traverse@0.4.1: {}
 
   json-schema-traverse@1.0.0: {}
+
+  json-schema-typed@8.0.2: {}
 
   json-stringify-nice@1.1.4: {}
 
@@ -13305,9 +13431,9 @@ snapshots:
 
   ky@0.33.3: {}
 
-  lerna@8.2.2(encoding@0.1.13):
+  lerna@8.2.4(encoding@0.1.13):
     dependencies:
-      '@lerna/create': 8.2.2(encoding@0.1.13)(typescript@5.8.3)
+      '@lerna/create': 8.2.4(encoding@0.1.13)(typescript@5.9.3)
       '@npmcli/arborist': 7.5.4
       '@npmcli/package-json': 5.2.0
       '@npmcli/run-script': 8.1.0
@@ -13325,7 +13451,7 @@ snapshots:
       conventional-changelog-angular: 7.0.0
       conventional-changelog-core: 5.0.1
       conventional-recommended-bump: 7.0.1
-      cosmiconfig: 9.0.0(typescript@5.8.3)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       dedent: 1.5.3
       envinfo: 7.13.0
       execa: 5.0.0
@@ -13334,7 +13460,6 @@ snapshots:
       get-stream: 6.0.0
       git-url-parse: 14.0.0
       glob-parent: 6.0.2
-      globby: 11.1.0
       graceful-fs: 4.2.11
       has-unicode: 2.0.1
       import-local: 3.1.0
@@ -13348,7 +13473,6 @@ snapshots:
       libnpmaccess: 8.0.6
       libnpmpublish: 9.0.9
       load-json-file: 6.2.0
-      lodash: 4.17.21
       make-dir: 4.0.0
       minimatch: 3.0.5
       multimatch: 5.0.0
@@ -13374,10 +13498,11 @@ snapshots:
       slash: 3.0.0
       ssri: 10.0.6
       string-width: 4.2.3
-      strong-log-transformer: 2.1.0
       tar: 6.2.1
       temp-dir: 1.0.0
-      typescript: 5.8.3
+      through: 2.3.8
+      tinyglobby: 0.2.12
+      typescript: 5.9.3
       upath: 2.0.1
       uuid: 10.0.0
       validate-npm-package-license: 3.0.4
@@ -13406,7 +13531,7 @@ snapshots:
 
   libnpmaccess@8.0.6:
     dependencies:
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       npm-registry-fetch: 17.1.0
     transitivePeerDependencies:
       - supports-color
@@ -13415,7 +13540,7 @@ snapshots:
     dependencies:
       ci-info: 4.2.0
       normalize-package-data: 6.0.2
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       npm-registry-fetch: 17.1.0
       proc-log: 4.2.0
       semver: 7.7.2
@@ -14038,7 +14163,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
 
   mute-stream@0.0.8: {}
 
@@ -14200,7 +14325,6 @@ snapshots:
       proc-log: 4.2.0
       semver: 7.7.2
       validate-npm-package-name: 5.0.1
-    optional: true
 
   npm-packlist@8.0.2:
     dependencies:
@@ -14210,7 +14334,7 @@ snapshots:
     dependencies:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       semver: 7.7.2
 
   npm-registry-fetch@17.1.0:
@@ -14221,7 +14345,7 @@ snapshots:
       minipass: 7.1.2
       minipass-fetch: 3.0.5
       minizlib: 2.1.2
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       proc-log: 4.2.0
     transitivePeerDependencies:
       - supports-color
@@ -14244,7 +14368,7 @@ snapshots:
       path-key: 4.0.0
       unicorn-magic: 0.3.0
 
-  npm@10.9.2: {}
+  npm@10.9.4: {}
 
   npm@9.9.4: {}
 
@@ -14265,7 +14389,7 @@ snapshots:
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
       axios: 1.9.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
@@ -14382,9 +14506,9 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -14496,7 +14620,7 @@ snapshots:
       cacache: 18.0.4
       fs-minipass: 3.0.3
       minipass: 7.1.2
-      npm-package-arg: 11.0.2
+      npm-package-arg: 11.0.3
       npm-packlist: 8.0.2
       npm-pick-manifest: 9.1.0
       npm-registry-fetch: 17.1.0
@@ -14617,6 +14741,8 @@ snapshots:
   picomatch@3.0.1:
     optional: true
 
+  picomatch@4.0.3: {}
+
   pify@2.3.0: {}
 
   pify@3.0.0: {}
@@ -14644,11 +14770,11 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  playwright-core@1.52.0: {}
+  playwright-core@1.58.1: {}
 
-  playwright@1.52.0:
+  playwright@1.58.1:
     dependencies:
-      playwright-core: 1.52.0
+      playwright-core: 1.58.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -14678,7 +14804,7 @@ snapshots:
 
   prelude-ls@1.1.2: {}
 
-  prettier@3.5.3: {}
+  prettier@3.8.1: {}
 
   pretty-bytes@5.6.0:
     optional: true
@@ -14752,7 +14878,7 @@ snapshots:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       long: 4.0.0
 
   protobufjs@7.5.3:
@@ -14767,7 +14893,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 24.0.0
+      '@types/node': 24.10.9
       long: 5.3.2
 
   protocols@2.0.2: {}
@@ -15201,15 +15327,15 @@ snapshots:
       node-forge: 1.3.1
     optional: true
 
-  semantic-release@21.1.2(typescript@5.8.3):
+  semantic-release@21.1.2(typescript@5.9.3):
     dependencies:
-      '@semantic-release/commit-analyzer': 10.0.4(semantic-release@21.1.2(typescript@5.8.3))
+      '@semantic-release/commit-analyzer': 10.0.4(semantic-release@21.1.2(typescript@5.9.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 9.2.6(semantic-release@21.1.2(typescript@5.8.3))
-      '@semantic-release/npm': 10.0.6(semantic-release@21.1.2(typescript@5.8.3))
-      '@semantic-release/release-notes-generator': 11.0.7(semantic-release@21.1.2(typescript@5.8.3))
+      '@semantic-release/github': 9.2.6(semantic-release@21.1.2(typescript@5.9.3))
+      '@semantic-release/npm': 10.0.6(semantic-release@21.1.2(typescript@5.9.3))
+      '@semantic-release/release-notes-generator': 11.0.7(semantic-release@21.1.2(typescript@5.9.3))
       aggregate-error: 5.0.0
-      cosmiconfig: 8.3.6(typescript@5.8.3)
+      cosmiconfig: 8.3.6(typescript@5.9.3)
       debug: 4.4.1
       env-ci: 9.1.1
       execa: 8.0.1
@@ -15235,15 +15361,15 @@ snapshots:
       - supports-color
       - typescript
 
-  semantic-release@24.2.5(typescript@5.8.3):
+  semantic-release@24.2.9(typescript@5.9.3):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.5(typescript@5.8.3))
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.9(typescript@5.9.3))
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 11.0.3(semantic-release@24.2.5(typescript@5.8.3))
-      '@semantic-release/npm': 12.0.1(semantic-release@24.2.5(typescript@5.8.3))
-      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.5(typescript@5.8.3))
+      '@semantic-release/github': 11.0.6(semantic-release@24.2.9(typescript@5.9.3))
+      '@semantic-release/npm': 12.0.2(semantic-release@24.2.9(typescript@5.9.3))
+      '@semantic-release/release-notes-generator': 14.1.0(semantic-release@24.2.9(typescript@5.9.3))
       aggregate-error: 5.0.0
-      cosmiconfig: 9.0.0(typescript@5.8.3)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       debug: 4.4.1
       env-ci: 11.1.1
       execa: 9.6.0
@@ -15251,7 +15377,7 @@ snapshots:
       find-versions: 6.0.0
       get-stream: 6.0.1
       git-log-parser: 1.2.1
-      hook-std: 3.0.0
+      hook-std: 4.0.0
       hosted-git-info: 8.1.0
       import-from-esm: 2.0.0
       lodash-es: 4.17.21
@@ -15263,7 +15389,7 @@ snapshots:
       read-package-up: 11.0.0
       resolve-from: 5.0.0
       semver: 7.7.2
-      semver-diff: 4.0.0
+      semver-diff: 5.0.0
       signale: 1.4.0
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -15271,6 +15397,10 @@ snapshots:
       - typescript
 
   semver-diff@4.0.0:
+    dependencies:
+      semver: 7.7.2
+
+  semver-diff@5.0.0:
     dependencies:
       semver: 7.7.2
 
@@ -15620,12 +15750,6 @@ snapshots:
 
   strip-json-comments@2.0.1: {}
 
-  strong-log-transformer@2.1.0:
-    dependencies:
-      duplexer: 0.1.2
-      minimist: 1.2.8
-      through: 2.3.8
-
   strtok3@10.2.2:
     dependencies:
       '@tokenizer/token': 0.3.0
@@ -15783,6 +15907,16 @@ snapshots:
     dependencies:
       convert-hrtime: 5.0.0
 
+  tinyglobby@0.2.12:
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+
+  tinyglobby@0.2.15:
+    dependencies:
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+
   tmp@0.0.33:
     dependencies:
       os-tmpdir: 1.0.2
@@ -15893,6 +16027,8 @@ snapshots:
 
   typescript@5.8.3: {}
 
+  typescript@5.9.3: {}
+
   ua-parser-js@1.0.40:
     optional: true
 
@@ -15908,6 +16044,8 @@ snapshots:
   uint8arrays@5.1.0:
     dependencies:
       multiformats: 13.3.3
+
+  undici-types@7.16.0: {}
 
   undici-types@7.8.0: {}
 
@@ -16244,6 +16382,10 @@ snapshots:
   yoctocolors@2.1.1: {}
 
   zod-to-json-schema@3.24.5(zod@3.25.56):
+    dependencies:
+      zod: 3.25.56
+
+  zod-to-json-schema@3.25.1(zod@3.25.56):
     dependencies:
       zod: 3.25.56
 

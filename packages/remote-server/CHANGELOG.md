@@ -1,5 +1,27 @@
 # Changelog
 
+## @cheqd/mcp-toolkit-remote-server [1.3.1-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.3.0...@cheqd/mcp-toolkit-remote-server@1.3.1-develop.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* logging error ([#50](https://github.com/cheqd/mcp-toolkit/issues/50)) ([f355723](https://github.com/cheqd/mcp-toolkit/commit/f355723b334d9844fb0e084744c0541b2f843937))
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.4.1-develop.1
+
+# @cheqd/mcp-toolkit-remote-server [1.3.0-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.3.0-develop.1...@cheqd/mcp-toolkit-remote-server@1.3.0-develop.2) (2025-06-26)
+
+
+### Bug Fixes
+
+* logging error ([#50](https://github.com/cheqd/mcp-toolkit/issues/50)) ([f355723](https://github.com/cheqd/mcp-toolkit/commit/f355723b334d9844fb0e084744c0541b2f843937))
+
 # @cheqd/mcp-toolkit-remote-server [1.3.0](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.2.0...@cheqd/mcp-toolkit-remote-server@1.3.0) (2025-06-12)
 
 
@@ -13,7 +35,7 @@
 
 ### Dependencies
 
-* **@cheqd/mcp-toolkit-server:** upgraded to 1.4.0
+* **@cheqd/mcp-toolkit-server:** upgraded to 1.4.0-develop.2
 
 # @cheqd/mcp-toolkit-remote-server [1.3.0-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-remote-server@1.2.0...@cheqd/mcp-toolkit-remote-server@1.3.0-develop.1) (2025-06-11)
 
