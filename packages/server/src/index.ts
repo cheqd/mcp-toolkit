@@ -17,6 +17,10 @@ async function initializeServer() {
 			cosmosPayerSeed: normalizeEnvVar(process.env.CREDO_CHEQD_TESTNET_MNEMONIC),
 			trainEndpoint: normalizeEnvVar(process.env.TRAIN_ENDPOINT),
 		},
+		studio: process.env.CHEQD_STUDIO_API_KEY && process.env.CHEQD_STUDIO_API_ENDPOINT ? {
+			apiKey: normalizeEnvVar(process.env.CHEQD_STUDIO_API_KEY),
+			apiEndpoint: normalizeEnvVar(process.env.CHEQD_STUDIO_API_ENDPOINT)
+		} : undefined
 	});
 
 	try {

@@ -3,7 +3,7 @@ import path from 'path';
 
 // Helper function to start Docker containers and wait for them to be ready
 export async function startDockerServices(): Promise<ChildProcess> {
-	const dockerComposePath = path.resolve(__dirname, '../../../docker/docker-compose.yml');
+	const dockerComposePath = path.resolve(__dirname, '../../../../docker/docker-compose.yml');
 	const process = spawn('docker', ['compose', '-f', dockerComposePath, '--profile', 'demo', 'up', '--detach']);
 	return new Promise((resolve, reject) => {
 		process.stdout?.on('data', (data) => console.log(`[Docker]: ${data.toString().trim()}`));

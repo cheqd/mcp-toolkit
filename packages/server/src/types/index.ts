@@ -7,4 +7,9 @@ export interface IAgentMCPServerOptions {
 		cosmosPayerSeed?: string;
 		trainEndpoint?: string;
 	};
+	studio?: {
+		name?: string;
+		apiKey: string;
+		apiEndpoint: string;
+	}
 }

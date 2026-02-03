@@ -7,6 +7,8 @@ declare global {
 			CREDO_NAME: string | 'credo-agent';
 			CREDO_ENDPOINT?: string;
 			TRAIN_ENDPOINT?: string | 'https://dev-train.trust-scheme.de/tcr/v1/';
+			CHEQD_STUDIO_API_ENDPOINT: string | 'https://studio-api-staging.cheqd.net';
+			CHEQD_STUDIO_API_KEY?: string;
 		}
 	}
 }

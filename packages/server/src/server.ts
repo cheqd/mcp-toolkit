@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CredoToolKit } from '@cheqd/mcp-toolkit-credo';
+import { StudioToolKit } from '@cheqd/mcp-toolkit-studio';
 import { ToolDefinition } from '@cheqd/mcp-toolkit-credo/build/types.js';
 import { IAgentMCPServerOptions } from './types/index.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
@@ -20,6 +21,7 @@ const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
 export class AgentMcpServer extends McpServer {
 	private transport: StdioServerTransport | SSEServerTransport | StreamableHTTPServerTransport | null = null;
 	private credoToolkit: CredoToolKit | null = null;
+	private studioToolkit: StudioToolKit | null = null;
 	private options: IAgentMCPServerOptions;
 
 	/**
@@ -125,7 +127,15 @@ export class AgentMcpServer extends McpServer {
 				this.credoToolkit.registerResources(this);
 				this.credoToolkit.registerPrompts(this);
 			}
+		} else {
+			await this.setupStudioTools(tools);
+			if (this.credoToolkit) {
+				this.credoToolkit.registerResources(this);
+				this.credoToolkit.registerPrompts(this);
+			}
 		}
+
+
 
 		// Register all tools with the server
 		for (const tool of tools) {
@@ -159,6 +169,31 @@ export class AgentMcpServer extends McpServer {
 		}
 	}
 
+	/**
+	 * Set up Credo-specific tools
+	 */
+	private async setupStudioTools(tools: ToolDefinition<any>[]): Promise<void> {
+		// Validate required env variables
+		if (!this.options.studio?.apiKey || !this.options.studio.apiEndpoint) {
+			throw new Error(
+				'Missing required environment variables for Studio tools. Please set: CHEQD_STUDIO_API_KEY'
+			);
+		}
+		try {
+			this.studioToolkit = new StudioToolKit({
+				name: this.options.studio.name || 'default',
+				apiKey: this.options.studio.apiKey,
+				apiEndpoint: this.options.studio.apiEndpoint
+			});
+			await this.studioToolkit.init();
+			const studioTools = await this.studioToolkit.getTools();
+
+			tools.push(...(studioTools as ToolDefinition<any>[]));
+		} catch (err) {
+			throw new Error(`Studio initialization failed: ${err instanceof Error ? err.message : String(err)}`);
+		}
+	}
+
 	/*
 	 * Start the server and connect to the specified transport
 	 */
@@ -183,11 +218,13 @@ export class AgentMcpServer extends McpServer {
 	async cleanup(): Promise<void> {
 		console.error('Shutdown signal received, cleaning up server...');
 		try {
-			const { credoToolkit, transport } = this;
+			const { credoToolkit, studioToolkit, transport } = this;
 
 			// Shutdown the agent if available
 			if (credoToolkit) {
 				await credoToolkit.shutdown();
+			} else if (studioToolkit) {
+				await studioToolkit.shutdown();
 			}
 
 			// Close transport if it's a StdioServerTransport

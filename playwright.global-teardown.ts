@@ -1,4 +1,4 @@
-import { stopDockerServices } from './packages/server/tests/utils';
+import { stopDockerServices } from './packages/server/tests/credo/utils';
 
 async function globalTeardown() {
 	await stopDockerServices();
