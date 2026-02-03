@@ -15,7 +15,10 @@ test.describe('DID Operations', () => {
 			},
 		});
 
-		const data: CreateDidDocumentResponseType = parseToolResponse(result);
+		const resp = parseToolResponse(result) as any;
+		expect(resp).toHaveProperty('success');
+		expect(resp.success).toBeTruthy();
+		const data: CreateDidDocumentResponseType = resp.data;
 		expect(data).toHaveProperty('did');
 		expect(data).toHaveProperty('keys');
 
@@ -37,7 +40,10 @@ test.describe('DID Operations', () => {
 			name: 'list-did',
 			arguments: {}
 		});
-		const data = parseToolResponse(result);
+		const listResp = parseToolResponse(result) as any;
+		expect(listResp).toHaveProperty('success');
+		expect(listResp.success).toBeTruthy();
+		const data = listResp.data;
 		expect(Array.isArray(data.dids)).toBe(true);
 		expect(data.total).toBeGreaterThanOrEqual(1);
 	});
@@ -49,7 +55,10 @@ test.describe('DID Operations', () => {
 			arguments: { did: state.testDid },
 		});
 
-		const resolveData = parseToolResponse(resolveResult);
+		const resolveResp = parseToolResponse(resolveResult) as any;
+		expect(resolveResp).toHaveProperty('success');
+		expect(resolveResp.success).toBeTruthy();
+		const resolveData = resolveResp.data;
 		expect(resolveData).toHaveProperty('didDocument');
 		expect(resolveData.didDocument).toHaveProperty('id');
 		expect(resolveData.didDocument.id).toBe(state.testDid);
@@ -77,7 +86,10 @@ test.describe('DID Operations', () => {
 			arguments: { did: state.testDid, didDocument: didDoc },
 		});
 
-		const updateData: UpdateDidDocumentResponseType = parseToolResponse(updateResult);
+		const updateResp = parseToolResponse(updateResult) as any;
+		expect(updateResp).toHaveProperty('success');
+		expect(updateResp.success).toBeTruthy();
+		const updateData: UpdateDidDocumentResponseType = updateResp.data;
 		expect(updateData).toHaveProperty('did');
 		expect(updateData.did).toBe(state.testDid);
 		expect(updateData).toHaveProperty('services');
@@ -99,7 +111,10 @@ test.describe('DID Operations', () => {
 			arguments: params,
 		});
 
-		const createData: CreateDidLinkedResourceResponseType = parseToolResponse(createDLR);
+		const createResp = parseToolResponse(createDLR) as any;
+		expect(createResp).toHaveProperty('success');
+		expect(createResp.success).toBeTruthy();
+		const createData: CreateDidLinkedResourceResponseType = createResp.data;
 		expect(createData.resource).toHaveProperty('resourceId');
 		expect(createData.resource).toHaveProperty('resourceName');
 		expect(createData.resource.resourceId).toBeTruthy();
@@ -113,7 +128,10 @@ test.describe('DID Operations', () => {
 			arguments: { didUrl: state.testDLRId },
 		});
 
-		const result = parseToolResponse(response)
+		const resp = parseToolResponse(response) as any;
+		expect(resp).toHaveProperty('success');
+		expect(resp.success).toBeTruthy();
+		const result = resp.data;
 		const decodedText = Buffer.from(Object.values(result as any)).toString('utf-8');
 		expect(decodedText).toBe('Hello World');
 	});

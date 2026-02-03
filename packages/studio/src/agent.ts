@@ -1,5 +1,13 @@
 import { IStudioToolKitOptions, CreateDidDocumentRequestType, UpdateDidDocumentRequestType, DeactivateDidDocumentRequestType, CreateDidDocumentResponseType, UpdateDidDocumentResponseType, DeactivateDidDocumentResponseType, CreateDidLinkedResourceRequestType, CreateDidLinkedResourceResponseType, IssueCredentialRequest, IssueCredentialResponseType, VerifyCredentialRequestType, CredentialStatusListCreateRequest, CredentialStatusListUpdateRequest } from './types.js';
 
+// Generic API response wrapper used across StudioAgent methods
+export type ApiResponse<T> = {
+	success: boolean;
+	error?: string;
+	status?: number;
+	data?: T;
+};
+
 export class StudioAgent {
 	public name?: string;
 	public endpoint: string;
@@ -17,186 +25,254 @@ export class StudioAgent {
 	public async initializeAgent() {}
 
 	public dids = {
-		resolveDidDocument: async (did: string) => {
-			const response = await fetch(`${this.endpoint}/did/search/${did}`, {
-				headers: { 'x-api-key': this.apiKey }
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to resolve DID: ${response.statusText}`);
+		resolveDidDocument: async (did: string): Promise<ApiResponse<any>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/search/${did}`, { headers: { 'x-api-key': this.apiKey } });
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		create: async(body: CreateDidDocumentRequestType): Promise<CreateDidDocumentResponseType> => {
-			const response = await fetch(`${this.endpoint}/did/create`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to create DID: ${response.statusText}`);
+		create: async(body: CreateDidDocumentRequestType): Promise<ApiResponse<CreateDidDocumentResponseType>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/create`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		update: async(body: UpdateDidDocumentRequestType): Promise<UpdateDidDocumentResponseType> => {
-			const response = await fetch(`${this.endpoint}/did/update`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to update DID: ${response.statusText}`);
+		update: async(body: UpdateDidDocumentRequestType): Promise<ApiResponse<UpdateDidDocumentResponseType>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/update`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		deactivate: async(body: DeactivateDidDocumentRequestType): Promise<DeactivateDidDocumentResponseType> => {
-			const response = await fetch(`${this.endpoint}/did/deactivate`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to deactivate DID: ${response.statusText}`);
+		deactivate: async(body: DeactivateDidDocumentRequestType): Promise<ApiResponse<DeactivateDidDocumentResponseType>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/deactivate`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		getCreatedDids: async(params?: string): Promise<string[]> => {
-			const response = await fetch(`${this.endpoint}/did/list?${params}`, {
-				headers: { 'x-api-key': this.apiKey }
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to list DID: ${response.statusText}`);
+		getCreatedDids: async(params?: string): Promise<ApiResponse<string[]>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/list?${params}`, { headers: { 'x-api-key': this.apiKey } });
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();	
 		}
 	};
 
 	public resources = {
-		createResource: async(body: CreateDidLinkedResourceRequestType): Promise<CreateDidLinkedResourceResponseType> => {
-			const response = await fetch(`${this.endpoint}/resource/create/${body.did}`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
+		createResource: async(body: CreateDidLinkedResourceRequestType): Promise<ApiResponse<CreateDidLinkedResourceResponseType>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/resource/create/${body.did}`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		resolveResource: async (didUrl: string) => {
-			const response = await fetch(`${this.endpoint}/resource/search/${didUrl}`, {
-				headers: { 'x-api-key': this.apiKey }
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to resolve DID: ${response.statusText}`);
+		resolveResource: async (didUrl: string): Promise<ApiResponse<Uint8Array<ArrayBuffer>>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/resource/search/${didUrl}`, { headers: { 'x-api-key': this.apiKey } });
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const buf = await res.bytes();
+				return { success: true, status: res.status, data: buf };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.bytes();
 		},
 	}
 
 
 	public statusList = {
-		create: async(body: CredentialStatusListCreateRequest) => {
-			const response = await fetch(`${this.endpoint}/credential-status/create/unencrypted`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
+		create: async(body: CredentialStatusListCreateRequest): Promise<ApiResponse<any>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/credential-status/create/unencrypted`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();	
 		},
 
-		update: async(body: CredentialStatusListUpdateRequest) => {
-			const response = await fetch(`${this.endpoint}/credential-status/update/unencrypted`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to create DID Linked Resource: ${response.statusText}`);
+		update: async(body: CredentialStatusListUpdateRequest): Promise<ApiResponse<any>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/credential-status/update/unencrypted`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();	
 		},
 	}
 
 
 	public credentials = {
 
-		issue: async(body: IssueCredentialRequest): Promise<IssueCredentialResponseType> => {
-			const response = await fetch(`${this.endpoint}/credential/issue`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+		issue: async(body: IssueCredentialRequest): Promise<ApiResponse<IssueCredentialResponseType>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/credential/issue`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		verify: async(body: VerifyCredentialRequestType) => {
-			const response = await fetch(`${this.endpoint}/credential/verify`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+		verify: async(body: VerifyCredentialRequestType): Promise<ApiResponse<any>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/credential/verify`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
-		getCredentialExchangeRecords: async(params?: string) => {
-			const response = await fetch(`${this.endpoint}/did/list?${params}`, {
-				headers: { 'x-api-key': this.apiKey }
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to list DID: ${response.statusText}`);
+		getCredentialExchangeRecords: async(params?: string): Promise<ApiResponse<any>> => {
+			try {
+				const res = await fetch(`${this.endpoint}/did/list?${params}`, { headers: { 'x-api-key': this.apiKey } });
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
 
 		revoke: async(body) => {
-			const response = await fetch(`${this.endpoint}/credential/revoke`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			try {
+				const res = await fetch(`${this.endpoint}/credential/revoke`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
 		reinstate: async(body) => {
-			const response = await fetch(`${this.endpoint}/credential/reinstate`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			try {
+				const res = await fetch(`${this.endpoint}/credential/reinstate`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 
 		suspend: async(body) => {
-			const response = await fetch(`${this.endpoint}/credential/suspend`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
-				body: JSON.stringify(body)
-			});
-			if (!response.ok) {
-				throw new Error(`Failed to issue Credential: ${response.statusText}`);
+			try {
+				const res = await fetch(`${this.endpoint}/credential/suspend`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
+					body: JSON.stringify(body)
+				});
+				if (!res.ok) {
+
+					return { success: false, status: res.status, error: res.statusText };
+				}
+				const json = await res.json().catch((e) => undefined);
+				return { success: true, status: res.status, data: json };
+			} catch (err: any) {
+				return { success: false, error: err?.message ?? String(err) };
 			}
-			return await response.json();
 		},
 	}
 
