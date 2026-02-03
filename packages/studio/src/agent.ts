@@ -64,7 +64,7 @@ export class StudioAgent {
 		},
 
 		getCreatedDids: async(params?: string): Promise<string[]> => {
-			const response = await fetch(`${this.endpoint}/did/list${params}`, {
+			const response = await fetch(`${this.endpoint}/did/list?${params}`, {
 				headers: { 'x-api-key': this.apiKey }
 			});
 			if (!response.ok) {
@@ -76,7 +76,7 @@ export class StudioAgent {
 
 	public resources = {
 		createResource: async(body: CreateDidLinkedResourceRequestType): Promise<CreateDidLinkedResourceResponseType> => {
-			const response = await fetch(`${this.endpoint}/resource/create`, {
+			const response = await fetch(`${this.endpoint}/resource/create/${body.did}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json', 'x-api-key': this.apiKey },
 				body: JSON.stringify(body)
@@ -94,7 +94,7 @@ export class StudioAgent {
 			if (!response.ok) {
 				throw new Error(`Failed to resolve DID: ${response.statusText}`);
 			}
-			return await response.json();
+			return await response.bytes();
 		},
 	}
 

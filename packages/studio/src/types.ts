@@ -47,18 +47,6 @@ export const CreateDidDocumentParams = {
     verificationMethodType: z.enum(['Ed25519VerificationKey2018', 'JsonWebKey2020', 'Ed25519VerificationKey2020']).optional().default('Ed25519VerificationKey2020').describe('Type of verification method for the DID'),
 };
 
-const CreateDidDocumentShape = z.object(CreateDidDocumentParams)
-export type CreateDidDocumentRequestType = z.infer<typeof CreateDidDocumentShape>;
-
-export const CreateDidDocumentResponse =  z.object({
-    did: z.string().describe('The DID'),
-    didDocument: z.any().describe('The full DID Document'),
-    success: z.boolean().describe('Whether the operation was successful'),
-    existedInDb: z.boolean().describe('Whether the DID was retrieved from local database'),
-    error: z.string().optional().describe('Error message if creation failed'),
-})
-export type CreateDidDocumentResponseType = z.infer<typeof CreateDidDocumentResponse>;
-
 /**
  * JSON Web Key schema for cryptographic keys
  */
@@ -89,6 +77,37 @@ const DidDocumentServiceSchema = z.object({
 	serviceEndpoint: z.union([z.string(), z.array(z.string())]),
 });
 
+const CreateDidDocumentShape = z.object(CreateDidDocumentParams)
+export type CreateDidDocumentRequestType = z.infer<typeof CreateDidDocumentShape>;
+
+export const CreateDidDocumentResponse = z.object({
+	did: z.string().describe('The DID'),
+	keys: z.array(z.object({
+		kid: z.string(),
+		kms: z.string(),
+		type: z.string(),
+		publicKeyHex: z.string(),
+		meta: z.record(z.unknown()),
+		controller: z.string(),
+	})).describe('Array of cryptographic keys associated with the DID'),
+	services: z.array(DidDocumentServiceSchema).describe('Array of service endpoints'),
+	provider: z.string().describe('The DID provider'),
+	controllerKeyRefs: z.array(z.string()).describe('Array of key identifiers controlling the DID'),
+	controllerKeys: z.array(z.object({
+		kid: z.string(),
+		kms: z.string(),
+		type: z.string(),
+		publicKeyHex: z.string(),
+		meta: z.record(z.unknown()),
+		controller: z.string(),
+	})).describe('Array of controller keys'),
+	controllerKeyId: z.string().describe('The key identifier used for signing'),
+	success: z.boolean().describe('Whether the operation was successful'),
+	existedInDb: z.boolean().describe('Whether the DID was retrieved from local database'),
+	error: z.string().optional().describe('Error message if creation failed'),
+})
+export type CreateDidDocumentResponseType = z.infer<typeof CreateDidDocumentResponse>;
+
 /**
  * Complete schema for a DID Document
  */
@@ -118,10 +137,27 @@ const UpdateDidDocumentShape = z.object(UpdateDidDocumentParams)
 export type UpdateDidDocumentRequestType = z.infer<typeof UpdateDidDocumentShape>;
 
 export const UpdateDidDocumentResponse = z.object({
-    did: z.string().describe('The updated DID'),
-	didDocument: DidDocumentSchema,
-    success: z.boolean().describe('Whether the update was successful'),
-    error: z.string().optional().describe('Error message if update failed'),
+	did: z.string().describe('The updated DID'),
+	keys: z.array(z.object({
+		kid: z.string(),
+		kms: z.string(),
+		type: z.string(),
+		publicKeyHex: z.string(),
+		meta: z.record(z.unknown()),
+		controller: z.string(),
+	})).describe('Array of cryptographic keys associated with the DID'),
+	services: z.array(DidDocumentServiceSchema).describe('Array of service endpoints'),
+	provider: z.string().describe('The DID provider'),
+	controllerKeyRefs: z.array(z.string()).describe('Array of key identifiers controlling the DID'),
+	controllerKeys: z.array(z.object({
+		kid: z.string(),
+		kms: z.string(),
+		type: z.string(),
+		publicKeyHex: z.string(),
+		meta: z.record(z.unknown()),
+		controller: z.string(),
+	})).describe('Array of controller keys'),
+	controllerKeyId: z.string().describe('The key identifier used for signing'),
 })
 export type UpdateDidDocumentResponseType = z.infer<typeof UpdateDidDocumentResponse>;
 
@@ -168,7 +204,22 @@ export const CreateDidLinkedResourceParams = {
 const CreateDidLinkedResourceShape = z.object(CreateDidLinkedResourceParams)
 export type CreateDidLinkedResourceRequestType = z.infer<typeof CreateDidLinkedResourceShape>;
 
-export type CreateDidLinkedResourceResponseType = any;
+export const CreateDidLinkedResourceResponse = z.object({
+	resource: z.object({
+		checksum: z.string().describe('SHA-256 checksum of the resource'),
+		created: z.string().datetime().describe('ISO 8601 timestamp when resource was created'),
+		mediaType: z.string().describe('MIME type of the resource'),
+		nextVersionId: z.string().nullable().describe('ID of the next version if available'),
+		previousVersionId: z.string().nullable().describe('ID of the previous version if available'),
+		resourceCollectionId: z.string().uuid().describe('UUID of the resource collection (DID without method)'),
+		resourceId: z.string().uuid().describe('UUID of the resource'),
+		resourceName: z.string().describe('Human-readable name of the resource'),
+		resourceType: z.string().describe('Type of resource'),
+		resourceURI: DID_URL.describe('Full DID URL pointing to the resource'),
+		resourceVersion: z.string().describe('Human-readable version of the resource'),
+	}).describe('The created DID-Linked Resource'),
+});
+export type CreateDidLinkedResourceResponseType = z.infer<typeof CreateDidLinkedResourceResponse>;
 
 export const IssueCredentialParams = {
 	issuerDid: z.string().describe('DID of the Verifiable Credential issuer. This needs to be a `did:cheqd` DID.'),
