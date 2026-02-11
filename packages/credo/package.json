@@ -31,7 +31,7 @@
     "@credo-ts/anoncreds": "^0.5.15",
     "@credo-ts/askar": "^0.5.15",
     "@credo-ts/cheqd": "^0.5.15",
-    "@credo-ts/core": "^0.5.15",
+    "@credo-ts/core": "^0.6.2",
     "@credo-ts/node": "^0.5.15",
     "@hyperledger/anoncreds-nodejs": "^0.3.1",
     "@hyperledger/anoncreds-shared": "^0.3.1",
