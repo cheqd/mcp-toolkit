@@ -23,7 +23,7 @@
     "mcp"
   ],
   "dependencies": {
-    "@cheqd/mcp-toolkit-server": "1.4.1-develop.1",
+    "@cheqd/mcp-toolkit-server": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.20.2",
     "zod": "^3.25.56",
     "cookie-parser": "^1.4.7",
