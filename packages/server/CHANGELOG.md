@@ -1,5 +1,20 @@
 # Changelog
 
+## @cheqd/mcp-toolkit-server [1.4.1-develop.2](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.4.1-develop.1...@cheqd/mcp-toolkit-server@1.4.1-develop.2) (2026-02-20)
+
+
+### Bug Fixes
+
+* update credo version and patch credo-toolkit [DEV-5640] ([#110](https://github.com/cheqd/mcp-toolkit/issues/110)) ([eac964e](https://github.com/cheqd/mcp-toolkit/commit/eac964ec4e66c3cc945f814a480dd10aa35930c4))
+
+
+
+
+
+### Dependencies
+
+* **@cheqd/mcp-toolkit-credo:** upgraded to 1.5.1-develop.2
+
 ## @cheqd/mcp-toolkit-server [1.4.1-develop.1](https://github.com/cheqd/mcp-toolkit/compare/@cheqd/mcp-toolkit-server@1.4.0...@cheqd/mcp-toolkit-server@1.4.1-develop.1) (2026-01-13)
 
 
