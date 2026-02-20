@@ -153,7 +153,7 @@ export class AgentMcpServer extends McpServer {
 			await this.credoToolkit.init();
 			const credoTools = await this.credoToolkit.getTools();
 
-			tools.push(...(credoTools as ToolDefinition<any>[]));
+			tools.push(...(credoTools as any));
 		} catch (err) {
 			throw new Error(`Credo initialization failed: ${err instanceof Error ? err.message : String(err)}`);
 		}
