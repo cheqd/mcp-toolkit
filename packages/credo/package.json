@@ -28,7 +28,7 @@
     "credo"
   ],
   "dependencies": {
-    "@credo-ts/anoncreds": "^0.5.19",
+    "@credo-ts/anoncreds": "^0.6.2",
     "@credo-ts/askar": "^0.5.19",
     "@credo-ts/cheqd": "^0.5.19",
     "@credo-ts/core": "^0.5.19",
