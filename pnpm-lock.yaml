@@ -89,13 +89,13 @@ importers:
         version: 0.2.3(encoding@0.1.13)
       '@modelcontextprotocol/sdk':
         specifier: ^1.20.2
-        version: 1.24.3(zod@4.3.6)
+        version: 1.24.3(zod@3.25.56)
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
       zod:
-        specifier: ^4.3.6
-        version: 4.3.6
+        specifier: ^3.25.56
+        version: 3.25.56
     devDependencies:
       '@types/node':
         specifier: ^24.0.0
@@ -110,11 +110,11 @@ importers:
   packages/remote-server:
     dependencies:
       '@cheqd/mcp-toolkit-server':
-        specifier: 1.4.1-develop.2
-        version: 1.4.1-develop.2(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
+        specifier: workspace:*
+        version: link:../server
       '@modelcontextprotocol/sdk':
         specifier: ^1.20.2
-        version: 1.24.3(zod@4.3.6)
+        version: 1.24.3(zod@3.25.56)
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -131,8 +131,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       zod:
-        specifier: ^4.3.6
-        version: 4.3.6
+        specifier: ^3.25.56
+        version: 3.25.56
     devDependencies:
       '@types/cookie-parser':
         specifier: ^1.4.8
@@ -159,14 +159,14 @@ importers:
   packages/server:
     dependencies:
       '@cheqd/mcp-toolkit-credo':
-        specifier: 1.5.1-develop.2
-        version: 1.5.1-develop.2(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
+        specifier: workspace:*
+        version: link:../credo
       '@modelcontextprotocol/sdk':
         specifier: ^1.20.2
-        version: 1.24.3(zod@4.3.6)
+        version: 1.24.3(zod@3.25.56)
       zod:
-        specifier: ^4.3.6
-        version: 4.3.6
+        specifier: ^3.25.56
+        version: 3.25.56
     devDependencies:
       '@types/node':
         specifier: ^24.0.0
@@ -725,15 +725,6 @@ packages:
 
   '@bufbuild/protobuf@2.11.0':
     resolution: {integrity: sha512-sBXGT13cpmPR5BMgHE6UEEfEaShh5Ror6rfN3yEK5si7QVrtZg8LEPQb0VVhiLRUslD2yLnXtnRzG035J/mZXQ==}
-
-  '@cheqd/mcp-toolkit-credo@1.5.1-develop.2':
-    resolution: {integrity: sha512-IXp9FfVXLoHmUslq5/OztVwM8O5umxJcVQweoFcBOgtr4HKcIv7dQQgKFH6w9o3rBzQSR/ohXrB1/kP/jqTh0A==}
-    engines: {node: '>=20.0.0'}
-
-  '@cheqd/mcp-toolkit-server@1.4.1-develop.2':
-    resolution: {integrity: sha512-j2/P2jVp2R7t6dc7knCDG1ernH2PalQwFVqniboFaXlhy1PqRkhOLTWlBEaDcrBUkEYa7z4Ge9a2DWugredk9w==}
-    engines: {node: '>=20.0.0'}
-    hasBin: true
 
   '@cheqd/sdk@5.4.9':
     resolution: {integrity: sha512-CTez3pBGAWnUMopz/odLYoPbmZGthUJ4XCZCMBHnbbI7kCvT8zxfgetOlZyr+SlUO3iRKTPIr+GLU20t2Z7gzQ==}
@@ -1804,6 +1795,7 @@ packages:
 
   '@sphereon/kmp-mdl-mdoc@0.2.0-SNAPSHOT.22':
     resolution: {integrity: sha512-uAZZExVy+ug9JLircejWa5eLtAZ7bnBP6xb7DO2+86LRsHNLh2k2jMWJYxp+iWtGHTsh6RYsZl14ScQLvjiQ/A==}
+    bundledDependencies: []
 
   '@sphereon/pex-models@2.3.2':
     resolution: {integrity: sha512-foFxfLkRwcn/MOp/eht46Q7wsvpQGlO7aowowIIb5Tz9u97kYZ2kz6K2h2ODxWuv5CRA7Q0MY8XUBGE2lfOhOQ==}
@@ -6974,11 +6966,8 @@ packages:
     peerDependencies:
       zod: ^3.25 || ^4
 
-  zod@3.25.76:
-    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
-
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+  zod@3.25.56:
+    resolution: {integrity: sha512-rd6eEF3BTNvQnR2e2wwolfTmUTnp70aUTqr0oaGbHifzC3BKJsoV+Gat8vxUMR1hwOKBs6El+qWehrHbCpW6SQ==}
 
 snapshots:
 
@@ -7731,56 +7720,6 @@ snapshots:
   '@borewit/text-codec@0.2.1': {}
 
   '@bufbuild/protobuf@2.11.0': {}
-
-  '@cheqd/mcp-toolkit-credo@1.5.1-develop.2(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)':
-    dependencies:
-      '@credo-ts/anoncreds': 0.5.19(@hyperledger/anoncreds-shared@0.3.4)(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@credo-ts/askar': 0.5.19(@hyperledger/aries-askar-nodejs@0.2.3(encoding@0.1.13))(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@credo-ts/cheqd': 0.5.19(@hyperledger/anoncreds-shared@0.3.4)(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@credo-ts/core': 0.5.19(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@credo-ts/node': 0.5.19(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@hyperledger/anoncreds-nodejs': 0.3.4
-      '@hyperledger/anoncreds-shared': 0.3.4
-      '@hyperledger/aries-askar-nodejs': 0.2.3(encoding@0.1.13)
-      '@modelcontextprotocol/sdk': 1.24.3(zod@3.25.76)
-      qrcode: 1.5.4
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@animo-id/expo-secure-environment'
-      - '@cfworker/json-schema'
-      - '@hyperledger/aries-askar-react-native'
-      - '@openwallet-foundation/askar-nodejs'
-      - '@openwallet-foundation/askar-react-native'
-      - bufferutil
-      - debug
-      - domexception
-      - encoding
-      - expo
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - web-streams-polyfill
-
-  '@cheqd/mcp-toolkit-server@1.4.1-develop.2(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)':
-    dependencies:
-      '@cheqd/mcp-toolkit-credo': 1.5.1-develop.2(encoding@0.1.13)(expo@54.0.33(@babel/core@7.29.0)(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(react@19.2.4))(react-native@0.84.0(@babel/core@7.29.0)(react@19.2.4))(web-streams-polyfill@3.3.3)
-      '@modelcontextprotocol/sdk': 1.24.3(zod@3.25.76)
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@animo-id/expo-secure-environment'
-      - '@cfworker/json-schema'
-      - '@hyperledger/aries-askar-react-native'
-      - '@openwallet-foundation/askar-nodejs'
-      - '@openwallet-foundation/askar-react-native'
-      - bufferutil
-      - debug
-      - domexception
-      - encoding
-      - expo
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - web-streams-polyfill
 
   '@cheqd/sdk@5.4.9':
     dependencies:
@@ -8915,7 +8854,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.24.3(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.24.3(zod@3.25.56)':
     dependencies:
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
@@ -8929,27 +8868,8 @@ snapshots:
       jose: 6.1.3
       pkce-challenge: 5.0.0
       raw-body: 3.0.0
-      zod: 3.25.76
-      zod-to-json-schema: 3.25.0(zod@3.25.76)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@modelcontextprotocol/sdk@1.24.3(zod@4.3.6)':
-    dependencies:
-      ajv: 8.17.1
-      ajv-formats: 3.0.1(ajv@8.17.1)
-      content-type: 1.0.5
-      cors: 2.8.5
-      cross-spawn: 7.0.6
-      eventsource: 3.0.7
-      eventsource-parser: 3.0.2
-      express: 5.1.0
-      express-rate-limit: 7.5.0(express@5.1.0)
-      jose: 6.1.3
-      pkce-challenge: 5.0.0
-      raw-body: 3.0.0
-      zod: 4.3.6
-      zod-to-json-schema: 3.25.0(zod@4.3.6)
+      zod: 3.25.56
+      zod-to-json-schema: 3.25.0(zod@3.25.56)
     transitivePeerDependencies:
       - supports-color
 
@@ -15879,14 +15799,8 @@ snapshots:
 
   yoctocolors@2.1.2: {}
 
-  zod-to-json-schema@3.25.0(zod@3.25.76):
+  zod-to-json-schema@3.25.0(zod@3.25.56):
     dependencies:
-      zod: 3.25.76
+      zod: 3.25.56
 
-  zod-to-json-schema@3.25.0(zod@4.3.6):
-    dependencies:
-      zod: 4.3.6
-
-  zod@3.25.76: {}
-
-  zod@4.3.6: {}
+  zod@3.25.56: {}
