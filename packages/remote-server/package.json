@@ -39,7 +39,7 @@
     "@types/helmet": "^4.0.0",
     "@types/node": "^24.0.0",
     "dotenv": "^17.2.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
