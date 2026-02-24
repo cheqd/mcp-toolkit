@@ -1,6 +1,6 @@
 {
   "name": "@cheqd/mcp-toolkit-credo",
-  "version": "1.5.0",
+  "version": "1.5.1-develop.2",
   "packageManager": "pnpm@9.1.3",
   "description": "MCP Toolkit for credo-ts",
   "author": "Cheqd Foundation Limited (https://github.com/cheqd)",
@@ -28,16 +28,16 @@
     "credo"
   ],
   "dependencies": {
-    "@credo-ts/anoncreds": "^0.5.15",
-    "@credo-ts/askar": "^0.5.15",
-    "@credo-ts/cheqd": "^0.5.15",
-    "@credo-ts/core": "^0.5.15",
-    "@credo-ts/node": "^0.5.15",
-    "@hyperledger/anoncreds-nodejs": "^0.3.1",
-    "@hyperledger/anoncreds-shared": "^0.3.1",
+    "@credo-ts/anoncreds": "^0.5.19",
+    "@credo-ts/askar": "^0.5.19",
+    "@credo-ts/cheqd": "^0.5.19",
+    "@credo-ts/core": "^0.5.19",
+    "@credo-ts/node": "^0.5.19",
+    "@hyperledger/anoncreds-nodejs": "^0.3.4",
+    "@hyperledger/anoncreds-shared": "^0.3.4",
     "@hyperledger/aries-askar-nodejs": "^0.2.3",
     "qrcode": "^1.5.4",
-    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@modelcontextprotocol/sdk": "^1.20.2",
     "zod": "^3.25.56"
   },
   "devDependencies": {

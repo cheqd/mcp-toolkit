@@ -20,9 +20,32 @@ import {
 	CheqdAnonCredsRegistry,
 	CheqdDidRegistrar,
 	CheqdDidResolver,
+	CheqdLedgerService,
 	CheqdModule,
 	CheqdModuleConfig,
 } from '@credo-ts/cheqd';
+
+// Compatibility patch: @cheqd/sdk@5.5.0 added a `feeOptions` parameter before
+// `context` in DID/resource tx methods. CheqdSDK.execute() always appends
+// { sdk: this } as the last argument, so we insert `undefined` for `feeOptions`
+// here to ensure `context` lands in the correct position.
+const ledgerProto = CheqdLedgerService.prototype as any;
+ledgerProto.create = async function (didPayload: any, signInputs: any, versionId: any, fee: any) {
+	const sdk = await this.getSdk(didPayload.id);
+	return sdk.createDidDocTx(signInputs, didPayload, '', fee, undefined, versionId, undefined);
+};
+ledgerProto.update = async function (didPayload: any, signInputs: any, versionId: any, fee: any) {
+	const sdk = await this.getSdk(didPayload.id);
+	return sdk.updateDidDocTx(signInputs, didPayload, '', fee, undefined, versionId, undefined);
+};
+ledgerProto.deactivate = async function (didPayload: any, signInputs: any, versionId: any, fee: any) {
+	const sdk = await this.getSdk(didPayload.id);
+	return sdk.deactivateDidDocTx(signInputs, didPayload, '', fee, undefined, versionId, undefined);
+};
+ledgerProto.createResource = async function (did: any, resourcePayload: any, signInputs: any, fee: any) {
+	const sdk = await this.getSdk(did);
+	return sdk.createLinkedResourceTx(signInputs, resourcePayload, '', fee, undefined, undefined);
+};
 import { AnonCredsCredentialFormatService, AnonCredsModule, AnonCredsProofFormatService } from '@credo-ts/anoncreds';
 import { ariesAskar } from '@hyperledger/aries-askar-nodejs';
 import { anoncreds } from '@hyperledger/anoncreds-nodejs';
