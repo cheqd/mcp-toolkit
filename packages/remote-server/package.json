@@ -37,7 +37,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/helmet": "^4.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^25.3.3",
     "dotenv": "^17.2.4",
     "typescript": "^5.9.3"
   },
