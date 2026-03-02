@@ -43,7 +43,7 @@ jobs:
         run: pnpm test
 
       - name: Upload Playwright report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: playwright-report
@@ -95,7 +95,7 @@ jobs:
           cache-to: type=gha,mode=min
       
       - name: Upload staging image as an artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: mcp-toolkit-staging
           path: mcp-toolkit-staging.tar
