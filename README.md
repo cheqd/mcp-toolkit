@@ -10,30 +10,6 @@
 
 The `@cheqd/mcp-toolkit` is a modular framework built around the Model Context Protocol (MCP) which allows AI agents to interact with the Cheqd network. MCP standardizes AI agent interactions by providing a structured way to handle identity-related workflows. This toolkit enables AI agents to securely manage decentralized identities (DIDs), verifiable credentials, and trust registries, making it an essential component for AI-driven identity systems. This repository allows developers to configure and deploy an MCP server with the available toolkits.
 
-## 🌐 Remote MCP Server
-
-For the quickest way to get started, you can connect to our hosted MCP server. Simply add the following configuration to your Claude Desktop or Cursor settings file:
-
-- For Claude Desktop: `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json (Windows)`
-
-- For Cursor: `.cursor/mcp.json`
-
-```json
-{
-    "mcpServers": {
-        "cheqd-mcp": {
-            "command": "npx",
-            "args": [
-                "mcp-remote",
-                "https://remote-mcp.cheqd.io/mcp"
-            ],
-        }
-    }
-}
-```
-
-The remote option requires no local setup and provides immediate access to cheqd identity tools.
-
 ## Prerequisites
 
 - Node.js 20 or higher
@@ -53,25 +29,7 @@ Features:
 
 ### Usage Options
 
-#### 1. Remote Server (Easiest)
-
-Connect to our hosted MCP server - no local setup required:
-
-```json
-{
-    "mcpServers": {
-        "cheqd-mcp": {
-            "command": "npx",
-            "args": [
-                "mcp-remote",
-                "https://remote-mcp.cheqd.io/mcp"
-            ],
-        }
-    }
-}
-```
-
-#### 2. Local server via NPX
+#### 1. Local server via NPX
 
 Use this to run the Cheqd MCP Server locally and pass your own environment variables.
 
@@ -93,7 +51,7 @@ Use this to run the Cheqd MCP Server locally and pass your own environment varia
 }
 ```
 
-#### 3. Local Server via docker-compose
+#### 2. Local Server via docker-compose
 
 Use the `env.example` file and update the appropriate variables.
 Also, build the local docker first with: `docker compose -f docker/docker-compose.yml build mcp-stdio-server`
