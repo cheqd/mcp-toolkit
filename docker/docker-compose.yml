@@ -3,16 +3,31 @@
 
 services:
   mcp-server:
-    # OPTIONAL: Rebuild cheqd mcp-toolkit Docker image, if you want build your own
-    # Default is to pull in the pre-published image on GitHub Container Registry
-    # SYNTAX: docker compose -f docker/docker-compose.yml build
-    # build:
-    #   context: ../
-    #   dockerfile: Dockerfile
     image: ghcr.io/cheqd/mcp-toolkit:production-latest
     container_name: faber
     profiles:
       - server
+    ports:
+      - '3000:3000'
+    restart: on-failure
+    env_file:
+      - ../env.example
+    extra_hosts:
+      - 'holder:host-gateway'
+    networks:
+      mcp-network:
+        aliases:
+          - faber
+
+  mcp-stdio-server:
+    # MUST: Build cheqd mcp-toolkit Docker image for
+    # Stdio MCP server for Claude Desktop integration
+    # SYNTAX: docker compose -f docker/docker-compose.yml build mcp-stdio-server
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.mcp
+    profiles:
+      - stdio
     ports:
       - '3000:3000'
     restart: on-failure

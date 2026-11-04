@@ -26,7 +26,7 @@ async function initializeServer() {
 
 		// Now start the server after setup is complete
 		await agentServer.start();
-		console.error('Server started successfully.');
+		console.error('Server started successfully (STDIO mode).');
 	} catch (err) {
 		// Handle errors during setup or startup
 		console.error('Error during initialization or startup:', err);

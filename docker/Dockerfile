@@ -2,7 +2,7 @@
 ###                 STAGE 1: Build app                      ###
 ###############################################################
 
-FROM node:20-slim AS builder
+FROM node:22.23.4-slim AS builder
 
 # Enable pnpm
 RUN corepack enable
@@ -29,7 +29,7 @@ RUN pnpm prune --prod
 ###                 STAGE 2: Build runner                   ###
 ###############################################################
 
-FROM node:20-slim AS runner
+FROM node:22.23.4-slim AS runner
 
 # Install only essential runtime dependencies
 RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -58,7 +58,7 @@ ENV PORT=${PORT}
 ENV CREDO_PORT=${CREDO_PORT}
 
 # Set ownership permissions
-RUN chown -R node:node /home/node/app
+RUN mkdir -p /home/node/.afj && chown -R node:node /home/node/app && chown -R node:node /home/node/.afj
 
 # Specify default port
 EXPOSE ${PORT} ${CREDO_PORT}

@@ -72,20 +72,20 @@ class App {
 				// Clean up transport when closed
 				transport.onclose = () => {
 					if (transport.sessionId) {
-						console.log('Session closed:', transport.sessionId);
+						console.error('Session closed:', transport.sessionId);
 						delete transports[transport.sessionId];
 					}
 				};
-				console.log('Connecting to server...');
+				console.error('Connecting to server...');
 				// Connect to the MCP server
 				await this.server.getStatus();
 				if (this.server) {
 					await this.server.start(transport).catch((err) => {
 						console.error('Unhandled error in server startup:', err);
 					});
-					console.log('Connected.');
+					console.error('Connected.');
 				}
-				console.log('MCP session started');
+				console.error('MCP session started');
 			} else {
 				// Invalid request
 				res.status(400).json({

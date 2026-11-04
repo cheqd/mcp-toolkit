@@ -45,7 +45,10 @@ const startClient = async (): Promise<Client> => {
 		args: [getServerPath()],
 		env,
 	});
-	client = new Client({ name: 'test-client', version: '1.0.0' }, { capabilities: { tools: {} } });
+	client = new Client(
+		{ name: 'test-client', version: '1.0.0' },
+		{ capabilities: { sampling: { tools: {} } } }
+	);
 	await client.connect(transport);
 	return client;
 };

@@ -7,9 +7,11 @@ import {
 	ProofToolHandler,
 	TrustRegistryAgent,
 } from './tools/index.js';
-import { ICredoToolKitOptions } from './types.js';
+import { ICredoToolKitOptions, ToolDefinition } from './types.js';
 import { ResourceHandler } from './resource.js';
 import { PromptHandler } from './prompt.js';
+
+export type AnyTool = ToolDefinition<any>;
 
 /**
  * CredoToolKit provides a comprehensive set of tools for interacting with the Credo agent.
@@ -51,7 +53,7 @@ export class CredoToolKit {
 			await this.credo.agent.shutdown();
 		}
 	}
-
+	
 	/**
 	 * Returns an array of all available tools grouped by functionality:
 	 * - DID Management Tools (resolve, create, update, deactivate DIDs and linked resources)
@@ -61,42 +63,42 @@ export class CredoToolKit {
 	 *
 	 * @returns {Promise<ToolDefinition[]>} Array of tool definitions
 	 */
-	async getTools() {
-		return [
-			new DidToolHandler(this.credo).resolveDidTool(),
-			new DidToolHandler(this.credo).createDidTool(),
-			new DidToolHandler(this.credo).updateDidTool(),
-			new DidToolHandler(this.credo).deactivateDidTool(),
-			new DidToolHandler(this.credo).listDidTool(),
-			new DidToolHandler(this.credo).createDIDLinkedResourceTool(),
-			new DidToolHandler(this.credo).resolveDIDLinkedResourceTool(),
-			new AnonCredsToolHandler(this.credo).createSchemaTool(),
-			new AnonCredsToolHandler(this.credo).listSchemaTool(),
-			new AnonCredsToolHandler(this.credo).getSchemaTool(),
-			new AnonCredsToolHandler(this.credo).createCredentialDefinitionTool(),
-			new AnonCredsToolHandler(this.credo).listCredentialDefinitionTool(),
-			new AnonCredsToolHandler(this.credo).getCredentialDefinitionTool(),
-			new ConnectionToolHandler(this.credo).createConnectionInvitationTool(),
-			new ConnectionToolHandler(this.credo).acceptConnectionInvitationTool(),
-			new ConnectionToolHandler(this.credo).listConnections(),
-			new ConnectionToolHandler(this.credo).getConnectionRecord(),
-			new CredentialToolHandler(this.credo).connectionLessCredentialOfferTool(),
-			new CredentialToolHandler(this.credo).connectionCredentialOfferTool(),
-			new CredentialToolHandler(this.credo).acceptCredentialOfferTool(),
-			new CredentialToolHandler(this.credo).listCredentialsTool(),
-			new CredentialToolHandler(this.credo).getCredentialRecordTool(),
-			new CredentialToolHandler(this.credo).listCredentialExchangeRecordsTool(),
-			new CredentialToolHandler(this.credo).importCredentialTool(),
-			new ProofToolHandler(this.credo).connectionlessProofRequestTool(),
-			new ProofToolHandler(this.credo).connectionProofRequestTool(),
-			new ProofToolHandler(this.credo).getProofRecordTool(),
-			new ProofToolHandler(this.credo).listProofsTool(),
-			new ProofToolHandler(this.credo).acceptProofRequestTool(),
-			...[
-				this.trainEndpoint &&
-					new TrustRegistryAgent({ trainEndpoint: this.trainEndpoint }).verifyTrustRegistry(),
-			],
+	async getTools(): Promise<AnyTool[]> {
+		const tools: AnyTool[] = [
+			new DidToolHandler(this.credo).resolveDidTool() as AnyTool,
+			new DidToolHandler(this.credo).createDidTool() as AnyTool,
+			new DidToolHandler(this.credo).updateDidTool() as AnyTool,
+			new DidToolHandler(this.credo).deactivateDidTool() as AnyTool,
+			new DidToolHandler(this.credo).listDidTool() as AnyTool,
+			new DidToolHandler(this.credo).createDIDLinkedResourceTool() as AnyTool,
+			new DidToolHandler(this.credo).resolveDIDLinkedResourceTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).createSchemaTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).listSchemaTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).getSchemaTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).createCredentialDefinitionTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).listCredentialDefinitionTool() as AnyTool,
+			new AnonCredsToolHandler(this.credo).getCredentialDefinitionTool() as AnyTool,
+			new ConnectionToolHandler(this.credo).createConnectionInvitationTool() as AnyTool,
+			new ConnectionToolHandler(this.credo).acceptConnectionInvitationTool() as AnyTool,
+			new ConnectionToolHandler(this.credo).listConnections() as AnyTool,
+			new ConnectionToolHandler(this.credo).getConnectionRecord() as AnyTool,
+			new CredentialToolHandler(this.credo).connectionLessCredentialOfferTool() as AnyTool,
+			new CredentialToolHandler(this.credo).connectionCredentialOfferTool() as AnyTool,
+			new CredentialToolHandler(this.credo).acceptCredentialOfferTool() as AnyTool,
+			new CredentialToolHandler(this.credo).listCredentialsTool() as AnyTool,
+			new CredentialToolHandler(this.credo).getCredentialRecordTool() as AnyTool,
+			new CredentialToolHandler(this.credo).listCredentialExchangeRecordsTool() as AnyTool,
+			new CredentialToolHandler(this.credo).importCredentialTool() as AnyTool,
+			new ProofToolHandler(this.credo).connectionlessProofRequestTool() as AnyTool,
+			new ProofToolHandler(this.credo).connectionProofRequestTool() as AnyTool,
+			new ProofToolHandler(this.credo).getProofRecordTool() as AnyTool,
+			new ProofToolHandler(this.credo).listProofsTool() as AnyTool,
+			new ProofToolHandler(this.credo).acceptProofRequestTool() as AnyTool,
 		];
+		if (this.trainEndpoint) {
+			tools.push(new TrustRegistryAgent({ trainEndpoint: this.trainEndpoint }).verifyTrustRegistry());
+		}
+		return tools;
 	}
 	/**
 	 * Registers all resources with the MCP server
